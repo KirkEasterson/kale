@@ -27,4 +27,4 @@ programs=(
 		"i3"
 )
 
-echo ${programs[@]}
+sudo apt install -y ${programs[@]}
