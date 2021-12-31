@@ -30,7 +30,7 @@ apt_prgms=(
 	"i3"
 	"neofetch"
 	"golang"
-	"python3-pip
+	"python3-pip"
 )
 
 snap_prgrms=(
