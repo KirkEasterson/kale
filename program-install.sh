@@ -42,9 +42,10 @@ snap_prgrms=(
 	"caprine"
 )
 
+# install apt packages
 sudo apt install -y ${apt_prgms[@]}
-sudo apt autoremove
 
+# install snap packages
 for entry in "${snap_prgrms[@]}"
 do
 	sudo snap install $entry
