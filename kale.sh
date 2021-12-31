@@ -13,6 +13,7 @@ sudo apt upgrade -y
 cd $HOME
 
 # clone the git repos
+rm -Rf $kale $dotfiles
 git clone https://github.com/KirkEasterson/kale.git $kale
 git clone https://github.com/KirkEasterson/.dotfiles.git $dotfiles
 
@@ -30,6 +31,7 @@ systemctl set-default multi-user.target
 cd $HOME
 mkdir Pictures
 cd Pictures
+rm -Rf wallpapers
 git clone --depth 1 https://github.com/makccr/wallpapers
 
 feh --bg-scale $kale/background.jpg
