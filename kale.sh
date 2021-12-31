@@ -19,3 +19,6 @@ cd $kale
 # symlink dotfile
 cd $dotfiles
 ./install.sh
+
+# disable login managers
+systemctl set-default multi-user.target
