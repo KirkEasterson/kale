@@ -2,6 +2,7 @@
 
 
 # TODO: Figure out which programs are not needed
+# TODO: Figure out which program is installing gnome dependencies
 apt_prgms=(
 	"git"
 	"vim"
