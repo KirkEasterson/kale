@@ -32,4 +32,6 @@ mkdir Pictures
 cd Pictures
 git clone --depth 1 https://github.com/makccr/wallpapers
 
+feh --bg-scale $kale/background.jpg
+
 cd $HOME
