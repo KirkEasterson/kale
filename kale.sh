@@ -35,6 +35,4 @@ cd Pictures
 rm -Rf wallpapers
 git clone --depth 1 https://github.com/makccr/wallpapers
 
-feh --bg-scale $kale/background.jpg
-
-cd $HOME
+sudo reboot now
