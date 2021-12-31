@@ -25,6 +25,7 @@ cd $kale
 cd $dotfiles
 ./install.sh
 
+# TODO: Remove this once package that installs gnome dependencies is identified
 # disable login managers
 systemctl set-default multi-user.target
 
