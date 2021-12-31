@@ -5,6 +5,10 @@
 kale=$HOME/kale
 dotfiles=$HOME/.dotfiles
 
+# update the install
+sudo apt update
+sudo apt upgrade -y
+
 # cd to the home directory
 cd $HOME
 
