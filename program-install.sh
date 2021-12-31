@@ -28,6 +28,9 @@ apt_prgms=(
 	"xinit"
 	"xorg"
 	"i3"
+	"neofetch"
+	"golang"
+	"python3-pip
 )
 
 snap_prgrms=(
