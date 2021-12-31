@@ -26,3 +26,10 @@ cd $dotfiles
 
 # disable login managers
 systemctl set-default multi-user.target
+
+cd $HOME
+mkdir Pictures
+cd Pictures
+git clone --depth 1 https://github.com/makccr/wallpapers
+
+cd $HOME
