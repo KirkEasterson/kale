@@ -9,7 +9,7 @@ apt_prgms=(
 	"curl"
 	"tree"
 	"fonts-ubuntu-font-family-console"
-	"rxvt-unicode-256color"
+	"xfce4-terminal"
 	"pop-gtk-theme"
 	"pop-icon-theme"
 	"compton"
