@@ -20,6 +20,7 @@ git clone https://github.com/KirkEasterson/.dotfiles.git $dotfiles
 # install the programs
 cd $kale
 ./program-install.sh
+./font-install.sh
 
 # symlink dotfile
 cd $dotfiles
