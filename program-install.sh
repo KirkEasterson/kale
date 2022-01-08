@@ -35,6 +35,7 @@ apt_prgms=(
 	"blueman"
 	"redshift"
 	"redshift-gtk"
+	"imagemagick"
 )
 
 snap_prgrms=(
