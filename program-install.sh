@@ -36,6 +36,7 @@ apt_prgms=(
 	"redshift"
 	"redshift-gtk"
 	"imagemagick"
+	"tmux"
 )
 
 snap_prgrms=(
