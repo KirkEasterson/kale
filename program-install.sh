@@ -31,6 +31,7 @@ apt_prgms=(
 	"neofetch"
 	"golang"
 	"python3-pip"
+	"blueman"
 )
 
 snap_prgrms=(
