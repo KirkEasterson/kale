@@ -27,3 +27,8 @@ for font in "${fonts[@]}"; do
 	#	-o: replace the file if it already exists; so it can run unattended
 	unzip -o font.zip -d $HOME/.fonts
 done
+
+# rebuild font cache
+#	-f: force re-generate fonts
+#	-v: verbose
+fc-cache -fv
