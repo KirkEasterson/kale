@@ -31,6 +31,8 @@ apt_prgms=(
 	"neofetch"
 	"golang"
 	"python3-pip"
+	"python"
+	"python-pip"
 	"blueman"
 	"redshift"
 	"redshift-gtk"
@@ -45,6 +47,10 @@ snap_prgrms=(
 	"caprine"
 )
 
+py_prgrms=(
+	"pywal"
+)
+
 # install apt packages
 sudo apt install -y ${apt_prgms[@]}
 
@@ -53,3 +59,6 @@ for entry in "${snap_prgrms[@]}"
 do
 	sudo snap install $entry
 done
+
+# install python packages
+pip3 install --user ${py_prgrms[@]}
