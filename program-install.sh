@@ -32,7 +32,6 @@ apt_prgms=(
 	"golang"
 	"python3-pip"
 	"python"
-	"python-pip"
 	"blueman"
 	"redshift"
 	"redshift-gtk"
