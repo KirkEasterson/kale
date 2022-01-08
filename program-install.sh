@@ -32,6 +32,8 @@ apt_prgms=(
 	"golang"
 	"python3-pip"
 	"blueman"
+	"redshift"
+	"redshift-gtk"
 )
 
 snap_prgrms=(
