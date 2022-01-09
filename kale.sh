@@ -34,6 +34,7 @@ systemctl set-default multi-user.target
 cd $HOME
 mkdir Pictures
 cd Pictures
+mkdir screenshots
 rm -Rf wallpapers
 git clone --depth 1 https://github.com/makccr/wallpapers
 
