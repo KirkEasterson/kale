@@ -31,7 +31,7 @@ apt_prgms=(
 	"neovim"
 	"xinit"
 	"xorg"
-	"i3-gaps-wm"
+	"i3-gaps"
 	"neofetch"
 	"golang"
 	"python3-pip"
