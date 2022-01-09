@@ -38,6 +38,7 @@ apt_prgms=(
 	"imagemagick"
 	"tmux"
 	"xclip"
+	"arandr"
 )
 
 snap_prgrms=(
