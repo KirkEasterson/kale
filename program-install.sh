@@ -65,14 +65,14 @@ for ppa in "${ppas[@]}"; do
 	sudo add-apt-repository -y $ppa
 done
 
+# update for new ppas
 sudo apt update
 
 # install apt packages
 sudo apt install -y ${apt_prgms[@]}
 
 # install snap packages
-for snap in "${snap_prgrms[@]}"
-do
+for snap in "${snap_prgrms[@]}"; do
 	sudo snap install $snap
 done
 
