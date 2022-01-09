@@ -43,6 +43,22 @@ apt_prgms=(
 	"tmux"
 	"xclip"
 	"arandr"
+	"libxext-dev"
+	"ffmpegthumbnailer"
+	"epub-utils"
+	"wkhtmltopdf"
+	"bat"
+	"chafa"
+	"unzip"
+	"p7zip"
+	"unrar"
+	"catdoc"
+	"docx2txt"
+	"odt2txt"
+	"gnumeric"
+	"exiftool"
+	"libcdio-utils"
+	"transmission"
 )
 
 snap_prgrms=(
@@ -56,6 +72,10 @@ snap_prgrms=(
 
 py_prgrms=(
 	"pywal"
+)
+
+sudo_py_prgrms=(
+	"ueberzug"
 )
 
 # add ppas
@@ -78,6 +98,9 @@ done
 
 # install python packages
 pip3 install --user ${py_prgrms[@]}
+
+# install python packages
+sudo pip3 install --user ${sudo_py_prgrms[@]}
 
 # install lf
 cd /tmp/
