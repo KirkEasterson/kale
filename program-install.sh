@@ -2,7 +2,7 @@
 
 ppas=(
 	"ppa:neovim-ppa/stable"
-	"ppa:regolith-linux/release"
+	"ppa:regolith-linux/stable"
 )
 
 # TODO: Figure out which programs are not needed
@@ -31,7 +31,7 @@ apt_prgms=(
 	"neovim"
 	"xinit"
 	"xorg"
-	"i3-gaps"
+	"i3-gaps-wm"
 	"neofetch"
 	"golang"
 	"python3-pip"
