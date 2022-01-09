@@ -63,3 +63,11 @@ done
 
 # install python packages
 pip3 install --user ${py_prgrms[@]}
+
+# install lf
+cd /tmp/
+wget https://github.com/gokcehan/lf/releases/download/r26/lf-linux-amd64.tar.gz
+tar -xf lf-linux-amd64.tar.gz
+sudo mv lf /usr/bin/
+rm lf-linux-amd64.tar.gz
+cd -
