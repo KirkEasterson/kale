@@ -18,14 +18,14 @@ git clone https://github.com/KirkEasterson/kale.git $kale
 git clone https://github.com/KirkEasterson/.dotfiles.git $dotfiles
 git clone https://github.com/KirkEasterson/scripts.git
 
+# symlink dotfile
+cd $dotfiles
+./install.sh
+
 # install the programs
 cd $kale
 ./program-install.sh
 ./font-install.sh
-
-# symlink dotfile
-cd $dotfiles
-./install.sh
 
 # TODO: Remove this once package that installs gnome dependencies is identified
 # disable login managers
