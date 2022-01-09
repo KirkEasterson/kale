@@ -102,10 +102,22 @@ pip3 install --user ${py_prgrms[@]}
 # install python packages
 sudo pip3 install --user ${sudo_py_prgrms[@]}
 
-# install lf
+
+## MANUAL INSTALLS
+cwd=$(pwd)
 cd /tmp/
+
+# install lf
 wget https://github.com/gokcehan/lf/releases/download/r26/lf-linux-amd64.tar.gz
 tar -xf lf-linux-amd64.tar.gz
 sudo mv lf /usr/bin/
 rm lf-linux-amd64.tar.gz
-cd -
+
+# install lfrun
+git clone https://github.com/cirala/lfimg.git
+cd lfimg
+make install
+cd ..
+rm -Rf lfimg
+
+cd $cwd
