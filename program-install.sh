@@ -1,8 +1,11 @@
 #!/bin/bash
 
+ppas=(
+	"ppa:neovim-ppa/stable"
+)
 
 # TODO: Figure out which programs are not needed
-# TODO: Figure out which program is installing gnome dependencies
+# TODO: Replace network-manager-gnome to remove gnome dependencies
 apt_prgms=(
 	"git"
 	"vim"
@@ -53,6 +56,9 @@ snap_prgrms=(
 py_prgrms=(
 	"pywal"
 )
+
+# add ppas
+sudo add-apt-repository -y ${ppas[@]}
 
 # install apt packages
 sudo apt install -y ${apt_prgms[@]}
