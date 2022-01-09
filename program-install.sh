@@ -37,6 +37,7 @@ apt_prgms=(
 	"redshift-gtk"
 	"imagemagick"
 	"tmux"
+	"xclip"
 )
 
 snap_prgrms=(

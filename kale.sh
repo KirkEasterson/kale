@@ -16,6 +16,7 @@ cd $HOME
 rm -Rf $kale $dotfiles
 git clone https://github.com/KirkEasterson/kale.git $kale
 git clone https://github.com/KirkEasterson/.dotfiles.git $dotfiles
+git clone https://github.com/KirkEasterson/scripts.git
 
 # install the programs
 cd $kale
