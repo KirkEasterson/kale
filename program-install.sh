@@ -59,16 +59,21 @@ py_prgrms=(
 )
 
 # add ppas
-sudo add-apt-repository -y ${ppas[@]}
+#sudo add-apt-repository -y ${ppas[@]}
+
+for ppa in "${ppas[@]}"; do
+	sudo add-apt-repository -y $ppa
+done
+
 sudo apt update
 
 # install apt packages
 sudo apt install -y ${apt_prgms[@]}
 
 # install snap packages
-for entry in "${snap_prgrms[@]}"
+for snap in "${snap_prgrms[@]}"
 do
-	sudo snap install $entry
+	sudo snap install $snap
 done
 
 # install python packages
