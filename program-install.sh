@@ -2,6 +2,7 @@
 
 ppas=(
 	"ppa:neovim-ppa/stable"
+	"ppa:regolith-linux/release"
 )
 
 # TODO: Figure out which programs are not needed
@@ -30,7 +31,7 @@ apt_prgms=(
 	"neovim"
 	"xinit"
 	"xorg"
-	"i3"
+	"i3-gaps"
 	"neofetch"
 	"golang"
 	"python3-pip"
@@ -59,6 +60,7 @@ py_prgrms=(
 
 # add ppas
 sudo add-apt-repository -y ${ppas[@]}
+sudo apt update
 
 # install apt packages
 sudo apt install -y ${apt_prgms[@]}
