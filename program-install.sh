@@ -72,6 +72,7 @@ snap_prgrms=(
 
 py_prgrms=(
 	"pywal"
+	"ueberzug"
 )
 
 sudo_py_prgrms=(
