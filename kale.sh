@@ -4,6 +4,8 @@
 
 kale=$HOME/kale
 dotfiles=$HOME/.dotfiles
+pictures=$HOME/Pictures
+wallpapers=$pictures/wallpapers
 
 # update the install
 sudo apt update
@@ -32,10 +34,11 @@ cd $kale
 systemctl set-default multi-user.target
 
 cd $HOME
-mkdir Pictures
-cd Pictures
-mkdir screenshots
-rm -Rf wallpapers
-git clone --depth 1 https://github.com/makccr/wallpapers
+mkdir -p $pictures/screenshots
+
+# if wallpapers/ doesn't exist, clone the directory
+if [ ! -d "$wallpapers" ]; then
+	git clone --depth 1 https://github.com/makccr/wallpapers $wallpapers
+fi
 
 sudo reboot now
