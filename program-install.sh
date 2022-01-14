@@ -35,7 +35,7 @@ apt_prgms=(
 	"neofetch"
 	"golang"
 	"python3-pip"
-	"python"
+#	"python"
 	"blueman"
 	"redshift"
 	"redshift-gtk"
@@ -91,7 +91,9 @@ done
 sudo apt update
 
 # install apt packages
-sudo apt install -y ${apt_prgms[@]}
+for prg in "${apt_prgs[@]}"; do
+	sudo apt install -y $prg
+done
 
 # install snap packages
 for snap in "${snap_prgrms[@]}"; do
