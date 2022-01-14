@@ -59,6 +59,7 @@ apt_prgms=(
 	"exiftool"
 	"libcdio-utils"
 	"transmission"
+	"python-is-python3"
 )
 
 snap_prgrms=(
