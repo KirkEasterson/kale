@@ -18,8 +18,8 @@ pictures=$HOME/Pictures
 wallpapers=$pictures/wallpapers
 
 # update the install
-sudo apt update 2>&1 | dialog --progressbox "Updating package information" 30 100
-sudo apt upgrade -y 2>&1 | dialog --progressbox "Updating packages" 30 100
+sudo apt-get update 2>&1 | dialog --progressbox "Updating package information" 30 100
+sudo apt-get upgrade -y 2>&1 | dialog --progressbox "Updating packages" 30 100
 
 # cd to the home directory
 cd $HOME
