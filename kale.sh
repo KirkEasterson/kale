@@ -12,23 +12,26 @@ then
     exit 0
 fi
 
+# update the install
+sudo apt-get update 2>&1 | dialog --progressbox "Updating package information" 30 100
+sudo apt-get upgrade -y 2>&1 | dialog --progressbox "Updating packages" 30 100
+
 kale=$HOME/kale
 dotfiles=$HOME/.dotfiles
 pictures=$HOME/Pictures
 wallpapers=$pictures/wallpapers
-
-# update the install
-sudo apt-get update 2>&1 | dialog --progressbox "Updating package information" 30 100
-sudo apt-get upgrade -y 2>&1 | dialog --progressbox "Updating packages" 30 100
 
 # cd to the home directory
 cd $HOME
 
 # clone the git repos
 rm -Rf $kale $dotfiles
-git clone https://github.com/KirkEasterson/kale.git $kale
-git clone https://github.com/KirkEasterson/.dotfiles.git $dotfiles
-git clone https://github.com/KirkEasterson/scripts.git
+git clone https://github.com/KirkEasterson/kale.git $kale 2>&1 \
+| dialog --progressbox "Updating packages" 30 100
+git clone https://github.com/KirkEasterson/.dotfiles.git $dotfiles 2>&1  \
+| dialog --progressbox "Updating packages" 30 100
+git clone https://github.com/KirkEasterson/scripts.git 2>&1  \
+| dialog --progressbox "Updating packages" 30 100
 
 # symlink dotfile
 cd $dotfiles
