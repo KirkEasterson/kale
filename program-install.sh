@@ -13,6 +13,7 @@ apt_prgms=(
 	"curl"
 	"tree"
 	"make"
+	"dialog"
 	"fonts-ubuntu-font-family-console"
 	"xfce4-terminal"
 	"pop-gtk-theme"
