@@ -25,7 +25,6 @@ wallpapers=$pictures/wallpapers
 cd $HOME
 
 # clone the git repos
-rm -Rf $kale $dotfiles
 git clone https://github.com/KirkEasterson/kale.git $kale 2>&1 \
 | dialog --progressbox "Updating packages" 30 100
 git clone https://github.com/KirkEasterson/.dotfiles.git $dotfiles 2>&1  \
