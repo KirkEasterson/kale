@@ -1,6 +1,16 @@
 #!/bin/bash
 
 # TODO: add error handling
+# TODO: change sizing on dialogs
+
+# Confirm that the user wants to install the script
+if ! dialog --stdout --title "Installation" \
+	--backtitle "Kirk's Automated Linux Environment (KALE)" \
+	--yesno "This will install Kirk's Automated Linux Environment (KALE). \
+This script was intended for Ubuntu 20.04. Do you wish to continue?" 0 0
+then
+    exit 0
+fi
 
 kale=$HOME/kale
 dotfiles=$HOME/.dotfiles
