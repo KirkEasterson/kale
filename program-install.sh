@@ -12,6 +12,7 @@ apt_prgms=(
 	"vim"
 	"curl"
 	"tree"
+	"make"
 	"fonts-ubuntu-font-family-console"
 	"xfce4-terminal"
 	"pop-gtk-theme"
@@ -35,7 +36,6 @@ apt_prgms=(
 	"neofetch"
 	"golang"
 	"python3-pip"
-#	"python"
 	"blueman"
 	"redshift"
 	"redshift-gtk"
@@ -62,7 +62,7 @@ apt_prgms=(
 	"python-is-python3"
 )
 
-snap_prgrms=(
+snap_prgms=(
 	"code -- classic"
 	"chromium"
 	"1password"
@@ -71,18 +71,16 @@ snap_prgrms=(
 	"caprine"
 )
 
-py_prgrms=(
+py_prgms=(
 	"pywal"
 	"ueberzug"
 )
 
-sudo_py_prgrms=(
+sudo_py_prgms=(
 	"ueberzug"
 )
 
 # add ppas
-#sudo add-apt-repository -y ${ppas[@]}
-
 for ppa in "${ppas[@]}"; do
 	sudo add-apt-repository -y $ppa
 done
@@ -91,20 +89,20 @@ done
 sudo apt update
 
 # install apt packages
-for prg in "${apt_prgs[@]}"; do
+for prg in "${apt_prgms[@]}"; do
 	sudo apt install -y $prg
 done
 
 # install snap packages
-for snap in "${snap_prgrms[@]}"; do
+for snap in "${snap_prgms[@]}"; do
 	sudo snap install $snap
 done
 
 # install python packages
-pip3 install --user ${py_prgrms[@]}
+pip3 install --user ${py_prgms[@]}
 
 # install python packages
-sudo pip3 install --user ${sudo_py_prgrms[@]}
+sudo pip3 install --user ${sudo_py_prgms[@]}
 
 
 ## MANUAL INSTALLS
