@@ -61,6 +61,8 @@ apt_prgms=(
 	"libcdio-utils"
 	"transmission"
 	"python-is-python3"
+	"papirus-icon-theme"
+	"gruvbox-gtk"
 )
 
 snap_prgms=(
