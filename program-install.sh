@@ -103,7 +103,7 @@ done
 pip3 install --user ${py_prgms[@]}
 
 # install python packages
-sudo pip3 install --user ${sudo_py_prgms[@]}
+sudo pip3 install ${sudo_py_prgms[@]}
 
 
 ## MANUAL INSTALLS
