@@ -28,7 +28,6 @@ apt_prgms=(
 	"alsa-base"
 	"alsamixergui"
 	"volumeicon-alsa"
-	"network-manager-gnome"
 	"tmux"
 	"neovim"
 	"xinit"
