@@ -3,6 +3,7 @@
 ppas=(
 	"ppa:neovim-ppa/stable"
 	"ppa:regolith-linux/stable"
+	"ppa:berglh/pulseaudio-a2dp" # TODO: Remove when upgraded to 22.04
 )
 
 # TODO: Figure out which programs are not needed
@@ -62,6 +63,8 @@ apt_prgms=(
 	"python-is-python3"
 	"papirus-icon-theme"
 	"gruvbox-gtk"
+	"pulseaudio-modules-bt"
+	"libldac"
 )
 
 snap_prgms=(
