@@ -68,7 +68,7 @@ apt_prgms=(
 )
 
 snap_prgms=(
-	"code -- classic"
+	"code --classic"
 	"chromium"
 	"1password"
 	"postman"
