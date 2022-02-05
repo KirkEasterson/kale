@@ -1,7 +1,7 @@
 #!/bin/bash
 
 ppas=(
-	"ppa:neovim-ppa/stable"
+	"ppa:neovim-ppa/unstable"
 	"ppa:regolith-linux/stable"
 	"ppa:berglh/pulseaudio-a2dp" # TODO: Remove when upgraded to 22.04
 )
