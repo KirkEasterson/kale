@@ -65,6 +65,7 @@ apt_prgms=(
 	"gruvbox-gtk"
 	"pulseaudio-modules-bt"
 	"libldac"
+	"thunar"
 )
 
 snap_prgms=(
