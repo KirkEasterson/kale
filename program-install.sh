@@ -74,6 +74,7 @@ snap_prgms=(
 	"postman"
 	"whatsdesk"
 	"caprine"
+	"alacritty --classic"
 )
 
 py_prgms=(
