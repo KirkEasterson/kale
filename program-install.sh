@@ -76,6 +76,7 @@ snap_prgms=(
 	"whatsdesk"
 	"caprine"
 	"alacritty --classic"
+	"starship"
 )
 
 py_prgms=(
