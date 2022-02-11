@@ -66,6 +66,8 @@ apt_prgms=(
 	"pulseaudio-modules-bt"
 	"libldac"
 	"thunar"
+	"autorandr"
+	"radeontop"
 )
 
 snap_prgms=(
