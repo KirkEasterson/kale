@@ -100,9 +100,7 @@ done
 sudo apt update
 
 # install apt packages
-for prg in "${apt_prgms[@]}"; do
-	sudo apt install -y $prg
-done
+sudo apt install -y ${apt_prgms[@]}
 
 # install snap packages
 for snap in "${snap_prgms[@]}"; do
