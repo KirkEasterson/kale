@@ -1,9 +1,10 @@
 #!/bin/bash
 
 ppas=(
-	"ppa:neovim-ppa/unstable"
-	"ppa:regolith-linux/stable"
+	"ppa:neovim-ppa/unstable" # for neovim nightly
+	"ppa:regolith-linux/stable" # for i3-gaps
 	"ppa:berglh/pulseaudio-a2dp" # TODO: Remove when upgraded to 22.04
+	"ppa:aslatter/ppa" # for alacritty
 )
 
 # TODO: Figure out which programs are not needed
@@ -68,6 +69,7 @@ apt_prgms=(
 	"thunar"
 	"autorandr"
 	"radeontop"
+	"alacritty"
 )
 
 snap_prgms=(
@@ -77,7 +79,6 @@ snap_prgms=(
 	"postman"
 	"whatsdesk"
 	"caprine"
-	"alacritty --classic"
 	"starship"
 )
 
