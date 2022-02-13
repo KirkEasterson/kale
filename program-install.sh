@@ -71,6 +71,7 @@ apt_prgms=(
 	"radeontop"
 	"alacritty"
 	"polybar"
+	"xss-lock"
 )
 
 snap_prgms=(
