@@ -72,6 +72,7 @@ apt_prgms=(
 	"alacritty"
 	"polybar"
 	"xss-lock"
+	"brightnessctl"
 )
 
 snap_prgms=(
