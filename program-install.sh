@@ -70,6 +70,7 @@ apt_prgms=(
 	"autorandr"
 	"radeontop"
 	"alacritty"
+	"polybar"
 )
 
 snap_prgms=(
