@@ -73,6 +73,11 @@ apt_prgms=(
 	"polybar"
 	"xss-lock"
 	"brightnessctl"
+	"pandoc"
+	"zathura"
+	"texlive-latex-base"
+	"texlive-latex-recommended"
+	"texlive-latex-extra"
 )
 
 snap_prgms=(
