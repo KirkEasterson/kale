@@ -78,6 +78,7 @@ apt_prgms=(
 	"texlive-latex-base"
 	"texlive-latex-recommended"
 	"texlive-latex-extra"
+	"tudu"
 )
 
 snap_prgms=(
