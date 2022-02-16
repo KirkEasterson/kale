@@ -79,6 +79,8 @@ apt_prgms=(
 	"texlive-latex-recommended"
 	"texlive-latex-extra"
 	"tudu"
+	"flameshot"
+	"mtpaint"
 )
 
 snap_prgms=(
