@@ -82,6 +82,9 @@ apt_prgms=(
 	"flameshot"
 	"mtpaint"
 	"gopls"
+	"pavucontrol"
+	"tlp"
+	"powertop"
 )
 
 snap_prgms=(
