@@ -81,6 +81,7 @@ apt_prgms=(
 	"tudu"
 	"flameshot"
 	"mtpaint"
+	"gopls"
 )
 
 snap_prgms=(
