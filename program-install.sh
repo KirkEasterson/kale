@@ -20,7 +20,7 @@ apt_prgms=(
 	"firefox"
 	"feh"
 	"lxappearance"
-	"libnotify-bin"
+	# "libnotify-bin"
 	"tmux"
 	"neovim"
 	"xinit"
@@ -100,7 +100,7 @@ done
 sudo apt update
 
 # install apt packages
-sudo apt install -y ${apt_prgms[@]}
+sudo apt install -y ${apt_prgms[@]} --no-install-recommends --no-install-suggests
 
 # install snap packages
 for snap in "${snap_prgms[@]}"; do
