@@ -72,13 +72,13 @@ apt_prgms=(
 	"pavucontrol"
 	"tlp"
 	"powertop"
+	"htop"
 )
 
 snap_prgms=(
 	"code --classic"
 	"chromium"
 	"1password"
-	"whatsdesk"
 	"starship"
 )
 
@@ -130,5 +130,10 @@ cd lfimg
 make install
 cd ..
 rm -Rf lfimg
+
+# install starship prompt
+curl -sSO https://starship.rs/install.sh
+yes | ./install.sh
+rm install.sh
 
 cd $cwd
