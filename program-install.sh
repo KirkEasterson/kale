@@ -78,7 +78,6 @@ apt_prgms=(
 snap_prgms=(
 	"chromium"
 	"1password"
-	"starship"
 )
 
 py_prgms=(
