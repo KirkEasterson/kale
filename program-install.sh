@@ -129,10 +129,19 @@ make install
 cd ..
 rm -Rf lfimg
 
+
 # install starship prompt
 curl -sSO https://starship.rs/install.sh
 yes | ./install.sh
 rm install.sh
+
+
+# install whatscli
+## TODO: either update the URL for a new release or write a function to download the latest zip
+curl -sS -o whatscli.zip https://github.com/normen/whatscli/releases/download/v1.0.11/whatscli-v1.0.11-linux.zip
+unzip whatscli.zip
+sudo mv whatscli /usr/local/bin/whatscli
+
 
 # install codium
 wget -qO - https://gitlab.com/paulcarroty/vscodium-deb-rpm-repo/raw/master/pub.gpg \
