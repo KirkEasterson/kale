@@ -73,6 +73,7 @@ apt_prgms=(
 	"tlp"
 	"powertop"
 	"htop"
+	"flatpak"
 )
 
 snap_prgms=(
@@ -142,6 +143,12 @@ curl -sS -o whatscli.zip https://github.com/normen/whatscli/releases/download/v1
 unzip whatscli.zip
 sudo mv whatscli /usr/local/bin/whatscli
 
+# install discord
+## TODO: same as whatscli
+curl -sS -o discord.deb "https://dl.discordapp.net/apps/linux/0.0.17/discord-0.0.17.deb"
+sudo apt install -y ./discord.deb
+rm discord.deb
+
 
 # install codium
 wget -qO - https://gitlab.com/paulcarroty/vscodium-deb-rpm-repo/raw/master/pub.gpg \
@@ -152,5 +159,9 @@ echo 'deb [ signed-by=/usr/share/keyrings/vscodium-archive-keyring.gpg ] https:/
     | sudo tee /etc/apt/sources.list.d/vscodium.list
 
 sudo apt update && sudo apt install codium
+
+
+# add flathub repository
+flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 
 cd $cwd
