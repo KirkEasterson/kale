@@ -78,7 +78,6 @@ apt_prgms=(
 
 snap_prgms=(
 	"chromium"
-	"1password"
 )
 
 py_prgms=(
@@ -143,6 +142,7 @@ curl -sS -o whatscli.zip https://github.com/normen/whatscli/releases/download/v1
 unzip whatscli.zip
 sudo mv whatscli /usr/local/bin/whatscli
 
+
 # install discord
 ## TODO: same as whatscli
 curl -sS -o discord.deb "https://dl.discordapp.net/apps/linux/0.0.17/discord-0.0.17.deb"
@@ -159,6 +159,16 @@ echo 'deb [ signed-by=/usr/share/keyrings/vscodium-archive-keyring.gpg ] https:/
     | sudo tee /etc/apt/sources.list.d/vscodium.list
 
 sudo apt update && sudo apt install codium
+
+
+# install 1password
+curl -sS https://downloads.1password.com/linux/keys/1password.asc | sudo gpg --dearmor --output /usr/share/keyrings/1password-archive-keyring.gpg
+echo 'deb [arch=amd64 signed-by=/usr/share/keyrings/1password-archive-keyring.gpg] https://downloads.1password.com/linux/debian/amd64 stable main' | sudo tee /etc/apt/sources.list.d/1password.list
+sudo mkdir -p /etc/debsig/policies/AC2D62742012EA22/
+	curl -sS https://downloads.1password.com/linux/debian/debsig/1password.pol | sudo tee /etc/debsig/policies/AC2D62742012EA22/1password.pol
+	sudo mkdir -p /usr/share/debsig/keyrings/AC2D62742012EA22
+	curl -sS https://downloads.1password.com/linux/keys/1password.asc | sudo gpg --dearmor --output /usr/share/debsig/keyrings/AC2D62742012EA22/debsig.gpg
+sudo apt update && sudo apt install 1password
 
 
 # add flathub repository
