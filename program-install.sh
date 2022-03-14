@@ -171,6 +171,13 @@ sudo mkdir -p /etc/debsig/policies/AC2D62742012EA22/
 sudo apt update && sudo apt install 1password
 
 
+# install postman
+wget https://dl.pstmn.io/download/latest/linux64 -O postman-linux-x64.tar.gz
+sudo tar -xzf postman-linux-x64.tar.gz -C /opt
+sudo ln -s /opt/Postman/Postman /usr/bin/postman
+rm postman-linux-x64.tar.gz 
+
+
 # add flathub repository
 flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 
