@@ -178,6 +178,12 @@ sudo ln -s /opt/Postman/Postman /usr/bin/postman
 rm postman-linux-x64.tar.gz 
 
 
+# install slack
+curl -Ss -o slack.deb https://downloads.slack-edge.com/releases/linux/4.24.0/prod/x64/slack-desktop-4.24.0-amd64.deb
+sudo apt install -y ./slack.deb
+rm slack.deb
+
+
 # add flathub repository
 flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 
