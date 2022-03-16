@@ -74,6 +74,11 @@ apt_prgms=(
 	"powertop"
 	"htop"
 	"flatpak"
+	"timeshift"
+	"zsh"
+	"zsh-common"
+	"zsh-autosuggestions"
+	"zsh-syntax-highlighting"
 )
 
 snap_prgms=(
