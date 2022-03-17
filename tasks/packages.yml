@@ -1,0 +1,96 @@
+- name: Install neovim PPA for neovim nightly
+  become: true
+  apt_repository:
+    repo: 'ppa:neovim-ppa/unstable'
+
+- name: Install regolith PPA for i3-gaps
+  become: true
+  apt_repository:
+    repo: 'ppa:regolith-linux/stable'
+
+- name: Install PPA for alacritty
+  become: true
+  apt_repository:
+    repo: 'ppa:aslatter/ppa'
+
+- name: Install packages
+  become: true
+  apt:
+    install_recommends: no
+    name:
+      - curl
+      - tree
+      - make
+      - gcc
+      - xsel
+      - compton
+      - firefox
+      - feh
+      - lxappearance
+      - tmux
+      - neovim
+      - xinit
+      - xorg
+      - i3-gaps
+      - neofetch
+      - golang
+      - python3-dev
+      - python3-pip
+      - imagemagick
+      - xclip
+      - arandr
+      - libxext-dev
+      - ffmpegthumbnailer
+      - epub-utils
+      - wkhtmltopdf
+      - bat
+      - chafa
+      - unzip
+      - p7zip
+      - unrar
+      - catdoc
+      - docx2txt
+      - odt2txt
+      - gnumeric
+      - exiftool
+      - libcdio-utils
+      - transmission
+      - gruvbox-gtk
+      - thunar
+      - autorandr
+      - alacritty
+      - polybar
+      - xss-lock
+      - brightnessctl
+      - pandoc
+      - zathura
+      - texlive-latex-base
+      - texlive-latex-recommended
+      - texlive-latex-extra
+      - tudu
+      - flameshot
+      - mtpaint
+      - gopls
+      - pavucontrol
+      - tlp
+      - powertop
+      - htop
+      - timeshift
+      - zsh
+      - zsh-common
+      - zsh-autosuggestions
+      - zsh-syntax-highlighting
+      - unzip
+      - fontconfig
+      - exa
+      - dmenu
+      - language-pack-en
+
+- name: Install pip3 packages
+  become: true
+  pip:
+    executable: pip3
+    extra_args: '--quiet'
+    name:
+      - ueberzug
+      - pexpect

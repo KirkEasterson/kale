@@ -1,0 +1,6 @@
+# name of the current user
+remote_regular_user: '{{ ansible_env.SUDO_USER or ansible_user_id }}'
+
+# the desired local and language
+config_system_locale: 'en_US.UTF-8'
+config_system_language: 'en_US.UTF-8'

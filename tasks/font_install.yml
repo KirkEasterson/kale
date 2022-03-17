@@ -1,0 +1,18 @@
+- name: Create .fonts directory
+  become: true
+  become_user: "{{ remote_regular_user }}"
+  file:
+    path: $HOME/.fonts
+    state: directory
+
+- name: Download JetBrains Mono fonts
+  become: true
+  become_user: "{{ remote_regular_user }}"
+  unarchive:
+    remote_src: yes
+    src: https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/JetBrainsMono.zip
+    dest: $HOME/.fonts/
+
+- name: Refresh font-cache
+  shell:
+    cmd: fc-cache -fv
