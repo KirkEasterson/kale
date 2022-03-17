@@ -3,7 +3,7 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <a href="https://github.com/github_username/repo_name">
+  <a href="https://github.com/kirkeasterson/kale">
     <img src="img/screenshot.png" alt="Logo">
   </a>
 
@@ -38,7 +38,7 @@
 
 ## About The Project
 
-This repo originally a series of bash scripts to be used on an installation of Ubuntu server 21.10.
+This repository originally a series of bash scripts to be used on an installation of Ubuntu server 21.10.
 But the scripts were fragile and had to be manually tested to ensure correctness.
 Ansible is the sensible alternative to this approach, so the scripts were rewritten for Ansible.
 
@@ -46,7 +46,7 @@ Ansible is the sensible alternative to this approach, so the scripts were rewrit
 
 ## Getting Started
 
-As stated above, this repo is intended to be used on an installation of Ubuntu server 21.10.
+As stated above, this repository is intended to be used on an installation of Ubuntu server 21.10.
 It will likely work for other versions of Ubuntu, and other Debian based distributions.
 But there is no guarantee that it will work.
 
