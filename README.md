@@ -7,7 +7,7 @@
     <img src="img/screenshot.png" alt="Logo">
   </a>
 
-<h3 align="center">Kirk's Ansible Linux Environment (KALE)</h3>
+<h3 align="center">Kirk's Automated Linux Environment (KALE)</h3>
 
   <p align="center">
     An ansible playbook designed to automate install of my (Kirk's) linux environment in Ubuntu.
