@@ -85,6 +85,7 @@
       - exa
       - dmenu
       - language-pack-en
+      - unclutter
 
 - name: Install pip3 packages
   become: true
