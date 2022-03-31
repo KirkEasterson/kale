@@ -86,6 +86,7 @@
       - dmenu
       - language-pack-en
       - unclutter
+      - logiops
 
 - name: Install pip3 packages
   become: true
