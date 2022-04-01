@@ -87,6 +87,7 @@
       - language-pack-en
       - unclutter
       - logiops
+      - hwinfo
 
 - name: Install pip3 packages
   become: true
