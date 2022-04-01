@@ -100,3 +100,4 @@
     name:
       - ueberzug
       - pexpect
+      - pyright
