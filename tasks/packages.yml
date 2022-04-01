@@ -90,6 +90,7 @@
       - pulseaudio
       - pulseaudio-utils
       - xbacklight
+      - unclutter-xfixes
 
 - name: Install pip3 packages
   become: true
