@@ -92,6 +92,7 @@
       - pulseaudio-utils
       - xbacklight
       - unclutter-xfixes
+      - dunst
 
 - name: Install pip3 packages
   become: true
