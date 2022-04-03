@@ -93,6 +93,7 @@
       - xbacklight
       - unclutter-xfixes
       - dunst
+      - libnotify-bin
 
 - name: Install pip3 packages
   become: true
