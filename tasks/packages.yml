@@ -6,7 +6,7 @@
 - name: Install regolith PPA for i3-gaps
   become: true
   apt_repository:
-    repo: 'ppa:regolith-linux/stable'
+    repo: 'ppa:regolith-linux/unstable'
 
 - name: Install PPA for alacritty
   become: true
