@@ -1,0 +1,10 @@
+- name: Install rust
+  become: true
+  apt:
+    install_recommends: no
+    name:
+      - rust-all
+
+- name: Install cargo packages
+  cargo:
+    name: alacritty

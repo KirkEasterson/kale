@@ -24,7 +24,6 @@
       - exiftool
       - libcdio-utils
       - transmission
-      - alacritty
       - pandoc
       - zathura
       - texlive-latex-base

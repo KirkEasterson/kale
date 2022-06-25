@@ -1,3 +1,4 @@
 - include: apt/local.yml
 - include: pip/local.yml
+- include: cargo/local.yml
 - include: manual_install/local.yml
