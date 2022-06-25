@@ -8,7 +8,6 @@
   apt:
     install_recommends: no
     name:
-      - ansible-core
       - git
       - curl
       - tree
