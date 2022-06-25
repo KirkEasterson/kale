@@ -13,4 +13,4 @@
     - include: tasks/locale.yml
     - include: tasks/font_install.yml
     - include: tasks/git_repos.yml
-    - include: programs/local.yml
+    - include: tasks/programs/local.yml
