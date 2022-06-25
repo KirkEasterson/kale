@@ -5,7 +5,19 @@
     install_recommends: no
     name: rust-all
 
-- name: Install cargo packages
-  # cargo:
-  #   name: alacritty
-  shell: cargo install alacritty
+# - name: Install cargo packages
+#   # cargo:
+#   #   name: alacritty
+#   shell: cargo install alacritty
+
+- name: Install alacritty ppa
+  become: true
+  apt_repository:
+    repo: 'ppa:aslatter/ppa'
+
+- name: Install alacritty
+  become: true
+  apt:
+    install_recommends: no
+    name:
+      - alacritty
