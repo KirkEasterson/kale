@@ -2,8 +2,7 @@
   become: true
   apt:
     install_recommends: no
-    name:
-      - rust-all
+    name: rust-all
 
 - name: Install cargo packages
   cargo:
