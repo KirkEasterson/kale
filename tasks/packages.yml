@@ -8,11 +8,6 @@
   apt_repository:
     repo: 'ppa:regolith-linux/unstable'
 
-- name: Install PPA for alacritty
-  become: true
-  apt_repository:
-    repo: 'ppa:aslatter/ppa'
-
 - name: Install packages
   become: true
   apt:

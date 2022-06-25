@@ -1,0 +1,7 @@
+- hosts: localhost
+  connection: local
+
+  tasks:
+    - include: basic.yml
+    - include: programming.yml
+    - include: tiling.yml

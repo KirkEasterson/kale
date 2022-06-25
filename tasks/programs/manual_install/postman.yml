@@ -1,0 +1,13 @@
+### postman
+#   - this is only available as a snap
+- name: Install postman
+  unarchive:
+    remote_src: yes
+    src: https://dl.pstmn.io/download/latest/linux64
+    dest: /opt/
+
+- name: Create postman symlink
+  file:
+    src: /opt/Postman/Postman
+    dest: /usr/bin/postman
+    state: link

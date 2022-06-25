@@ -1,0 +1,10 @@
+- hosts: localhost
+  connection: local
+
+  tasks:
+    - include: discord.yml
+    - include: lf.yml
+    - include: postman.yml
+    - include: starship.yml
+    - include: whatscli.yml
+

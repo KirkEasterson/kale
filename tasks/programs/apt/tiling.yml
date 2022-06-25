@@ -1,0 +1,38 @@
+- name: Install regolith PPA for i3-gaps
+  become: true
+  apt_repository:
+    repo: 'ppa:regolith-linux/unstable'
+
+- name: Install packages
+  become: true
+  apt:
+    install_recommends: no
+    name:
+      - picom
+      - awesome
+      - feh
+      - lxappearance
+      - xinit
+      - xorg
+      - i3-gaps
+      - i3lock
+      - arandr
+      - gruvbox-gtk
+      - thunar
+      - autorandr
+      - polybar
+      - xss-lock
+      - brightnessctl
+      - tudu
+      - flameshot
+      - mtpaint
+      - pavucontrol
+      - fontconfig
+      - dmenu
+      - pulseaudio
+      - pulseaudio-utils
+      - alsa-utils
+      - xbacklight
+      - unclutter-xfixes
+      - dunst
+      - libnotify-bin

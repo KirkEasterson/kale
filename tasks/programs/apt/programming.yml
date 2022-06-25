@@ -1,0 +1,12 @@
+- name: Install packages for programming
+  become: true
+  apt:
+    install_recommends: no
+    name:
+      - python3
+      - python3-pip
+      - python3-dev
+      - golang
+      - gopls
+      - gofmt
+      - rust-all

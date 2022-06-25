@@ -1,0 +1,12 @@
+- name: Get starship prompt install script
+  get_url:
+    url: https://starship.rs/install.sh
+    dest: /tmp/starship_install.sh
+    mode: a+x
+
+- name: Install starship prompt
+  expect:
+    chdir: /tmp/
+    command: ./starship_install.sh
+    responses:
+      Install: y
