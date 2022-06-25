@@ -1,0 +1,13 @@
+- hosts: localhost
+  connection: local
+
+  pre_tasks:
+    - name: Update repositories
+      apt:
+        update_cache: yes
+      changed_when: false
+
+  tasks:
+    - include: apt/local.yml
+    - include: pip/local.yml
+    - include: manual_install/local.yml
