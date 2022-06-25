@@ -1,4 +1,12 @@
 # Taken from https://serverfault.com/questions/959026/how-do-i-generate-and-set-the-locale-using-ansible#answer-981742
+
+- name: Install locales
+  become: true
+  apt:
+    install_recommends: no
+    name:
+      - locales
+
 - name: Ensure localisation files for '{{ config_system_locale }}' are available
   locale_gen:
     name: '{{ config_system_locale }}'
