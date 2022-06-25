@@ -17,7 +17,6 @@
       # - i3-gaps
       - i3lock
       - arandr
-      - gruvbox-gtk
       - thunar
       - autorandr
       - polybar
