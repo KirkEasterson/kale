@@ -1,3 +1,10 @@
+- name: Install fontconfig
+  become: true
+  apt:
+    install_recommends: no
+    name:
+      - fontconfig
+
 - name: Create .fonts directory
   become: true
   become_user: "{{ remote_regular_user }}"
