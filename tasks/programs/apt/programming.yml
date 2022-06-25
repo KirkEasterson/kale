@@ -8,5 +8,4 @@
       - python3-dev
       - golang
       - gopls
-      - gofmt
       - rust-all
