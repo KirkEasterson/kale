@@ -1,3 +1,4 @@
+# TODO: get the cargo galaxy module to work instead of shell commands
 - name: Install rust
   become: true
   apt:
@@ -5,5 +6,6 @@
     name: rust-all
 
 - name: Install cargo packages
-  cargo:
-    name: alacritty
+  # cargo:
+  #   name: alacritty
+  shell: cargo install alacritty
