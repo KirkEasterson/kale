@@ -5,5 +5,5 @@
     name: rust-all
 
 - name: Install cargo packages
-  community.general.cargo:
+  cargo:
     name: alacritty
