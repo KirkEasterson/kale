@@ -4,8 +4,7 @@
   become: true
   apt:
     install_recommends: no
-    name:
-      - locales
+    name: locales
 
 - name: Ensure localisation files for '{{ config_system_locale }}' are available
   locale_gen:
