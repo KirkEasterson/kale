@@ -1,5 +1,1 @@
-- hosts: localhost
-  connection: local
-
-  tasks:
-    - include: pip.yml
+- include: pip.yml
