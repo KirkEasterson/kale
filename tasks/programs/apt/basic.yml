@@ -8,6 +8,7 @@
   apt:
     install_recommends: no
     name:
+      - git
       - curl
       - tree
       - make
