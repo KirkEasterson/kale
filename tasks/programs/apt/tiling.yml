@@ -42,11 +42,11 @@
   become_user: "{{ remote_regular_user }}"
   git:
     repo: https://github.com/streetturtle/awesome-wm-widgets
-    dest: $HOME/.dotfiles/.config/awesome/
+    dest: $HOME/.dotfiles/.config/awesome/awesome-wm-widgets
 
 - name: Clone dotfiles
   become: true
   become_user: "{{ remote_regular_user }}"
   git:
     repo: https://github.com/notnew/awesome-scratch
-    dest: $HOME/.dotfiles/.config/awesome/
+    dest: $HOME/.dotfiles/.config/awesome/awesome-scratch
