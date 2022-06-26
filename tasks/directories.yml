@@ -9,19 +9,19 @@
   become: true
   become_user: "{{ remote_regular_user }}"
   file:
-    path: $HOME/documents
+    path: $HOME/Documents
     state: directory
 
 - name: Create downloads directory
   become: true
   become_user: "{{ remote_regular_user }}"
   file:
-    path: $HOME/downloads
+    path: $HOME/Downloads
     state: directory
 
 - name: Create pictures directory
   become: true
   become_user: "{{ remote_regular_user }}"
   file:
-    path: $HOME/pictures
+    path: $HOME/Pictures
     state: directory
