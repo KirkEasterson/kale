@@ -45,3 +45,5 @@
       - unzip
       - papirus-icon-theme
       - rofi
+      - pcmanfm
+      - gparted
