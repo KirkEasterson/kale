@@ -8,8 +8,8 @@
       changed_when: false
 
   tasks:
+    - include: tasks/locale.yml
     - include: tasks/directories.yml
     - include: tasks/font_install.yml
-    - include: tasks/locale.yml
     - include: tasks/git_repos.yml
     - include: tasks/programs/local.yml
