@@ -18,11 +18,3 @@
   git:
     repo: https://github.com/KirkEasterson/scripts.git
     dest: $HOME/scripts/
-
-- name: Clone wallpapers
-  become: true
-  become_user: "{{ remote_regular_user }}"
-  git:
-    repo: https://gitlab.com/dwt1/wallpapers.git
-    dest: $HOME/Pictures/wallpapers/
-    depth: 1
