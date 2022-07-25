@@ -70,7 +70,3 @@
   become: true
   apt_repository:
     repo: 'ppa:mozillateam/ppa'
-
-- name: Remove old pulseaudio config
-  become: true
-  shell: rm /home/*/.config/pulse/*
