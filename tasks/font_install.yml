@@ -4,6 +4,7 @@
     install_recommends: no
     name:
       - fontconfig
+      - unzip
 
 - name: Create .fonts directory
   become: true
