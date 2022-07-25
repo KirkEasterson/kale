@@ -1,9 +1,12 @@
-- name: Remove stock snaps
+- name: Remove core20 snap
   snap:
     state: absent
-    name:
-      - core20
-      - lxd
+    name: core20
+
+- name: Remove lxd snap
+  snap:
+    state: absent
+    name: lxd
 
 - name: Disable snapd service
   systemd:
