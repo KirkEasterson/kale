@@ -1,0 +1,14 @@
+- name: Install packages for greeter
+  become: true
+  apt:
+    install_recommends: no
+    name:
+      - slick-greeter
+      - lightdm-settings
+      - xserver-xephyr
+
+- name: Enable lightdm service
+  systemd:
+    name: lightdm
+    state: started
+    enabled: yes

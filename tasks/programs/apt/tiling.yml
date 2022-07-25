@@ -35,7 +35,8 @@
       - unclutter-xfixes
       - dunst
       - libnotify-bin
-
+      - acpi
+      - lm-sensors
 
 - name: Clone dotfiles
   become: true
