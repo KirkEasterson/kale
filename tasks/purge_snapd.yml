@@ -1,0 +1,57 @@
+- name: Disable snapd service
+  systemd:
+    enabled: no
+    state: stopped
+    name: snapd.service
+
+- name: Disable snapd socket
+  systemd:
+    enabled: no
+    state: stopped
+    name: snapd.socket
+
+- name: Disable snapd seeded service
+  systemd:
+    enabled: no
+    state: stopped
+    name: snapd.seeded.service
+
+- name: Remove snapd cache
+  become: true
+  file:
+    path: /var/cache/snapd
+    state: absent
+
+- name: Purge snapd
+  become: true
+  apt:
+    purge: yes
+    name: snapd
+
+- name: Remove snap directory
+  become: true
+  shell: rm -rf /home/*/snap
+
+- name: Ensure snaps won't be installed
+  become: true
+  blockinfile:
+    create: yes
+    path: /etc/apt/preferences.d/nosnaps.pref
+    block:  |
+      # To prevent repository packages from triggering the installation of Snap,
+      # this file forbids snapd from being installed by APT.
+      # For more information: https://linuxmint-user-guide.readthedocs.io/en/latest/snap.html
+
+      Package: snapd
+      Pin: release a=*
+      Pin-Priority: -10
+
+- name: Use firefox deb instead of snap
+  become: true
+  blockinfile:
+    create: yes
+    path: /etc/apt/preferences.d/firefox-no-snap
+    block: |
+      Package: firefox*
+      Pin: release o=Ubuntu*
+      Pin-Priority: -1
