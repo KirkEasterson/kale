@@ -12,6 +12,20 @@
     chdir: $HOME/.dotfiles
     cmd: ./install.sh
 
+- name: Clone global configs
+  become: true
+  become_user: "{{ remote_regular_user }}"
+  git:
+    repo: https://github.com/KirkEasterson/.global_configs.git
+    dest: $HOME/.global_configs/
+
+- name: Sym-link global configs
+  become: true
+  become_user: "{{ remote_regular_user }}"
+  shell:
+    chdir: $HOME/.global_configs/
+    cmd: ./install.sh
+
 - name: Clone scripts
   become: true
   become_user: "{{ remote_regular_user }}"
