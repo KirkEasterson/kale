@@ -15,7 +15,6 @@
       - xinit
       - xorg
       # - i3-gaps
-      - i3lock
       - arandr
       - thunar
       - autorandr
@@ -38,6 +37,7 @@
       - acpi
       - lm-sensors
       - pop-gtk-theme
+      - light-locker
 
 - name: Clone dotfiles
   become: true
