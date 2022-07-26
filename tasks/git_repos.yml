@@ -22,9 +22,8 @@
 - name: Sym-link global configs
   become: true
   become_user: "{{ remote_regular_user }}"
-  shell:
-    chdir: $HOME/.global_configs/
-    cmd: ./install.sh
+  script:
+    cmd: ~/.global_configs/install.sh
 
 - name: Clone scripts
   become: true
