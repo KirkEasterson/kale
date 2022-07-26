@@ -32,3 +32,13 @@
   git:
     repo: https://github.com/KirkEasterson/scripts.git
     dest: $HOME/scripts/
+
+- name: Create cache and zsh history directory
+  file:
+    state: directory
+    path: ~/.cache/zsh/
+
+- name: Create zsh history
+  file:
+    state: touch
+    path: ~/.cache/zsh/history
