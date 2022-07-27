@@ -12,6 +12,13 @@
     chdir: $HOME/.dotfiles
     cmd: ./install.sh
 
+- name: Clone awesome-wm-widgets
+  become: true
+  become_user: "{{ remote_regular_user }}"
+  git:
+    repo: https://github.com/streetturtle/awesome-wm-widgets
+    dest: $HOME/.dotfiles/.config/awesome/awesome-wm-widgets
+
 - name: Clone global configs
   become: true
   become_user: "{{ remote_regular_user }}"
