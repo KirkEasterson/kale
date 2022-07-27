@@ -5,10 +5,11 @@
     name:
       - slick-greeter
       - lightdm-settings
+      - light-locker
+      - light-locker-settings
       - xserver-xephyr
 
 - name: Enable lightdm service
   systemd:
     name: lightdm
-    state: started
     enabled: yes
