@@ -23,7 +23,7 @@
   become: true
   become_user: "{{ remote_regular_user }}"
   shell:
-    chdir: $HOME/global_configs/
+    chdir: $HOME/.global_configs/
     cmd: ./install.sh
 
 - name: Clone scripts
