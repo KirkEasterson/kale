@@ -31,8 +31,8 @@
 - name: Remove snapd cache
   become: true
   file:
-    path: /var/cache/snapd
     state: absent
+    path: /var/cache/snapd
 
 - name: Purge snapd
   become: true
