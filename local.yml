@@ -15,3 +15,4 @@
     - include: tasks/git_repos.yml
     - include: tasks/programs/local.yml
     - include: tasks/greeter.yml
+    - include: tasks/plymouth.yml
