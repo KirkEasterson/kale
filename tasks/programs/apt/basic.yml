@@ -47,3 +47,8 @@
       - rofi
       - pcmanfm
       - gparted
+
+- name: Enable tlp service
+  systemd:
+    name: tlp
+    enabled: yes
