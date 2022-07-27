@@ -1,9 +1,11 @@
 - name: Remove lxd snap
+  ignore_errors: yes
   snap:
     state: absent
     name: lxd
 
 - name: Remove core20 snap
+  ignore_errors: yes
   snap:
     state: absent
     name: core20
