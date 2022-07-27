@@ -10,6 +10,12 @@
     state: absent
     name: core20
 
+- name: Remove snapd snap
+  ignore_errors: yes
+  snap:
+    state: absent
+    name: snapd
+
 - name: Disable snapd service
   systemd:
     enabled: no
