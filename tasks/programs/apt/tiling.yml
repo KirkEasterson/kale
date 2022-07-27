@@ -37,7 +37,15 @@
       - acpi
       - lm-sensors
       - pop-gtk-theme
+      - slick-greeter
+      - lightdm-settings
       - light-locker
+      - light-locker-settings
+
+- name: Start lightdm
+  systemd:
+    enabled: yes
+    name: lightdm.service
 
 - name: Clone dotfiles
   become: true
