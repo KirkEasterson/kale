@@ -38,3 +38,4 @@
       - lm-sensors
       - pop-gtk-theme
       - acpid
+      - librsvg2-common
