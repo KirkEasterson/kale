@@ -37,3 +37,4 @@
       - acpi
       - lm-sensors
       - pop-gtk-theme
+      - acpid
