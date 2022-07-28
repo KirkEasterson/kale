@@ -54,4 +54,4 @@
   become: true
   become_user: "{{ remote_regular_user }}"
   shell:
-    cmd: update-initramfs
+    cmd: update-initramfs -u
