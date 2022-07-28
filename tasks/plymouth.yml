@@ -60,4 +60,4 @@ tasks:
 handlers:
   - name: Update grub
     become: yes
-    shell: "update-grub"
+    shell: update-grub
