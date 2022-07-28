@@ -16,8 +16,3 @@
     - include: tasks/programs/local.yml
     - include: tasks/greeter.yml
     - include: tasks/plymouth.yml
-
-  handlers:
-    - name: Update grub
-      become: yes
-      shell: update-grub

@@ -29,7 +29,6 @@
     regexp: "^(GRUB_CMDLINE_LINUX=\".*)\"$"
     line: '\1 quiet"'
   when: grub_cmdline_check.found == 0
-  notify: Update grub
 
 - name: Check if 'splash' is configured in the boot command
   lineinfile:
@@ -48,7 +47,12 @@
     regexp: "^(GRUB_CMDLINE_LINUX=\".*)\"$"
     line: '\1 splash"'
   when: grub_cmdline_check.found == 0
-  notify: Update grub
+
+- name: Update grub
+  become: true
+  become_user: root
+  shell:
+    cmd: update-grub
 
 - name: Update initramfs
   become: true
