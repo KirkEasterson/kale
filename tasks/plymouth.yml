@@ -52,6 +52,6 @@
 
 - name: Update initramfs
   become: true
-  become_user: "{{ remote_regular_user }}"
+  become_user: root
   shell:
     cmd: update-initramfs -u
