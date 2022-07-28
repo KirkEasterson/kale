@@ -10,6 +10,7 @@
 
   tasks:
     - include: tasks/locale.yml
+    - include: tasks/groups.yml
     - include: tasks/directories.yml
     - include: tasks/font_install.yml
     - include: tasks/git_repos.yml
