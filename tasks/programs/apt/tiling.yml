@@ -39,3 +39,6 @@
       - pop-gtk-theme
       - acpid
       - librsvg2-common
+      - rofi
+      - pcmanfm
+      - gparted

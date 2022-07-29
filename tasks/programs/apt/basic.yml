@@ -44,9 +44,6 @@
       - hwinfo
       - unzip
       - papirus-icon-theme
-      - rofi
-      - pcmanfm
-      - gparted
 
 - name: Enable tlp service
   systemd:
