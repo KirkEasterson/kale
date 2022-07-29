@@ -38,6 +38,7 @@
       - lm-sensors
       - pop-gtk-theme
       - acpid
+      - acpi-call-dkms
       - librsvg2-common
       - rofi
       - pcmanfm
