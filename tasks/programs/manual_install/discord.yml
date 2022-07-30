@@ -1,3 +1,0 @@
-- name: Install discord
-  apt:
-    deb: https://dl.discordapp.net/apps/linux/0.0.17/discord-0.0.17.deb
