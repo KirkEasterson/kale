@@ -2,4 +2,5 @@
 - include: pip/local.yml
 - include: npm/local.yml
 - include: cargo/local.yml
+- include: brew/local.yml
 - include: manual_install/local.yml
