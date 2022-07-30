@@ -46,6 +46,7 @@
       - papirus-icon-theme
       - fonts-font-awesome
       - flatpak
+      - steam-devices
 
 - name: Enable tlp service
   systemd:
