@@ -45,6 +45,7 @@
       - unzip
       - papirus-icon-theme
       - fonts-font-awesome
+      - flatpak
 
 - name: Enable tlp service
   systemd:
