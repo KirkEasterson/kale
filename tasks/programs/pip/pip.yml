@@ -18,3 +18,4 @@
       - pyright
       - pylint
       - autopep8
+      - black
