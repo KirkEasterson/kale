@@ -16,3 +16,5 @@
       - ueberzug
       - pexpect
       - pyright
+      - pylint
+      - autopep8
