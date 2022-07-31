@@ -1,4 +1,5 @@
 - include: apt/local.yml
+- include: go/local.yml
 - include: pip/local.yml
 - include: npm/local.yml
 - include: cargo/local.yml
