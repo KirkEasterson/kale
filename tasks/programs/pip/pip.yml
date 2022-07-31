@@ -19,4 +19,3 @@
       - pylint
       - autopep8
       - black
-      - nala
