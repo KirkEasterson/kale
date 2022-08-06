@@ -64,6 +64,7 @@
       - fonts-font-awesome
       - steam-devices
       - nala
+      - ripgrep
 
 - name: Enable tlp service
   systemd:
