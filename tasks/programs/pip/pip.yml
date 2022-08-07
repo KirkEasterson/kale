@@ -24,7 +24,7 @@
       - ptpython
       - pylint
       - pyright
-      - pytorch
+      # - pytorch
       - scikit-learn
       - scipy
       - tensorflow
