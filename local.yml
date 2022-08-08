@@ -10,11 +10,11 @@
     - include: tasks/purge_snapd.yml
 
   tasks:
+    - include: tasks/directories.yml
+    - include: tasks/git_repos.yml
     - include: tasks/locale.yml
     - include: tasks/groups.yml
-    - include: tasks/directories.yml
     - include: tasks/font_install.yml
-    - include: tasks/git_repos.yml
     - include: tasks/programs/local.yml
     - include: tasks/greeter.yml
     - include: tasks/plymouth.yml

@@ -9,7 +9,6 @@
   become: true
   become_user: "{{ remote_regular_user }}"
   shell:
-    chdir: $HOME/.dotfiles
     cmd: ./install.sh
 
 - name: Clone awesome-wm-widgets
