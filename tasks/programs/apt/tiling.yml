@@ -44,3 +44,6 @@
       - pcmanfm
       - gparted
       - caffeine
+      - network-manager
+      - mousepad
+      - playerctl
