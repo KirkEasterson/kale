@@ -8,42 +8,43 @@
   apt:
     install_recommends: no
     name:
-      - picom
-      - awesome
-      - feh
-      - lxappearance
-      - xinit
-      - xorg
-      # - i3-gaps
+      - acpi
+      - acpi-call-dkms
+      - acpid
+      - alsa-utils
       - arandr
-      - thunar
       - autorandr
-      - polybar
-      - xss-lock
+      - awesome
       - brightnessctl
-      - tudu
-      - flameshot
-      - mtpaint
-      - pavucontrol
-      - fontconfig
+      - caffeine
       - dmenu
+      - dunst
+      - feh
+      - flameshot
+      - fontconfig
+      - gparted
+      # - i3-gaps
+      # - i3lock
+      - libnotify-bin
+      - librsvg2-common
+      - lm-sensors
+      - lxappearance
+      - mousepad
+      - mtpaint
+      - network-manager
+      - pavucontrol
+      - pcmanfm
+      - picom
+      - playerctl
+      - polybar
+      - pop-gtk-theme
       - pulseaudio
       - pulseaudio-utils
-      - alsa-utils
-      - xbacklight
-      - unclutter-xfixes
-      - dunst
-      - libnotify-bin
-      - acpi
-      - lm-sensors
-      - pop-gtk-theme
-      - acpid
-      - acpi-call-dkms
-      - librsvg2-common
       - rofi
-      - pcmanfm
-      - gparted
-      - caffeine
-      - network-manager
-      - mousepad
-      - playerctl
+      - thunar
+      - tudu
+      - unclutter-xfixes
+      - xbacklight
+      - xinit
+      - xorg
+      - xss-lock
