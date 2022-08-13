@@ -18,6 +18,7 @@
     - include: tasks/programs/local.yml
     - include: tasks/greeter.yml
     - include: tasks/plymouth.yml
+    - include: tasks/networking.yml
 
   post_tasks:
     - name: Update repositories

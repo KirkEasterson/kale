@@ -1,0 +1,26 @@
+- name: Install network-manager
+  become: true
+  apt:
+    install_recommends: no
+    name:
+      - network-manager
+
+- name: Enable NetworkManager service
+  become: yes
+  systemd:
+    name: NetworkManager
+    enabled: yes
+
+- name: Set NetworkManager as the default renderer for netplan
+  become: yes
+  shell: netplan set renderer=NetworkManager
+
+- name: Apply the the new netplan configuration
+  become: yes
+  shell: netplan apply
+
+- name: Disable networkd service
+  become: yes
+  systemd:
+    name: systemd-networkd
+    enabled: no
