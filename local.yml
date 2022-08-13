@@ -3,6 +3,7 @@
 
   pre_tasks:
     - name: Update repositories
+      become: true
       apt:
         update_cache: yes
         upgrade: yes
@@ -23,10 +24,12 @@
 
   post_tasks:
     - name: Update repositories
+      become: true
       apt:
         update_cache: yes
         upgrade: yes
       changed_when: false
     - name: Remove dependencies that are no longer required
+      become: true
       apt:
         autoremove: yes
