@@ -24,6 +24,7 @@
     dest: /etc/alsa/conf.d/99-pipewire-default.conf
 
 - name: Copy JACK configuration files
+  become: true
   copy:
     src: "{{ item }}"
     dest: /usr/share/doc/pipewire/examples/ld.so.conf.d/
@@ -35,7 +36,7 @@
   shell: ldconfig
 
 - name: Enable wireplumber service
-  become: yes
+  become: true
   systemd:
     name: wireplumber
     enabled: yes
