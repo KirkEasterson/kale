@@ -18,11 +18,13 @@
       - pulseaudio-module-bluetooth
 
 - name: Copy ALSA configuration file
+  become: true
   ansible.builtin.copy:
     src: /usr/share/doc/pipewire/examples/alsa.conf.d/99-pipewire-default.conf
     dest: /etc/alsa/conf.d/
 
 - name: Copy JACK configuration file
+  become: true
   ansible.builtin.copy:
     src: /usr/share/doc/pipewire/examples/ld.so.conf.d/pipewire-jack-*.conf
     dest: /etc/ld.so.conf.d/
@@ -36,17 +38,3 @@
   systemd:
     name: wireplumber
     enabled: yes
-
-# - name: Set NetworkManager as the default renderer for netplan
-#   become: yes
-#   shell: netplan set renderer=NetworkManager
-#
-# - name: Apply the the new netplan configuration
-#   become: yes
-#   shell: netplan apply
-#
-# - name: Disable networkd service
-#   become: yes
-#   systemd:
-#     name: systemd-networkd
-#     enabled: no

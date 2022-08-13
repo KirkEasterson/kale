@@ -10,6 +10,7 @@
       - xserver-xephyr
 
 - name: Enable lightdm service
+  become: true
   systemd:
     name: lightdm
     enabled: yes

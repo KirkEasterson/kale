@@ -8,11 +8,13 @@
       - plymouth-x11
 
 - name: Enable plymouth service
+  become: true
   systemd:
     name: plymouth
     enabled: yes
 
 - name: Check if 'quiet' is configured in the boot command
+  become: true
   lineinfile:
     backup: true
     path: /etc/default/grub
@@ -23,6 +25,7 @@
   changed_when: false
 
 - name: Insert 'quiet' if missing
+  become: true
   lineinfile:
     backrefs: true
     path: /etc/default/grub
@@ -31,6 +34,7 @@
   when: grub_cmdline_check.found == 0
 
 - name: Check if 'splash' is configured in the boot command
+  become: true
   lineinfile:
     backup: true
     path: /etc/default/grub
@@ -41,6 +45,7 @@
   changed_when: false
 
 - name: Insert 'splash' if missing
+  become: true
   lineinfile:
     backrefs: true
     path: /etc/default/grub
