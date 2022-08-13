@@ -21,13 +21,14 @@
   become: true
   ansible.builtin.copy:
     src: /usr/share/doc/pipewire/examples/alsa.conf.d/99-pipewire-default.conf
-    dest: /etc/alsa/conf.d/
+    dest: /etc/alsa/conf.d/99-pipewire-default.conf
 
-- name: Copy JACK configuration file
-  become: true
-  ansible.builtin.copy:
-    src: /usr/share/doc/pipewire/examples/ld.so.conf.d/pipewire-jack-*.conf
-    dest: /etc/ld.so.conf.d/
+- name: Copy JACK configuration files
+  copy:
+    src: {{ item }}
+    dest: /usr/share/doc/pipewire/examples/ld.so.conf.d/
+  with_fileglob:
+    - pipewire-jack-*.conf
 
 - name: Run ldconfig
   become: true
