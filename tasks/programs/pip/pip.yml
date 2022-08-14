@@ -17,7 +17,6 @@
       - black
       - ipython
       - matplotlib
-      - nala
       - numpy
       - pandas
       - pexpect

@@ -3,6 +3,18 @@
   apt_repository:
     repo: 'ppa:neovim-ppa/unstable'
 
+- name: Add volian scar repository for nala
+  become: true
+  apt_repository:
+  state: present
+  repo: "deb [arch=amd64,arm64,armhf] http://deb.volian.org/volian/ scar main"
+  filename: /etc/apt/sources.list.d/volian-archive-scar-unstable.list
+
+- name: Add volian scar GPG key
+  become: true
+  url: https://deb.volian.org/volian/scar.key
+  keyring: /etc/apt/trusted.gpg.d/volian-archive-scar-unstable.gpg
+
 - name: Update apt packages
   become: true
   apt:
@@ -52,6 +64,7 @@
       - fonts-font-awesome
       - steam-devices
       - ripgrep
+      - nala
 
 - name: Enable tlp service
   systemd:
