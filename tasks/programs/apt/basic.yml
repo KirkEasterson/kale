@@ -65,6 +65,9 @@
       - steam-devices
       - ripgrep
       - nala
+      - btop
+      - kitty
+      - mpv
 
 - name: Enable tlp service
   systemd:
