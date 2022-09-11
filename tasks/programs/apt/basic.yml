@@ -12,8 +12,9 @@
 
 - name: Add volian scar GPG key
   become: true
-  url: https://deb.volian.org/volian/scar.key
-  keyring: /etc/apt/trusted.gpg.d/volian-archive-scar-unstable.gpg
+  apt_key:
+    url: https://deb.volian.org/volian/scar.key
+    keyring: /etc/apt/trusted.gpg.d/volian-archive-scar-unstable.gpg
 
 - name: Update apt packages
   become: true
