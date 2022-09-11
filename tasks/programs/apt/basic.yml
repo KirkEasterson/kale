@@ -53,8 +53,6 @@
       - timeshift
       - zsh
       - zsh-common
-      - zsh-autosuggestions
-      - zsh-syntax-highlighting
       - exa
       - bat
       - language-pack-en
