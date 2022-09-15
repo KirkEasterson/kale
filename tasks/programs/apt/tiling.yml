@@ -17,6 +17,7 @@
       - awesome
       - brightnessctl
       - caffeine
+      - cbatticon
       - dmenu
       - dunst
       - feh
@@ -45,6 +46,7 @@
       - thunar
       - tudu
       - unclutter-xfixes
+      - volumeicon-alsa
       - xbacklight
       - xinit
       - xorg
