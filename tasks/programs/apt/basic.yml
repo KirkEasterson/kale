@@ -3,12 +3,12 @@
   apt_repository:
     repo: 'ppa:neovim-ppa/unstable'
 
-- name: Add volian scar repo
-  become: true
-  apt_repository:
-    state: present
-    repo: "deb-src https://deb.volian.org/volian/ scar main"
-
+# - name: Add volian scar repo
+#   become: true
+#   apt_repository:
+#     state: present
+#     repo: "deb-src https://deb.volian.org/volian/ scar main"
+#
 - name: Update apt packages
   become: true
   apt:
@@ -56,7 +56,7 @@
       - fonts-font-awesome
       - steam-devices
       - ripgrep
-      - nala
+      # - nala
       - btop
       - kitty
       - mpv
