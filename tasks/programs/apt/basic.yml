@@ -60,6 +60,7 @@
       - btop
       - kitty
       - mpv
+      - fzf
 
 - name: Enable tlp service
   systemd:
