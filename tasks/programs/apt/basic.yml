@@ -19,48 +19,48 @@
   apt:
     install_recommends: no
     name:
-      - git
-      - curl
-      - tree
-      - make
-      - cmake
-      - gcc
+      - bat
+      - btop
       - build-essential
-      - xsel
-      - firefox
-      - tmux
-      - neovim
-      - neofetch
-      - xclip
-      - libxext-dev
+      - cmake
+      - curl
+      - exa
       - exiftool
-      - libcdio-utils
-      - transmission
-      - pandoc
-      - zathura
-      - texlive-latex-base
-      - texlive-latex-recommended
-      - texlive-latex-extra
-      - tlp
-      - powertop
+      - firefox
+      - fonts-font-awesome
+      - fzf
+      - gcc
+      - git
       - htop
+      - hwinfo
+      - kitty
+      - language-pack-en
+      - libcdio-utils
+      - libxext-dev
+      - make
+      - mpv
+      # - nala
+      - neofetch
+      - neovim
+      - pandoc
+      - papirus-icon-theme
+      - powertop
+      - ripgrep
+      - steam-devices
+      - texlive-latex-base
+      - texlive-latex-extra
+      - texlive-latex-recommended
       - timeshift
+      - tlp
+      - tmux
+      - transmission
+      - tree
+      - unzip
+      - xclip
+      - xsel
+      - zathura
       - zsh
       - zsh-common
-      - exa
-      - bat
-      - language-pack-en
-      - hwinfo
-      - unzip
-      - papirus-icon-theme
-      - fonts-font-awesome
-      - steam-devices
-      - ripgrep
-      # - nala
-      - btop
-      - kitty
-      - mpv
-      - fzf
 
 - name: Enable tlp service
   systemd:
