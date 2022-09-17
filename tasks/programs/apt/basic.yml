@@ -29,6 +29,7 @@
       - firefox
       - fonts-font-awesome
       - fzf
+      - fzy
       - gcc
       - git
       - htop
