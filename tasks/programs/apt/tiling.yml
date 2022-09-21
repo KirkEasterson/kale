@@ -51,3 +51,8 @@
       - xinit
       - xorg
       - xss-lock
+
+- name: Enable autorandr service
+  systemd:
+    name: autorandr
+    enabled: yes
