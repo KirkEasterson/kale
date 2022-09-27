@@ -57,3 +57,8 @@
   systemd:
     name: autorandr
     enabled: yes
+
+- name: Enable bluetooth service
+  systemd:
+    name: bluetooth
+    enabled: yes
