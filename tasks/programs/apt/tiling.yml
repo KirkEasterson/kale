@@ -16,6 +16,7 @@
       - autorandr
       - awesome
       - brightnessctl
+      - blueman
       - caffeine
       - cbatticon
       - dmenu
