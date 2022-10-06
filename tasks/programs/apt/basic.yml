@@ -55,6 +55,7 @@
       - ripgrep
       - steam-devices
       - tex-gyre
+      - texlive-fonts-recommended
       - texlive-latex-base
       - texlive-latex-extra
       - texlive-latex-recommended
