@@ -32,6 +32,7 @@
       - exiftool
       - firefox
       - fonts-font-awesome
+      - fonts-noto-color-emoji
       - fzf
       - fzy
       - gcc
@@ -40,6 +41,7 @@
       - hwinfo
       - kitty
       - language-pack-en
+      - latexmk
       - libcdio-utils
       - libxext-dev
       - make
@@ -52,6 +54,7 @@
       - powertop
       - ripgrep
       - steam-devices
+      - tex-gyre
       - texlive-latex-base
       - texlive-latex-extra
       - texlive-latex-recommended
