@@ -37,6 +37,7 @@
       - fzy
       - gcc
       - git
+      - gvfs
       - htop
       - hwinfo
       - kitty
