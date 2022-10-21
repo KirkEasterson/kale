@@ -45,6 +45,7 @@
       - latexmk
       - libcdio-utils
       - libxext-dev
+      - luarocks
       - make
       - mpv
       - nala
