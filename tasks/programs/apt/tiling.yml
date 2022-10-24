@@ -37,7 +37,6 @@
       - network-manager-gnome
       - pavucontrol
       - pcmanfm
-      - picom
       - playerctl
       - polybar
       - pop-gtk-theme
@@ -49,6 +48,7 @@
       - unclutter-xfixes
       - volumeicon-alsa
       - xbacklight
+      - xcompmgr
       - xinit
       - xorg
       - xss-lock
