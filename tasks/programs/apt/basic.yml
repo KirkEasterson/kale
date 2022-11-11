@@ -55,6 +55,7 @@
       - pandoc
       - papirus-icon-theme
       - powertop
+      - python3-neovim
       - ripgrep
       - steam-devices
       - tex-gyre
