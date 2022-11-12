@@ -28,6 +28,7 @@
       - build-essential
       - cmake
       - curl
+      - entr
       - exa
       - exiftool
       - firefox
