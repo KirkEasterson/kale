@@ -31,6 +31,7 @@
       - librsvg2-common
       - lm-sensors
       - lxappearance
+      - mesa-va-drivers
       - mousepad
       - mtpaint
       - network-manager
@@ -51,6 +52,7 @@
       - xcompmgr
       - xinit
       - xorg
+      - xserver-xorg-video-intel
       - xss-lock
 
 - name: Enable autorandr service

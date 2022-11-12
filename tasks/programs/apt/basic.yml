@@ -73,7 +73,6 @@
       - unzip
       - xclip
       - xsel
-      - xserver-xorg-video-intel
       - zathura
       - zsh
       - zsh-common
