@@ -38,6 +38,7 @@
       - fzf
       - fzy
       - gcc
+      - gh
       - git
       - gvfs
       - htop
