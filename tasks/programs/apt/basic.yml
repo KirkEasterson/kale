@@ -75,6 +75,7 @@
       - xclip
       - xsel
       - zathura
+      - zoxide
       - zsh
       - zsh-common
 
