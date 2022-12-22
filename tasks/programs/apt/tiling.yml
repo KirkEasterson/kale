@@ -32,6 +32,7 @@
       - lm-sensors
       - lxappearance
       - mesa-va-drivers
+      - mesa-vulkan-drivers
       - mousepad
       - mtpaint
       - network-manager
