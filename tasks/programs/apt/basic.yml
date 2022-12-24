@@ -73,6 +73,7 @@
       - udiskie
       - unzip
       - xclip
+      - xmodmap
       - xsel
       - zathura
       - zoxide
