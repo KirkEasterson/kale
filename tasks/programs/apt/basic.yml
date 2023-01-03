@@ -48,6 +48,7 @@
       - latexmk
       - libcdio-utils
       - libxext-dev
+      - lmodern
       - luarocks
       - make
       - mpv
