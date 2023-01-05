@@ -18,6 +18,7 @@
       - black
       - ipython
       - matplotlib
+      - neovim-remote
       - numpy
       - pandas
       - pexpect
