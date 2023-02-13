@@ -1,0 +1,13 @@
+---
+- name: Check if documents directory exists
+  stat:
+    path: $HOME/Documents
+  register: documents_dir
+
+- name: Create documents directory
+  become: true
+  become_user: "{{ remote_regular_user }}"
+  file:
+    path: $HOME/Documents
+    state: directory
+  when: documents_dir.exists == false

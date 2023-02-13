@@ -1,0 +1,21 @@
+---
+- name: Check if global_configs exists
+  stat:
+    path: $HOME/.global_configs/
+  register: global_configs_dir
+
+- name: Clone global configs
+  become: true
+  become_user: "{{ remote_regular_user }}"
+  git:
+    repo: https://github.com/KirkEasterson/.global_configs.git
+    dest: $HOME/.global_configs/
+  when: global_configs_dir.exists == false
+
+- name: Install global configs
+  become: true
+  become_user: "{{ remote_regular_user }}"
+  shell:
+    chdir: $HOME/.global_configs/
+    cmd: ./install.sh
+  when: global_configs_dir.exists == false

@@ -1,0 +1,14 @@
+---
+- name: Check if scripts exists
+  stat:
+    path: $HOME/scripts/
+  register: scripts_dir
+
+- name: Clone scripts
+  become: true
+  become_user: "{{ remote_regular_user }}"
+  git:
+    repo: https://github.com/KirkEasterson/scripts.git
+    dest: $HOME/scripts/
+  when: scripts_dir.exists == false
+

@@ -1,0 +1,17 @@
+---
+- name: Check if homebrew is already installed
+  when:  ansible_distribution != "MacOSX"
+  stat:
+    path: /usr/local/bin/brew
+  register: brew
+
+- name: Check if homebrew is already installed
+  when: ansible_distribution == "MacOSX"
+  stat:
+    path: /opt/homebrew/bin/brew
+  register: brew
+
+
+- name: Install Homebrew
+  script: install-homebrew.sh
+  when: brew.exists == false

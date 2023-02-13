@@ -1,0 +1,6 @@
+---
+- name: Install battery icon
+  pacman:
+    state: present
+    name:
+      - cbatticon

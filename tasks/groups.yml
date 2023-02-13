@@ -1,6 +1,0 @@
-- name: Add the current user to the video group
-  become: true
-  user:
-    name: "{{ remote_regular_user }}"
-    groups: video
-    append: yes

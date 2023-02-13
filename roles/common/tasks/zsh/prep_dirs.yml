@@ -1,0 +1,22 @@
+---
+- name: Check if zsh cache exists
+  stat:
+    path: ~/.cache/zsh/
+  register: zsh_cache_dir
+
+- name: Create zsh cache
+  file:
+    state: directory
+    path: ~/.cache/zsh/
+  when: zsh_cache_dir.exists == false
+
+- name: Check if zsh history exists
+  stat:
+    path: ~/.cache/zsh/history
+  register: zsh_history_file
+
+- name: Create zsh history
+  file:
+    state: touch
+    path: ~/.cache/zsh/history
+  when: zsh_history_file.exists == false

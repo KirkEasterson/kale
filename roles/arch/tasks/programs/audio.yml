@@ -1,0 +1,10 @@
+---
+- name: Install audio tools
+  pacman:
+    state: present
+    name:
+      - pavucontrol
+      - pipewire
+      - playerctl
+      - volumeicon
+      - wireplumber

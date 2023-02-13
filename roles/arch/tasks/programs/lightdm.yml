@@ -1,0 +1,9 @@
+---
+- name: Install greeter
+  pacman:
+    state: present
+    name:
+      - light-locker
+      - lightdm
+      - lightdm-greeter-gtk-settings
+      - lightdm-slick-greeter

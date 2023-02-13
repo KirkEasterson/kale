@@ -1,0 +1,24 @@
+---
+- include: audio.yml
+- include: awesome.yml
+- include: battery_icon.yml
+- include: bluetooth.yml
+- include: brightness.yml
+- include: browsers.yml
+- include: code.yml
+- include: discord.yml
+- include: essential.yml
+- include: file_explorers.yml
+- include: fonts.yml
+- include: launcher.yml
+- include: lightdm.yml
+- include: network.yml
+- include: notifications.yml
+- include: partition.yml
+- include: screen_lock.yml
+- include: screenshot.yml
+- include: spotify.yml
+- include: theme.yml
+- include: wallpapers.yml
+- include: x11.yml
+- include: aur/local.yml

@@ -1,0 +1,6 @@
+---
+- name: Install screenshot utility
+  pacman:
+    state: present
+    name:
+      - fontconfig

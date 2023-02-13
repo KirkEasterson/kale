@@ -1,0 +1,8 @@
+---
+- name: Install browsers
+  pacman:
+    state: present
+    name:
+      - chromium
+      - firefox
+      - firefox-developer-edition

@@ -1,0 +1,8 @@
+---
+- name: Install file explorers
+  pacman:
+    state: present
+    name:
+      - lf
+      - pcmanfm
+      - xplr

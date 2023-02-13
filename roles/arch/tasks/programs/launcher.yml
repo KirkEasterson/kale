@@ -1,0 +1,6 @@
+---
+- name: Install program launcher
+  pacman:
+    state: present
+    name:
+      - rofi

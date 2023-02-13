@@ -1,8 +1,0 @@
-- name: Install go
-  become: true
-  apt:
-    install_recommends: no
-    name: golang
-
-- name: Install gofumpt
-  shell: go install mvdan.cc/gofumpt@latest

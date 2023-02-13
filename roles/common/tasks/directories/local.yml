@@ -1,0 +1,5 @@
+---
+- include: dev.yml
+- include: documents.yml
+- include: downloads.yml
+- include: pictures.yml

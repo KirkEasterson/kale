@@ -1,0 +1,8 @@
+---
+tasks:
+  - name: Update repositories
+    become: true
+    pacman:
+      update_cache: yes
+      upgrade: true
+    changed_when: false

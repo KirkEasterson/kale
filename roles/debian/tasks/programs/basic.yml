@@ -1,0 +1,67 @@
+- name: Install apt packages
+  become: true
+  apt:
+    install_recommends: no
+    name:
+      - bat
+      - btop
+      - build-essential
+      - cmake
+      - curl
+      - entr
+      - exa
+      - exiftool
+      - firefox
+      - fish
+      - fonts-font-awesome
+      - fonts-noto-color-emoji
+      - fzf
+      - fzy
+      - gcc
+      - gh
+      - git
+      - gvfs
+      - htop
+      - hwinfo
+      - kitty
+      - language-pack-en
+      - latexmk
+      - libcdio-utils
+      - libxext-dev
+      - lmodern
+      - luarocks
+      - make
+      - mpv
+      - nala
+      - neofetch
+      - neovim
+      - pandoc
+      - papirus-icon-theme
+      - powertop
+      - python3-neovim
+      - ripgrep
+      - steam-devices
+      - tex-gyre
+      - texlive-fonts-recommended
+      - texlive-latex-base
+      - texlive-latex-extra
+      - texlive-latex-recommended
+      - timeshift
+      - tlp
+      - tmux
+      - transmission
+      - tree
+      - udiskie
+      - unzip
+      - xclip
+      - xmodmap
+      - xsel
+      - zathura
+      - zoxide
+      - zsh
+      - zsh-common
+
+- name: Enable tlp service
+  systemd:
+    name: tlp
+    enabled: yes

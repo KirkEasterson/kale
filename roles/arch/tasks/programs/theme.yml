@@ -1,0 +1,11 @@
+---
+- name: Install theme tools
+  pacman:
+    state: present
+    name:
+      - lxappearance
+      - lxappearance-gtk3
+      - papirus-icon-theme
+      - picom
+      - pop-gtk-theme
+      - unclutter

@@ -1,0 +1,20 @@
+---
+- name: Check if dotfiles exists
+  stat:
+    path: $HOME/.dotfiles/
+  register: dotfiles_dir
+
+- name: Clone dotfiles
+  become: true
+  become_user: "{{ remote_regular_user }}"
+  git:
+    repo: https://github.com/KirkEasterson/.dotfiles.git
+    dest: $HOME/.dotfiles/
+  when: dotfiles_dir.exists == false
+
+- name: Install dotfiles
+  become: true
+  become_user: "{{ remote_regular_user }}"
+  shell:
+    cmd: $HOME/.dotfiles/install.sh
+  when: dotfiles_dir.exists == false

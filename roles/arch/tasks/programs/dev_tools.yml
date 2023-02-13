@@ -1,0 +1,7 @@
+---
+- name: Install dev tools
+  pacman:
+    state: present
+    name:
+      - code
+      - dbeaver

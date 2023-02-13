@@ -1,0 +1,6 @@
+---
+- name: Install screen locking tools
+  pacman:
+    state: present
+    name:
+      - xss-lock

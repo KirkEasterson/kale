@@ -1,0 +1,15 @@
+---
+- name: Install essential tools
+  pacman:
+    state: present
+    name:
+      - btop
+      - fzf
+      - git
+      - htop
+      - lazygit
+      - neovim
+      - tmux
+      - vim
+      - zoxide
+      - zsh

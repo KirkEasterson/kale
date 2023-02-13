@@ -1,0 +1,7 @@
+---
+- name: Install notification manager
+  pacman:
+    state: present
+    name:
+      - dunst
+      - libnotify

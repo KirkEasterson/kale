@@ -1,0 +1,7 @@
+tasks:
+  - name: Update repositories
+    become: true
+    apt:
+      update_cache: yes
+      upgrade: 'yes'
+    changed_when: False

@@ -1,0 +1,6 @@
+---
+- name: Install bluetooth things
+  pacman:
+    state: present
+    name:
+      - blueman

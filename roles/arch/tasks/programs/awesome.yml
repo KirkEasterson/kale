@@ -1,0 +1,6 @@
+---
+- name: Install awesomewm
+  pacman:
+    state: present
+    name:
+      - awesome

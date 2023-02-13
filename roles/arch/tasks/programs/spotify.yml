@@ -1,0 +1,6 @@
+---
+- name: Install spotify
+  pacman:
+    state: present
+    name:
+      - spotify-launcher

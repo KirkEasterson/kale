@@ -1,0 +1,13 @@
+---
+- name: Install x11 packages
+  pacman:
+    state: present
+    name:
+      - autorandr
+      - xf86-video-intel
+      - xf86-input-libinput
+      - xorg-server
+      - xorg-xinit
+      - xorg-xinput
+      - xorg-xrandr
+      - xterm

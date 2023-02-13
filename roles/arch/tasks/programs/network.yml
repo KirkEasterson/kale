@@ -1,0 +1,7 @@
+---
+- name: Install networking tools
+  pacman:
+    state: present
+    name:
+      - networkmanager
+      - network-manager-applet

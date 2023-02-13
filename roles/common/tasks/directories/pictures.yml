@@ -1,0 +1,26 @@
+---
+- name: Check if pictures directory exists
+  stat:
+    path: $HOME/Pictures/
+  register: pictures_dir
+
+- name: Create pictures directory
+  become: true
+  become_user: "{{ remote_regular_user }}"
+  file:
+    path: $HOME/Pictures/
+    state: directory
+  when: pictures_dir.exists == false
+
+- name: Check if screenshots directory exists
+  stat:
+    path: $HOME/Pictures/screenshots/
+  register: screenshots_dir
+
+- name: Create screenshots directory
+  become: true
+  become_user: "{{ remote_regular_user }}"
+  file:
+    path: $HOME/Pictures/screenshots/
+    state: directory
+  when: screenshots_dir.exists == false

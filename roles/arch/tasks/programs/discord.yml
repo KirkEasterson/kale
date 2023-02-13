@@ -1,0 +1,6 @@
+---
+- name: Install discord
+  pacman:
+    state: present
+    name:
+      - discord
