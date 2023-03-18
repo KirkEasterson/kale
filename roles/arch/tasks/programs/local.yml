@@ -8,6 +8,7 @@
 # - include: code.yml
 - include: dev_tools.yml
 - include: discord.yml
+- include: docker.yml
 - include: essential.yml
 - include: file_explorers.yml
 - include: fonts.yml
