@@ -7,4 +7,5 @@
     name: stow
 - include: ../common/tasks/git_repos/local.yml
 - include: ../common/tasks/locale.yml
+- include: tasks/programs/local.yml
 - include: ../common/tasks/groups/local.yml
