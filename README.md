@@ -59,7 +59,7 @@ sudo apt install ansible
 Run the below command, and then reboot your computer.
 
 ```sh
-sudo ansible-pull -U https://github.com/kirkeasterson/kale/tree/arch-feature
+sudo ansible-pull -U https://github.com/kirkeasterson/kale.git -C arch-feature
 ```
 
 ## Usage
