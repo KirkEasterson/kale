@@ -1,5 +1,6 @@
 ---
 - name: Install screenshot utility
+  become: true
   pacman:
     state: present
     name:

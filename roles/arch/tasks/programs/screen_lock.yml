@@ -1,5 +1,6 @@
 ---
 - name: Install screen locking tools
+  become: true
   pacman:
     state: present
     name:

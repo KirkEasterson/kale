@@ -1,5 +1,6 @@
 ---
 - name: Install x11 packages
+  become: true
   pacman:
     state: present
     name:

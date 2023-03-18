@@ -1,5 +1,6 @@
 ---
 - name: Install i3-gaps
+  become: true
   pacman:
     state: present
     name:

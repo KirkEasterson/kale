@@ -1,5 +1,6 @@
 ---
 - name: Install theme tools
+  become: true
   pacman:
     state: present
     name:

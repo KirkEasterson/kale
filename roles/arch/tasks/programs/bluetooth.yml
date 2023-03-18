@@ -1,5 +1,6 @@
 ---
 - name: Install bluetooth things
+  become: true
   pacman:
     state: present
     name:

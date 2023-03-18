@@ -1,5 +1,6 @@
 ---
 - name: Install spotify
+  become: true
   pacman:
     state: present
     name:

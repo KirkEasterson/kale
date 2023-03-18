@@ -1,5 +1,6 @@
 ---
 - name: Install battery icon
+  become: true
   pacman:
     state: present
     name:

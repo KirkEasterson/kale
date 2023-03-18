@@ -1,5 +1,6 @@
 ---
 - name: Install greeter
+  become: true
   pacman:
     state: present
     name:
