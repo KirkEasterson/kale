@@ -8,4 +8,4 @@
   git:
     repo: https://github.com/KirkEasterson/scripts.git
     dest: $HOME/scripts/
-  when: scripts_dir.exists == false
+  when: scripts_dir.stat.exists == false
