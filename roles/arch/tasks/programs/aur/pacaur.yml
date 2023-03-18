@@ -1,9 +1,9 @@
 ---
 - name: Install pacaur
-  shell: ../../../files/install_pacaur.sh
+  shell: roles/arch/files/install_pacaur.sh
 
 - name: Install galaxy collections
-  shell: ../../../files/install_galaxy_collections.sh
+  shell: roles/arch/files/install_galaxy_collections.sh
 
 - name: Create the `aur_builder` user
   become: yes
