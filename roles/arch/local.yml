@@ -1,5 +1,10 @@
 ---
 - include: ../common/tasks/directories/local.yml
+- name: Install stow
+  pacman:
+    state: present
+    name:
+      - stow
 - include: ../common/tasks/git_repos/local.yml
 - include: ../common/tasks/locale.yml
 - include: ../common/tasks/groups/local.yml
