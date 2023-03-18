@@ -23,4 +23,4 @@
 - include: theme.yml
 - include: wallpapers.yml
 - include: x11.yml
-- include: aur/local.yml
+# - include: aur/local.yml
