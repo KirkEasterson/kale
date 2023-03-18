@@ -10,7 +10,7 @@
   git:
     repo: https://github.com/KirkEasterson/.global_configs.git
     dest: $HOME/.global_configs/
-  when: global_configs_dir.exists == false
+  when: global_configs_dir.stat.exists == false
 
 - name: Install global configs
   become: true
@@ -18,4 +18,4 @@
   shell:
     chdir: $HOME/.global_configs/
     cmd: ./install.sh
-  when: global_configs_dir.exists == false
+  when: global_configs_dir.stat.exists == false

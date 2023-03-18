@@ -14,4 +14,4 @@
 
 - name: Install Homebrew
   script: install-homebrew.sh
-  when: brew.exists == false
+  when: brew.stat.exists == false
