@@ -10,4 +10,4 @@
   file:
     path: $HOME/dev
     state: directory
-  when: dev_dir.exists == false
+  when: dev_dir.stat.exists == false
