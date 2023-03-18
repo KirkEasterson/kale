@@ -6,5 +6,5 @@
     name:
       - light-locker
       - lightdm
-      - lightdm-greeter-gtk-settings
+      - lightdm-gtk-greeter-settings
       - lightdm-slick-greeter
