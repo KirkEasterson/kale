@@ -5,8 +5,6 @@
   register: dev_dir
 
 - name: Create dev directory
-  become: true
-  become_user: "{{ remote_regular_user }}"
   file:
     path: $HOME/dev
     state: directory
