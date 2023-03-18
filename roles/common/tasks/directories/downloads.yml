@@ -5,8 +5,6 @@
   register: downloads_dir
 
 - name: Create downloads directory
-  become: true
-  become_user: "{{ remote_regular_user }}"
   file:
     path: $HOME/Downloads/
     state: directory

@@ -5,8 +5,6 @@
   register: pictures_dir
 
 - name: Create pictures directory
-  become: true
-  become_user: "{{ remote_regular_user }}"
   file:
     path: $HOME/Pictures/
     state: directory
@@ -18,8 +16,6 @@
   register: screenshots_dir
 
 - name: Create screenshots directory
-  become: true
-  become_user: "{{ remote_regular_user }}"
   file:
     path: $HOME/Pictures/screenshots/
     state: directory

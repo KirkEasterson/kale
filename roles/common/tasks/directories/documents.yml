@@ -5,8 +5,6 @@
   register: documents_dir
 
 - name: Create documents directory
-  become: true
-  become_user: "{{ remote_regular_user }}"
   file:
     path: $HOME/Documents
     state: directory
