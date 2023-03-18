@@ -8,4 +8,4 @@
   file:
     path: $HOME/Downloads/
     state: directory
-  when: downloads_dir.exists == false
+  when: downloads_dir.stat.exists == false

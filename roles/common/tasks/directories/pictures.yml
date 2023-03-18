@@ -8,7 +8,7 @@
   file:
     path: $HOME/Pictures/
     state: directory
-  when: pictures_dir.exists == false
+  when: pictures_dir.stat.exists == false
 
 - name: Check if screenshots directory exists
   stat:
@@ -19,4 +19,4 @@
   file:
     path: $HOME/Pictures/screenshots/
     state: directory
-  when: screenshots_dir.exists == false
+  when: screenshots_dir.stat.exists == false
