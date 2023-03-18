@@ -1,6 +1,5 @@
 ---
 - name: Add the current user to the docker group
-  become: true
   user:
     name: "{{ remote_regular_user }}"
     groups: docker
