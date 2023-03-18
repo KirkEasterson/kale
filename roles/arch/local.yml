@@ -4,8 +4,7 @@
   become: true
   pacman:
     state: present
-    name:
-      - stow
+    name: stow
 - include: ../common/tasks/git_repos/local.yml
 - include: ../common/tasks/locale.yml
 - include: ../common/tasks/groups/local.yml
