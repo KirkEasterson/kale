@@ -1,4 +1,4 @@
 ---
-- include: dotfile.yml
+- include: dotfiles.yml
 - include: global_configs.yml
 - include: scripts.yml
