@@ -1,0 +1,7 @@
+---
+- name: Install i3-gaps
+  pacman:
+    state: present
+    name:
+      - i3-gaps
+      - polybar

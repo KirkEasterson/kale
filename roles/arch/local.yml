@@ -1,3 +1,4 @@
+---
 - hosts: localhost
   connection: local
 
@@ -9,3 +10,6 @@
     - include: ../common/tasks/git_repos/local.yml
     - include: ../common/tasks/locale.yml
     - include: ../common/tasks/groups/local.yml
+
+  post_tasks:
+  - include: ../common/tasks/update_repos/pacman.yml

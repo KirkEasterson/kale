@@ -14,8 +14,6 @@
   </p>
 </div>
 
-
-
 <!-- TABLE OF CONTENTS -->
 <details>
   <summary>Table of Contents</summary>
@@ -34,15 +32,11 @@
   </ol>
 </details>
 
-
-
 ## About The Project
 
 This repository originally a series of bash scripts to be used on an installation of Ubuntu server 21.10.
 But the scripts were fragile and had to be manually tested to ensure correctness.
 Ansible is the sensible alternative to this approach, so the scripts were rewritten for Ansible.
-
-
 
 ## Getting Started
 
@@ -52,37 +46,31 @@ But there is no guarantee that it will work.
 
 This repository was designed to be used with `ansible-pull`, and has not been tested with any other Ansible commands.
 
-
 ### Prerequisites
 
 The only prerequisite is Ansible.
+
 ```sh
 sudo apt install ansible
 ```
 
-
 ### Installation
 
 Run the below command, and then reboot your computer.
+
 ```sh
-sudo ansible-pull -U https://github.com/kirkeasterson/kale.git
+sudo ansible-pull -U https://github.com/kirkeasterson/kale/tree/arch-feature
 ```
-
-
 
 ## Usage
 
 There are future plans to add a detailed guide on how to use the environment post-installation.
 The only advice I have now is to read the configs and figure it out yourself.
 
-
-
 ## Roadmap
 
 - [ ] Add more detailed usage
 - [ ] Add support for other ansible commands
-
-
 
 ## Contact
 

@@ -5,11 +5,13 @@
 - include: bluetooth.yml
 - include: brightness.yml
 - include: browsers.yml
-- include: code.yml
+# - include: code.yml
+- include: dev_tools.yml
 - include: discord.yml
 - include: essential.yml
 - include: file_explorers.yml
 - include: fonts.yml
+- include: i3.yml
 - include: launcher.yml
 - include: lightdm.yml
 - include: network.yml

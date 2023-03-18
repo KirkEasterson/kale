@@ -1,2 +1,3 @@
 ---
 - include: pacaur.yml
+- include: slack.yml

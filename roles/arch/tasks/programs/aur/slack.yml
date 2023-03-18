@@ -3,4 +3,4 @@
   pacman:
     state: present
     name:
-      - slack
+      - slack-desktop

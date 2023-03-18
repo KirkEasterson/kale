@@ -3,7 +3,9 @@
   pacman:
     state: present
     name:
+      - bat
       - btop
+      - exa
       - fzf
       - git
       - htop
@@ -13,3 +15,4 @@
       - vim
       - zoxide
       - zsh
+      - sxhkd
