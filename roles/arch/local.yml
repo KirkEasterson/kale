@@ -1,8 +1,8 @@
 ---
 - include: ../common/tasks/directories/local.yml
 - name: Install stow
+  become: true
   pacman:
-    become: true
     state: present
     name:
       - stow
