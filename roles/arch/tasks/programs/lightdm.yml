@@ -5,6 +5,5 @@
     state: present
     name:
       - light-locker
-      - lightdm
       - lightdm-gtk-greeter-settings
       - lightdm-slick-greeter
