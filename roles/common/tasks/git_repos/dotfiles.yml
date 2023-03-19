@@ -17,7 +17,7 @@
   when: dotfiles_dir.stat.exists == false
 
 - name: Remove old bash logout
-  files:
+  file:
     path: $HOME/.bash_logout
     state: absent
   when: dotfiles_dir.stat.exists == false
