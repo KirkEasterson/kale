@@ -4,6 +4,24 @@
     path: $HOME/.dotfiles/
   register: dotfiles_dir
 
+- name: Remove old bashrc
+  files:
+    path: $HOME/.bashrc
+    state: absent
+  when: dotfiles_dir.stat.exists == false
+
+- name: Remove old bash profile
+  files:
+    path: $HOME/.bash_profile
+    state: absent
+  when: dotfiles_dir.stat.exists == false
+
+- name: Remove old bash logout
+  files:
+    path: $HOME/.bash_logout
+    state: absent
+  when: dotfiles_dir.stat.exists == false
+
 - name: Clone dotfiles
   git:
     repo: https://github.com/KirkEasterson/.dotfiles.git
