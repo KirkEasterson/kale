@@ -5,13 +5,13 @@
   register: dotfiles_dir
 
 - name: Remove old bashrc
-  files:
+  file:
     path: $HOME/.bashrc
     state: absent
   when: dotfiles_dir.stat.exists == false
 
 - name: Remove old bash profile
-  files:
+  file:
     path: $HOME/.bash_profile
     state: absent
   when: dotfiles_dir.stat.exists == false
