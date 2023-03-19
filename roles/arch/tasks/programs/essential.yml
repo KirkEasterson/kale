@@ -16,8 +16,10 @@
       - lazygit
       - neovim
       - ripgrep
+      - starship
       - sxhkd
       - tmux
+      - xcape
       - vim
       - wezterm
       - zoxide
