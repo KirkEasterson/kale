@@ -4,6 +4,7 @@
   pacman:
     state: present
     name:
+      - alacritty
       - base-devel
       - bat
       - btop
@@ -11,10 +12,13 @@
       - fzf
       - git
       - htop
+      - kitty
       - lazygit
       - neovim
+      - ripgrep
       - sxhkd
       - tmux
       - vim
+      - wezterm
       - zoxide
       - zsh
