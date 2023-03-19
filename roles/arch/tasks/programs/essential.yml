@@ -22,5 +22,6 @@
       - xcape
       - vim
       - wezterm
+      - wget
       - zoxide
       - zsh
