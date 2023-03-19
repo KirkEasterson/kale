@@ -6,3 +6,6 @@
     name:
       - code
       - dbeaver
+      - nodejs
+      - npm
+      - python3
