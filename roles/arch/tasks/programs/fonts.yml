@@ -5,3 +5,6 @@
     state: present
     name:
       - fontconfig
+      - ttf-ubuntu-mono-nerd
+      - ttf-jetbrains-mono-nerd
+      - ttf-ubuntu-nerd
