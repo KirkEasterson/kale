@@ -4,6 +4,7 @@
   pacman:
     state: present
     name:
+      - base-devel
       - bat
       - btop
       - exa
@@ -12,8 +13,8 @@
       - htop
       - lazygit
       - neovim
+      - sxhkd
       - tmux
       - vim
       - zoxide
       - zsh
-      - sxhkd
