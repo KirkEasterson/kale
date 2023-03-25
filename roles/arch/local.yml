@@ -1,14 +1,14 @@
 ---
-- include: ../common/tasks/directories/local.yml
+- include_tasks: ../common/tasks/directories/local.yml
 - name: Install stow
   become: true
   pacman:
     state: present
     name: stow
-- include: ../common/tasks/git_repos/local.yml
-- include: ../common/tasks/locale.yml
-- include: tasks/programs/local.yml
-- include: ../common/tasks/groups/local.yml
+- include_tasks: ../common/tasks/git_repos/local.yml
+- include_tasks: ../common/tasks/locale.yml
+- include_tasks: tasks/programs/local.yml
+- include_tasks: ../common/tasks/groups/local.yml
 
 - name: Enable lightdm service
   become: true

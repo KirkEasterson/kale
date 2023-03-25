@@ -1,4 +1,4 @@
 ---
-- include: dotfiles.yml
-- include: global_configs.yml
-- include: scripts.yml
+- include_tasks: dotfiles.yml
+- include_tasks: global_configs.yml
+- include_tasks: scripts.yml

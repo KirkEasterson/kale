@@ -1,5 +1,5 @@
 ---
-- include: dev.yml
-- include: documents.yml
-- include: downloads.yml
-- include: pictures.yml
+- include_tasks: dev.yml
+- include_tasks: documents.yml
+- include_tasks: downloads.yml
+- include_tasks: pictures.yml

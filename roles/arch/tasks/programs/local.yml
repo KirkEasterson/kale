@@ -1,27 +1,27 @@
 ---
-- include: audio.yml
-- include: awesome.yml
-- include: battery_icon.yml
-- include: bluetooth.yml
-- include: brightness.yml
-- include: browsers.yml
-# - include: code.yml
-- include: dev_tools.yml
-- include: discord.yml
-- include: docker.yml
-- include: essential.yml
-- include: file_explorers.yml
-- include: fonts.yml
-- include: i3.yml
-- include: launcher.yml
-- include: lightdm.yml
-- include: network.yml
-- include: notifications.yml
-- include: partition.yml
-- include: screen_lock.yml
-- include: screenshot.yml
-- include: spotify.yml
-- include: theme.yml
-- include: wallpapers.yml
-- include: x11.yml
-# - include: aur/local.yml
+- include_tasks: audio.yml
+- include_tasks: awesome.yml
+- include_tasks: battery_icon.yml
+- include_tasks: bluetooth.yml
+- include_tasks: brightness.yml
+- include_tasks: browsers.yml
+# - include_tasks: code.yml
+- include_tasks: dev_tools.yml
+- include_tasks: discord.yml
+- include_tasks: docker.yml
+- include_tasks: essential.yml
+- include_tasks: file_explorers.yml
+- include_tasks: fonts.yml
+- include_tasks: i3.yml
+- include_tasks: launcher.yml
+- include_tasks: lightdm.yml
+- include_tasks: network.yml
+- include_tasks: notifications.yml
+- include_tasks: partition.yml
+- include_tasks: screen_lock.yml
+- include_tasks: screenshot.yml
+- include_tasks: spotify.yml
+- include_tasks: theme.yml
+- include_tasks: wallpapers.yml
+- include_tasks: x11.yml
+# - include_tasks: aur/local.yml

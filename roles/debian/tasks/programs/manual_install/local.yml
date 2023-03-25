@@ -1,3 +1,3 @@
-- include: lf.yml
-- include: starship.yml
-- include: whatscli.yml
+- include_tasks: lf.yml
+- include_tasks: starship.yml
+- include_tasks: whatscli.yml
