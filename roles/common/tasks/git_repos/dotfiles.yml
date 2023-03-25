@@ -27,6 +27,7 @@
     repo: https://github.com/KirkEasterson/.dotfiles.git
     dest: $HOME/.dotfiles/
     track_submodules: true
+    recursive: true
   when: dotfiles_dir.stat.exists == false
 
 - name: Install dotfiles
