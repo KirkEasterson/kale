@@ -1,7 +1,7 @@
-- include: apt/local.yml
-- include: go/local.yml
-- include: pip/local.yml
-- include: npm/local.yml
-- include: cargo/local.yml
-# - include: brew/local.yml
-- include: manual_install/local.yml
+- include_tasks: apt/local.yml
+- include_tasks: go/local.yml
+- include_tasks: pip/local.yml
+- include_tasks: npm/local.yml
+- include_tasks: cargo/local.yml
+# - include_tasks: brew/local.yml
+- include_tasks: manual_install/local.yml

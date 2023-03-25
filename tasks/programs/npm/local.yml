@@ -1,1 +1,1 @@
-- include: npm.yml
+- include_tasks: npm.yml

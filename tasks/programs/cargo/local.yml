@@ -1,1 +1,1 @@
-- include: cargo.yml
+- include_tasks: cargo.yml

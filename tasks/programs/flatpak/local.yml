@@ -1,1 +1,1 @@
-- include: flatpak.yml
+- include_tasks: flatpak.yml

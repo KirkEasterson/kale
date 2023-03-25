@@ -1,1 +1,1 @@
-- include: pip.yml
+- include_tasks: pip.yml
