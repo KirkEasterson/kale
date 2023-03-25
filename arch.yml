@@ -3,10 +3,10 @@
   connection: local
 
   pre_tasks:
-    - include: roles/common/tasks/update_repos/pacman.yml
+    - include_tasks: roles/common/tasks/update_repos/pacman.yml
 
   tasks:
-    - include: roles/arch/local.yml
+    - include_tasks: roles/arch/local.yml
 
   post_tasks:
-    - include: roles/common/tasks/update_repos/pacman.yml
+    - include_tasks: roles/common/tasks/update_repos/pacman.yml
