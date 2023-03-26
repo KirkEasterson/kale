@@ -6,6 +6,16 @@
     name:
       - code
       - dbeaver
+      - docker
+      - docker-compose
+      - gcc
+      - go
+      - jdk-openjdk
+      - jre-openjdk
+      - kotlin
+      - make
       - nodejs
       - npm
       - python3
+      - rust
+      - rustup
