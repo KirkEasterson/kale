@@ -4,6 +4,7 @@
   pacman:
     state: present
     name:
+      - clang
       - code
       - dbeaver
       - docker
@@ -12,7 +13,6 @@
       - go
       - jdk-openjdk
       - jre-openjdk
-      - klang
       - kotlin
       - make
       - nodejs
