@@ -16,9 +16,12 @@
       - lazygit
       - neovim
       - ripgrep
+      - rsync
       - starship
       - sxhkd
+      - tar
       - tmux
+      - unrar
       - unzip
       - vim
       - wezterm
