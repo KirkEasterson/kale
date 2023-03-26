@@ -12,6 +12,7 @@
       - go
       - jdk-openjdk
       - jre-openjdk
+      - klang
       - kotlin
       - make
       - nodejs
