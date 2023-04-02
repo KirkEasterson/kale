@@ -8,18 +8,24 @@
       - base-devel
       - bat
       - btop
+      - cheese
       - exa
       - fzf
       - git
       - htop
+      - hyperfine
       - kitty
       - lazygit
+      - neofetch
       - neovim
+      - powertop
       - ripgrep
       - rsync
       - starship
       - sxhkd
       - tar
+      - timeshift
+      - tlp
       - tmux
       - unrar
       - unzip
