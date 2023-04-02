@@ -6,6 +6,7 @@
     name:
       - pavucontrol
       - pipewire
+      - pipewire-pulse
       - playerctl
       - volumeicon
       - wireplumber
