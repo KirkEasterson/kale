@@ -35,3 +35,9 @@
       - xcape
       - zoxide
       - zsh
+
+- name: Enable tlp service
+  become: true
+  systemd:
+    name: tlp
+    enabled: yes
