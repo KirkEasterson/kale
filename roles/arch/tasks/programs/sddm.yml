@@ -31,12 +31,10 @@
 - name: Apply SDDM nordic theme
   become: true
   lineinfile:
-    dest: /etc/sddm.conf
+    path: /etc/sddm.conf
     state: "present"
+    regexp: "^Current="
     line: "Current=Nordic-bluish"
-    regexp: "^Current=Nordic-bluish"
-    insertafter: "^Current="
-  register: mult_one
 
 - name: Enable sddm service
   become: true

@@ -2,17 +2,16 @@
 - name: Enable multilib
   become: true
   lineinfile:
-    dest: "/etc/pacman.conf"
+    path: "/etc/pacman.conf"
     state: "present"
     line: "[multilib]"
-    regexp: "^\\[multilib\\]"
-    insertafter: "^#\\[multilib\\]"
+    regexp: "^#\\[multilib\\]"
   register: mult_one
 
 - name: "Enable multilib (cont)"
   become: true
   lineinfile:
-    dest: "/etc/pacman.conf"
+    path: "/etc/pacman.conf"
     state: "present"
     line: "Include = /etc/pacman.d/mirrorlist"
     insertafter: "^\\[multilib\\]"
