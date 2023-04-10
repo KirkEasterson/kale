@@ -41,7 +41,7 @@
 - name: Install essential aur tools
   become: yes
   become_user: aur_builder
-  aur:
+  kewlfft.aur.aur:
     state: present
     name:
       - timeshift
