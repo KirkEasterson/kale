@@ -7,8 +7,9 @@
     line: "[multilib]"
     regexp: "^\\[multilib\\]"
     insertafter: "^#\\[multilib\\]"
+  register: mult_one
 
-- name: "add multilib (cont)"
+- name: "Enable multilib (cont)"
   become: true
   lineinfile:
     dest: "/etc/pacman.conf"
@@ -16,5 +17,8 @@
     line: "Include = /etc/pacman.d/mirrorlist"
     insertafter: "^\\[multilib\\]"
     regexp: "Include = /etc/pacman.d/mirrorlist"
+  register: mult_two
 
-- include_tasks: roles/common/tasks/update_repos/pacman.yml
+- name: "Update repos with multilib"
+  include_tasks: roles/common/tasks/update_repos/pacman.yml
+  when: mult_one.changed or mult_two.changed
