@@ -7,12 +7,14 @@
   register: which_out
 
 - name: Clone yay repo
+  become: true
   git:
     repo: https://aur.archlinux.org/yay-git.git
     dest: /opt/yay-git
   when: which_out.rc != 0
 
 - name: Change permission on yay repo
+  become: true
   file:
     path: /opt/yay-git
     owner: "{{ ansible_user_id }}"
