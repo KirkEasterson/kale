@@ -1,5 +1,6 @@
 ---
 - name: Enable multilib
+  become: true
   lineinfile:
     dest: "/etc/pacman.conf"
     state: "present"
@@ -8,6 +9,7 @@
     insertafter: "^#\\[multilib\\]"
 
 - name: "add multilib (cont)"
+  become: true
   lineinfile:
     dest: "/etc/pacman.conf"
     state: "present"
