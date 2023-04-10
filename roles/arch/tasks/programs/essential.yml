@@ -25,7 +25,6 @@
       - starship
       - sxhkd
       - tar
-      - timeshift
       - tlp
       - tmux
       - tmuxp
@@ -38,6 +37,14 @@
       - xcape
       - zoxide
       - zsh
+
+- name: Install essential aur tools
+  become: yes
+  become_user: aur_builder
+  aur:
+    state: present
+    name:
+      - timeshift
 
 - name: Enable tlp service
   become: true
