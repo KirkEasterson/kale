@@ -56,10 +56,12 @@ sudo apt install ansible
 
 ### Installation
 
-Run the below command, and then reboot your computer.
+Clone the repo, and check out the `arch-feature` branch.
+
+Run the below command from the base directory of the repository, and then reboot your computer.
 
 ```sh
-sudo ansible-pull -U https://github.com/kirkeasterson/kale.git -C arch-feature
+ansible-playbook arch.yml --ask-become-pass
 ```
 
 ## Usage
