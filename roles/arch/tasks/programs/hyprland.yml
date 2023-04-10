@@ -1,0 +1,15 @@
+---
+- name: Install hyprland
+  become: true
+  pacman:
+    state: present
+    name:
+      - hyprland
+      - hyprpaper
+      - wofi
+      - swayidle
+      - swaylock-effects*
+      - waybar-hyprland*
+      - xremap*
+      - grimblast*
+      - wev*

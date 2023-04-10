@@ -7,6 +7,7 @@
       - alacritty
       - base-devel
       - bat
+      - bluez-utils
       - btop
       - cheese
       - exa
@@ -27,9 +28,11 @@
       - timeshift
       - tlp
       - tmux
+      - tmuxp
       - unrar
       - unzip
       - vim
+      - virtualbox
       - wezterm
       - wget
       - xcape

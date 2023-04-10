@@ -1,0 +1,21 @@
+---
+- name: Check if yay is installed
+  command: which yay
+  ignore_errors: true
+  register: which_out
+
+- name: Clone yay repo
+  git:
+    repo: https://aur.archlinux.org/yay-git.git
+    dest: /opt/
+  when: which_out.stat.exists == false
+
+- name: Change permission on yay repo
+  file:
+    path: /opt/yay-git
+    owner: "{{ ansible_user_id }}"
+    group: "{{ ansible_user_id }}"
+    recurse: true
+
+- name: Build yay
+  command: makepkg -si

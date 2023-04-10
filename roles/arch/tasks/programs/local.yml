@@ -1,4 +1,8 @@
 ---
+- include_tasks: configure_pacman.yml
+- include_tasks: aur/install_yay.yml
+- include_tasks: configure_aur.yml
+
 - include_tasks: audio.yml
 - include_tasks: awesome.yml
 - include_tasks: battery_icon.yml
@@ -14,7 +18,7 @@
 - include_tasks: fonts.yml
 - include_tasks: i3.yml
 - include_tasks: launcher.yml
-- include_tasks: lightdm.yml
+- include_tasks: sddm.yml
 - include_tasks: network.yml
 - include_tasks: notifications.yml
 - include_tasks: partition.yml

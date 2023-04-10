@@ -10,12 +10,6 @@
 - include_tasks: tasks/programs/local.yml
 - include_tasks: ../common/tasks/groups/local.yml
 
-- name: Enable lightdm service
-  become: true
-  systemd:
-    name: lightdm
-    enabled: yes
-
 - name: Enable NetworkManager service
   become: yes
   systemd:

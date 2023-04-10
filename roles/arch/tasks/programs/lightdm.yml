@@ -1,5 +1,5 @@
 ---
-- name: Install greeter
+- name: Install lightdm
   become: true
   pacman:
     state: present

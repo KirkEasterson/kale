@@ -1,3 +1,21 @@
 ---
-- include_tasks: docker.yml
-- include_tasks: video.yml
+- name: Add the current user to the video group
+  become: true
+  user:
+    name: "{{ remote_regular_user }}"
+    groups: video
+    append: yes
+
+- name: Add the current user to the input group
+  become: true
+  user:
+    name: "{{ remote_regular_user }}"
+    groups: input
+    append: yes
+
+- name: Add the current user to the docker group
+  become: yes
+  user:
+    name: "{{ remote_regular_user }}"
+    groups: docker
+    append: yes

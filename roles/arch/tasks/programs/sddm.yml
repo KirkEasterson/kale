@@ -1,0 +1,17 @@
+---
+- name: Install sddm
+  become: true
+  pacman:
+    state: present
+    name:
+      - sddm
+      - sddm-theme-nordic*
+
+- name: Enable sddm service
+  become: true
+  systemd:
+    name: sddm
+    enabled: yes
+
+# TODO: install nordic theme
+# TODO: change theme
