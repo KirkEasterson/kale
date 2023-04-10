@@ -23,7 +23,7 @@
   when: which_out.rc != 0
 
 - name: Build yay
-  command: makepkg -si
+  command: makepkg -si --noconfirm
   args:
     chdir: /opt/yay-git/
   when: which_out.rc != 0
