@@ -2,6 +2,8 @@
 - name: Check if yay is installed
   command: which yay
   changed_when: false
+  failed_when: false
+  ignore_errors: true
   register: which_out
 
 - name: Clone yay repo
