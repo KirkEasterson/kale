@@ -58,9 +58,10 @@ sudo apt install ansible
 
 Clone the repo, and check out the `arch-feature` branch.
 
-Run the below command from the base directory of the repository, and then reboot your computer.
+Run the below commands from the base directory of the repository, and then reboot your computer.
 
 ```sh
+ansible-galaxy install -r requirements.yml
 ansible-playbook arch.yml --ask-become-pass
 ```
 
