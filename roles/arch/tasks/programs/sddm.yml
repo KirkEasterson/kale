@@ -7,11 +7,39 @@
       - sddm
       - sddm-theme-nordic*
 
+- name: Install SDDM nordic theme
+  become: yes
+  become_user: aur_builder
+  kewlfft.aur.aur:
+    state: present
+    use: yay
+    name:
+      - sddm-nordic-theme-git
+
+      # TODO: check if sddm conf file exists
+- name: Check if SDDM conf file exists
+  stat:
+    path: /etc/sddm.conf
+  register: sddm_conf
+
+- name: Copy default SDDM conf file
+  copy:
+    src: /usr/lib/sddm/sddm.conf.d/default.conf
+    dest: /etc/sddm.conf
+  when: sddm_conf.stat.exists == false
+
+- name: Apply SDDM nordic theme
+  become: true
+  lineinfile:
+    dest: /etc/sddm.conf
+    state: "present"
+    line: "Current=Nordic-bluish"
+    regexp: "^Current=Nordic-bluish"
+    insertafter: "^Current="
+  register: mult_one
+
 - name: Enable sddm service
   become: true
   systemd:
     name: sddm
     enabled: yes
-
-# TODO: install nordic theme
-# TODO: change theme
