@@ -9,7 +9,7 @@
 - name: Clone yay repo
   git:
     repo: https://aur.archlinux.org/yay-git.git
-    dest: /opt/
+    dest: /opt/yay-git
   when: which_out.rc != 0
 
 - name: Change permission on yay repo
