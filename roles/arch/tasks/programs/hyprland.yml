@@ -8,8 +8,24 @@
       - hyprpaper
       - wofi
       - swayidle
-      - swaylock-effects*
-      - waybar-hyprland*
-      - xremap*
-      - grimblast*
-      - wev*
+
+- name: Install hyprland AUR packages
+  become: yes
+  become_user: aur_builder
+  kewlfft.aur.aur:
+    state: present
+    use: yay
+    name:
+      - swaylock-effects
+      - waybar-hyprland
+      - xremap-hypr-bin
+      - grimblast-git
+      - wev
+
+- name: Apply xremap uinput rules
+  become: true
+  lineinfile:
+    path: /etc/udev/rules.d/input.rules
+    state: "present"
+    regexp: "^KERNEL=="
+    line: 'KERNEL=="uinput", GROUP="input", TAG+="uaccess"'
