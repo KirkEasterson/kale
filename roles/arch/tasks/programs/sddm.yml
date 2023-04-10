@@ -5,6 +5,7 @@
     state: present
     name:
       - sddm
+      - sddm-kcm
 
 - name: Install SDDM nordic theme
   become: yes
