@@ -22,6 +22,7 @@
   register: sddm_conf
 
 - name: Copy default SDDM conf file
+  become: true
   copy:
     src: /usr/lib/sddm/sddm.conf.d/default.conf
     dest: /etc/sddm.conf
