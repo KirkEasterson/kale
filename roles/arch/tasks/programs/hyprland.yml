@@ -29,4 +29,4 @@
     state: "present"
     create: true
     regexp: "^KERNEL=="
-    line: 'KERNEL=="uinput", GROUP="input", TAG+="uaccess"'
+    line: 'KERNEL=="uinput", GROUP="input", MODE="0660"
