@@ -9,6 +9,9 @@
       - dbeaver
       - docker
       - docker-compose
+      - dotnet-runtime
+      - dotnet-sdk
+      - dotnet-runtime-pack
       - gcc
       - go
       - jdk-openjdk
