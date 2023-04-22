@@ -46,6 +46,7 @@
     state: present
     use: yay
     name:
+      - postman-bin
       - timeshift
 
 - name: Enable tlp service
