@@ -5,6 +5,7 @@
     state: present
     name:
       - alacritty
+      - arandr
       - base-devel
       - bat
       - bluez-utils
