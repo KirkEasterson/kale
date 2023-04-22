@@ -11,7 +11,7 @@
       - docker-compose
       - dotnet-runtime
       - dotnet-sdk
-      - dotnet-runtime-pack
+      - dotnet-targeting-pack
       - gcc
       - go
       - jdk-openjdk
