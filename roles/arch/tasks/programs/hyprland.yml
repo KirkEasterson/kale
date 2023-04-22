@@ -20,6 +20,7 @@
       - waybar-hyprland
       - xremap-hypr-bin
       - grimblast-git
+      - wdisplays
       - wev
 
 - name: Apply xremap uinput rules
