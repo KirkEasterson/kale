@@ -27,5 +27,6 @@
   lineinfile:
     path: /etc/udev/rules.d/input.rules
     state: "present"
+    create: true
     regexp: "^KERNEL=="
     line: 'KERNEL=="uinput", GROUP="input", TAG+="uaccess"'
