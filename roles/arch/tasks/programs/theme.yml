@@ -9,3 +9,23 @@
       - picom
       - pop-gtk-theme
       - unclutter
+
+- name: Check if 'quiet' is configured in the boot command
+  become: true
+  lineinfile:
+    backup: true
+    path: /etc/default/grub
+    regexp: '^GRUB_CMDLINE_LINUX=".*quiet'
+    state: absent
+  check_mode: true
+  register: quiet_param
+  changed_when: false
+
+- name: Insert 'quiet' if missing
+  become: true
+  lineinfile:
+    backrefs: true
+    path: /etc/default/grub
+    regexp: '^(GRUB_CMDLINE_LINUX=".*)"$'
+    line: '\1 quiet"'
+  when: quiet_param.found == false
