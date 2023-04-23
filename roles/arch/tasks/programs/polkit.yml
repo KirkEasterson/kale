@@ -1,0 +1,7 @@
+---
+- name: Install polkit
+  become: true
+  pacman:
+    state: present
+    name:
+      - polkit-gnome
