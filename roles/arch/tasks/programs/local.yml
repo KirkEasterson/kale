@@ -22,6 +22,7 @@
 - include_tasks: sddm.yml
 - include_tasks: network.yml
 - include_tasks: notifications.yml
+- include_tasks: pipewire.yml
 - include_tasks: partition.yml
 - include_tasks: polkit.yml
 - include_tasks: screen_lock.yml

@@ -1,0 +1,34 @@
+---
+- name: Install pipewire
+  become: true
+  pacman:
+    state: present
+    name:
+      - helvum
+      - pipewire
+      - pipewire-alsa
+      - pipewire-jack
+      - pipewire-pulse
+      - sof-firmware
+      - wireplumber
+
+- name: Enable pipwire socket
+  become: true
+  become_user: "{{ remote_regular_user }}"
+  systemd:
+    name: pipewire.socket
+    enabled: yes
+
+- name: Enable pipwire-pulse socket
+  become: true
+  become_user: "{{ remote_regular_user }}"
+  systemd:
+    name: pipewire-pulse.socket
+    enabled: yes
+
+- name: Enable wireplumber service
+  become: true
+  become_user: "{{ remote_regular_user }}"
+  systemd:
+    name: wireplumber.service
+    enabled: yes
