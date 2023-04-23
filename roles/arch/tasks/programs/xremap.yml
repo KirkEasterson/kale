@@ -18,6 +18,7 @@
     access_time: preserve
 
 - name: Check for uinput module to be loaded
+  become: true
   lineinfile:
     state: absent
     path: /etc/modules-load.d/uinput.conf
@@ -27,6 +28,7 @@
   register: check
 
 - name: Add uinput module to be loaded
+  become: true
   lineinfile:
     state: present
     path: /etc/modules-load.d/uinput.conf
