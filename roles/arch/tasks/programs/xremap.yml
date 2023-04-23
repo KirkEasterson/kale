@@ -9,6 +9,7 @@
       - xremap-hypr-bin
 
 - name: Touch the uinput file
+  become: true
   file:
     path: /etc/modules-load.d/uinput.conf
     state: touch
