@@ -5,6 +5,7 @@
     state: present
     name:
       - hyprland
+      - xdg-desktop-portal-hyprland
       - hyprpaper
       - wofi
       - swayidle
