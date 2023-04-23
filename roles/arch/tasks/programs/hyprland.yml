@@ -11,7 +11,7 @@
       - swayidle
 
 - name: Install hyprland AUR packages
-  become: yes
+  become: true
   become_user: aur_builder
   kewlfft.aur.aur:
     state: present
