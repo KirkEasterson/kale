@@ -27,6 +27,7 @@
 - include_tasks: screen_lock.yml
 - include_tasks: screenshot.yml
 - include_tasks: spotify.yml
+- include_tasks: xremap.yml
 - include_tasks: theme.yml
 - include_tasks: wallpapers.yml
 - include_tasks: x11.yml

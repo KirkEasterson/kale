@@ -1,0 +1,28 @@
+---
+- name: Install xremap
+  become: yes
+  become_user: aur_builder
+  kewlfft.aur.aur:
+    state: present
+    use: yay
+    name:
+      - xremap-hypr-bin
+
+- name: Check for uinput module to be loaded
+  shell: grep -c "^uinput" /etc/modules-load.d/uinput.conf || true
+  register: test_grep
+
+- name: Add uinput module to be loaded
+  lineinfile:
+    dest: /etc/modules-load.d/uinput.conf
+    line: uinput
+  when: test_grep.stdout == "0"
+
+- name: Apply xremap uinput rules
+  become: true
+  lineinfile:
+    path: /etc/udev/rules.d/99-input.rules
+    state: "present"
+    create: true
+    regexp: "^KERNEL=="
+    line: 'KERNEL=="uinput", GROUP="input", MODE="0660"'
