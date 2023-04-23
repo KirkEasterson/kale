@@ -30,4 +30,4 @@
     state: "present"
     create: true
     regexp: "^KERNEL=="
-    line: 'KERNEL=="uinput", GROUP="input", MODE="0660"
+    line: 'KERNEL=="uinput", GROUP="input", MODE="0660"'
