@@ -18,14 +18,20 @@
     access_time: preserve
 
 - name: Check for uinput module to be loaded
-  shell: grep -c "^uinput" /etc/modules-load.d/uinput.conf || true
-  register: test_grep
+  lineinfile:
+    state: absent
+    path: /etc/modules-load.d/uinput.conf
+    regexp: "^uinput$"
+  check_mode: true
+  changed_when: false # This just makes things look prettier in the logs
+  register: check
 
 - name: Add uinput module to be loaded
   lineinfile:
-    dest: /etc/modules-load.d/uinput.conf
+    state: present
+    path: /etc/modules-load.d/uinput.conf
     line: uinput
-  when: test_grep.stdout == "0"
+  when: check.found == 0
 
 - name: Apply xremap uinput rules
   become: true
