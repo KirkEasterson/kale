@@ -15,6 +15,7 @@
 - include_tasks: discord.yml
 - include_tasks: docker.yml
 - include_tasks: essential.yml
+- include_tasks: plymouth.yml
 - include_tasks: file_explorers.yml
 - include_tasks: fonts.yml
 - include_tasks: i3.yml
