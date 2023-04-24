@@ -46,7 +46,9 @@
     state: present
     use: yay
     name:
+      - 1password
       - postman-bin
+      - slack-desktop
       - timeshift
 
 - name: Enable tlp service
