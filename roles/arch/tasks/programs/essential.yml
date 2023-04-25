@@ -18,6 +18,7 @@
       - hyperfine
       - kitty
       - lazygit
+      - minecraft-launcher
       - neofetch
       - neovim
       - powertop
@@ -37,6 +38,8 @@
       - wezterm
       - wget
       - xcape
+      - xsel
+      - xclip
       - zoxide
       - zsh
 
