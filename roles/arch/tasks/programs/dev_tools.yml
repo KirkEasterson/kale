@@ -4,6 +4,8 @@
   pacman:
     state: present
     name:
+      - aspnet-runtime
+      - aspnet-targeting-pack
       - clang
       - code
       - dbeaver
@@ -17,8 +19,15 @@
       - jdk-openjdk
       - jre-openjdk
       - kotlin
+      - kubectl
       - make
+      - minikube
       - nodejs
       - npm
       - python3
       - rust
+      - terraform
+
+- name: Install terraform autocomplete
+  command: terraform -install-autocomplete
+  changed_when: false
