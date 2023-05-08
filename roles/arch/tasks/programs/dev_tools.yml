@@ -31,3 +31,4 @@
 - name: Install terraform autocomplete
   command: terraform -install-autocomplete
   changed_when: false
+  failed_when: false
