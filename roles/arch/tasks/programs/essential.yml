@@ -18,7 +18,6 @@
       - hyperfine
       - kitty
       - lazygit
-      - minecraft-launcher
       - neofetch
       - neovim
       - powertop
@@ -51,6 +50,7 @@
     use: yay
     name:
       - 1password
+      - minecraft-launcher
       - postman-bin
       - slack-desktop
       - timeshift
