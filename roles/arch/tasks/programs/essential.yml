@@ -18,6 +18,7 @@
       - hyperfine
       - kitty
       - lazygit
+      - man
       - neofetch
       - neovim
       - powertop
