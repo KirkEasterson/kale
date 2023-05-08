@@ -5,7 +5,7 @@
 
 - include_tasks: audio.yml
 - include_tasks: awesome.yml
-- include_tasks: hyprland.yml
+# - include_tasks: hyprland.yml
 - include_tasks: battery_icon.yml
 - include_tasks: bluetooth.yml
 - include_tasks: brightness.yml
