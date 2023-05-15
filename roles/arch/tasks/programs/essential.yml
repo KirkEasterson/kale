@@ -4,6 +4,7 @@
   pacman:
     state: present
     name:
+      - acpi
       - alacritty
       - arandr
       - base-devel
@@ -18,19 +19,30 @@
       - hyperfine
       - kitty
       - lazygit
+      - libreoffice
+      - linux-lts
+      - linux-lts-headers
       - man
       - neofetch
       - neovim
+      - p7zip
+      - p7zip-plugins
       - powertop
+      - python
+      - python-pip
       - ripgrep
       - rsync
       - starship
       - sxhkd
       - tar
+      - tar
       - thunderbird
       - tlp
       - tmux
       - tmuxp
+      - transmission-gtk
+      - transmission-cli
+      - tree
       - unrar
       - unzip
       - vim
@@ -38,8 +50,8 @@
       - wezterm
       - wget
       - xcape
-      - xsel
       - xclip
+      - xsel
       - zoxide
       - zsh
 
@@ -52,6 +64,7 @@
     name:
       - 1password
       - minecraft-launcher
+      - pamac-all
       - postman-bin
       - slack-desktop
       - timeshift
