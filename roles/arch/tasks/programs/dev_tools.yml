@@ -25,7 +25,7 @@
       - nodejs
       - npm
       - python3
-      - rust
+      - rustup
       - terraform
 
 - name: Install terraform autocomplete
