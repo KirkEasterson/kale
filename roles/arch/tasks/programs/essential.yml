@@ -53,6 +53,7 @@
       - xcape
       - xclip
       - xsel
+      - zellij
       - zoxide
       - zsh
 
