@@ -7,13 +7,23 @@
       - acpi
       - alacritty
       - arandr
+      - asciiquarium
       - base-devel
       - bat
       - bluez-utils
       - btop
       - cheese
+      - clang
+      - cmake
+      - cmatrix
+      - cowsay
+      - curl
+      - espeak
       - exa
+      - figlet
+      - fortune
       - fzf
+      - gcc
       - git
       - htop
       - hyperfine
@@ -22,6 +32,7 @@
       - libreoffice
       - linux-lts
       - linux-lts-headers
+      - make
       - man
       - neofetch
       - neovim
@@ -33,6 +44,7 @@
       - python-pip
       - ripgrep
       - rsync
+      - screenkey
       - starship
       - sxhkd
       - tar
@@ -49,10 +61,13 @@
       - vim
       - virtualbox
       - wezterm
+      - wireshark-cli
+      - wireshark-qt
       - wget
       - xcape
       - xclip
       - xsel
+      - yes
       - zellij
       - zoxide
       - zsh
