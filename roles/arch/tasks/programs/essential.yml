@@ -18,6 +18,7 @@
       - cmatrix
       - cowsay
       - curl
+      - direnv
       - espeak
       - exa
       - figlet
@@ -34,6 +35,8 @@
       - linux-lts-headers
       - make
       - man
+      - mesa
+      - mesa-utils
       - neofetch
       - neovim
       - nmap
@@ -42,12 +45,12 @@
       - powertop
       - python
       - python-pip
+      - ranger
       - ripgrep
       - rsync
       - screenkey
       - starship
       - sxhkd
-      - tar
       - tar
       - thunderbird
       - tlp
@@ -60,6 +63,7 @@
       - unzip
       - vim
       - virtualbox
+      - vlc
       - wezterm
       - wireshark-cli
       - wireshark-qt
@@ -84,7 +88,9 @@
       - pamac-all
       - postman-bin
       - slack-desktop
+      - tdrop
       - timeshift
+      - ueberzugpp
 
 - name: Enable tlp service
   become: true

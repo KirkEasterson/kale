@@ -15,6 +15,7 @@
       - dotnet-sdk
       - dotnet-targeting-pack
       - gcc
+      - ghc
       - go
       - jdk-openjdk
       - jre-openjdk
@@ -24,9 +25,12 @@
       - minikube
       - nodejs
       - npm
+      - ocaml
+      - opam
       - python3
       - rustup
       - terraform
+      - zig
 
 - name: Install terraform autocomplete
   command: terraform -install-autocomplete
