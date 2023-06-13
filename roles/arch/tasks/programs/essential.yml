@@ -26,6 +26,7 @@
       - fzf
       - gcc
       - git
+      - github-cli
       - htop
       - hyperfine
       - kitty
@@ -50,14 +51,15 @@
       - rsync
       - screenkey
       - starship
+      - steam
       - sxhkd
       - tar
       - thunderbird
       - tlp
       - tmux
       - tmuxp
-      - transmission-gtk
       - transmission-cli
+      - transmission-gtk
       - tree
       - unrar
       - unzip
@@ -65,9 +67,9 @@
       - virtualbox
       - vlc
       - wezterm
+      - wget
       - wireshark-cli
       - wireshark-qt
-      - wget
       - xcape
       - xclip
       - xsel
