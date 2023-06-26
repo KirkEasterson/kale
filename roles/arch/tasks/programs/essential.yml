@@ -39,6 +39,7 @@
       - mesa
       - mesa-utils
       - neofetch
+      - neovide
       - neovim
       - nmap
       - noto-fonts-emoji
