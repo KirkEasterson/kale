@@ -91,6 +91,7 @@
       - minecraft-launcher
       - pamac-all
       - postman-bin
+      - rpi-imager
       - slack-desktop
       - tdrop
       - timeshift
