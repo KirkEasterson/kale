@@ -5,7 +5,8 @@
     state: present
     name:
       - fontconfig
+      - noto-fonts-emoji
+      - ttf-jetbrains-mono-nerd
       - ttf-ubuntu-font-family
       - ttf-ubuntu-mono-nerd
-      - ttf-jetbrains-mono-nerd
       - ttf-ubuntu-nerd
