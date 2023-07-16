@@ -1,4 +1,6 @@
 ---
+- include_tasks: cowsay.yml
+
 - include_tasks: configure_pacman.yml
 - include_tasks: aur/install_yay.yml
 - include_tasks: configure_aur.yml
