@@ -92,7 +92,7 @@
     name:
       - 1password
       - minecraft-launcher
-      - nordvpn-bin # TODO: run this command `usermod -aG nordvpn $USER`, and start `nordvpnd` service
+      - nordvpn-bin
       - pamac-all
       - postman-bin
       - rpi-imager
