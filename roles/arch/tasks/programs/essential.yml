@@ -67,12 +67,12 @@
       - tree
       - udiskie
       - unrar
-      # - unzip
-      # - vim
-      # - virtualbox
-      # - vlc
-      # - wezterm
-      # - wget
+      - unzip
+      - vim
+      - virtualbox
+      - vlc
+      - wezterm
+      - wget
       # - wireshark-cli
       # - wireshark-qt
       # - xcape
