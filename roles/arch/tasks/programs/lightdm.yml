@@ -7,3 +7,11 @@
       - light-locker
       - lightdm-gtk-greeter-settings
       - lightdm-slick-greeter
+
+- name: Enable lightdm service
+  become: true
+  systemd:
+    name: lightdm
+    enabled: yes
+
+# TODO: set up lightdm conf file here (in ansible)

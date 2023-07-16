@@ -32,6 +32,16 @@
       - terraform
       - zig
 
+- name: Install dev AUR tools
+  become: yes
+  become_user: aur_builder
+  kewlfft.aur.aur:
+    state: present
+    use: yay
+    name:
+      - ghs-hs-bin
+      - nvm
+
 - name: Install terraform autocomplete
   command: terraform -install-autocomplete
   changed_when: false
