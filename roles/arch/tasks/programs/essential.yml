@@ -21,7 +21,7 @@
       - cowsay
       - curl
       - direnv
-      - espeak
+      - espeak-ng
       - exa
       - figlet
       - fortune
