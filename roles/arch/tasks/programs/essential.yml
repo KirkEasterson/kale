@@ -46,7 +46,6 @@
       - nmap
       - openvpn
       - p7zip
-      - p7zip-plugins
       - pacman-contrib
       - powertop
       - python
