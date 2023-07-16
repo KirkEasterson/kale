@@ -73,15 +73,15 @@
       - vlc
       - wezterm
       - wget
-      # - wireshark-cli
-      # - wireshark-qt
-      # - xcape
-      # - xclip
-      # - xsel
+      - wireshark-cli
+      - wireshark-qt
+      - xcape
+      - xclip
+      - xsel
       # - yes
-      # - zellij
-      # - zoxide
-      # - zsh
+      - zellij
+      - zoxide
+      - zsh
 
 - name: Install essential aur tools
   become: yes
