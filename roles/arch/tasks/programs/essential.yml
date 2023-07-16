@@ -83,23 +83,23 @@
       - zoxide
       - zsh
 
-# - name: Install essential aur tools
-#   become: yes
-#   become_user: aur_builder
-#   kewlfft.aur.aur:
-#     state: present
-#     use: yay
-#     name:
-#       - 1password
-#       - minecraft-launcher
-#       - nordvpn-bin # TODO: run this command `usermod -aG nordvpn $USER`, and start `nordvpnd` service
-#       - pamac-all
-#       - postman-bin
-#       - rpi-imager
-#       - slack-desktop
-#       - tdrop
-#       - timeshift
-#       - ueberzugpp
+- name: Install essential aur tools
+  become: yes
+  become_user: aur_builder
+  kewlfft.aur.aur:
+    state: present
+    use: yay
+    name:
+      - 1password
+      - minecraft-launcher
+      - nordvpn-bin # TODO: run this command `usermod -aG nordvpn $USER`, and start `nordvpnd` service
+      - pamac-all
+      - postman-bin
+      - rpi-imager
+      - slack-desktop
+      - tdrop
+      - timeshift
+      - ueberzugpp
 
 - name: Enable tlp service
   become: true
