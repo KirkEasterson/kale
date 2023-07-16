@@ -5,7 +5,9 @@
     state: present
     name:
       - acpi
+      - acpid
       - alacritty
+      - alsa-utils
       - arandr
       - asciiquarium
       - base-devel
@@ -42,9 +44,10 @@
       - neovide
       - neovim
       - nmap
-      - noto-fonts-emoji
+      - openvpn
       - p7zip
       - p7zip-plugins
+      - pacman-contrib
       - powertop
       - python
       - python-pip
@@ -63,6 +66,7 @@
       - transmission-cli
       - transmission-gtk
       - tree
+      - udiskie
       - unrar
       - unzip
       - vim
@@ -89,7 +93,7 @@
     name:
       - 1password
       - minecraft-launcher
-      - nordvpn-bin
+      - nordvpn-bin # TODO: run this command `usermod -aG nordvpn $USER`, and start `nordvpnd` service
       - pamac-all
       - postman-bin
       - rpi-imager
