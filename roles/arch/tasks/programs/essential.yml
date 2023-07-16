@@ -47,26 +47,26 @@
       - openvpn
       - p7zip
       # - pacman-contrib
-      - powertop
-      - python
-      - python-pip
-      - ranger
-      - ripgrep
-      - rsync
-      - screenkey
-      - starship
-      - steam
-      - sxhkd
-      - tar
-      - thunderbird
-      - tlp
-      - tmux
-      - tmuxp
-      - transmission-cli
-      - transmission-gtk
-      - tree
-      - udiskie
-      - unrar
+      # - powertop
+      # - python
+      # - python-pip
+      # - ranger
+      # - ripgrep
+      # - rsync
+      # - screenkey
+      # - starship
+      # - steam
+      # - sxhkd
+      # - tar
+      # - thunderbird
+      # - tlp
+      # - tmux
+      # - tmuxp
+      # - transmission-cli
+      # - transmission-gtk
+      # - tree
+      # - udiskie
+      # - unrar
       - unzip
       - vim
       - virtualbox
