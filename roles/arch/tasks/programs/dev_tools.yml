@@ -39,7 +39,7 @@
     state: present
     use: yay
     name:
-      - ghs-hs-bin
+      - ghcup-hs-bin
       - nvm
 
 - name: Install terraform autocomplete
