@@ -74,6 +74,8 @@
       - "vlc"
       - "wezterm"
       - "wget"
+      - "wine"
+      - "winetricks"
       - "wireshark-cli"
       - "wireshark-qt"
       - "xcape"
