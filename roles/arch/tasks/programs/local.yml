@@ -36,4 +36,5 @@
 - include_tasks: theme.yml
 - include_tasks: wallpapers.yml
 - include_tasks: x11.yml
+- include_tasks: music.yml
 # - include_tasks: aur/local.yml
