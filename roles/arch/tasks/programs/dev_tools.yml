@@ -46,3 +46,8 @@
   command: terraform -install-autocomplete
   changed_when: false
   failed_when: false
+
+- name: Initialize opam
+  command: opam init -a
+  changed_when: false
+  failed_when: false
