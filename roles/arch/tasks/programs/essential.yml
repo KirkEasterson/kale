@@ -93,6 +93,7 @@
     use: yay
     name:
       - 1password
+      - gromit-mpx
       - minecraft-launcher
       - nordvpn-bin # TODO: run this command `usermod -aG nordvpn $USER`, and start `nordvpnd` service
       - pamac-all
