@@ -4,11 +4,12 @@
   pacman:
     state: present
     name:
-      - autorandr
-      - xf86-video-intel
-      - xf86-input-libinput
-      - xorg-server
-      - xorg-xinit
-      - xorg-xinput
-      - xorg-xrandr
-      - xterm
+      - "autorandr"
+      - "xf86-input-libinput"
+      - "xf86-input-synaptics"
+      - "xf86-video-intel"
+      - "xorg-server"
+      - "xorg-xinit"
+      - "xorg-xinput"
+      - "xorg-xrandr"
+      - "xterm"
