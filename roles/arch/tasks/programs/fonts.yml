@@ -4,9 +4,11 @@
   pacman:
     state: present
     name:
-      - fontconfig
-      - noto-fonts-emoji
-      - ttf-jetbrains-mono-nerd
-      - ttf-ubuntu-font-family
-      - ttf-ubuntu-mono-nerd
-      - ttf-ubuntu-nerd
+      - "fontconfig"
+      - "noto-fonts-emoji"
+      - "ttf-dejavu-nerd"
+      - "ttf-hack-nerd"
+      - "ttf-jetbrains-mono-nerd"
+      - "ttf-ubuntu-font-family"
+      - "ttf-ubuntu-mono-nerd"
+      - "ttf-ubuntu-nerd"
