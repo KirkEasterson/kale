@@ -72,7 +72,7 @@
       - "vim"
       - "virtualbox"
       - "virtualbox-ext-vnc"
-      - "virtualbox-guiest-iso"
+      - "virtualbox-guest-iso"
       - "virtualbox-host-modules-arch"
       - "virtualbox-sdk"
       - "vlc"
