@@ -9,6 +9,7 @@
     path: "~/.ssh/id_ed25519"
     type: "ed25519"
     passphrase: "{{ github_ssh_passphrase }}"
+    regenerate: "never"
   register: ssh_key
 
 - name: Authorize key with GitHub
