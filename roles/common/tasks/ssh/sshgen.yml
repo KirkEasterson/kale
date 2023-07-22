@@ -12,7 +12,7 @@
 
 - name: Authorize SSH key with GitHub
   community.general.github_key:
-    name: Access Key for Some Machine
+    name: "ansible - {{ ansible - hostname }}"
     token: '{{ github_access_token }}'
     pubkey: "{{ lookup('ansible.builtin.file',{{ ssh_key.filename }}) }}"
   when: ssh_key.changed
