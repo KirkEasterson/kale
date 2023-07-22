@@ -15,4 +15,4 @@
     name: Access Key for Some Machine
     token: '{{ github_access_token }}'
     pubkey: "{{ lookup('ansible.builtin.file',{{ ssh_key.filename }}) }}"
-  when: ssh_key.stat.changed
+  when: ssh_key.changed
