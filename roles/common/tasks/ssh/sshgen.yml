@@ -10,6 +10,8 @@
     type: "ed25519"
     passphrase: "{{ github_ssh_passphrase }}"
     regenerate: "never"
+    force: false
+  changed_when: false
   register: ssh_key
 
 - name: Authorize key with GitHub
