@@ -24,7 +24,7 @@
 
 - name: Clone dotfiles
   git:
-    repo: https://github.com/KirkEasterson/.dotfiles.git
+    repo: "git@github.com:KirkEasterson/.dotfiles.git"
     dest: $HOME/.dotfiles/
     track_submodules: true
     recursive: true

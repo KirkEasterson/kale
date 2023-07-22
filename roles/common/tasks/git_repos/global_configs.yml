@@ -6,7 +6,7 @@
 
 - name: Clone global configs
   git:
-    repo: https://github.com/KirkEasterson/.global_configs.git
+    repo: "git@github.com:KirkEasterson/.global_configs.git"
     dest: $HOME/.global_configs/
   when: global_configs_dir.stat.exists == false
 
