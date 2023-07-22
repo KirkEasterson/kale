@@ -6,6 +6,7 @@
     state: present
     name: stow
 - include_tasks: ../common/tasks/git_repos/local.yml
+- include_tasks: ../common/tasks/ssh/sshgen.yml
 - include_tasks: ../common/tasks/locale.yml
 - include_tasks: tasks/programs/local.yml
 - include_tasks: ../common/tasks/groups/local.yml

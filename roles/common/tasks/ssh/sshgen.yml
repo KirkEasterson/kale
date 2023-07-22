@@ -1,0 +1,13 @@
+---
+- name: Generate an SSH keypair
+  community.crypto.openssh_keypair:
+    path: "~/.ssh/id_ed25519"
+    type: "ed25519"
+  register: ssh_key
+
+- name: Authorize SSH key with GitHub
+  community.general.github_key:
+    name: Access Key for Some Machine
+    token: '{{ github_access_token }}'
+    pubkey: "{{ lookup('ansible.builtin.file',{{ ssh_key.filename }}) }}"
+  when: ssh_key.stat.changed
