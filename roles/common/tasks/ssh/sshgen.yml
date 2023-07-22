@@ -10,9 +10,13 @@
     type: "ed25519"
   register: ssh_key
 
-- name: Authorize SSH key with GitHub
-  community.general.github_key:
-    name: "ansible - {{ ansible - hostname }}"
+- name: Read SSH public key to authorize
+  ansible.builtin.shell: cat ~/.ssh/id_ed25519
+  register: ssh_pub_key
+
+- name: Authorize key with GitHub
+  local_action:
+    module: github_key
+    name: Access Key for Some Machine
     token: '{{ github_access_token }}'
-    pubkey: "{{ lookup('ansible.builtin.file', '~/.ssh/id_ed25519') }}"
-  when: ssh_key.changed
+    pubkey: '{{ ssh_pub_key.stdout }}'
