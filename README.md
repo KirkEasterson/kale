@@ -62,7 +62,7 @@ Run the below commands from the base directory of the repository, and then reboo
 
 ```sh
 ansible-galaxy install -r requirements.yml
-ansible-playbook arch.yml --ask-become-pass
+ansible-playbook arch.yml --ask-become-pass --ask-vault-pass
 ```
 
 ## Usage
