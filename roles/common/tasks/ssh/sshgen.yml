@@ -14,5 +14,5 @@
   community.general.github_key:
     name: "ansible - {{ ansible - hostname }}"
     token: '{{ github_access_token }}'
-    pubkey: "{{ lookup('ansible.builtin.file',{{ ssh_key.filename }}) }}"
+    pubkey: "{{ lookup('ansible.builtin.file', '~/.ssh/id_ed25519') }}"
   when: ssh_key.changed
