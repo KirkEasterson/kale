@@ -1,4 +1,9 @@
 ---
+- name: Create .ssh directory
+  builtin.file:
+    path: ~/.ssh
+    state: directory
+
 - name: Generate an SSH keypair
   community.crypto.openssh_keypair:
     path: "~/.ssh/id_ed25519"
