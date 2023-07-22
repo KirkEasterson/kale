@@ -14,6 +14,6 @@
 - name: Authorize key with GitHub
   local_action:
     module: github_key
-    name: Access Key for Some Machine
+    name: "ansible - {{ remote_regular_user }}"
     token: "{{ github_access_token }}"
     pubkey: "{{ ssh_key.public_key }}"
