@@ -4,3 +4,5 @@ remote_regular_user: "{{ ansible_user_id }}"
 # the desired local and language
 config_system_locale: "nb_NO.UTF-8"
 config_system_language: "en_US.UTF-8"
+
+github_access_token: "{{ vault_github_access_token }}"
