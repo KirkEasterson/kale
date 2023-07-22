@@ -10,12 +10,6 @@
 - include_tasks: tasks/programs/local.yml
 - include_tasks: ../common/tasks/groups/local.yml
 
-- name: Enable NetworkManager service
-  become: yes
-  systemd:
-    name: NetworkManager
-    enabled: yes
-
 - name: Change user shell to zsh
   become: yes
   user:
