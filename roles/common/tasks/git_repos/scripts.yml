@@ -8,5 +8,5 @@
   git:
     repo: "git@github.com:KirkEasterson/scripts.git"
     dest: $HOME/scripts/
-    key_file: $HOME/.ssh/id_ed25519.pub
+    key_file: $HOME/.ssh/id_ed25519
   when: scripts_dir.stat.exists == false
