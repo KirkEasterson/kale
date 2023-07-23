@@ -22,7 +22,7 @@
     module: github_key
     name: "ansible"
     token: "{{ github_access_token }}"
-    pubkey: "{{ ansible_key_pulic.public_key }}"
+    pubkey: "{{ ansible_key_pulic }}"
 
 - name: Add ansible SSH key
   shell: |
