@@ -26,6 +26,8 @@
   git:
     repo: "git@github.com:KirkEasterson/.dotfiles.git"
     dest: $HOME/.dotfiles/
+    accept_hostkey: true
+    key_file: $HOME/.ssh/id_ed25519.pub
     track_submodules: true
     recursive: true
   when: dotfiles_dir.stat.exists == false
