@@ -6,7 +6,10 @@ config_system_locale: "nb_NO.UTF-8"
 config_system_language: "en_US.UTF-8"
 
 github_access_token: "{{ vault_github_access_token }}"
-github_ssh_passphrase: "{{ vault_github_ssh_passphrase }}"
+user_ssh_passphrase: "{{ vault_user_ssh_passphrase }}"
+ansible_key_pulic: "{{ vault_ansible_key_public }}"
+ansible_key_private: "{{ vault_ansible_key_private }}"
 
 sshkey_type: "ed25519"
 sshkey_path: "~/.ssh/id_{{ sshkey_type }}"
+sshkey_ansible_path: "~/.ssh/id_{{ sshkey_type }}_ansible"

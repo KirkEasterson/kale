@@ -5,11 +5,10 @@
     mode: "700"
     state: "directory"
 
-- name: Generate an SSH keypair
+- name: Generate an SSH keypair for the user
   community.crypto.openssh_keypair:
-    path: "{{ sshkey_path }}"
+    path: "{{ sshkey_ansible_path }}"
     type: "{{ sshkey_type }}"
-    passphrase: "{{ github_ssh_passphrase }}"
     regenerate: "never"
     force: false
   changed_when: false
@@ -21,8 +20,3 @@
     name: "{{ remote_regular_user }} - {{ ansible_hostname }}"
     token: "{{ github_access_token }}"
     pubkey: "{{ sshkey.public_key }}"
-
-- name: Evaluating the authentication agent & adding the key...
-  shell: |
-    eval "$(ssh-agent)"
-    ssh-add {{ sshkey_path }}
