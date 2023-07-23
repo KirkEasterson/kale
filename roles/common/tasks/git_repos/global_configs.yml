@@ -8,7 +8,7 @@
   git:
     repo: "git@github.com:KirkEasterson/.global_configs.git"
     dest: $HOME/.global_configs/
-    key_file: $HOME/.ssh/id_ed25519
+    key_file: "{{ sshkey_path }}"
   when: global_configs_dir.stat.exists == false
 
 - name: Install global configs

@@ -6,8 +6,8 @@
 
 - name: Generate an SSH keypair
   community.crypto.openssh_keypair:
-    path: "~/.ssh/id_ed25519"
-    type: "ed25519"
+    path: "{{ sshkey_path }}"
+    type: "{{ sshkey_type }}"
     passphrase: "{{ github_ssh_passphrase }}"
     regenerate: "never"
     force: false

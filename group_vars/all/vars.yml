@@ -7,3 +7,6 @@ config_system_language: "en_US.UTF-8"
 
 github_access_token: "{{ vault_github_access_token }}"
 github_ssh_passphrase: "{{ vault_github_ssh_passphrase }}"
+
+sshkey_type: "ed25519"
+sshkey_path: "~/.ssh/id_{{ sshkey_type }}"
