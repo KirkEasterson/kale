@@ -21,3 +21,8 @@
     name: "{{ remote_regular_user }} - {{ ansible_hostname }}"
     token: "{{ github_access_token }}"
     pubkey: "{{ sshkey.public_key }}"
+
+- name: Evaluating the authentication agent & adding the key...
+  shell: |
+    eval "$(ssh-agent)"
+    ssh-add {{ sshkey_path }}
