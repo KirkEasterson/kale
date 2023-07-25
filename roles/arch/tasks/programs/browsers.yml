@@ -4,6 +4,16 @@
   pacman:
     state: present
     name:
-      - chromium
-      - firefox
-      - firefox-developer-edition
+      - "chromium"
+      - "firefox"
+      - "firefox-developer-edition"
+
+- name: Install AUR browsers
+  become: yes
+  become_user: aur_builder
+  kewlfft.aur.aur:
+    state: present
+    use: yay
+    name:
+      - "google-chrome"
+
