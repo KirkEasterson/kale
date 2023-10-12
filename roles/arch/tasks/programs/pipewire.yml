@@ -4,9 +4,14 @@
   pacman:
     state: present
     name:
-      - helvum
-      - pipewire
-      - pipewire-alsa
-      - pipewire-pulse
-      - sof-firmware
-      - wireplumber
+      - "helvum"
+      - "pipewire"
+      - "pipewire-alsa"
+      - "pipewire-pulse"
+      - "pipewire-x11-bell"
+      - "sof-firmware"
+      - "wireplumber"
+
+# TODO: change the path to somewhere in this repo
+- name: Change terminal bell
+  command: "pactl upload-sample /usr/share/sounds/freedesktop/stereo/bell.oga bell-window-system"
