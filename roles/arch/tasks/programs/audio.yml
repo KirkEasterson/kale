@@ -4,9 +4,13 @@
   pacman:
     state: present
     name:
-      - pavucontrol
-      - pipewire
-      - pipewire-pulse
-      - playerctl
-      - volumeicon
-      - wireplumber
+      - "ardour"
+      - "guitarix"
+      - "gxplugins.lv2"
+      - "pavucontrol"
+      - "pipewire"
+      - "pipewire-pulse"
+      - "playerctl"
+      - "reaper"
+      - "volumeicon"
+      - "wireplumber"
