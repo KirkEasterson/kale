@@ -5,3 +5,12 @@
     state: present
     name:
       - awesome
+
+- name: Install awesomewm aur tools
+  become: yes
+  become_user: aur_builder
+  kewlfft.aur.aur:
+    state: present
+    use: yay
+    name:
+      - "awesome-freedesktop-git"
