@@ -4,33 +4,34 @@
   pacman:
     state: present
     name:
-      - aspnet-runtime
-      - aspnet-targeting-pack
-      - clang
-      - code
-      - dbeaver
-      - docker
-      - docker-compose
-      - dotnet-runtime
-      - dotnet-sdk
-      - dotnet-targeting-pack
-      - gcc
-      - ghc
-      - go
-      - jdk-openjdk
-      - jre-openjdk
-      - kotlin
-      - kubectl
-      - make
-      - minikube
-      - nodejs
-      - npm
-      - ocaml
-      - opam
-      - python3
-      - rustup
-      - terraform
-      - zig
+      - "aspnet-runtime"
+      - "aspnet-targeting-pack"
+      - "clang"
+      - "code"
+      - "dbeaver"
+      - "docker"
+      - "docker-compose"
+      - "dotnet-runtime"
+      - "dotnet-sdk"
+      - "dotnet-targeting-pack"
+      - "dune"
+      - "gcc"
+      - "ghc"
+      - "go"
+      - "jdk-openjdk"
+      - "jre-openjdk"
+      - "kotlin"
+      - "kubectl"
+      - "make"
+      - "minikube"
+      - "nodejs"
+      - "npm"
+      - "ocaml"
+      - "opam"
+      - "python3"
+      - "rustup"
+      - "terraform"
+      - "zig"
 
 - name: Install dev AUR tools
   become: yes
@@ -39,8 +40,10 @@
     state: present
     use: yay
     name:
-      - ghcup-hs-bin
-      - nvm
+      - "ghcup-hs-bin"
+      - "go-task-bin"
+      - "golangci-lint-bin"
+      - "nvm"
 
 - name: Install terraform autocomplete
   command: terraform -install-autocomplete
