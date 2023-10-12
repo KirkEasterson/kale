@@ -14,6 +14,7 @@
       - "bat"
       - "bluez-utils"
       - "btop"
+      - "capitaine-cursors"
       - "cheese"
       - "clang"
       - "cmake"
@@ -22,17 +23,21 @@
       - "cowsay"
       - "curl"
       - "direnv"
+      - "emacs"
       - "espeak-ng"
       - "exa"
+      - "eza"
       - "figlet"
       - "font-manager"
       - "fzf"
+      - "galculator"
       - "gcc"
       - "git"
       - "github-cli"
       - "grc"
       - "htop"
       - "hyperfine"
+      - "kdeconnect"
       - "kitty"
       - "lazygit"
       - "libreoffice"
@@ -42,6 +47,7 @@
       - "man"
       - "mesa"
       - "mesa-utils"
+      - "mpd"
       - "neofetch"
       - "neovide"
       - "neovim"
@@ -49,6 +55,7 @@
       - "openvpn"
       - "p7zip"
       - "pacman-contrib"
+      - "pandoc"
       - "powertop"
       - "python"
       - "python-pip"
@@ -60,6 +67,7 @@
       - "steam"
       - "sxhkd"
       - "tar"
+      - "texlive"
       - "thunderbird"
       - "tlp"
       - "tmux"
@@ -85,7 +93,12 @@
       - "wireshark-qt"
       - "xcape"
       - "xclip"
+      - "xdg-desktop-portal"
+      - "xdg-desktop-portal-gtk"
+      - "xdg-desktop-portal-xapp"
+      - "xdg-user-dirs"
       - "xsel"
+      - "youtube-dl"
       - "zellij"
       - "zoxide"
       - "zsh"
@@ -97,18 +110,21 @@
     state: present
     use: yay
     name:
-      - 1password
-      - golangci-lint
-      - gromit-mpx
-      - minecraft-launcher
-      - nordvpn-bin # TODO: run this command `usermod -aG nordvpn $USER`, and start `nordvpnd` service
-      - pamac-all
-      - postman-bin
-      - rpi-imager
-      - slack-desktop
-      - tdrop
-      - timeshift
-      - ueberzugpp
+      - "1password"
+      - "1password-cli"
+      - "golangci-lint"
+      - "gromit-mpx"
+      - "gruvbox-dark-gtk"
+      - "minecraft-launcher"
+      - "nordvpn-bin" # TODO: run this command `usermod -aG nordvpn $USER`, and start `nordvpnd` service
+      - "pamac-all"
+      - "postman-bin"
+      - "rpi-imager"
+      - "slack-desktop"
+      - "streamlink-twitch-gui-bin"
+      - "tdrop"
+      - "timeshift"
+      - "ueberzugpp"
 
 - name: Enable tlp service
   become: true
