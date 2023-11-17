@@ -16,4 +16,5 @@
     use: yay
     name:
       - "google-chrome"
+      - "mercury-browser-bin"
 
