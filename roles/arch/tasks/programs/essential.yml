@@ -29,6 +29,7 @@
       - "eza"
       - "figlet"
       - "font-manager"
+      - "fortune-mod"
       - "fzf"
       - "galculator"
       - "gcc"
@@ -63,6 +64,7 @@
       - "ripgrep"
       - "rsync"
       - "screenkey"
+      - "sl"
       - "starship"
       - "steam"
       - "sxhkd"
@@ -76,6 +78,7 @@
       - "transmission-gtk"
       - "tree"
       - "udiskie"
+      - "ueberzug"
       - "unrar"
       - "unzip"
       - "vim"
@@ -99,6 +102,8 @@
       - "xdg-user-dirs"
       - "xsel"
       - "youtube-dl"
+      - "zathura"
+      - "zathura-pdf-poppler"
       - "zellij"
       - "zoxide"
       - "zsh"
@@ -112,6 +117,7 @@
     name:
       - "1password"
       - "1password-cli"
+      - "bash-pipes"
       - "golangci-lint"
       - "gromit-mpx"
       - "gruvbox-dark-gtk"
@@ -124,7 +130,7 @@
       - "streamlink-twitch-gui-bin"
       - "tdrop"
       - "timeshift"
-      - "ueberzugpp"
+      - "universal-android-debloater"
 
 - name: Enable tlp service
   become: true
