@@ -53,6 +53,7 @@
       - "neovide"
       - "neovim"
       - "nmap"
+      - "ollama"
       - "openvpn"
       - "p7zip"
       - "pacman-contrib"
@@ -122,6 +123,7 @@
       - "gromit-mpx"
       - "gruvbox-dark-gtk"
       - "minecraft-launcher"
+      - "nordtray-bin"
       - "nordvpn-bin" # TODO: run this command `usermod -aG nordvpn $USER`, and start `nordvpnd` service
       - "pamac-all"
       - "postman-bin"
