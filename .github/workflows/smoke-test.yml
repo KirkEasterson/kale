@@ -5,7 +5,7 @@ on: [push]
 
 jobs:
 
-  test-linux:
+  ubuntu:
     runs-on: ubuntu-latest
 
     steps:
@@ -21,7 +21,7 @@ jobs:
           options: |
             --verbose
 
-  test-mac:
+  mac:
     runs-on: macos-latest
 
     steps:
