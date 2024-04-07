@@ -11,6 +11,7 @@ if ! [ -x "$(command -v ansible)" ]; then
 	exit 1
 fi
 
+# TODO: bootstrap install openssh
 if ! [ -x "$(command -v ssh-keygen)" ]; then
 	echo "ssh-keygen must be installed"
 	exit 1
@@ -37,5 +38,5 @@ fi
 if [[ -f "$KALE_DIR/vault-password.txt" ]]; then
 	ansible-playbook --diff --vault-password-file "$KALE_DIR/vault-password.txt" "$KALE_DIR/bootstrap.yml"
 else
-	ansible-playbook --diff -ask-vault-pass "$KALE_DIR/bootstrap.yml"
+	ansible-playbook --diff --ask-vault-pass "$KALE_DIR/bootstrap.yml"
 fi
