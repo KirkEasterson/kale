@@ -20,7 +20,9 @@
 
 - name: Add SSH key to SSH agent
   ansible.builtin.shell:
-    cmd: "ssh-add {{ github_key_path }}"
+    cmd: |
+      eval "$(ssh-agent)"
+      ssh-add {{ github_key_path }}
   when: ssh_key.changed
 
 - name: Upload SSH key to GitHub
