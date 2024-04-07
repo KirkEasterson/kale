@@ -11,5 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: ibiqlik/action-yamllint@v3
-      - uses: ansible/ansible-lint@v24
+      - name: yamllint
+        uses: ibiqlik/action-yamllint@v3
+      - name: ansible-lint
+        uses: ansible/ansible-lint@v24
