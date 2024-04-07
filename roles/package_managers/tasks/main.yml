@@ -1,19 +1,15 @@
 ---
-- name: Install and update package managers
-  hosts: localhost
-  block:
+- name: Install AUR
+  import_tasks:
+    file: aur.yml
+  when: ansible_distribution == "ArchLinux"
 
-    - name: Install AUR
-      import_tasks:
-        file: aur.yml
-      when: ansible_distribution == "ArchLinux"
+- name: Install homebrew
+  import_tasks:
+    file: homebrew.yml
+  when: ansible_distribution == "MacOSX"
 
-    - name: Install homebrew
-      import_tasks:
-        file: homebrew.yml
-      when: ansible_distribution == "MacOSX"
-
-    - name: Install pip
-      import_tasks:
-        file: pip.yml
-      when: (ansible_distribution == "MacOSX") or (ansible_system == "Linux")
+- name: Install pip
+  import_tasks:
+    file: pip.yml
+  when: (ansible_distribution == "MacOSX") or (ansible_system == "Linux")
