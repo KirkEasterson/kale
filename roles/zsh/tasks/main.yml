@@ -26,19 +26,10 @@
       - zsh
   when: ansible_facts['os_family'] == "Darwin"
 
-- name: Check current shell on Linux
-  command: "echo $SHELL"
-  register: current_shell
-  when: ansible_facts['os_family'] != "Darwin"
-
-- name: Check current shell on macOS
-  command: "dscl . -read ~/ UserShell | awk '{print $2}'"
-  register: current_shell
-  when: ansible_facts['os_family'] == "Darwin"
-
-- name: Change shell to Zsh
-  command: "chsh -s /bin/zsh"
-  when: "current_shell.stdout.find('/bin/zsh') == -1"
+- name: Change default shell to Zsh
+  ansible.builtin.user:
+    name: "{{ ansible_user }}"
+    shell: /bin/zsh
 
 - name: Create zsh cache
   file:
