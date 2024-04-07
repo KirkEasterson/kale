@@ -54,49 +54,49 @@
     #   - lightdm (linux)
     - ansible.builtin.import_role:
         name: mac_default
-        when: ansible_distribution == "MacOSX"
+      when: ansible_distribution == "MacOSX"
 
     - ansible.builtin.import_role:
         name: audio
-        when: ansible_system == "Linux"
+      when: ansible_system == "Linux"
 
     - ansible.builtin.import_role:
         name: locale
-        when: ansible_system == "Linux"
+      when: ansible_system == "Linux"
 
     - ansible.builtin.import_role:
         name: grub
-        when: ansible_system == "Linux"
+      when: ansible_system == "Linux"
 
     - ansible.builtin.import_role:
         name: brightness
-        when: ansible_system == "Linux"
+      when: ansible_system == "Linux"
 
     - ansible.builtin.import_role:
         name: plymouth
-        when: ansible_system == "Linux"
+      when: ansible_system == "Linux"
 
     - ansible.builtin.import_role:
         name: systemd
-        when: ansible_system == "Linux"
+      when: ansible_system == "Linux"
 
     - ansible.builtin.import_role:
         name: udev
-        when: ansible_system == "Linux"
+      when: ansible_system == "Linux"
 
     - ansible.builtin.import_role:
         name: xorg
-        when: ansible_system == "Linux"
+      when: ansible_system == "Linux"
 
     - ansible.builtin.import_role:
         name: logind
-        when: ansible_system == "Linux"
+      when: ansible_system == "Linux"
 
       # TODO: make a login_manager roles and locker role
       #     - set up lock events in locker https://www.baeldung.com/linux/screen-lock-close-laptop-lid
     - ansible.builtin.import_role:
         name: lightdm
-        when: ansible_system == "Linux"
+      when: ansible_system == "Linux"
 
     - ansible.builtin.import_role:
         name: programs
