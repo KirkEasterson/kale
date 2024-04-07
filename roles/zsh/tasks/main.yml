@@ -27,6 +27,7 @@
   when: ansible_facts['os_family'] == "Darwin"
 
 - name: Change default shell to Zsh
+  become: true
   ansible.builtin.user:
     name: "{{ ansible_user_id }}"
     shell: /bin/zsh
