@@ -15,7 +15,7 @@ jobs:
       - name: Run playbook
         uses: dawidd6/action-ansible-playbook@v2
         with:
-          playbook: arch.yml
+          playbook: bootstrap.yml
           vault_password: ${{secrets.VAULT_PASSWORD}}
           requirements: requirements.yml
           options: |
@@ -32,7 +32,7 @@ jobs:
       - name: Run playbook
         uses: dawidd6/action-ansible-playbook@v2
         with:
-          playbook: arch.yml
+          playbook: botostrap.yml
           vault_password: ${{secrets.VAULT_PASSWORD}}
           requirements: requirements.yml
           options: |
