@@ -1,8 +1,7 @@
 ---
 - name: Install and update package managers
-  hosts: localhost
+  block:
 
-  tasks:
     - name: Install AUR
       import_tasks:
         file: aur.yml
