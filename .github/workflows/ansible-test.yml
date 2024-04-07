@@ -10,14 +10,16 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
-      - run: sudo apt-get install -y stow
-      - run: sudo apt-get install -y ansible
+      - run: sudo apt-get install -y stow ansible
 
-      - name: Install requirements
-        run: ansible-galaxy install -r requirements.yml
-
-      - name: Run install script
-        run: ansible-playbook arch.yml --ask-become-pass --ask-vault-pass
+      - name: Run playbook
+        uses: dawidd6/action-ansible-playbook@v2
+        with:
+          playbook: arch.yml
+          vault_password: ${{secrets.VAULT_PASSWORD}}
+          requirements: requirements.yml
+          options: |
+            --verbose
 
   test-mac:
     runs-on: macos-latest
@@ -25,11 +27,13 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: Homebrew/actions/setup-homebrew@master
-      - run: brew install stow
-      - run: brew install ansible
+      - run: brew install stow ansible
 
-      - name: Install requirements
-        run: ansible-galaxy install -r requirements.yml
-
-      - name: Run install script
-        run: ansible-playbook arch.yml --ask-become-pass --ask-vault-pass
+      - name: Run playbook
+        uses: dawidd6/action-ansible-playbook@v2
+        with:
+          playbook: arch.yml
+          vault_password: ${{secrets.VAULT_PASSWORD}}
+          requirements: requirements.yml
+          options: |
+            --verbose
