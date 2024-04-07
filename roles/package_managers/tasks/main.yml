@@ -2,6 +2,7 @@
 - name: Install AUR
   import_tasks:
     file: aur.yml
+  when: ansible_facts['os_family'] == "Archlinux"
 
 - name: Install homebrew
   import_tasks:
