@@ -1,14 +1,14 @@
 ---
 - name: Install AUR
   import_tasks:
-    file: aur.yml
+    file: tasks/aur.yml
   when: ansible_facts['os_family'] == "Archlinux"
 
 - name: Install homebrew
   import_tasks:
-    file: homebrew.yml
+    file: tasks/homebrew.yml
   when: ansible_facts['os_family'] == "Darwin"
 
 - name: Install pip
   import_tasks:
-    file: pip.yml
+    file: tasks/pip.yml
