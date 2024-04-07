@@ -36,7 +36,7 @@ if [[ -f "$KALE_DIR/requirements.yml" ]]; then
 fi
 
 if [[ -f "$KALE_DIR/vault-password.txt" ]]; then
-	ansible-playbook --diff --connection=local -i inventory.yml --vault-password-file "$KALE_DIR/vault-password.txt" "$KALE_DIR/bootstrap.yml"
+	ansible-playbook --diff --ask-become-pass --vault-password-file "$KALE_DIR/vault-password.txt" "$KALE_DIR/bootstrap.yml"
 else
-	ansible-playbook --diff --connection=local -i inventory.yml --ask-vault-pass "$KALE_DIR/bootstrap.yml"
+	ansible-playbook --diff --ask-become-pass --ask-vault-pass "$KALE_DIR/bootstrap.yml"
 fi
