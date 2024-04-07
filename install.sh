@@ -1,4 +1,5 @@
 #!/bin/bash
+# TODO: make this script POSIX compliant
 
 set -e
 
