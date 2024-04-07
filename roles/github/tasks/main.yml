@@ -32,6 +32,7 @@
       title: "{{ github_key_title }}"
       key: "{{ lookup('file', github_key_path + '.pub') }}"
     headers:
-      Authorization: "token {{ github_access_token }}"
     status_code: 201
+      Accept: "application/vnd.github+json"
+      Authorization: "Bearer {{ github_access_token }}"
   when: private_key.changed or public_key.changed
