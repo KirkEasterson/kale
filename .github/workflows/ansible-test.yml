@@ -1,3 +1,4 @@
+---
 name: smoke-test
 
 on: [push]
@@ -16,19 +17,19 @@ jobs:
         run: ansible-galaxy install -r requirements.yml
 
       - name: Run install script
-        run: ./install.sh
+        run: ansible-playbook arch.yml --ask-become-pass --ask-vault-pass
 
   test-mac:
     runs-on: macos-latest
 
     steps:
       - uses: actions/checkout@v4
-      - run: sudo apt-get install -y stow
       - uses: Homebrew/actions/setup-homebrew@master
+      - run: brew install stow
       - run: brew install ansible
 
       - name: Install requirements
         run: ansible-galaxy install -r requirements.yml
 
       - name: Run install script
-        run: ./install.sh
+        run: ansible-playbook arch.yml --ask-become-pass --ask-vault-pass
