@@ -51,7 +51,14 @@ This repository was designed to be used with `ansible-pull`, and has not been te
 The only prerequisite is Ansible.
 
 ```sh
+# debian
 sudo apt install ansible
+
+# arch
+sudo pacman -Sy ansible
+
+# macos
+brew install ansible
 ```
 
 ### Installation
