@@ -35,9 +35,3 @@
       Authorization: "token {{ github_access_token }}"
     status_code: 201
   when: private_key.changed or public_key.changed
-  register: post_key
-
-- name: Fail if GitHub key upload fails
-  ansible.builtin.fail:
-    msg: "Failed to upload SSH key to GitHub"
-  when: post_key.status_code != 201
