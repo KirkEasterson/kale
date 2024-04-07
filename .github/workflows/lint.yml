@@ -5,13 +5,17 @@ on: [push]
 
 jobs:
 
-  build:
+  yamllint:
 
-    name: Lint
+    name: yamllint
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: yamllint
-        uses: ibiqlik/action-yamllint@v3
-      - name: ansible-lint
-        uses: ansible/ansible-lint@v24
+      - uses: ibiqlik/action-yamllint@v3
+
+  ansible-lint:
+    name: ansible-lint
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ansible/ansible-lint@v24
