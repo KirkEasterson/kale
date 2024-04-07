@@ -6,6 +6,7 @@ set -e
 KALE_DIR="$HOME/kale"
 SSH_DIR="$HOME/.ssh"
 
+# TODO: bootstrap install ansible
 if ! [ -x "$(command -v ansible)" ]; then
 	echo "ansible must be installed"
 	exit 1
