@@ -49,7 +49,6 @@
     #   - grub (linux)
     #   - plymouth (linux)
     #   - systemd (linux)
-    #   - udev (linux)
     #   - xorg (linux)
     #   - lightdm (linux)
     - ansible.builtin.import_role:
@@ -81,15 +80,7 @@
       when: ansible_system == "Linux"
 
     - ansible.builtin.import_role:
-        name: udev
-      when: ansible_system == "Linux"
-
-    - ansible.builtin.import_role:
         name: xorg
-      when: ansible_system == "Linux"
-
-    - ansible.builtin.import_role:
-        name: logind
       when: ansible_system == "Linux"
 
       # TODO: make a login_manager roles and locker role
