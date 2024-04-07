@@ -7,9 +7,8 @@
 - name: Install homebrew
   import_tasks:
     file: homebrew.yml
-  when: ansible_distribution == "MacOSX"
+  when: ansible_facts['os_family'] == "Darwin"
 
 - name: Install pip
   import_tasks:
     file: pip.yml
-  when: (ansible_distribution == "MacOSX") or (ansible_system == "Linux")
