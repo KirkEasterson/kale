@@ -11,6 +11,11 @@ if ! [ -x "$(command -v ansible)" ]; then
 	exit 1
 fi
 
+if ! [ -x "$(command -v ssh-keygen)" ]; then
+	echo "ssh-keygen must be installed"
+	exit 1
+fi
+
 if ! [[ -f "$SSH_DIR/id_rsa" ]]; then
 	mkdir -p "$SSH_DIR"
 	chmod 700 "$SSH_DIR"
