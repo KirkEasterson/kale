@@ -5,11 +5,12 @@
     state: directory
 
 - name: Generate SSH key
-  ansible.builtin.openssl_privatekey:
+  community.crypto.openssl_privatekey:
     path: "{{ github_key_path }}"
     passphrase: "{{ github_key_passphrase }}"
     type: Ed25519
     size: 2048
+    cipher: auto
   register: ssh_key
 
 - name: Set permissions on the private key
