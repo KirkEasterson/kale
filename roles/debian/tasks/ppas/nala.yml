@@ -1,3 +1,4 @@
+---
 - name: Install volian keyring
   become: true
   apt:
@@ -12,4 +13,3 @@
   become: true
   apt:
     update_cache: yes
-
