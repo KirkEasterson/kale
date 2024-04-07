@@ -3,7 +3,6 @@
 
 set -e
 
-KALE_DIR="$HOME/kale"
 SSH_DIR="$HOME/.ssh"
 
 # TODO: bootstrap install ansible
@@ -23,12 +22,12 @@ if ! [[ -f "$SSH_DIR/id_rsa" ]]; then
 fi
 
 
+KALE_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
+cd "$KALE_DIR"
+
 if [[ -f "$KALE_DIR/requirements.yml" ]]; then
-	cd "$KALE_DIR"
 	ansible-galaxy install -r requirements.yml
 fi
-
-cd "$KALE_DIR"
 
 if [[ -f "$KALE_DIR/vault-password.txt" ]]; then
 	ansible-playbook --diff --vault-password-file "$KALE_DIR/vault-password.txt" "$KALE_DIR/bootstrap.yml"
