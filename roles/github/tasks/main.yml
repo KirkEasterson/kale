@@ -1,0 +1,42 @@
+---
+- name: Create SSH dir
+  file:
+    path: "{{ sshkey_dir }}"
+    state: directory
+
+- name: Generate SSH key
+  ansible.builtin.openssl_privatekey:
+    path: "{{ github_key_path }}"
+    passphrase: "{{ github_key_passphrase }}"
+    type: ed25519
+    size: 2048
+  register: ssh_key
+
+- name: Set permissions on the private key
+  ansible.builtin.file:
+    path: "{{ github_key_path }}"
+    mode: '0600'
+
+- name: Add SSH key to SSH agent
+  ansible.builtin.shell:
+    cmd: "ssh-add {{ github_key_path }}"
+  when: ssh_key.changed
+
+- name: Upload SSH key to GitHub
+  ansible.builtin.uri:
+    url: "https://api.github.com/user/keys"
+    method: POST
+    body_format: form-urlencoded
+    body:
+      title: "{{ github_key_title }}"
+      key: "{{ lookup('file', github_key_path + '.pub') }}"
+    headers:
+      Authorization: "token {{ github_access_token }}"
+    status_code: 201
+  when: ssh_key.changed
+  register: github_key
+
+- name: Fail if GitHub key upload fails
+  ansible.builtin.fail:
+    msg: "Failed to upload SSH key to GitHub"
+  when: github_key.status != 201
