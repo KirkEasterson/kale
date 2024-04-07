@@ -1,5 +1,6 @@
 ---
-- name: Install yay on arch linux
+- name: Install yay
+  when: ansible_distribution == 'ArchLinux'
   block:
 
     - name: Check if yay is installed
