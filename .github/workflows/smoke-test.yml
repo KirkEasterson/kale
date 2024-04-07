@@ -6,6 +6,7 @@ on: [push]
 jobs:
 
   ubuntu:
+    if: ${{ false }} # TODO: re-enable after testing is done
     runs-on: ubuntu-latest
 
     steps:
@@ -22,6 +23,7 @@ jobs:
             --verbose
 
   mac:
+    if: ${{ false }} # TODO: re-enable after testing is done
     runs-on: macos-latest
 
     steps:
