@@ -72,11 +72,14 @@ The only advice I have now is to read the configs and figure it out yourself.
 
 ## Roadmap
 
-- [ ] Add more detailed usage
-- [ ] Add support for other ansible commands
-
-## Contact
-
-Your Name - kirk.easterson@gmail.com
-
-Project Link: [https://github.com/kirkeasterson/kale](https://github.com/kirkeasterson/kale)
+- [ ] Bootstrap necessary installions in `install.sh`
+  - [ ] brew (if on mac)
+  - [ ] ansible (package manager independent)
+- [ ] Add support for multiple linux distributions
+  - [ ] Fedora
+  - [ ] openSuse
+  - [ ] Debian
+- [ ] Add support for macos
+- [ ] Implement molecule for testing the bootstrap playbook
+- [ ] Add flags for enabling features (for personal and testing usages)
+  - [ ] Upload keys to github
