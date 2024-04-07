@@ -8,7 +8,7 @@
   ansible.builtin.openssl_privatekey:
     path: "{{ github_key_path }}"
     passphrase: "{{ github_key_passphrase }}"
-    type: ed25519
+    type: Ed25519
     size: 2048
   register: ssh_key
 
