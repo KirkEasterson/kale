@@ -1,56 +1,52 @@
 ---
-- name: Install yay
-  when: ansible_distribution == 'ArchLinux'
-  block:
+- name: Check if yay is installed
+  command: /bin/bash -c "command -v yay"
+  changed_when: false
+  failed_when: false
+  ignore_errors: true
+  register: yay_exists
 
-    - name: Check if yay is installed
-      command: /bin/bash -c "command -v yay"
-      changed_when: false
-      failed_when: false
-      ignore_errors: true
-      register: yay_exists
+- name: Clone yay repo
+  become: true
+  git:
+    repo: https://aur.archlinux.org/yay-git.git
+    dest: /opt/yay-git
+  when: yay_exists.rc != 0
 
-    - name: Clone yay repo
-      become: true
-      git:
-        repo: https://aur.archlinux.org/yay-git.git
-        dest: /opt/yay-git
-      when: yay_exists.rc != 0
+- name: Change permission on yay repo
+  become: true
+  file:
+    path: /opt/yay-git
+    owner: "{{ ansible_user_id }}"
+    group: "{{ ansible_user_id }}"
+    recurse: true
+  when: yay_exists.rc != 0
 
-    - name: Change permission on yay repo
-      become: true
-      file:
-        path: /opt/yay-git
-        owner: "{{ ansible_user_id }}"
-        group: "{{ ansible_user_id }}"
-        recurse: true
-      when: yay_exists.rc != 0
+- name: Build yay
+  command: makepkg -si --noconfirm
+  args:
+    chdir: /opt/yay-git/
+  when: yay_exists.rc != 0
 
-    - name: Build yay
-      command: makepkg -si --noconfirm
-      args:
-        chdir: /opt/yay-git/
-      when: yay_exists.rc != 0
+- name: Create the `aur_builder` user
+  become: true
+  ansible.builtin.user:
+    name: aur_builder
+    create_home: yes
+    group: wheel
 
-    - name: Create the `aur_builder` user
-      become: true
-      ansible.builtin.user:
-        name: aur_builder
-        create_home: yes
-        group: wheel
+- name: Allow the `aur_builder` user to run `sudo pacman` without a password
+  become: true
+  ansible.builtin.lineinfile:
+    path: /etc/sudoers.d/11-install-aur_builder
+    line: "aur_builder ALL=(ALL) NOPASSWD: /usr/bin/pacman"
+    create: yes
+    validate: "visudo -cf %s"
 
-    - name: Allow the `aur_builder` user to run `sudo pacman` without a password
-      become: true
-      ansible.builtin.lineinfile:
-        path: /etc/sudoers.d/11-install-aur_builder
-        line: "aur_builder ALL=(ALL) NOPASSWD: /usr/bin/pacman"
-        create: yes
-        validate: "visudo -cf %s"
-
-    - name: Update AUR packages
-      become: true
-      become_user: aur_builder
-      kewlfft.aur.aur:
-        use: yay
-        upgrade: true
-        update_cache: true
+- name: Update AUR packages
+  become: true
+  become_user: aur_builder
+  kewlfft.aur.aur:
+    use: yay
+    upgrade: true
+    update_cache: true
