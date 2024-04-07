@@ -1,6 +1,5 @@
 #!/bin/bash
 
-# TODO: personalize this
 set -e
 
 KALE_DIR="$HOME/kale"
