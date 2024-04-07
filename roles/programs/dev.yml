@@ -313,3 +313,31 @@
           - node
           - typescript
       when: ansible_distribution == "MacOSX"
+
+- name: Install misc dev tools
+  hosts: localhost
+  become: true
+
+  tasks:
+    - name: Install molecule from pacman
+      become: true
+      pacman:
+        state: present
+        name:
+          - molecule
+      when: ansible_distribution == 'ArchLinux'
+
+    - name: Install molecule from apt
+      become: true
+      apt:
+        install_recommends: no
+        name:
+          - molecule
+      when: ansible_os_family == 'Debian'
+
+    - name: Install molecule from homebrew
+      homebrew:
+        state: present
+        name:
+          - molecule
+      when: ansible_distribution == "MacOSX"
