@@ -21,14 +21,7 @@
     privatekey_path: "{{ github_key_path }}"
     privatekey_passphrase: "{{ github_key_passphrase }}"
     mode: "644"
-  register: private_key
-
-- name: Add SSH key to SSH agent
-  ansible.builtin.shell:
-    cmd: |
-      eval "$(ssh-agent)"
-      ssh-add {{ github_key_path }}
-  when: private_key.changed or public_key.changed
+  register: public_key
 
 - name: Upload SSH key to GitHub
   ansible.builtin.uri:
