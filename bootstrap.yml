@@ -12,33 +12,33 @@
     #   - npm (all)
     #   - pip (all)
     - import_role:
-      file: roles/package_managers/local.yml
+      name: package_managers
 
     # - change shell to zsh
     - import_role:
-      file: roles/zsh/local.yml
+      name: zsh
 
     # - create ssh key and upload it to github
     - import_role:
-      file: roles/github/local.yml
+      name: github
 
     # - ensure directory layout
     - import_role:
-      file: roles/directories/local.yml
+      name: directories
 
     # - ensure git repos are cloned and install
     #   - dotfiles
     #   - global_configs (TODO: remove this repo and move files here)
     #   - scripts
     - import_role:
-      file: roles/git_repos/local.yml
+      name: git_repos
 
       # TODO: performance things
       #   - https://gist.github.com/lbrame/1678c00213c2bd069c0a59f8733e0ee6
     #       - also need `intel-media-driver`
 
     - import_role:
-      file: roles/fonts/local.yml
+      name: fonts
 
     # - add user to necessary groups
     # TODO: this but for each program installed
@@ -53,51 +53,51 @@
     #   - xorg (linux)
     #   - lightdm (linux)
     - import_role:
-      file: roles/mac_default/local.yml
+      name: mac_default
       when: ansible_distribution == "MacOSX"
 
     - import_role:
-      file: roles/audio/local.yml
+      name: audio
       when: ansible_system == "Linux"
 
     - import_role:
-      file: roles/locale/local.yml
+      name: locale
       when: ansible_system == "Linux"
 
     - import_role:
-      file: roles/grub/local.yml
+      name: grub
       when: ansible_system == "Linux"
 
     - import_role:
-      file: roles/brightness/local.yml
+      name: brightness
       when: ansible_system == "Linux"
 
     - import_role:
-      file: roles/plymouth/local.yml
+      name: plymouth
       when: ansible_system == "Linux"
 
     - import_role:
-      file: roles/systemd/local.yml
+      name: systemd
       when: ansible_system == "Linux"
 
     - import_role:
-      file: roles/udev/local.yml
+      name: udev
       when: ansible_system == "Linux"
 
     - import_role:
-      file: roles/xorg/local.yml
+      name: xorg
       when: ansible_system == "Linux"
 
     - import_role:
-      file: roles/logind/local.yml
+      name: logind
       when: ansible_system == "Linux"
 
       # TODO: make a login_manager roles and locker role
       #     - set up lock events in locker https://www.baeldung.com/linux/screen-lock-close-laptop-lid
     - import_role:
-      file: roles/lightdm/local.yml
+      name: lightdm
       when: ansible_system == "Linux"
 
     - import_role:
       # - install programs
-      file: roles/programs/local.yml
+      name: programs
