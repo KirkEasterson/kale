@@ -1,0 +1,60 @@
+---
+- name: Setup lightdm
+  hosts: localhost
+  become: true
+  when: ansible_system == "Linux"
+
+  tasks:
+    - name: Install lightdm
+      become: true
+      pacman:
+        state: present
+        name:
+          - light-locker
+          - lightdm-gtk-greeter-settings
+          - lightdm-slick-greeter
+      when: ansible_distribution == 'ArchLinux'
+
+    - name: Install lightdm
+      become: true
+      apt:
+        install_recommends: no
+        name:
+          - slick-greeter
+          - lightdm-settings
+          - light-locker
+          - light-locker-settings
+          - xserver-xephyr # TODO: what is this?
+      when: ansible_os_family == 'Debian'
+
+    - name: Check if lightdm.conf exists
+      stat:
+        path: /etc/lightdm/lightdm.conf
+      register: lightdm_conf
+
+    - name: Update lightdm.conf
+      copy:
+        src: files/lightdm.conf
+        dest: /etc/lightdm/lightdm.conf
+      when: lightdm_conf.stat.exists == false or lightdm_conf.stat.md5 != ansible_checksum.md5
+      vars:
+        ansible_checksum: "{{ lookup('file', 'files/lightdm.conf') }}"
+
+    - name: Check if slick-greeter.conf exists
+      stat:
+        path: /etc/lightdm/slick-greeter.conf
+      register: slick_conf
+
+    - name: Update slick-greeter.conf
+      copy:
+        src: files/slick-greeter.conf
+        dest: /etc/lightdm/slick-greeter.conf
+      when: slick_conf.stat.exists == false or slick_conf.stat.md5 != ansible_checksum.md5
+      vars:
+        ansible_checksum: "{{ lookup('file', 'files/slick-greeter.conf') }}"
+
+    - name: Enable lightdm service
+      become: true
+      systemd:
+        name: lightdm
+        enabled: yes

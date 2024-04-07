@@ -1,0 +1,52 @@
+---
+- name: Setup lightdm
+  hosts: localhost
+  become: true
+  when: ansible_system == "Linux"
+
+  tasks:
+    - name: Install plymouth
+      become: true
+      pacman:
+        state: present
+        name:
+          - plymouth
+      when: ansible_distribution == 'ArchLinux'
+
+    - name: Install plymouth theme from AUR
+      become: true
+      become_user: aur_builder
+      kewlfft.aur.aur:
+        state: present
+        use: yay
+        name:
+          - sematrix-plymouth-theme
+
+    - name: Install plymouth
+      become: true
+      apt:
+        install_recommends: no
+        name:
+          - plymouth
+          - plymouth-themes
+          - plymouth-x11
+      when: ansible_os_family == 'Debian'
+
+    - name: Check if plymouth conf exists
+      stat:
+        path: /etc/plymouth/plymouthd.conf
+      register: plymouth_conf
+
+    - name: Update plymouth conf
+      copy:
+        src: files/plymouthd.conf
+        dest: /etc/plymouth/plymouthd.conf
+      when: plymouth_conf.stat.exists == false or plymouth_conf.stat.md5 != ansible_checksum.md5
+      vars:
+        ansible_checksum: "{{ lookup('file', 'files/plymouthd.conf') }}"
+
+    - name: Enable lightdm service
+      become: true
+      systemd:
+        name: lightdm
+        enabled: yes

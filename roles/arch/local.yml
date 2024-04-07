@@ -1,18 +1,17 @@
 ---
-- include_tasks: ../common/tasks/ssh/ansible_ssh.yml
-- include_tasks: ../common/tasks/ssh/sshgen.yml
-- include_tasks: ../common/tasks/directories/local.yml
+- include_tasks: ../common/ssh/ansible_ssh.yml
+- include_tasks: ../common/ssh/sshgen.yml
+- include_tasks: ../directories/local.yml
 
-- name: Install stow
-  become: true
-  pacman:
-    state: present
-    name: stow
-- include_tasks: ../common/tasks/git_repos/local.yml
+- include_tasks: ../git_repos/local.yml
 
-- include_tasks: ../common/tasks/locale.yml
-- include_tasks: tasks/programs/local.yml
+- include_tasks: ../locale/locale.yml
+- include_tasks: ../audio/local.yml
+
 - include_tasks: ../common/tasks/groups/local.yml
+
+- include_tasks: ../package_managers/local.yml
+- include_tasks: ../programs/local.yml
 
 - name: Change user shell to zsh
   become: yes

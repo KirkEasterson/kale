@@ -1,0 +1,31 @@
+---
+- name: Install npm on macos and linux
+  hosts: localhost
+  become: true
+  when: (ansible_system == "Linux") or (ansible_distribution == "MacOSX")
+
+  tasks:
+    - name: Install npm from pacman
+      become: true
+      pacman:
+        state: present
+        name:
+          - "npm"
+          - "nodejs"
+      when: ansible_distribution == 'ArchLinux'
+
+    - name: Install npm from apt
+      become: true
+      apt:
+        install_recommends: no
+        name:
+          - "npm"
+          - "nodejs"
+      when: ansible_os_family == 'Debian'
+
+    - name: Install pip from homebrew
+      homebrew:
+        state: present
+        name:
+          - "node" # this contains npm and nodejs
+      when: ansible_distribution == "MacOSX"

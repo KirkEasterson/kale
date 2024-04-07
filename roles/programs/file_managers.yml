@@ -1,0 +1,32 @@
+---
+- name: Install file managers
+  hosts: localhost
+  become: true
+
+  tasks:
+    - name: Install file managers from pacman
+      become: true
+      pacman:
+        state: present
+        name:
+          - ranger
+          - pcmanfm-gtk3
+          - udiskie
+      when: ansible_distribution == 'ArchLinux'
+
+    - name: Install file managers from apt
+      become: true
+      apt:
+        install_recommends: no
+        name:
+          - ranger
+          - pcmanfm
+          - udiskie
+      when: ansible_os_family == 'Debian'
+
+    - name: Install file managers from homebrew
+      homebrew:
+        state: present
+        name:
+          - ranger
+      when: ansible_distribution == "MacOSX"

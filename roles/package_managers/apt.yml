@@ -1,0 +1,31 @@
+---
+- name: Install ppas for apt
+  hosts: localhost
+  become: true
+  when: ansible_os_family == 'Debian'
+
+  tasks:
+    - name: Install neovim stable ppa
+      become: true
+      apt_repository:
+        repo: 'ppa:neovim-ppa/stable'
+
+    - name: Install mozilla PPA
+      become: true
+      apt_repository:
+        repo: 'ppa:mozillateam/ppa'
+
+- name: Update apt repositories
+  become: true
+  apt:
+    update_cache: yes
+  changed_when: false
+  when: ansible_os_family == 'Debian'
+
+- name: Install nala from apt
+  become: true
+  apt:
+    install_recommends: no
+    name:
+      - nala
+  when: ansible_os_family == 'Debian'

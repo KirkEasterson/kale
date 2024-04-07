@@ -1,0 +1,31 @@
+---
+- name: Install sway
+  become: true
+  pacman:
+    state: present
+    name:
+      - brightnessctl
+      - dunst
+      - flameshot
+      - fuzzel
+      - gammastep
+      - grim
+      - sway
+      - swaybg
+      - swayidle
+      - waybar
+      - wf-recorder
+      - wofi
+      - xdg-desktop-portal-wlr
+
+- name: Install sway AUR packages
+  become: true
+  become_user: aur_builder
+  kewlfft.aur.aur:
+    state: present
+    use: yay
+    name:
+      - swaylock-effects
+      - wdisplays
+      - wev
+      - swhkd-bin

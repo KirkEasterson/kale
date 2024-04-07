@@ -11,4 +11,3 @@
       - "xorg-xinit"
       - "xorg-xinput"
       - "xorg-xrandr"
-      - "xterm"

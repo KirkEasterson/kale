@@ -1,0 +1,31 @@
+---
+- name: Install pip on macos and linux
+  hosts: localhost
+  become: true
+  when: (ansible_system == "Linux") or (ansible_distribution == "MacOSX")
+
+  tasks:
+    - name: Install pip from pacman
+      become: true
+      pacman:
+        state: present
+        name:
+          - "python"
+          - "python-pip"
+      when: ansible_distribution == 'ArchLinux'
+
+    - name: Install pip from apt
+      become: true
+      apt:
+        install_recommends: no
+        name:
+          - "python3" # this might be just `python`
+          - "python3-pip"
+      when: ansible_os_family == 'Debian'
+
+    - name: Install pip from homebrew
+      homebrew:
+        state: present
+        name:
+          - "python"
+      when: ansible_distribution == "MacOSX"

@@ -1,0 +1,24 @@
+---
+- name: Install git
+  hosts: localhost
+  become: true
+  when: ansible_system == "Linux"
+
+  tasks:
+    - name: Install git from pacman
+      become: true
+      pacman:
+        state: present
+        name:
+          - cbatticon
+          - volumeicon
+      when: ansible_distribution == 'ArchLinux'
+
+    - name: Install git from apt
+      become: true
+      apt:
+        install_recommends: no
+        name:
+          - cbatticon
+          - volumeicon-alsa
+      when: ansible_os_family == 'Debian'

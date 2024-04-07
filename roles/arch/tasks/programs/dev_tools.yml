@@ -1,4 +1,5 @@
 ---
+
 - name: Install dev tools
   become: true
   pacman:
@@ -6,10 +7,13 @@
     name:
       - "aspnet-runtime"
       - "aspnet-targeting-pack"
+      - "base-devel"
       - "clang"
+      - "cmake"
       - "code"
       - "composer"
       - "dbeaver"
+      - "prettier"
       - "docker"
       - "docker-compose"
       - "dotnet-runtime"
@@ -20,12 +24,17 @@
       - "eslint_d"
       - "gcc"
       - "ghc"
+      - "git"
+      - "github-cli"
       - "go"
+      - "hyperfine"
       - "jdk-openjdk"
       - "jre-openjdk"
       - "julia"
       - "kotlin"
       - "kubectl"
+      - "lazydocker"
+      - "lazygit"
       - "lua"
       - "lua_lsluarocks"
       - "make"
@@ -35,14 +44,28 @@
       - "ocaml"
       - "opam"
       - "php"
+      - "python"
+      - "python-pip"
       - "python3"
+      - "ruby"
       - "ruby"
       - "rustup"
       - "terraform"
+      - "tree-sitter"
+      - "tree-sitter-cli"
       - "zig"
 
+- name: Install code editors
+  become: true
+  pacman:
+    state: present
+    name:
+      - "emacs"
+      - "neovide"
+      - "neovim"
+
 - name: Install dev AUR tools
-  become: yes
+  become: true
   become_user: aur_builder
   kewlfft.aur.aur:
     state: present
@@ -50,14 +73,20 @@
     name:
       - "ghcup-hs-bin"
       - "go-task-bin"
+      - "gofumpt"
       - "golangci-lint-bin"
+      - "golines"
       - "nvm"
-
+      - "ocaml-ocamlformat"
+      - "prettierd"
+      - "python-neovim"
+      - "ruby-neovim"
+      - "tflint"
+      - "yamlfmt"
 - name: Install terraform autocomplete
   command: terraform -install-autocomplete
   changed_when: false
   failed_when: false
-
 - name: Initialize opam
   command: opam init -a
   changed_when: false

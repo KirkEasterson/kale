@@ -8,6 +8,32 @@
       - lightdm-gtk-greeter-settings
       - lightdm-slick-greeter
 
+# - name: Check if lightdm.conf file exists
+#   stat:
+#     path: /etc/lightdm/lightdm.conf
+#   register: lightdm_conf
+
+# - name: Check if slick-greeter.conf file exists
+#   stat:
+#     path: /etc/lightdm/slick-greeter.conf
+#   register: slick_conf
+
+- name: Apply slick greeter
+  become: true
+  lineinfile:
+    path: /etc/lightdm/lightdm.conf
+    state: "present"
+    regexp: "^greeter-session="
+    line: "greeter-session=lightdm-slick-greeter"
+
+- name: Apply session wrapper
+  become: true
+  lineinfile:
+    path: /etc/lightdm/lightdm.conf
+    state: "present"
+    regexp: "^session-wrapper="
+    line: "session-wrapper=/etc/lightdm/Xsession"
+
 - name: Enable lightdm service
   become: true
   systemd:

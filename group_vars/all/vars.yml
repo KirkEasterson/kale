@@ -1,3 +1,4 @@
+---
 # name of the current user
 remote_regular_user: "{{ ansible_user_id }}"
 
@@ -5,11 +6,26 @@ remote_regular_user: "{{ ansible_user_id }}"
 config_system_locale: "nb_NO.UTF-8"
 config_system_language: "en_US.UTF-8"
 
+# ssh settings
+sshkey_dir: "~/.ssh"
+sshkey_type: "ed25519"
+sshkey_path: "{{ sshkey_dir }}/id_{{ sshkey_type }}"
+sshkey_ansible_path: "{{ sshkey_path }}_ansible"
+
+# for configuring github access
 github_access_token: "{{ vault_github_access_token }}"
+github_key_path: "{{ sshkey_path }}_github"
+github_key_title: "{{ ansible_hostname }}-{{ ansible_user_id }}"
+github_key_passphrase: "{{ vault_github_key_passphrase }}"
+
+# various expected directories
+dotfiles_path: "~/.dotfiles"
+globalconfigs_path: "~/.global_configs"
+scripts_path: "~/scripts"
+dev_path: "~/dev"
+screenshots_path: "~/Pictures/screenshots"
+
+# TODO: get rid of this, and use token instead
 user_ssh_passphrase: "{{ vault_user_ssh_passphrase }}"
 ansible_key_pulic: "{{ vault_ansible_key_public }}"
 ansible_key_private: "{{ vault_ansible_key_private }}"
-
-sshkey_type: "ed25519"
-sshkey_path: "~/.ssh/id_{{ sshkey_type }}"
-sshkey_ansible_path: "~/.ssh/id_{{ sshkey_type }}_ansible"

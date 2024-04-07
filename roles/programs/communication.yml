@@ -1,0 +1,78 @@
+---
+# TODO: install slack
+- name: Install chat programs
+  hosts: localhost
+  become: true
+
+  tasks:
+    - name: Install communication tools from pacman
+      become: true
+      pacman:
+        state: present
+        name:
+          - discord
+          - element-desktop
+          - signal-desktop
+          - telegram-desktop
+      when: ansible_distribution == 'ArchLinux'
+
+    - name: Install game clients from AUR
+      become: true
+      become_user: aur_builder
+      kewlfft.aur.aur:
+        state: present
+        use: yay
+        name:
+          - slack-desktop
+
+    - name: Install communication tools from apt
+      become: true
+      apt:
+        install_recommends: no
+        name:
+          # - discord
+          # - element-desktop
+          # - signal-desktop
+          # - slack-desktop
+          - telegram-desktop
+      when: ansible_os_family == 'Debian'
+
+    - name: Install communication tools from homebrew
+      homebrew:
+        state: present
+        name:
+          - homebrew/cask/discord
+          - homebrew/cask/element
+          - homebrew/cask/signal
+          - homebrew/cask/slack
+          - homebrew/cask/telegram
+      when: ansible_distribution == "MacOSX"
+
+- name: Install email clients
+  hosts: localhost
+  become: true
+
+  tasks:
+    - name: Install email clients from pacman
+      become: true
+      pacman:
+        state: present
+        name:
+          - thunderbird
+          - systray-x-common
+      when: ansible_distribution == 'ArchLinux'
+
+    - name: Install email clients from apt
+      become: true
+      apt:
+        install_recommends: no
+        name:
+          - thunderbird
+      when: ansible_os_family == 'Debian'
+
+    - name: Install email clients from homebrew
+      homebrew:
+        state: present
+        name:
+          - homebrew/cask/thunderbird
+      when: ansible_distribution == "MacOSX"

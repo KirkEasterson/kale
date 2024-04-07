@@ -1,7 +1,17 @@
 ---
+# the adblock version is better
+# - name: Install spotify
+#   become: true
+#   pacman:
+#     state: present
+#     name:
+#       - spotify-launcher
+
 - name: Install spotify
   become: true
-  pacman:
+  become_user: aur_builder
+  kewlfft.aur.aur:
     state: present
+    use: yay
     name:
-      - spotify-launcher
+      - "spotify-adblock"

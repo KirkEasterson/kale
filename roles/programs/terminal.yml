@@ -1,0 +1,162 @@
+---
+- name: Install terminal emulators
+  hosts: localhost
+  become: true
+
+  tasks:
+    - name: Install terminal emulators from pacman
+      become: true
+      pacman:
+        state: present
+        name:
+          - alacritty
+          - kitty
+          - wezterm
+          - xterm
+      when: ansible_distribution == 'ArchLinux'
+
+    - name: Install terminal emulators from apt
+      become: true
+      apt:
+        install_recommends: no
+        name:
+          - alacritty
+          - kitty
+          - wezterm
+          - xterm
+      when: ansible_os_family == 'Debian'
+
+    - name: Install terminal emulators from homebrew
+      homebrew:
+        state: present
+        name:
+          - homebrew/cask/alacritty
+          - homebrew/cask/kitty
+          - homebrew/cask/wezterm
+      when: ansible_distribution == "MacOSX"
+
+- name: Install shell prompt
+  hosts: localhost
+  become: true
+
+  tasks:
+    - name: Install shell prompt from pacman
+      become: true
+      pacman:
+        state: present
+        name:
+          - starship
+      when: ansible_distribution == 'ArchLinux'
+
+    #   # TODO: find a ppa
+    # - name: Install shell prompt from apt
+    #   become: true
+    #   apt:
+    #     install_recommends: no
+    #     name:
+    #       - starship
+    #   when: ansible_os_family == 'Debian'
+
+    - name: Install shell prompt from homebrew
+      homebrew:
+        state: present
+        name:
+          - starship
+      when: ansible_distribution == "MacOSX"
+
+- name: Install CLI tools
+  hosts: localhost
+  become: true
+
+  tasks:
+    - name: Install CLI tools from pacman
+      become: true
+      pacman:
+        state: present
+        name:
+          - asciiquarium
+          - bat
+          - btop
+          - cmatrix
+          - cowfortune
+          - cowsay
+          - curl
+          - direnv
+          - dust
+          - exa
+          - eza
+          - fd
+          - figlet
+          - fzf
+          - htop
+          - hyperfine
+          - man
+          - neofetch
+          - procs
+          - ripgrep
+          - sd
+          - tmux
+          - tmuxp
+          - zoxide
+      when: ansible_distribution == 'ArchLinux'
+
+    - name: Install CLI tools from apt
+      become: true
+      apt:
+        install_recommends: no
+        name:
+          - asciiquarium
+          - bat
+          - btop
+          - cmatrix
+          - cowfortune
+          - cowsay
+          - curl
+          - direnv
+          - dust
+          - exa
+          - eza
+          - fd
+          - figlet
+          - fzf
+          - htop
+          - hyperfine
+          - man
+          - neofetch
+          - procs
+          - ripgrep
+          - sd
+          - tmux
+          - tmuxp
+          - zoxide
+      when: ansible_os_family == 'Debian'
+
+    - name: Install CLI tools from homebrew
+      homebrew:
+        state: present
+        name:
+          - asciiquarium
+          - bat
+          - btop
+          - cmatrix
+          # - cowfortune # N/A
+          # - cowsay # deprecated
+          - curl
+          - direnv
+          - dust
+          # - exa # deprecated
+          - eza
+          - fd
+          - figlet
+          - fzf
+          - htop
+          - hyperfine
+          # - man # N/A
+          - neofetch
+          - procs
+          - ripgrep
+          - sd
+          - tmux
+          - tmuxp
+          - zoxide
+      when: ansible_distribution == "MacOSX"

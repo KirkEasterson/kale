@@ -1,0 +1,27 @@
+---
+- name: Install bluetooth
+  hosts: localhost
+  become: true
+  when: ansible_system == "Linux"
+
+  tasks:
+    - name: Install bluetooth from pacman
+      become: true
+      pacman:
+        state: present
+        name:
+          - blueman
+          - bluez
+          - bluez-utils
+          - hidapi
+          - sbc
+      when: ansible_distribution == 'ArchLinux'
+
+    - name: Install bluetooth from apt
+      become: true
+      apt:
+        install_recommends: no
+        name:
+          - cbatticon
+          - volumeicon-alsa
+      when: ansible_os_family == 'Debian'

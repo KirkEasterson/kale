@@ -21,3 +21,21 @@
 - name: "Update repos with multilib"
   include_tasks: roles/common/tasks/update_repos/pacman.yml
   when: mult_one.changed or mult_two.changed
+
+  # TODO: test that this works
+- name: Enable color output in pacman
+  become: true
+  lineinfile:
+    path: "/etc/pacman.conf"
+    state: "present"
+    line: "Color"
+    regexp: "^#Color"
+
+  # TODO: test that this works
+- name: Enable parallel downloads for pacman
+  become: true
+  lineinfile:
+    path: "/etc/pacman.conf"
+    state: "present"
+    line: "ParallelDownloads = 5"
+    regexp: "^#ParallelDownloads = 5"

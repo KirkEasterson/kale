@@ -1,0 +1,22 @@
+---
+- name: Install homebrew on macos and linux
+  hosts: localhost
+  become: true
+  when: (ansible_system == "Linux") or (ansible_distribution == "MacOSX")
+
+  tasks:
+    - name: Check if homebrew is installed
+      command: /bin/bash -c "command -v brew"
+      changed_when: false
+      failed_when: false
+      ignore_errors: true
+      register: brew_exists
+
+    - name: Install homebrew
+      command: NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+      when: brew_exists.rc != 0
+
+    - name: Update homebrew
+      community.general.homebrew:
+        update_homebrew: true
+        upgrade_all: true

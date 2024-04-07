@@ -1,0 +1,33 @@
+---
+- name: Install screenshot utilities
+  hosts: localhost
+  become: true
+
+  tasks:
+    - name: Install screenshot utilities from pacman
+      become: true
+      pacman:
+        state: present
+        name:
+          - flameshot
+      when: ansible_distribution == 'ArchLinux'
+
+    - name: Install screenshot utilities from apt
+      become: true
+      apt:
+        install_recommends: no
+        name:
+          - flameshot
+      when: ansible_os_family == 'Debian'
+
+    - name: Install screenshot utilities from homebrew
+      homebrew:
+        state: present
+        name:
+          - homebrew/cask/flameshot
+      when: ansible_distribution == "MacOSX"
+
+- name: Create screenshots directory
+  file:
+    path: "{{ screenshots_path }}"
+    state: directory

@@ -1,0 +1,19 @@
+---
+- name: Setup systemd conf
+  hosts: localhost
+  become: true
+  when: ansible_system == "Linux"
+
+  tasks:
+    - name: Check if logind.conf exists
+      stat:
+        path: /etc/systemd/logind.conf
+      register: logind_conf
+
+    - name: Update logind.conf
+      copy:
+        src: files/logind.conf
+        dest: /etc/systemd/logind.conf
+      when: logind_conf.stat.exists == false or logind_conf.stat.md5 != ansible_checksum.md5
+      vars:
+        ansible_checksum: "{{ lookup('file', 'files/logind.conf') }}"

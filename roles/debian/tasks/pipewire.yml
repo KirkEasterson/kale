@@ -1,3 +1,4 @@
+---
 # https://ubuntuhandbook.org/index.php/2022/04/pipewire-replace-pulseaudio-ubuntu-2204/
 
 - name: Install pipewire client libraries and wireplumber
@@ -17,7 +18,7 @@
       - pipewire-media-session
       - pulseaudio-module-bluetooth
 
-      # TODO: figure out why these files don't exist on a fresh install. Maybe the service has to be started?
+# TODO: figure out why these files don't exist on a fresh install. Maybe the service has to be started?
 - name: Copy ALSA configuration file
   become: true
   ansible.builtin.copy:

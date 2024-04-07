@@ -1,0 +1,126 @@
+---
+- name: Install awesomewm
+  hosts: localhost
+  become: true
+  when: "ansible_distribution == 'Linux'"
+
+  tasks:
+    - name: Install awesomewm from pacman
+      become: true
+      pacman:
+        state: present
+        name:
+          - awesome
+          - luarocks
+          - sound-theme-freedesktop
+      when: ansible_distribution == 'ArchLinux'
+
+    - name: Install awesomewm tools from AUR
+      become: true
+      become_user: aur_builder
+      kewlfft.aur.aur:
+        state: present
+        use: yay
+        name:
+          - awesome-freedesktop-git
+
+    - name: Install awesomewm from apt
+      become: true
+      apt:
+        install_recommends: no
+        name:
+          - awesome
+          - luarocks
+          - sound-theme-freedesktop
+      when: ansible_os_family == 'Debian'
+
+- name: Install sway
+  hosts: localhost
+  become: true
+  when: "ansible_distribution == 'Linux'"
+
+  tasks:
+    - name: Install awesomewm from pacman
+      become: true
+      pacman:
+        state: present
+        name:
+          - sway
+          - swaybg
+          - swayidle
+          - swaylock
+          - waybar
+          - wf-recorder
+      when: ansible_distribution == 'ArchLinux'
+
+    - name: Install awesomewm tools from AUR
+      become: true
+      become_user: aur_builder
+      kewlfft.aur.aur:
+        state: present
+        use: yay
+        name:
+          - nwg-displays
+
+    - name: Install awesomewm from apt
+      become: true
+      apt:
+        install_recommends: no
+        name:
+          - sway
+          - swaybg
+          - swayidle
+          - swaylock
+          - waybar
+          - wf-recorder
+      when: ansible_os_family == 'Debian'
+
+- name: Install i3
+  hosts: localhost
+  become: true
+  when: "ansible_distribution == 'Linux'"
+
+  tasks:
+    - name: Install i3 from pacman
+      become: true
+      pacman:
+        state: present
+        name:
+          - i3-wm
+      when: ansible_distribution == 'ArchLinux'
+
+    - name: Install i3 tools from AUR
+      become: true
+      become_user: aur_builder
+      kewlfft.aur.aur:
+        state: present
+        use: yay
+        name:
+          - awesome-freedesktop-git
+
+    - name: Install i3 from apt
+      become: true
+      apt:
+        install_recommends: no
+        name:
+          - awesome
+          - luarocks
+          - sound-theme-freedesktop
+      when: ansible_os_family == 'Debian'
+
+- name: Install yabai
+  hosts: localhost
+  become: true
+  when: ansible_distribution == "MacOSX"
+
+  tasks:
+    - name: Install yabai from homebrew
+      homebrew:
+        state: present
+        name:
+          - koekeishiya/formulae/yabai
+      when: ansible_distribution == "MacOSX"
+
+    - name: Start yabai service
+      command: yabai --start-service
+      changed_when: false

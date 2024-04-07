@@ -1,0 +1,25 @@
+---
+- name: Install global linux configs
+  hosts: localhost
+  become: true
+  when: (ansible_system == "Linux") or (ansible_distribution == "MacOSX")
+
+  tasks:
+    - name: Check if global_configs exists
+      stat:
+        path: "{{ globalconfigs_path }}"
+      register: global_configs_dir
+
+    - name: Clone global configs
+      git:
+        repo: "git@github.com:KirkEasterson/.global_configs.git"
+        dest: "{{ globalconfigs_path }}"
+        key_file: "{{ sshkey_github_path }}"
+        accept_hostkey: true
+      when: global_configs_dir.stat.exists == false
+
+    - name: Install global configs
+      shell:
+        chdir: "{{ globalconfigs_path }}"
+        cmd: ./install.sh
+      when: (global_configs_dir.stat.exists) == false and (ansible_system == "Linux")

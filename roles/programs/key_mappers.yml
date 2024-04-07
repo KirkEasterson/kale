@@ -1,0 +1,77 @@
+---
+- name: Install key mappers
+  hosts: localhost
+  become: true
+
+  tasks:
+    - name: Install key mappers from pacman
+      become: true
+      pacman:
+        state: present
+        name:
+          - sxhkd
+      when: ansible_distribution == 'ArchLinux'
+
+    - name: Install key mappers from apt
+      become: true
+      apt:
+        install_recommends: no
+        name:
+          - x11-xserver-utils # contains xmodmap
+      when: ansible_os_family == 'Debian'
+
+    - name: Install key mappers from homebrew
+      homebrew:
+        state: present
+        name:
+          - koekeishiya/formulae/skhd
+      when: ansible_distribution == "MacOSX"
+
+    - name: Start skhd service
+      command: skhd --start-service
+      changed_when: false
+
+- name: Install i3
+  hosts: localhost
+  become: true
+  when: "ansible_distribution == 'Linux'"
+
+  tasks:
+    - name: Install i3 from pacman
+      become: true
+      pacman:
+        state: present
+        name:
+          - i3-wm
+      when: ansible_distribution == 'ArchLinux'
+
+    - name: Install i3 tools from AUR
+      become: true
+      become_user: aur_builder
+      kewlfft.aur.aur:
+        state: present
+        use: yay
+        name:
+          - awesome-freedesktop-git
+
+    - name: Install i3 from apt
+      become: true
+      apt:
+        install_recommends: no
+        name:
+          - awesome
+          - luarocks
+          - sound-theme-freedesktop
+      when: ansible_os_family == 'Debian'
+
+- name: Install yabai
+  hosts: localhost
+  become: true
+  when: ansible_distribution == "MacOSX"
+
+  tasks:
+    - name: Install yabai homebrew
+      homebrew:
+        state: present
+        name:
+          - koekeishiya/formulae/yabai
