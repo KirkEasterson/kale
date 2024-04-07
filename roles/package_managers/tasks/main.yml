@@ -1,5 +1,6 @@
 ---
 - name: Install and update package managers
+  hosts: localhost
   block:
 
     - name: Install AUR
