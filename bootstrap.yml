@@ -11,33 +11,33 @@
     #   - homebrew (if mac)
     #   - npm (all)
     #   - pip (all)
-    - import_tasks:
+    - import_role:
       file: roles/package_managers/local.yml
 
     # - change shell to zsh
-    - import_tasks:
+    - import_role:
       file: roles/zsh/local.yml
 
     # - create ssh key and upload it to github
-    - import_tasks:
+    - import_role:
       file: roles/github/local.yml
 
     # - ensure directory layout
-    - import_tasks:
+    - import_role:
       file: roles/directories/local.yml
 
     # - ensure git repos are cloned and install
     #   - dotfiles
     #   - global_configs (TODO: remove this repo and move files here)
     #   - scripts
-    - import_tasks:
+    - import_role:
       file: roles/git_repos/local.yml
 
       # TODO: performance things
       #   - https://gist.github.com/lbrame/1678c00213c2bd069c0a59f8733e0ee6
     #       - also need `intel-media-driver`
 
-    - import_tasks:
+    - import_role:
       file: roles/fonts/local.yml
 
     # - add user to necessary groups
@@ -52,52 +52,52 @@
     #   - udev (linux)
     #   - xorg (linux)
     #   - lightdm (linux)
-    - import_tasks:
+    - import_role:
       file: roles/mac_default/local.yml
       when: ansible_distribution == "MacOSX"
 
-    - import_tasks:
+    - import_role:
       file: roles/audio/local.yml
       when: ansible_system == "Linux"
 
-    - import_tasks:
+    - import_role:
       file: roles/locale/local.yml
       when: ansible_system == "Linux"
 
-    - import_tasks:
+    - import_role:
       file: roles/grub/local.yml
       when: ansible_system == "Linux"
 
-    - import_tasks:
+    - import_role:
       file: roles/brightness/local.yml
       when: ansible_system == "Linux"
 
-    - import_tasks:
+    - import_role:
       file: roles/plymouth/local.yml
       when: ansible_system == "Linux"
 
-    - import_tasks:
+    - import_role:
       file: roles/systemd/local.yml
       when: ansible_system == "Linux"
 
-    - import_tasks:
+    - import_role:
       file: roles/udev/local.yml
       when: ansible_system == "Linux"
 
-    - import_tasks:
+    - import_role:
       file: roles/xorg/local.yml
       when: ansible_system == "Linux"
 
-    - import_tasks:
+    - import_role:
       file: roles/logind/local.yml
       when: ansible_system == "Linux"
 
       # TODO: make a login_manager roles and locker role
       #     - set up lock events in locker https://www.baeldung.com/linux/screen-lock-close-laptop-lid
-    - import_tasks:
+    - import_role:
       file: roles/lightdm/local.yml
       when: ansible_system == "Linux"
 
-    - import_tasks:
+    - import_role:
       # - install programs
       file: roles/programs/local.yml
