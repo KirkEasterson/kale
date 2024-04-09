@@ -24,14 +24,19 @@
 # https://docs.github.com/en/rest/users/keys?apiVersion=2022-11-28#create-a-public-ssh-key-for-the-authenticated-user
 - name: Upload SSH key to GitHub
   ansible.builtin.uri:
-    url: "https://api.github.com/user/keys"
     method: POST
-    body_format: form-urlencoded
-    body:
-      title: "{{ github_key_title }}"
-      key: "{{ lookup('file', github_key_path + '.pub') }}"
+    url: "https://api.github.com/user/keys"
+    status_code: [201, 304]
     headers:
       Accept: "application/vnd.github+json"
       Authorization: "Bearer {{ github_access_token }}"
       X-GitHub-Api-Version: "2022-11-28"
-    status_code: [201, 304]
+    body_format: form-urlencoded
+    body:
+      title: "{{ github_key_title }}"
+      key: "{{ lookup('file', github_key_path + '.pub') }}"
+  register: github_post
+
+- name: Print upload status
+  debug:
+    var: github_post.json
