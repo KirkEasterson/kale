@@ -1,32 +1,26 @@
 ---
-- name: Create directory layout
-  hosts: localhost
+- name: Install xdg-user-dirs
   become: true
-  when: (ansible_system == "Linux") or (ansible_distribution == "MacOSX")
+  pacman:
+    state: present
+    name:
+      - "xdg-user-dirs"
+  when: ansible_facts['os_family'] == "Archlinux"
 
-  tasks:
-    - name: Install xdg-user-dirs
-      become: true
-      pacman:
-        state: present
-        name:
-          - "xdg-user-dirs"
-      when: ansible_distribution == 'ArchLinux'
+- name: Install xdg-user-dirs
+  become: true
+  apt:
+    install_recommends: no
+    name:
+      - "xdg-user-dirs"
+  when: ansible_facts['os_family'] == "Debian"
 
-    - name: Install xdg-user-dirs
-      become: true
-      apt:
-        install_recommends: no
-        name:
-          - "xdg-user-dirs"
-      when: ansible_os_family == 'Debian'
+- name: Create xdg user directories
+  changed_when: false
+  command: "LC_ALL=C xdg-user-dirs-update --force"
+  when: ansible_system == "Linux"
 
-    - name: Create xdg user directories
-      changed_when: false
-      command: "LC_ALL=C xdg-user-dirs-update --force"
-      when: ansible_system == "Linux"
-
-    - name: Create dev directory
-      file:
-        path: "{{ dev_path }}"
-        state: directory
+- name: Create dev directory
+  file:
+    path: "{{ dev_path }}"
+    state: directory
