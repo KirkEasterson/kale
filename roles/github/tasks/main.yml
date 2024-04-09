@@ -35,9 +35,3 @@
     body:
       title: "{{ github_key_title }}"
       key: "{{ lookup('file', github_key_path + '.pub') }}"
-  register: github_post
-  failed_when: false
-
-- name: Print upload status
-  debug:
-    var: github_post.json
