@@ -23,6 +23,7 @@
     mode: "644"
   register: public_key
 
+# https://docs.github.com/en/rest/users/keys?apiVersion=2022-11-28#create-a-public-ssh-key-for-the-authenticated-user
 - name: Upload SSH key to GitHub
   ansible.builtin.uri:
     url: "https://api.github.com/user/keys"
@@ -34,5 +35,6 @@
     headers:
       Accept: "application/vnd.github+json"
       Authorization: "Bearer {{ github_access_token }}"
+      X-GitHub-Api-Version: "2022-11-28"
     status_code: [201, 304]
   when: private_key.changed or public_key.changed
