@@ -20,6 +20,7 @@
     privatekey_path: "{{ github_key_path }}"
     privatekey_passphrase: "{{ github_key_passphrase }}"
     mode: "644"
+    format: "OpenSSH"
 
 # https://docs.github.com/en/rest/users/keys?apiVersion=2022-11-28#create-a-public-ssh-key-for-the-authenticated-user
 - name: Upload SSH key to GitHub
