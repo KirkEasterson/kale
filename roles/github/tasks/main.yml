@@ -13,7 +13,6 @@
     size: 2048
     cipher: auto
     mode: "600"
-  register: private_key
 
 - name: Generate public key
   community.crypto.openssl_publickey:
@@ -21,7 +20,6 @@
     privatekey_path: "{{ github_key_path }}"
     privatekey_passphrase: "{{ github_key_passphrase }}"
     mode: "644"
-  register: public_key
 
 # https://docs.github.com/en/rest/users/keys?apiVersion=2022-11-28#create-a-public-ssh-key-for-the-authenticated-user
 - name: Upload SSH key to GitHub
@@ -36,4 +34,3 @@
       Authorization: "Bearer {{ github_access_token }}"
       X-GitHub-Api-Version: "2022-11-28"
     status_code: [201, 304]
-  when: private_key.changed or public_key.changed
