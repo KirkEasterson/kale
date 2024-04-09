@@ -13,6 +13,7 @@
     size: 2048
     cipher: auto
     mode: "600"
+  register: private_key
 
 - name: Generate public key
   community.crypto.openssl_publickey:
@@ -21,13 +22,14 @@
     privatekey_passphrase: "{{ github_key_passphrase }}"
     mode: "644"
     format: "OpenSSH"
+  register: public_key
 
 # https://docs.github.com/en/rest/users/keys?apiVersion=2022-11-28#create-a-public-ssh-key-for-the-authenticated-user
 - name: Upload SSH key to GitHub
   ansible.builtin.uri:
     method: POST
     url: "https://api.github.com/user/keys"
-    status_code: [201, 304]
+    status_code: 201
     headers:
       Accept: "application/vnd.github+json"
       Authorization: "Bearer {{ github_access_token }}"
@@ -36,3 +38,4 @@
     body:
       title: "{{ github_key_title }}"
       key: "{{ lookup('file', github_key_path + '.pub') }}"
+  when: private_key.changed or public_key.changed
