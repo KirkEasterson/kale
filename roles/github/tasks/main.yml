@@ -26,6 +26,7 @@
   ansible.builtin.uri:
     url: "https://api.github.com/user/keys"
     method: POST
+    body_format: form-urlencoded
     body:
       title: "{{ github_key_title }}"
       key: "{{ lookup('file', github_key_path + '.pub') }}"
