@@ -8,7 +8,7 @@
   git:
     repo: "git@github.com:KirkEasterson/.dotfiles.git"
     dest: "{{ dotfiles_path }}"
-    key_file: "{{ sshkey_github_path }}"
+    key_file: "{{ github_key_path }}"
     accept_hostkey: true
     track_submodules: true
     recursive: true
