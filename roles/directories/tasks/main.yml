@@ -16,8 +16,7 @@
   when: ansible_facts['os_family'] == "Debian"
 
 - name: Create xdg user directories
-  changed_when: false
-  command: "LC_ALL=C xdg-user-dirs-update --force"
+  ansible.builtin.shell: "LC_ALL=C xdg-user-dirs-update --force"
   when: ansible_system == "Linux"
 
 - name: Create dev directory
