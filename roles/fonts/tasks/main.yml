@@ -1,0 +1,48 @@
+---
+# TODO: get comic code somehow
+- name: Create fonts directory
+  become: true
+  become_user: "{{ remote_regular_user }}"
+  file:
+    path: $HOME/.local/share/fonts
+    state: directory
+
+- name: Install fonts on pacman
+  become: true
+  pacman:
+    state: present
+    name:
+      - font-manager
+      - fontconfig
+      - noto-fonts
+      - noto-fonts-cjk
+      - noto-fonts-emoji
+      - noto-fonts-extra
+      - ttf-hack-nerd
+      - ttf-jetbrains-mono-nerd
+      - ttf-ubuntu-mono-nerd
+      - ttf-ubuntu-nerd
+  when: ansible_facts['os_family'] == "Archlinux"
+
+- name: Install fonts on apt
+  become: true
+  apt:
+    install_recommends: no
+    name:
+      - fontconfig
+      - font-manager
+      - fonts-hack-otf
+      - fonts-jetbrains-mono
+      - fonts-ubuntu
+  when: ansible_facts['os_family'] == "Debian"
+
+  # TODO: specify cask in module
+- name: Install fonts from homebrew
+  homebrew:
+    state: present
+    name:
+      - homebrew/cask-fonts/font-hack-nerd-font
+      - homebrew/cask-fonts/font-jetbrains-mono-nerd-font
+      - homebrew/cask-fonts/font-ubuntu-mono-nerd-font
+      - homebrew/cask-fonts/font-ubuntu-nerd-font
+  when: ansible_facts['os_family'] == "Darwin"
