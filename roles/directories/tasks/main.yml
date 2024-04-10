@@ -17,6 +17,7 @@
 
 - name: Create xdg user directories
   ansible.builtin.shell: "LC_ALL=C xdg-user-dirs-update --force"
+  changed_when: false
   when: ansible_system == "Linux"
 
 - name: Create dev directory
