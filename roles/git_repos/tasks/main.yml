@@ -1,0 +1,5 @@
+---
+- import_tasks:
+    file: dotfiles.yml
+- import_tasks:
+    file: scripts.yml

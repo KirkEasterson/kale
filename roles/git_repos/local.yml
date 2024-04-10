@@ -1,9 +1,0 @@
----
-- hosts: localhost
-  tasks:
-    - import_tasks:
-        file: dotfiles.yml
-    # - import_tasks:
-    #     file: global_configs.yml
-    - import_tasks:
-        file: scripts.yml

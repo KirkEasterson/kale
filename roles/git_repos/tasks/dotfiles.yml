@@ -1,0 +1,43 @@
+---
+- name: Check if dotfiles exists
+  stat:
+    path: "{{ dotfiles_path }}"
+  register: dotfiles_dir
+
+- name: Clone dotfiles
+  git:
+    repo: "git@github.com:KirkEasterson/.dotfiles.git"
+    dest: "{{ dotfiles_path }}"
+    key_file: "{{ sshkey_github_path }}"
+    accept_hostkey: true
+    track_submodules: true
+    recursive: true
+  when: dotfiles_dir.stat.exists == false
+
+- name: Install pip from pacman
+  become: true
+  pacman:
+    state: present
+    name:
+      - "stow"
+  when: ansible_facts['os_family'] == "Archlinux"
+
+- name: Install pip from apt
+  become: true
+  apt:
+    install_recommends: no
+    name:
+      - "stow"
+  when: ansible_facts['os_family'] == "Debian"
+
+- name: Install pip from homebrew
+  homebrew:
+    state: present
+    name:
+      - "stow"
+  when: ansible_facts['os_family'] == "Darwin"
+
+- name: Install dotfiles
+  shell:
+    cmd: "{{ dotfiles_path }}/install.sh"
+  when: dotfiles_dir.stat.exists == false

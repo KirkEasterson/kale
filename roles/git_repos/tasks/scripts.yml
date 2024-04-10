@@ -1,0 +1,12 @@
+---
+- name: Check if scripts exists
+  stat:
+    path: "{{ scripts_path }}"
+  register: scripts_dir
+
+- name: Clone scripts
+  git:
+    repo: "git@github.com:KirkEasterson/scripts.git"
+    dest: "{{ scripts_path }}"
+    key_file: "{{ sshkey_github_path }}"
+  when: scripts_dir.stat.exists == false
