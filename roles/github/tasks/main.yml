@@ -5,13 +5,13 @@
     state: directory
     mode: "700"
 
-- name: Generate private key
+- name: Generate key pair
   community.crypto.openssh_keypair:
     path: "{{ github_key_path }}"
     passphrase: "{{ github_key_passphrase }}"
     type: "ed25519"
     mode: "600"
-  register: private_key
+  register: key_pair
 
 # https://docs.github.com/en/rest/users/keys?apiVersion=2022-11-28#create-a-public-ssh-key-for-the-authenticated-user
 - name: Upload SSH key to GitHub
@@ -27,4 +27,4 @@
     body:
       title: "{{ github_key_title }}"
       key: "{{ lookup('file', github_key_path + '.pub') }}"
-  when: private_key.changed or public_key.changed
+  when: key_pair.changed
