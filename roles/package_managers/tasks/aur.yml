@@ -50,3 +50,4 @@
     use: yay
     upgrade: true
     update_cache: true
+    aur_only: true
