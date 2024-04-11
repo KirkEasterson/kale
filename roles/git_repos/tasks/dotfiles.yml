@@ -15,7 +15,7 @@
     recursive: true
   when: dotfiles_dir.stat.exists == false
 
-- name: Install pip from pacman
+- name: Install stow from pacman
   become: true
   pacman:
     state: present
@@ -23,7 +23,7 @@
       - "stow"
   when: ansible_facts['os_family'] == "Archlinux"
 
-- name: Install pip from apt
+- name: Install stow from apt
   become: true
   apt:
     install_recommends: no
@@ -31,7 +31,7 @@
       - "stow"
   when: ansible_facts['os_family'] == "Debian"
 
-- name: Install pip from homebrew
+- name: Install stow from homebrew
   homebrew:
     state: present
     name:
