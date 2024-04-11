@@ -12,6 +12,7 @@
     accept_hostkey: true
     track_submodules: true
     recursive: true
+    depth: 1
   when: dotfiles_dir.stat.exists == false
 
 - name: Install stow from pacman
