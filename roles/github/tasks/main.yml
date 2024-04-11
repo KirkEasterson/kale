@@ -20,7 +20,7 @@
     path: "{{ github_key_path }}.pub"
     privatekey_path: "{{ github_key_path }}"
     privatekey_passphrase: "{{ github_key_passphrase }}"
-    mode: "644"
+    mode: "600"
     format: "OpenSSH"
   register: public_key
 
