@@ -1,4 +1,8 @@
 ---
+- name: Refresh package managers
+  import_tasks:
+    file: refresh.yml
+
 - name: Install AUR
   import_tasks:
     file: aur.yml

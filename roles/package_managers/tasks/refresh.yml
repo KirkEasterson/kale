@@ -1,0 +1,34 @@
+---
+- name: Update pacman packages
+  become: true
+  community.general.pacman:
+    update_cache: true
+  when: ansible_facts['os_family'] == "Archlinux"
+
+#   # TODO: this only when yay is installed
+# - name: Update AUR packages
+#   become: true
+#   become_user: aur_builder
+#   kewlfft.aur.aur:
+#     use: yay
+#     update_cache: true
+#     aur_only: true
+#   when: ansible_facts['os_family'] == "Archlinux"
+
+- name: Update apt packages
+  become: true
+  ansible.builtin.apt:
+    cache_invalid_time: 86400 # 60*60*24 (24 hours)
+    autoremove: true
+    autoclean: true
+    install_recommends: false
+    update_cache: true
+    upgrade: true
+  when: ansible_facts['os_family'] == "Debian"
+
+- name: Update brew packages
+  become: true
+  community.general.homebrew:
+    update_homebrew: true
+    upgrade_all: true
+  when: ansible_facts['os_family'] == "Darwin"
