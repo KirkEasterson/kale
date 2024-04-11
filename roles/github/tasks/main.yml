@@ -10,7 +10,6 @@
     path: "{{ github_key_path }}"
     passphrase: "{{ github_key_passphrase }}"
     type: "ed25519"
-    cipher: auto
     mode: "600"
   register: private_key
 
