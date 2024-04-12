@@ -107,23 +107,26 @@
 - name: Enable pipewire service
   become: true
   ansible.builtin.systemd_service:
-    name: pipewire
+    scope: "user"
+    state: "started"
+    name: "pipewire.service"
     enabled: true
-    state: started
 
 - name: Enable pipewire-pulse service
   become: true
   ansible.builtin.systemd_service:
-    name: pipewire-pulse
+    scope: "user"
+    state: "started"
+    name: "pipewire-pulse"
     enabled: true
-    state: started
 
 - name: Enable wireplumber service
   become: true
   ansible.builtin.systemd_service:
-    name: wireplumber
+    scope: "user"
+    state: "started"
+    name: "wireplumber"
     enabled: true
-    state: started
 
 - name: Install general audio tools on pacman
   become: true
