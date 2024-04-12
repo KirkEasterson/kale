@@ -1,0 +1,22 @@
+---
+- name: Install lockers on pacman
+  become: true
+  pacman:
+    state: present
+    name:
+      - "i3lock"
+      - "swaylock"
+      - "xsslock"
+      - "xautolock"
+  when: ansible_facts['os_family'] == "Archlinux"
+
+- name: Install lockers on apt
+  become: true
+  apt:
+    install_recommends: no
+    name:
+      - "i3lock"
+      - "swaylock"
+      - "xsslock"
+      - "xautolock"
+  when: ansible_facts['os_family'] == "Debian"

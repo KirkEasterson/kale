@@ -83,10 +83,13 @@
         name: xorg
       when: ansible_system == "Linux"
 
-      # TODO: make a login_manager roles and locker role
-      #     - set up lock events in locker https://www.baeldung.com/linux/screen-lock-close-laptop-lid
     - ansible.builtin.import_role:
         name: login_manager
+      when: ansible_system == "Linux"
+
+      # TODO: set up lock events in locker https://www.baeldung.com/linux/screen-lock-close-laptop-lid
+    - ansible.builtin.import_role:
+        name: locker
       when: ansible_system == "Linux"
 
     - ansible.builtin.import_role:
