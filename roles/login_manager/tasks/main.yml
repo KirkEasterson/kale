@@ -1,0 +1,5 @@
+---
+- import_tasks:
+    file: sddm.yml
+# - import_tasks:
+#     file: lightdm.yml
