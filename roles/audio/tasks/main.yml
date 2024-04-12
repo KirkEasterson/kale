@@ -106,6 +106,7 @@
 
 - name: Enable pipewire service
   become: true
+  become_user: "{{ remote_regular_user }}"
   ansible.builtin.systemd_service:
     scope: "user"
     state: "started"
@@ -114,6 +115,7 @@
 
 - name: Enable pipewire-pulse service
   become: true
+  become_user: "{{ remote_regular_user }}"
   ansible.builtin.systemd_service:
     scope: "user"
     state: "started"
@@ -122,6 +124,7 @@
 
 - name: Enable wireplumber service
   become: true
+  become_user: "{{ remote_regular_user }}"
   ansible.builtin.systemd_service:
     scope: "user"
     state: "started"
