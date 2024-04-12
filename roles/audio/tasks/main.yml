@@ -43,7 +43,6 @@
     name:
       - helvum # GTK patch bay
       - pipewire
-      - pipewire-alsa
       - pipewire-audio
       - pipewire-docs
       - pipewire-pulse
@@ -60,7 +59,6 @@
     name:
       - helvum # GTK patch bay
       - pipewire
-      - pipewire-alsa
       - pipewire-audio
       - pipewire-docs
       - pipewire-pulse
