@@ -17,16 +17,11 @@
       # - "xorg-xbacklight"
   when: ansible_os_family == 'Debian'
 
-- name: Check if brightnessctl rules exists
-  stat:
-    path: "/usr/lib/udev/rules.d/90-brightnessctl.rules"
-  register: brightnessctl_conf
-
 - name: Copy brightnessctl udev rules
   become: true
   copy:
     src: "../files/90-brightnessctl.rules"
     dest: "/usr/lib/udev/rules.d/90-brightnessctl.rules"
-  when: brightnessctl_conf.stat.exists == false or brightnessctl_conf.checksum != ansible_checksum.md5
+  when: brightnessctl_conf.checksum != ansible_checksum.md5
   vars:
     ansible_checksum: "{{ lookup('file', 'files/90-brightnessctl.rules') }}"
