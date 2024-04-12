@@ -46,7 +46,6 @@
       - pipewire-alsa
       - pipewire-audio
       - pipewire-docs
-      - pipewire-media-session
       - pipewire-pulse
       - pipewire-x11-bell
       # - qpwgraph # QT patch bay
@@ -64,7 +63,6 @@
       - pipewire-alsa
       - pipewire-audio
       - pipewire-docs
-      # - pipewire-media-session # replaced by wireplumber
       - pipewire-pulse
       - pipewire-x11-bell
       # - qpwgraph # QT patch bay
