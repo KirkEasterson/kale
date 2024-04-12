@@ -1,0 +1,14 @@
+---
+- name: Check if logind.conf exists
+  stat:
+    path: "/etc/systemd/logind.conf"
+  register: logind_conf
+
+- name: Update logind.conf
+  become: true
+  copy:
+    src: "../files/logind.conf"
+    dest: "/etc/systemd/logind.conf"
+  when: logind_conf.stat.exists == false or logind_conf.stat.checksum != ansible_checksum
+  vars:
+    ansible_checksum: "{{ lookup('file', 'files/logind.conf') | checksum }}"
