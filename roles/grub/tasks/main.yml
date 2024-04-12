@@ -1,10 +1,4 @@
 ---
-- name: Copy GRUB config
-  become: true
-  ansible.builtin.copy:
-    src: ../files/grub
-    dest: /etc/default/grub
-
 - name: Check if 'quiet' is configured in the boot command
   become: true
   lineinfile:
