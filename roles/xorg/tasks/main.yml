@@ -32,11 +32,11 @@
 - name: Update libinput conf
   become: true
   copy:
-    src: "files/40-libinput.conf"
+    src: "../files/40-libinput.conf"
     dest: "/etc/X11/xorg.conf.d/40-libinput.conf"
   when: libinput_conf.stat.exists == false or libinput_conf.stat.checksum != ansible_checksum
   vars:
-    ansible_checksum: "{{ lookup('file', 'files/40-libinput.conf') | checksum }}"
+    ansible_checksum: "{{ lookup('file', '../files/40-libinput.conf') | checksum }}"
 
 - name: Check if synaptics conf exists
   stat:
@@ -46,8 +46,8 @@
 - name: Update synaptics conf
   become: true
   copy:
-    src: "files/70-synaptics.conf"
+    src: "../files/70-synaptics.conf"
     dest: "/etc/X11/xorg.conf.d/70-synaptics.conf"
   when: synaptics_conf.stat.exists == false or synaptics_conf.stat.checksum != ansible_checksum
   vars:
-    ansible_checksum: "{{ lookup('file', 'files/70-synaptics.conf') | checksum }}"
+    ansible_checksum: "{{ lookup('file', '../files/70-synaptics.conf') | checksum }}"

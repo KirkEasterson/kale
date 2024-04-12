@@ -11,4 +11,4 @@
     dest: "/etc/systemd/logind.conf"
   when: logind_conf.stat.exists == false or logind_conf.stat.checksum != ansible_checksum
   vars:
-    ansible_checksum: "{{ lookup('file', 'files/logind.conf') | checksum }}"
+    ansible_checksum: "{{ lookup('file', '../files/logind.conf') | checksum }}"

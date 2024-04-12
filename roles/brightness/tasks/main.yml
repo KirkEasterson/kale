@@ -29,4 +29,4 @@
     dest: "/usr/lib/udev/rules.d/90-brightnessctl.rules"
   when: brightnessctl_conf.stat.exists == false or brightnessctl_conf.stat.checksum != ansible_checksum
   vars:
-    ansible_checksum: "{{ lookup('file', 'files/90-brightnessctl.rules') | checksum }}"
+    ansible_checksum: "{{ lookup('file', '../files/90-brightnessctl.rules') | checksum }}"

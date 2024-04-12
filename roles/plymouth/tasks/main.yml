@@ -40,6 +40,6 @@
     dest: "/etc/plymouth/plymouthd.conf"
   when: plymouth_conf.stat.exists == false or plymouth_conf.stat.checksum != ansible_checksum
   vars:
-    ansible_checksum: "{{ lookup('file', 'files/plymouthd.conf') | checksum }}"
+    ansible_checksum: "{{ lookup('file', '../files/plymouthd.conf') | checksum }}"
 
 # TODO: enable a service maybe?
