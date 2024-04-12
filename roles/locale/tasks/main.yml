@@ -1,11 +1,13 @@
 ---
 # Taken from https://serverfault.com/questions/959026/how-do-i-generate-and-set-the-locale-using-ansible#answer-981742
 - name: Ensure localisation files for "{{ config_system_locale }}" are available
+  become: true
   locale_gen:
     name: "{{ config_system_locale }}"
     state: present
 
 - name: Ensure localisation files for "{{ config_system_language }}" are available
+  become: true
   locale_gen:
     name: "{{ config_system_language }}"
     state: present
