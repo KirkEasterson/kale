@@ -22,7 +22,8 @@
     path: "/usr/lib/udev/rules.d/90-brightnessctl.rules"
   register: brightnessctl_conf
 
-- name: Update logind.conf
+- name: Copy brightnessctl udev rules
+  become: true
   copy:
     src: "../files/90-brightnessctl.rules"
     dest: "/usr/lib/udev/rules.d/90-brightnessctl.rules"
