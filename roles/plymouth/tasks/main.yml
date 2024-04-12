@@ -34,6 +34,7 @@
   register: plymouth_conf
 
 - name: Update plymouth conf
+  become: true
   copy:
     src: files/plymouthd.conf
     dest: "/etc/plymouth/plymouthd.conf"
