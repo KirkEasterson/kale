@@ -1,12 +1,21 @@
 ---
-- name: Install sddm
+- name: Install SDDM on pacman
   become: true
   pacman:
     state: present
     name:
       - "sddm"
       - "sddm-kcm"
-  when: ansible_distribution == 'ArchLinux'
+  when: ansible_facts['os_family'] == "Archlinux"
+
+- name: Install SDDM on apt
+  become: true
+  apt:
+    install_recommends: no
+    name:
+      - "sddm"
+      - "sddm-kcm"
+  when: ansible_facts['os_family'] == "Debian"
 
 # - name: Install SDDM nordic theme
 #   become: yes
@@ -31,16 +40,9 @@
   vars:
     ansible_checksum: "{{ lookup('file', '../files/sddm.conf') | checksum }}"
 
-- name: Hide the aur_builder user
-  become: true
-  lineinfile:
-    path: /etc/sddm.conf
-    state: "present"
-    regexp: "^HideUsers="
-    line: "HideUsers=aur_builder"
-
 - name: Enable sddm service
   become: true
   systemd:
     name: sddm
     enabled: yes
+    state: "started"
