@@ -79,8 +79,6 @@
     state: present
     name:
       - rust
-      - rust-analyzer
-      - rustup
   when: ansible_facts['os_family'] == "Archlinux"
 
 - name: Install rust from apt
@@ -89,7 +87,6 @@
     install_recommends: no
     name:
       - rustc
-      - rustfmt
   when: ansible_facts['os_family'] == "Debian"
 
 - name: Install rust from homebrew
@@ -97,8 +94,6 @@
     state: present
     name:
       - rust
-      - rust-analyzer
-      - rustfmt
   when: ansible_facts['os_family'] == "Darwin"
 
 - name: Install dotnet from pacman
