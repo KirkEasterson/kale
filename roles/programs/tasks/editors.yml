@@ -125,14 +125,9 @@
   when: ansible_facts['os_family'] == "Darwin"
 
 - name: Install code editor tools from pip
-  pip:
+  ansible.builtin.pip:
     name:
-      - "neovim" # TODO: more of these
-
-- name: Install code editor tools from npm
-  pip:
-    name:
-      - "neovim" # TODO: more of these
+      - "neovim"
 
 - name: Install neovim package globally.
   community.general.npm:

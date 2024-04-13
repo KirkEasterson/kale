@@ -16,3 +16,7 @@
 - name: Install pip
   import_tasks:
     file: pip.yml
+
+- name: Install npm
+  import_tasks:
+    file: npm.yml

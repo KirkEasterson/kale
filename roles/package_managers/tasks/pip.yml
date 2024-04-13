@@ -6,7 +6,7 @@
     name:
       - "python"
       - "python-pip"
-  when: ansible_distribution == 'ArchLinux'
+  when: ansible_facts['os_family'] == "Archlinux"
 
 - name: Install pip from apt
   become: true
@@ -15,11 +15,11 @@
     name:
       - "python3" # this might be just `python`
       - "python3-pip"
-  when: ansible_os_family == 'Debian'
+  when: ansible_facts['os_family'] == "Debian"
 
 - name: Install pip from homebrew
   homebrew:
     state: present
     name:
       - "python"
-  when: ansible_distribution == "MacOSX"
+  when: ansible_facts['os_family'] == "Darwin"
