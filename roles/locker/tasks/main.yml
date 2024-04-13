@@ -6,8 +6,8 @@
     name:
       - "i3lock"
       - "swaylock"
-      - "xsslock"
       - "xautolock"
+      - "xss-lock"
   when: ansible_facts['os_family'] == "Archlinux"
 
 - name: Install lockers on apt
@@ -17,6 +17,6 @@
     name:
       - "i3lock"
       - "swaylock"
-      - "xsslock"
       - "xautolock"
+      - "xss-lock"
   when: ansible_facts['os_family'] == "Debian"
