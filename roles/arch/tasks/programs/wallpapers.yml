@@ -1,8 +1,0 @@
----
-- name: Install wallpaper manager
-  become: true
-  pacman:
-    state: present
-    name:
-      - feh
-      - oxygen

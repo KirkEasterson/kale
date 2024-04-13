@@ -1,6 +1,0 @@
----
-- name: Install pacaur
-  shell: roles/arch/files/install_pacaur.sh
-
-- name: Install galaxy collections
-  shell: roles/arch/files/install_galaxy_collections.sh

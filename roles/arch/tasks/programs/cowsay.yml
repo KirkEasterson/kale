@@ -1,7 +1,0 @@
----
-- name: Install essential tools
-  become: true
-  pacman:
-    state: present
-    name:
-      - cowsay

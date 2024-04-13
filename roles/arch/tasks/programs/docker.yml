@@ -1,7 +1,0 @@
----
-- name: Install docker
-  become: true
-  pacman:
-    state: present
-    name:
-      - docker

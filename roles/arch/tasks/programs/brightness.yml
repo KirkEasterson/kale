@@ -1,8 +1,0 @@
----
-- name: Install brightness things
-  become: true
-  pacman:
-    state: present
-    name:
-      - brightnessctl
-      - xorg-xbacklight

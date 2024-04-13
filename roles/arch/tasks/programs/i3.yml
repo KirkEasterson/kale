@@ -1,8 +1,0 @@
----
-- name: Install i3
-  become: true
-  pacman:
-    state: present
-    name:
-      - i3-wm
-      - polybar

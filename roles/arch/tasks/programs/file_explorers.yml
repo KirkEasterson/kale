@@ -1,9 +1,0 @@
----
-- name: Install file explorers
-  become: true
-  pacman:
-    state: present
-    name:
-      - lf
-      - pcmanfm
-      - xplr

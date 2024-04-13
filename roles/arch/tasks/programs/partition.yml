@@ -1,7 +1,0 @@
----
-- name: Install partition tool
-  become: true
-  pacman:
-    state: present
-    name:
-      - gparted

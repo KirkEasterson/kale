@@ -1,7 +1,0 @@
----
-- name: Install plymouth
-  become: true
-  pacman:
-    state: present
-    name:
-      - plymouth

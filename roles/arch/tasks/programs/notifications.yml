@@ -1,8 +1,0 @@
----
-- name: Install notification manager
-  become: true
-  pacman:
-    state: present
-    name:
-      - dunst
-      - libnotify

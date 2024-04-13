@@ -1,7 +1,0 @@
----
-- name: Install program launcher
-  become: true
-  pacman:
-    state: present
-    name:
-      - rofi
