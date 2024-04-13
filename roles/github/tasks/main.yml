@@ -13,11 +13,10 @@
     mode: "600"
   register: key_pair
 
-- name: Add new key to authorized keys
-  ansible.posix.authorized_key:
-    user: "{{ remote_regular_user }}"
-    state: present
-    key: "{{ key_pair.public_key }}"
+- name: Evaluating the authentication agent & adding the key
+  shell: |
+    eval "$(ssh-agent)"
+    ssh-add {{ github_key_path }}
   when: key_pair.changed
 
 # https://docs.github.com/en/rest/users/keys?apiVersion=2022-11-28#create-a-public-ssh-key-for-the-authenticated-user
