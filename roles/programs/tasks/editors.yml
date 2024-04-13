@@ -134,8 +134,8 @@
     name:
       - "neovim" # TODO: more of these
 
-- name: Install "coffee-script" node.js package globally.
-  .npm:
+- name: Install neovim package globally.
+  community.general.npm:
     name:
       - "neovim"
       - "neovim-client"
