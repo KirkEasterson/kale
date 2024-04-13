@@ -130,4 +130,3 @@
     state: "started"
     name: "wireplumber"
     enabled: true
-
