@@ -84,6 +84,10 @@
       when: ansible_system == "Linux"
 
     - ansible.builtin.import_role:
+        name: themes
+      when: ansible_system == "Linux"
+
+    - ansible.builtin.import_role:
         name: login_manager
       when: ansible_system == "Linux"
 
