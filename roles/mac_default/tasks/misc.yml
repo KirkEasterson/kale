@@ -1,0 +1,52 @@
+---
+# https://macos-defaults.com/misc/
+- name: Set macos misc settings
+  hosts: localhost
+  become: true
+  when: ansible_distribution == "MacOSX"
+
+  tasks:
+
+    # defaults write com.apple.Music "userWantsPlaybackNotifications" -bool "false"
+    - name: Disable music song notifications
+      community.general.osx_defaults:
+        domain: com.apple.Music
+        key: userWantsPlaybackNotifications
+        type: bool
+        value: false
+        state: present
+
+    # defaults write com.apple.LaunchServices "LSQuarantine" -bool "false"
+    - name: Disable application quarantine message
+      community.general.osx_defaults:
+        domain: com.apple.LaunchServices
+        key: LSQuarantine
+        type: bool
+        value: false
+        state: present
+
+    # defaults write NSGlobalDomain "ApplePressAndHoldEnabled" -bool "false"
+    - name: Disable press-and-hold
+      community.general.osx_defaults:
+        domain: NSGlobalDomain
+        key: ApplePressAndHoldEnabled
+        type: bool
+        value: false
+        state: present
+
+    # defaults write NSGlobalDomain com.apple.keyboard.fnState -bool true
+    - name: Enable function keys as intended
+      community.general.osx_defaults:
+        domain: NSGlobalDomain
+        key: com.apple.keyboard.fnState
+        type: bool
+        value: true
+        state: present
+
+    # defaults write -g NSRequiresAquaSystemAppearance -bool true
+    - name: Enable dark mode
+      community.general.osx_defaults:
+        key: NSRequiresAquaSystemAppearance
+        type: bool
+        value: true
+        state: present

@@ -1,0 +1,22 @@
+---
+# https://macos-defaults.com/safari/
+- name: Set macos safari settings
+  hosts: localhost
+  become: true
+  when: ansible_distribution == "MacOSX"
+
+  tasks:
+
+    # defaults write com.apple.Safari "ShowFullURLInSmartSearchField" -bool "true" && killall Safari
+    - name: Show full url
+      community.general.osx_defaults:
+        domain: com.apple.Safari
+        key: ShowFullURLInSmartSearchField
+        type: bool
+        value: true
+        state: present
+
+    # NOTE: always do this last
+    - name: Restart Safari
+      command: killall Safari
+      changed_when: false

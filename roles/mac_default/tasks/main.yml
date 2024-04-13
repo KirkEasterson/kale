@@ -1,0 +1,21 @@
+---
+- import_tasks:
+    file: desktop.yml
+- import_tasks:
+    file: dock.yml
+- import_tasks:
+    file: feedback_assistant.yml
+- import_tasks:
+    file: finder.yml
+- import_tasks:
+    file: menu_bar.yml
+- import_tasks:
+    file: misc.yml
+- import_tasks:
+    file: mission_control.yml
+- import_tasks:
+    file: safari.yml
+- import_tasks:
+    file: screenshots.yml
+- import_tasks:
+    file: trackpad.yml
