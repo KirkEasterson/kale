@@ -1,0 +1,10 @@
+---
+- name: Install DAWs from pacman
+  become: true
+  pacman:
+    state: present
+    name:
+      - "ardour"
+      - "guitarix"
+      - "gxplugins.lv2"
+      - "reaper"
