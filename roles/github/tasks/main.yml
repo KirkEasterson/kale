@@ -33,5 +33,5 @@
     body_format: "json"
     body:
       title: "{{ github_key_title }}"
-      key: "{{ lookup('file', github_key_path + '.pub') }}"
+      key: "{{ key_pair.public_key }}"
   when: key_pair.changed
