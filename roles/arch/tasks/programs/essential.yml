@@ -85,7 +85,6 @@
 
 - name: Install essential aur tools
   become: true
-  become_user: aur_builder
   kewlfft.aur.aur:
     state: present
     use: yay

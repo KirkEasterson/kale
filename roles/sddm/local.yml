@@ -42,14 +42,6 @@
         regexp: "^Current="
         line: "Current=Nordic-bluish"
 
-    - name: Hide the aur_builder user
-      become: true
-      lineinfile:
-        path: /etc/sddm.conf
-        state: "present"
-        regexp: "^HideUsers="
-        line: "HideUsers=aur_builder"
-
     - name: Enable sddm service
       become: true
       systemd:

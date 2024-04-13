@@ -1,7 +1,6 @@
 ---
 - name: Install xremap
   become: yes
-  become_user: aur_builder
   kewlfft.aur.aur:
     state: present
     use: yay
