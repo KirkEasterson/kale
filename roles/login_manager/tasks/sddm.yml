@@ -19,7 +19,6 @@
 
 # - name: Install SDDM nordic theme
 #   become: yes
-#   become_user: aur_builder
 #   kewlfft.aur.aur:
 #     state: present
 #     use: yay

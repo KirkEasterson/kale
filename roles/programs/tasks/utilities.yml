@@ -1,7 +1,6 @@
 ---
 - name: Install vpn from AUR
   become: true
-  become_user: aur_builder
   kewlfft.aur.aur:
     state: present
     use: yay
@@ -27,7 +26,6 @@
 
 - name: Install password manager from AUR
   become: true
-  become_user: aur_builder
   kewlfft.aur.aur:
     state: present
     use: yay

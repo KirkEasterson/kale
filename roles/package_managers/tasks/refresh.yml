@@ -8,7 +8,6 @@
 #   # TODO: this only when yay is installed
 # - name: Update AUR packages
 #   become: true
-#   become_user: aur_builder
 #   kewlfft.aur.aur:
 #     use: yay
 #     update_cache: true
