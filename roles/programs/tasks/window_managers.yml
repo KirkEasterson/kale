@@ -39,6 +39,7 @@
       - swaylock
       - waybar
       - wf-recorder
+      - xdg-desktop-portal-wlr
   when: ansible_facts['os_family'] == "Archlinux"
 
 - name: Install sway tools from AUR
