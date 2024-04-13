@@ -24,3 +24,8 @@
   file:
     path: "{{ dev_path }}"
     state: directory
+
+- name: Create screenshots directory
+  file:
+    path: "{{ screenshots_path }}"
+    state: directory
