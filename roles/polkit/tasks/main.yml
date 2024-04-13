@@ -1,0 +1,16 @@
+---
+- name: Install polkit on pacman
+  become: true
+  pacman:
+    state: present
+    name:
+      - "polkit-gnome"
+  when: ansible_facts['os_family'] == "Archlinux"
+
+- name: Install polkit on apt
+  become: true
+  apt:
+    state: present
+    name:
+      - "polkit-gnome"
+  when: ansible_facts['os_family'] == "Debian"

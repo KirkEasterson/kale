@@ -80,6 +80,10 @@
       when: ansible_system == "Linux"
 
     - ansible.builtin.import_role:
+        name: polkit
+      when: ansible_system == "Linux"
+
+    - ansible.builtin.import_role:
         name: xorg
       when: ansible_system == "Linux"
 
