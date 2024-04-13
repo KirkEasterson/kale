@@ -1,4 +1,7 @@
 ---
+- import_tasks:
+    file: init.yml
+
 - name: Refresh package managers
   import_tasks:
     file: refresh.yml

@@ -1,0 +1,39 @@
+---
+- name: Enable multilib
+  become: true
+  lineinfile:
+    path: "/etc/pacman.conf"
+    state: "present"
+    line: "[multilib]"
+    regexp: "^#\\[multilib\\]"
+  register: mult_one
+
+- name: "Enable multilib (cont)"
+  become: true
+  lineinfile:
+    path: "/etc/pacman.conf"
+    state: "present"
+    line: "Include = /etc/pacman.d/mirrorlist"
+    insertafter: "^\\[multilib\\]"
+    regexp: "Include = /etc/pacman.d/mirrorlist"
+  register: mult_two
+
+- name: "Update repos with multilib"
+  include_tasks: roles/common/tasks/update_repos/pacman.yml
+  when: mult_one.changed or mult_two.changed
+
+- name: Enable color output in pacman
+  become: true
+  lineinfile:
+    path: "/etc/pacman.conf"
+    state: "present"
+    line: "Color"
+    regexp: "^#Color"
+
+- name: Enable parallel downloads for pacman
+  become: true
+  lineinfile:
+    path: "/etc/pacman.conf"
+    state: "present"
+    line: "ParallelDownloads = 5"
+    regexp: "^#ParallelDownloads = 5"
