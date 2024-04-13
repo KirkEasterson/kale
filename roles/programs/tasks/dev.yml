@@ -165,7 +165,6 @@
     state: present
     name:
       - jdk-openjdk
-      - jre-openjdk
       - kotlin
   when: ansible_facts['os_family'] == "Archlinux"
 
@@ -176,7 +175,6 @@
     name:
       - kotlin
       - openjdk-17-jdk
-      - openjdk-17-jre
   when: ansible_facts['os_family'] == "Debian"
 
 - name: Install java/kotlin from homebrew
