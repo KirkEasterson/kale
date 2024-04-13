@@ -13,6 +13,14 @@
     mode: "600"
   register: key_pair
 
+- name: Set authorized key taken from file
+  become: true
+  become_user: "{{ remote_regular_user }}"
+  ansible.posix.authorized_key:
+    user: "{{ remote_regular_user }}"
+    state: present
+    key: "{{ lookup('file', {{ github_key_path }}).pub }}"
+
 # https://docs.github.com/en/rest/users/keys?apiVersion=2022-11-28#create-a-public-ssh-key-for-the-authenticated-user
 - name: Upload SSH key to GitHub
   ansible.builtin.uri:
