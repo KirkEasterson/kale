@@ -14,8 +14,6 @@
   register: key_pair
 
 - name: Set authorized key taken from file
-  become: true
-  become_user: "{{ remote_regular_user }}"
   ansible.posix.authorized_key:
     user: "{{ remote_regular_user }}"
     state: present
