@@ -1,0 +1,78 @@
+---
+- name: Install awesomewm from pacman
+  become: true
+  pacman:
+    state: present
+    name:
+      - awesome
+      - luarocks
+      - sound-theme-freedesktop
+  when: ansible_facts['os_family'] == "Archlinux"
+
+- name: Install awesomewm tools from AUR
+  become: true
+  become_user: aur_builder
+  kewlfft.aur.aur:
+    state: present
+    use: yay
+    name:
+      - awesome-freedesktop-git
+  when: ansible_facts['os_family'] == "Archlinux"
+
+- name: Install awesomewm from apt
+  become: true
+  apt:
+    install_recommends: no
+    name:
+      - awesome
+      - luarocks
+      - sound-theme-freedesktop
+  when: ansible_facts['os_family'] == "Debian"
+
+- name: Install sway from pacman
+  become: true
+  pacman:
+    state: present
+    name:
+      - sway
+      - swaybg
+      - swayidle
+      - swaylock
+      - waybar
+      - wf-recorder
+  when: ansible_facts['os_family'] == "Archlinux"
+
+- name: Install sway tools from AUR
+  become: true
+  become_user: aur_builder
+  kewlfft.aur.aur:
+    state: present
+    use: yay
+    name:
+      - nwg-displays
+  when: ansible_facts['os_family'] == "Archlinux"
+
+- name: Install sway from apt
+  become: true
+  apt:
+    install_recommends: no
+    name:
+      - sway
+      - swaybg
+      - swayidle
+      - swaylock
+      - waybar
+      - wf-recorder
+  when: ansible_facts['os_family'] == "Debian"
+
+- name: Install yabai from homebrew
+  homebrew:
+    state: present
+    name:
+      - koekeishiya/formulae/yabai
+  when: ansible_facts['os_family'] == "Darwin"
+
+- name: Start yabai service
+  command: yabai --start-service
+  changed_when: false
+  when: ansible_facts['os_family'] == "Darwin"

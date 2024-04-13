@@ -1,0 +1,229 @@
+---
+- name: Install image editors from pacman
+  become: true
+  pacman:
+    state: present
+    name:
+      - gimp
+  when: ansible_facts['os_family'] == "Archlinux"
+
+- name: Install image editors from apt
+  become: true
+  apt:
+    install_recommends: no
+    name:
+      - gimp
+  when: ansible_facts['os_family'] == "Debian"
+
+- name: Install image editors from homebrew
+  homebrew:
+    state: present
+    name:
+      - homebrew/cask/gimp
+  when: ansible_facts['os_family'] == "Darwin"
+
+- name: Install video editors from pacman
+  become: true
+  pacman:
+    state: present
+    name:
+      - kdenlive
+  when: ansible_facts['os_family'] == "Archlinux"
+
+- name: Install video editors from apt
+  become: true
+  apt:
+    install_recommends: no
+    name:
+      - kdenlive
+  when: ansible_facts['os_family'] == "Debian"
+
+- name: Install video editors from homebrew
+  homebrew:
+    state: present
+    name:
+      - homebrew/cask/kdenlive
+  when: ansible_facts['os_family'] == "Darwin"
+
+- name: Install audio editors from pacman
+  become: true
+  pacman:
+    state: present
+    name:
+      - ardour
+      - audacity
+      - reaper
+  when: ansible_facts['os_family'] == "Archlinux"
+
+- name: Install audio editors from apt
+  become: true
+  apt:
+    install_recommends: no
+    name:
+      - ardour
+      # - audacity
+      # - reaper
+  when: ansible_facts['os_family'] == "Debian"
+
+- name: Install audio editors from homebrew
+  homebrew:
+    state: present
+    name:
+      # - homebrew/cask/ardour
+      - homebrew/cask/audacity
+      - homebrew/cask/reaper
+  when: ansible_facts['os_family'] == "Darwin"
+
+- name: Install code editors from pacman
+  become: true
+  pacman:
+    state: present
+    name:
+      - "code"
+      - "emacs"
+      - "helix"
+      - "neovide"
+      - "neovim"
+      - "python-pynvim"
+      - "vim"
+  when: ansible_facts['os_family'] == "Archlinux"
+
+- name: Install code editors from AUR
+  become: true
+  become_user: aur_builder
+  kewlfft.aur.aur:
+    state: present
+    use: yay
+    name:
+      - "intellij-idea-community-edition"
+  when: ansible_facts['os_family'] == "Archlinux"
+
+- name: Install code editors from apt
+  become: true
+  apt:
+    install_recommends: no
+    name:
+      # - "code" # TODO: install PPA for this
+      - "emacs"
+      - "helix"
+      - "neovide"
+      - "neovim"
+      - "python3-neovim"
+      - "vim"
+  when: ansible_facts['os_family'] == "Debian"
+
+- name: Install code editors from homebrew
+  homebrew:
+    state: present
+    name:
+      - "emacs"
+      - "helix"
+      - "homebrew/cask/visual-studio-code"
+      - "neovide"
+      - "neovim"
+      - "vim"
+  when: ansible_facts['os_family'] == "Darwin"
+
+- name: Install code editor tools from pip
+  pip:
+    name:
+      - "neovim" # TODO: more of these
+
+- name: Install code editor tools from npm
+  pip:
+    name:
+      - "neovim" # TODO: more of these
+
+- name: Install "coffee-script" node.js package globally.
+  .npm:
+    name:
+      - "neovim"
+      - "neovim-client"
+    global: true
+
+- name: Install text editors from pacman
+  become: true
+  pacman:
+    state: present
+    name:
+      - "libreoffice"
+  when: ansible_facts['os_family'] == "Archlinux"
+
+- name: Install text editors from apt
+  become: true
+  apt:
+    install_recommends: no
+    name:
+      - "libreoffice"
+  when: ansible_facts['os_family'] == "Debian"
+
+- name: Install text editors from homebrew
+  homebrew:
+    state: present
+    name:
+      - "homebrew/cask/libreoffice"
+  when: ansible_facts['os_family'] == "Darwin"
+
+- name: Install document build tools from pacman
+  become: true
+  pacman:
+    state: present
+    name:
+      - "biber"
+      - "texlive-latex"
+      - "texlive-latexextra"
+      - "texlive-latexrecommended"
+      - "texlive-luatex"
+      - "texlive-mathscience"
+      - "texlive-music"
+  when: ansible_facts['os_family'] == "Archlinux"
+
+- name: Install document build tools from apt
+  become: true
+  apt:
+    install_recommends: no
+    name:
+      - "texlive-base"
+      - "texlive-bibtex-extra"
+      - "texlive-extra-utils"
+      - "texlive-font-utils"
+      - "texlive-fonts-extra"
+      - "texlive-fonts-recommended"
+      - "texlive-lang-european"
+      - "texlive-latex-base"
+      - "texlive-latex-extra"
+      - "texlive-latex-recommended"
+      - "texlive-luatex"
+      - "texlive-music"
+      - "texlive-science"
+  when: ansible_facts['os_family'] == "Debian"
+
+- name: Install document build tools from homebrew
+  homebrew:
+    state: present
+    name:
+      - "texlive"
+  when: ansible_facts['os_family'] == "Darwin"
+
+- name: Install pandoc from pacman
+  become: true
+  pacman:
+    state: present
+    name:
+      - "pandoc"
+  when: ansible_facts['os_family'] == "Archlinux"
+
+- name: Install pandoc from apt
+  become: true
+  apt:
+    install_recommends: no
+    name:
+      - "pandoc"
+  when: ansible_facts['os_family'] == "Debian"
+
+- name: Install pandoc from homebrew
+  homebrew:
+    state: present
+    name:
+      - "pandoc"
+  when: ansible_facts['os_family'] == "Darwin"

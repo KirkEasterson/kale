@@ -1,0 +1,38 @@
+---
+- name: Install browsers from pacman
+  become: true
+  pacman:
+    state: present
+    name:
+      - chromium
+      - firefox
+  when: ansible_facts['os_family'] == "Archlinux"
+
+- name: Install browsers from AUR
+  become: true
+  become_user: aur_builder
+  kewlfft.aur.aur:
+    state: present
+    use: yay
+    name:
+      - google-chrome
+  when: ansible_facts['os_family'] == "Archlinux"
+
+- name: Install browsers
+  become: true
+  apt:
+    install_recommends: no
+    name:
+      - chromium-browser
+      - firefox
+      # - google-chrome
+  when: ansible_facts['os_family'] == "Debian"
+
+- name: Install browsers
+  homebrew:
+    state: present
+    name:
+      - chromium
+      - firefox
+      - google-chrome
+  when: ansible_facts['os_family'] == "Darwin"

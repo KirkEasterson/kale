@@ -1,0 +1,18 @@
+---
+- name: Install systray tools from pacman
+  become: true
+  pacman:
+    state: present
+    name:
+      - cbatticon
+      - volumeicon
+  when: ansible_facts['os_family'] == "Archlinux"
+
+- name: Install systray tools from apt
+  become: true
+  apt:
+    install_recommends: no
+    name:
+      - cbatticon
+      - volumeicon-alsa
+  when: ansible_facts['os_family'] == "Debian"

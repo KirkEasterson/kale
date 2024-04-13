@@ -1,0 +1,21 @@
+---
+- name: Install bluetooth from pacman
+  become: true
+  pacman:
+    state: present
+    name:
+      - blueman
+      - bluez
+      - bluez-utils
+      - hidapi
+      - sbc
+  when: ansible_facts['os_family'] == "Archlinux"
+
+- name: Install bluetooth from apt
+  become: true
+  apt:
+    install_recommends: no
+    name:
+      - cbatticon
+      - volumeicon-alsa
+  when: ansible_facts['os_family'] == "Debian"
