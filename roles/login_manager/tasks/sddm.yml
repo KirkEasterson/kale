@@ -45,4 +45,3 @@
   systemd:
     name: sddm
     enabled: yes
-    state: "started"
