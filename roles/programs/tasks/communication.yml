@@ -10,7 +10,7 @@
       - telegram-desktop
   when: ansible_facts['os_family'] == "Archlinux"
 
-- name: Install game clients from AUR
+- name: Install communication tools from AUR
   become: true
   become_user: "{{ remote_regular_user }}"
   kewlfft.aur.aur:
