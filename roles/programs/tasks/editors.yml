@@ -132,19 +132,21 @@
 #     name:
 #       - "neovim"
 
-- name: Install neovim package globally.
-  become: true
-  become_user: "{{ remote_regular_user }}"
-  community.general.npm:
-    name: "neovim"
-    global: true
+# # TODO: make this work on arch
+# - name: Install neovim package globally.
+#   become: true
+#   become_user: "{{ remote_regular_user }}"
+#   community.general.npm:
+#     name: "neovim"
+#     global: true
 
-- name: Install neovim-client package globally.
-  become: true
-  become_user: "{{ remote_regular_user }}"
-  community.general.npm:
-    name: "neovim-client"
-    global: true
+# # TODO: make this work on arch
+# - name: Install neovim-client package globally.
+#   become: true
+#   become_user: "{{ remote_regular_user }}"
+#   community.general.npm:
+#     name: "neovim-client"
+#     global: true
 
 - name: Install text editors from pacman
   become: true
