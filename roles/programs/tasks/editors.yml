@@ -124,10 +124,11 @@
       - "vim"
   when: ansible_facts['os_family'] == "Darwin"
 
-- name: Install code editor tools from pip
-  ansible.builtin.pip:
-    name:
-      - "neovim"
+# TODO: make this work on arch
+# - name: Install code editor tools from pip
+#   ansible.builtin.pip:
+#     name:
+#       - "neovim"
 
 - name: Install neovim package globally.
   community.general.npm:
