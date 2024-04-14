@@ -31,7 +31,7 @@
 - name: Generate key pair
   community.crypto.openssh_keypair:
     path: "{{ github_key_path }}"
-    passphrase: "{{ github_key_passphrase }}"
+    passphrase: ""
     type: "ed25519"
     mode: "600"
   register: key_pair
