@@ -1,4 +1,27 @@
 ---
+- name: Install openssh from pacman
+  become: true
+  community.general.pacman:
+    state: present
+    name:
+      - openssh
+  when: ansible_facts['os_family'] == "Archlinux"
+
+- name: Install openssh from apt
+  become: true
+  ansible.builtin.apt:
+    install_recommends: false
+    name:
+      - openssh
+  when: ansible_facts['os_family'] == "Debian"
+
+- name: Install openssh from homebrew
+  community.general.homebrew:
+    state: present
+    name:
+      - openssh
+  when: ansible_facts['os_family'] == "Darwin"
+
 - name: Create ssh dir
   ansible.builtin.file:
     path: "{{ sshkey_dir }}"
