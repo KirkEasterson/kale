@@ -132,9 +132,12 @@
 
 - name: Install neovim package globally.
   community.general.npm:
-    name:
-      - "neovim"
-      - "neovim-client"
+    name: "neovim"
+    global: true
+
+- name: Install neovim-client package globally.
+  community.general.npm:
+    name: "neovim-client"
     global: true
 
 - name: Install text editors from pacman
