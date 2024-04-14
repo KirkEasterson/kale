@@ -5,6 +5,8 @@
   register: dotfiles_dir
 
 - name: Clone dotfiles # noqa: latest[git]
+  become: true
+  become_user: "{{ remote_regular_user }}"
   ansible.builtin.git:
     repo: "git@github.com:KirkEasterson/.dotfiles.git"
     dest: "{{ dotfiles_path }}"
