@@ -125,17 +125,23 @@
   when: ansible_facts['os_family'] == "Darwin"
 
 # TODO: make this work on arch
-# - name: Install code editor tools from pip
-#   ansible.builtin.pip:
-#     name:
-#       - "neovim"
+- name: Install code editor tools from pip
+  become: true
+  become_user: "{{ remote_regular_user }}"
+  ansible.builtin.pip:
+    name:
+      - "neovim"
 
 - name: Install neovim package globally.
+  become: true
+  become_user: "{{ remote_regular_user }}"
   community.general.npm:
     name: "neovim"
     global: true
 
 - name: Install neovim-client package globally.
+  become: true
+  become_user: "{{ remote_regular_user }}"
   community.general.npm:
     name: "neovim-client"
     global: true
