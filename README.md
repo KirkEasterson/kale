@@ -63,13 +63,10 @@ brew install ansible
 
 ### Installation
 
-Clone the repo, and check out the `arch-feature` branch.
-
-Run the below commands from the base directory of the repository, and then reboot your computer.
+Clone the repo, check out the `main` branch, and run the install script.
 
 ```sh
-ansible-galaxy install -r requirements.yml
-ansible-playbook arch.yml --ask-become-pass --ask-vault-pass
+./install.sh
 ```
 
 ## Usage
