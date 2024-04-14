@@ -2,7 +2,7 @@
 # TODO: see what more conf needs to be done for ubuntu
 - name: Remove conflicting program on pacman
   become: true
-  pacman:
+  community.general.pacman:
     state: absent
     name:
       - pulseaudio
@@ -11,7 +11,7 @@
 
 - name: Remove conflicting program on apt
   become: true
-  apt:
+  ansible.builtin.apt:
     state: absent
     name:
       - pulseaudio
@@ -38,7 +38,7 @@
 
 - name: Install pipewire on pacman
   become: true
-  pacman:
+  community.general.pacman:
     state: present
     name:
       - helvum # GTK patch bay
@@ -54,8 +54,8 @@
 
 - name: Install pipewire on apt
   become: true
-  apt:
-    install_recommends: no
+  ansible.builtin.apt:
+    install_recommends: false
     name:
       - helvum # GTK patch bay
       - pipewire
@@ -70,39 +70,17 @@
 
 - name: Add current user to the audio group
   become: true
-  user:
+  ansible.builtin.user:
     name: "{{ remote_regular_user }}"
     groups: audio
-    append: yes
+    append: true
 
 - name: Add current user to the video group
   become: true
-  user:
+  ansible.builtin.user:
     name: "{{ remote_regular_user }}"
     groups: video
-    append: yes
-
-# TODO: figure out why these files don't exist on a fresh install. Maybe the service has to be started?
-- name: Copy ALSA configuration file
-  become: true
-  ansible.builtin.copy:
-    src: ../files/99-pipewire-default.conf
-    dest: /etc/alsa/conf.d/99-pipewire-default.conf
-  when: ansible_facts['os_family'] == "Ubuntu"
-
-- name: Copy JACK configuration files
-  become: true
-  copy:
-    src: "{{ item }}"
-    dest: /usr/share/doc/pipewire/examples/ld.so.conf.d/
-  with_fileglob:
-    - pipewire-jack-*.conf
-  when: ansible_facts['os_family'] == "Ubuntu"
-
-- name: Run ldconfig
-  become: true
-  shell: ldconfig
-  when: ansible_facts['os_family'] == "Ubuntu"
+    append: true
 
 - name: Enable pipewire service
   become: true

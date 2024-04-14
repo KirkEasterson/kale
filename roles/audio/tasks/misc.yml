@@ -1,8 +1,8 @@
 ---
 - name: Install general audio tools on apt
   become: true
-  apt:
-    install_recommends: no
+  ansible.builtin.apt:
+    install_recommends: false
     name:
       - "playerctl"
   when: ansible_facts['os_family'] == "Debian"

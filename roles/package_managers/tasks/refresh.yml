@@ -17,7 +17,7 @@
 - name: Update apt packages
   become: true
   ansible.builtin.apt:
-    cache_invalid_time: 86400 # 60*60*24 (24 hours)
+    # cache_invalid_time: 86400 # 60*60*24 (24 hours)
     autoremove: true
     autoclean: true
     install_recommends: false

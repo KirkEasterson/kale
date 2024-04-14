@@ -1,7 +1,7 @@
 ---
 - name: Install launchers from pacman
   become: true
-  pacman:
+  community.general.pacman:
     state: present
     name:
       - rofi
@@ -10,8 +10,8 @@
 
 - name: Install launchers from apt
   become: true
-  apt:
-    install_recommends: no
+  ansible.builtin.apt:
+    install_recommends: false
     name:
       - rofi
       - wofi
@@ -19,7 +19,7 @@
 
 # # TODO: find a better macos launcher
 # - name: Install launchers from homebrew
-#   homebrew:
+#   community.general.homebrew:
 #     state: present
 #     name:
 #       - rofi

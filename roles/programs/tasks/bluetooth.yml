@@ -1,7 +1,7 @@
 ---
 - name: Install bluetooth from pacman
   become: true
-  pacman:
+  community.general.pacman:
     state: present
     name:
       - blueman
@@ -13,8 +13,8 @@
 
 - name: Install bluetooth from apt
   become: true
-  apt:
-    install_recommends: no
+  ansible.builtin.apt:
+    install_recommends: false
     name:
       - cbatticon
       - volumeicon-alsa

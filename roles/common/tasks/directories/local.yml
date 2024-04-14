@@ -1,5 +1,0 @@
----
-- include_tasks: dev.yml
-- include_tasks: documents.yml
-- include_tasks: downloads.yml
-- include_tasks: pictures.yml

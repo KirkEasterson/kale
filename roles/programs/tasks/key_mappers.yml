@@ -1,7 +1,7 @@
 ---
 - name: Install key mappers from pacman
   become: true
-  pacman:
+  community.general.pacman:
     state: present
     name:
       - sxhkd
@@ -9,20 +9,21 @@
 
 - name: Install key mappers from apt
   become: true
-  apt:
-    install_recommends: no
+  ansible.builtin.apt:
+    install_recommends: false
     name:
       - x11-xserver-utils # contains xmodmap
   when: ansible_facts['os_family'] == "Debian"
 
 - name: Install key mappers from homebrew
-  homebrew:
+  community.general.homebrew:
     state: present
     name:
       - koekeishiya/formulae/skhd
   when: ansible_facts['os_family'] == "Darwin"
 
 - name: Start skhd service
-  command: skhd --start-service
+  ansible.builtin.command:
+    cmd: "skhd --start-service"
   changed_when: false
   when: ansible_facts['os_family'] == "Darwin"

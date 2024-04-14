@@ -11,33 +11,39 @@
     #   - homebrew (if mac)
     #   - npm (all)
     #   - pip (all)
-    - ansible.builtin.import_role:
+    - name: Package managers
+      ansible.builtin.import_role:
         name: package_managers
 
     # - change shell to zsh
-    - ansible.builtin.import_role:
+    - name: Zsh
+      ansible.builtin.import_role:
         name: zsh
 
     # - create ssh key and upload it to github
-    - ansible.builtin.import_role:
+    - name: Github
+      ansible.builtin.import_role:
         name: github
 
     # - ensure directory layout
-    - ansible.builtin.import_role:
+    - name: Directories
+      ansible.builtin.import_role:
         name: directories
 
     # - ensure git repos are cloned and install
     #   - dotfiles
     #   - global_configs (TODO: remove this repo and move files here)
     #   - scripts
-    - ansible.builtin.import_role:
+    - name: Git repos
+      ansible.builtin.import_role:
         name: git_repos
 
       # TODO: performance things
       #   - https://gist.github.com/lbrame/1678c00213c2bd069c0a59f8733e0ee6
     #       - also need `intel-media-driver`
 
-    - ansible.builtin.import_role:
+    - name: Fonts
+      ansible.builtin.import_role:
         name: fonts
 
     # - add user to necessary groups
@@ -51,54 +57,67 @@
     #   - systemd (linux)
     #   - xorg (linux)
     #   - lightdm (linux)
-    - ansible.builtin.import_role:
+    - name: Mac setup
+      ansible.builtin.import_role:
         name: mac_default
       when: ansible_distribution == "MacOSX"
 
-    - ansible.builtin.import_role:
+    - name: Audio
+      ansible.builtin.import_role:
         name: audio
       when: ansible_system == "Linux"
 
-    - ansible.builtin.import_role:
+    - name: Locale
+      ansible.builtin.import_role:
         name: locale
       when: ansible_system == "Linux"
 
-    - ansible.builtin.import_role:
+    - name: Grub
+      ansible.builtin.import_role:
         name: grub
       when: ansible_system == "Linux"
 
-    - ansible.builtin.import_role:
+    - name: Brightness
+      ansible.builtin.import_role:
         name: brightness
       when: ansible_system == "Linux"
 
-    - ansible.builtin.import_role:
+    - name: Plymouth
+      ansible.builtin.import_role:
         name: plymouth
       when: ansible_system == "Linux"
 
-    - ansible.builtin.import_role:
+    - name: Systemd
+      ansible.builtin.import_role:
         name: systemd
       when: ansible_system == "Linux"
 
-    - ansible.builtin.import_role:
+    - name: Polkit
+      ansible.builtin.import_role:
         name: polkit
       when: ansible_system == "Linux"
 
-    - ansible.builtin.import_role:
+    - name: Xorg
+      ansible.builtin.import_role:
         name: xorg
       when: ansible_system == "Linux"
 
-    - ansible.builtin.import_role:
+    - name: Themes
+      ansible.builtin.import_role:
         name: themes
       when: ansible_system == "Linux"
 
-    - ansible.builtin.import_role:
+    - name: Login managers
+      ansible.builtin.import_role:
         name: login_manager
       when: ansible_system == "Linux"
 
       # TODO: set up lock events in locker https://www.baeldung.com/linux/screen-lock-close-laptop-lid
-    - ansible.builtin.import_role:
+    - name: Locker
+      ansible.builtin.import_role:
         name: locker
       when: ansible_system == "Linux"
 
-    - ansible.builtin.import_role:
+    - name: Programs
+      ansible.builtin.import_role:
         name: programs

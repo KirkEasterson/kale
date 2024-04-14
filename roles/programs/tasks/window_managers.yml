@@ -1,7 +1,7 @@
 ---
 - name: Install awesomewm from pacman
   become: true
-  pacman:
+  community.general.pacman:
     state: present
     name:
       - awesome
@@ -20,8 +20,8 @@
 
 - name: Install awesomewm from apt
   become: true
-  apt:
-    install_recommends: no
+  ansible.builtin.apt:
+    install_recommends: false
     name:
       - awesome
       - luarocks
@@ -30,7 +30,7 @@
 
 - name: Install sway from pacman
   become: true
-  pacman:
+  community.general.pacman:
     state: present
     name:
       - sway
@@ -53,8 +53,8 @@
 
 - name: Install sway from apt
   become: true
-  apt:
-    install_recommends: no
+  ansible.builtin.apt:
+    install_recommends: false
     name:
       - sway
       - swaybg
@@ -65,13 +65,14 @@
   when: ansible_facts['os_family'] == "Debian"
 
 - name: Install yabai from homebrew
-  homebrew:
+  community.general.homebrew:
     state: present
     name:
       - koekeishiya/formulae/yabai
   when: ansible_facts['os_family'] == "Darwin"
 
 - name: Start yabai service
-  command: yabai --start-service
+  ansible.builtin.command:
+    cmd: "yabai --start-service"
   changed_when: false
   when: ansible_facts['os_family'] == "Darwin"

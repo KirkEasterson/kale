@@ -1,3 +1,0 @@
----
-- name: Install gofumpt
-  shell: go install mvdan.cc/gofumpt@latest

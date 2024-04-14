@@ -1,7 +1,7 @@
 ---
 - name: Install theme tools from pacman
   become: true
-  pacman:
+  community.general.pacman:
     state: present
     name:
       - "lxappearance" # TODO: install gtk3
@@ -12,7 +12,7 @@
 
 - name: Install theme tools from apt
   become: true
-  apt:
+  ansible.builtin.apt:
     state: present
     name:
       - "lxappearance"

@@ -1,0 +1,55 @@
+---
+- name: Install network-manager on pacman
+  become: true
+  community.general.pacman:
+    state: present
+    name:
+      - modem-manager-gui
+      - modemmanager
+      - network-manager-applet
+      - networkmanager
+      - nm-connection-editor
+      - usb_modeswitch
+  when: ansible_facts['os_family'] == "Archlinux"
+
+- name: Install network-manager on apt
+  become: true
+  ansible.builtin.apt:
+    install_recommends: false
+    name:
+      - network-manager
+  when: ansible_facts['os_family'] == "Debian"
+
+- name: Disable networkd service
+  become: true
+  ansible.builtin.systemd:
+    name: systemd-networkd
+    enabled: false
+
+- name: Enable network-manager service
+  become: true
+  ansible.builtin.systemd:
+    name: NetworkManager
+    enabled: true
+    state: started
+
+- name: Set NetworkManager as the default renderer for netplan
+  become: true
+  ansible.builtin.command:
+    cmd: "netplan set renderer=NetworkManager"
+  when: ansible_distribution == 'Ubuntu'
+  changed_when: false
+
+- name: Apply the the new netplan configuration
+  become: true
+  ansible.builtin.command:
+    cmd: "netplan apply"
+  when: ansible_distribution == 'Ubuntu'
+  changed_when: false
+
+- name: Enable mobile-manager service
+  become: true
+  ansible.builtin.systemd:
+    name: ModemManager
+    enabled: true
+    state: started

@@ -1,7 +1,7 @@
 ---
 - name: Install image editors from pacman
   become: true
-  pacman:
+  community.general.pacman:
     state: present
     name:
       - gimp
@@ -9,14 +9,14 @@
 
 - name: Install image editors from apt
   become: true
-  apt:
-    install_recommends: no
+  ansible.builtin.apt:
+    install_recommends: false
     name:
       - gimp
   when: ansible_facts['os_family'] == "Debian"
 
 - name: Install image editors from homebrew
-  homebrew:
+  community.general.homebrew:
     state: present
     name:
       - homebrew/cask/gimp
@@ -24,7 +24,7 @@
 
 - name: Install video editors from pacman
   become: true
-  pacman:
+  community.general.pacman:
     state: present
     name:
       - kdenlive
@@ -32,14 +32,14 @@
 
 - name: Install video editors from apt
   become: true
-  apt:
-    install_recommends: no
+  ansible.builtin.apt:
+    install_recommends: false
     name:
       - kdenlive
   when: ansible_facts['os_family'] == "Debian"
 
 - name: Install video editors from homebrew
-  homebrew:
+  community.general.homebrew:
     state: present
     name:
       - homebrew/cask/kdenlive
@@ -47,7 +47,7 @@
 
 - name: Install audio editors from pacman
   become: true
-  pacman:
+  community.general.pacman:
     state: present
     name:
       - ardour
@@ -57,8 +57,8 @@
 
 - name: Install audio editors from apt
   become: true
-  apt:
-    install_recommends: no
+  ansible.builtin.apt:
+    install_recommends: false
     name:
       - ardour
       # - audacity
@@ -66,7 +66,7 @@
   when: ansible_facts['os_family'] == "Debian"
 
 - name: Install audio editors from homebrew
-  homebrew:
+  community.general.homebrew:
     state: present
     name:
       # - homebrew/cask/ardour
@@ -76,7 +76,7 @@
 
 - name: Install code editors from pacman
   become: true
-  pacman:
+  community.general.pacman:
     state: present
     name:
       - "code"
@@ -99,8 +99,8 @@
 
 - name: Install code editors from apt
   become: true
-  apt:
-    install_recommends: no
+  ansible.builtin.apt:
+    install_recommends: false
     name:
       # - "code" # TODO: install PPA for this
       - "emacs"
@@ -112,7 +112,7 @@
   when: ansible_facts['os_family'] == "Debian"
 
 - name: Install code editors from homebrew
-  homebrew:
+  community.general.homebrew:
     state: present
     name:
       - "emacs"
@@ -137,7 +137,7 @@
 
 - name: Install text editors from pacman
   become: true
-  pacman:
+  community.general.pacman:
     state: present
     name:
       - "libreoffice"
@@ -145,14 +145,14 @@
 
 - name: Install text editors from apt
   become: true
-  apt:
-    install_recommends: no
+  ansible.builtin.apt:
+    install_recommends: false
     name:
       - "libreoffice"
   when: ansible_facts['os_family'] == "Debian"
 
 - name: Install text editors from homebrew
-  homebrew:
+  community.general.homebrew:
     state: present
     name:
       - "homebrew/cask/libreoffice"
@@ -160,7 +160,7 @@
 
 - name: Install document build tools from pacman
   become: true
-  pacman:
+  community.general.pacman:
     state: present
     name:
       - "biber"
@@ -174,8 +174,8 @@
 
 - name: Install document build tools from apt
   become: true
-  apt:
-    install_recommends: no
+  ansible.builtin.apt:
+    install_recommends: false
     name:
       - "texlive-base"
       - "texlive-bibtex-extra"
@@ -193,7 +193,7 @@
   when: ansible_facts['os_family'] == "Debian"
 
 - name: Install document build tools from homebrew
-  homebrew:
+  community.general.homebrew:
     state: present
     name:
       - "texlive"
@@ -201,7 +201,7 @@
 
 - name: Install pandoc from pacman
   become: true
-  pacman:
+  community.general.pacman:
     state: present
     name:
       - "pandoc"
@@ -209,14 +209,14 @@
 
 - name: Install pandoc from apt
   become: true
-  apt:
-    install_recommends: no
+  ansible.builtin.apt:
+    install_recommends: false
     name:
       - "pandoc"
   when: ansible_facts['os_family'] == "Debian"
 
 - name: Install pandoc from homebrew
-  homebrew:
+  community.general.homebrew:
     state: present
     name:
       - "pandoc"

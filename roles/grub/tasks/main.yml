@@ -1,7 +1,7 @@
 ---
 - name: Check if 'quiet' is configured in the boot command
   become: true
-  lineinfile:
+  ansible.builtin.lineinfile:
     backup: true
     path: /etc/default/grub
     regexp: '^GRUB_CMDLINE_LINUX=".*quiet'
@@ -12,16 +12,16 @@
 
 - name: Insert 'quiet' if missing
   become: true
-  lineinfile:
+  ansible.builtin.lineinfile:
     backrefs: true
     path: /etc/default/grub
     regexp: '^(GRUB_CMDLINE_LINUX=".*)"$'
     line: '\1 quiet"'
-  when: quiet_param.found == false
+  when: not quiet_param.found
 
 - name: Check if 'splash' is configured in the boot command
   become: true
-  lineinfile:
+  ansible.builtin.lineinfile:
     backup: true
     path: /etc/default/grub
     regexp: '^GRUB_CMDLINE_LINUX=".*splash'
@@ -32,19 +32,20 @@
 
 - name: Insert 'splash' if missing
   become: true
-  lineinfile:
+  ansible.builtin.lineinfile:
     backrefs: true
     path: /etc/default/grub
     regexp: "^(GRUB_CMDLINE_LINUX=\".*)\"$"
     line: '\1 splash"'
-  when: splash_param.found == false
+  when: not splash_param.found
 
 - name: Update grub
   become: true
   become_user: root
-  shell:
+  ansible.builtin.command:
     cmd: grub-mkconfig -o /boot/grub/grub.cfg
-  when: quiet_param == false or splash_param == false
+  when: not quiet_param or not splash_param
+  changed_when: false
 
 # # TODO: figure out the arch equivalent for this
 # - name: Update initramfs
@@ -52,4 +53,5 @@
 #   become_user: root
 #   shell:
 #     cmd: update-initramfs -u
-#   when: quiet_param == false or splash_param == false
+#   when: not quiet_param or not splash_param
+#   changed_when: false

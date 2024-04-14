@@ -1,21 +1,23 @@
 ---
 - name: Check if yay is installed
-  command: /bin/bash -c "command -v yay"
+  ansible.builtin.command: /bin/bash -c "command -v yay"
   changed_when: false
   failed_when: false
   ignore_errors: true
   register: yay_exists
 
-- name: Clone yay repo
+- name: Clone yay repo # noqa: latest[git]
   become: true
-  git:
-    repo: https://aur.archlinux.org/yay-git.git
-    dest: /opt/yay-git
+  ansible.builtin.git:
+    repo: "https://aur.archlinux.org/yay-git.git"
+    dest: "/opt/yay-git"
+    depth: 1
   when: yay_exists.rc != 0
+  changed_when: false
 
 - name: Change permission on yay repo
   become: true
-  file:
+  ansible.builtin.file:
     path: /opt/yay-git
     owner: "{{ ansible_user_id }}"
     group: "{{ ansible_user_id }}"
@@ -23,10 +25,12 @@
   when: yay_exists.rc != 0
 
 - name: Build yay
-  command: makepkg -si --noconfirm
+  ansible.builtin.command:
+    cmd: "makepkg -si --noconfirm"
   args:
     chdir: /opt/yay-git/
   when: yay_exists.rc != 0
+  changed_when: false
 
 - name: Update AUR packages
   become: true

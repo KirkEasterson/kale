@@ -75,5 +75,5 @@
 
 # NOTE: always do this last
 - name: Restart dock
-  command: killall Dock
+  ansible.builtin.command: killall Dock
   changed_when: false

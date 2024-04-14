@@ -1,4 +1,5 @@
 ---
-- import_tasks:
+- name: Init pacman
+  ansible.builtin.import_tasks:
     file: init_pacman.yml
   when: ansible_facts['os_family'] == "Archlinux"

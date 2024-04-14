@@ -1,7 +1,7 @@
 ---
 - name: Install plymouth
   become: true
-  pacman:
+  community.general.pacman:
     state: present
     name:
       - plymouth
@@ -19,8 +19,8 @@
 
 - name: Install plymouth
   become: true
-  apt:
-    install_recommends: no
+  ansible.builtin.apt:
+    install_recommends: false
     name:
       - plymouth
       - plymouth-themes
@@ -28,17 +28,18 @@
   when: ansible_facts['os_family'] == "Debian"
 
 - name: Check if plymouth conf exists
-  stat:
+  ansible.builtin.stat:
     path: "/etc/plymouth/plymouthd.conf"
   register: plymouth_conf
 
 - name: Update plymouth conf
   become: true
-  copy:
-    src: files/plymouthd.conf
+  ansible.builtin.copy:
+    src: "files/plymouthd.conf"
     dest: "/etc/plymouth/plymouthd.conf"
-  when: plymouth_conf.stat.exists == false or plymouth_conf.stat.checksum != ansible_checksum
+    mode: "644"
+  when: not plymouth_conf.stat.exists or plymouth_conf.stat.checksum != ansible_checksum
   vars:
-    ansible_checksum: "{{ lookup('file', '../files/plymouthd.conf') | checksum }}"
+    ansible_checksum: "{{ lookup('file', 'files/plymouthd.conf') | checksum }}"
 
 # TODO: enable a service maybe?

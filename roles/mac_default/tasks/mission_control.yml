@@ -21,10 +21,10 @@
 
 # NOTE: always do this last
 - name: Restart SystemUIServer
-  command: killall SystemUIServer
+  ansible.builtin.command: killall SystemUIServer
   changed_when: false
 
 # NOTE: always do this last
 - name: Restart Dock
-  command: killall Dock
+  ansible.builtin.command: killall Dock
   changed_when: false

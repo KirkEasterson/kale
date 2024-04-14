@@ -1,7 +1,7 @@
 ---
 - name: Install communication tools from pacman
   become: true
-  pacman:
+  community.general.pacman:
     state: present
     name:
       - discord
@@ -21,8 +21,8 @@
 
 - name: Install communication tools from apt
   become: true
-  apt:
-    install_recommends: no
+  ansible.builtin.apt:
+    install_recommends: false
     name:
       # - discord
       # - element-desktop
@@ -32,7 +32,7 @@
   when: ansible_facts['os_family'] == "Debain"
 
 - name: Install communication tools from homebrew
-  homebrew:
+  community.general.homebrew:
     state: present
     name:
       - homebrew/cask/discord
@@ -44,7 +44,7 @@
 
 - name: Install email clients from pacman
   become: true
-  pacman:
+  community.general.pacman:
     state: present
     name:
       - thunderbird
@@ -53,14 +53,14 @@
 
 - name: Install email clients from apt
   become: true
-  apt:
-    install_recommends: no
+  ansible.builtin.apt:
+    install_recommends: false
     name:
       - thunderbird
   when: ansible_facts['os_family'] == "Debian"
 
 - name: Install email clients from homebrew
-  homebrew:
+  community.general.homebrew:
     state: present
     name:
       - homebrew/cask/thunderbird

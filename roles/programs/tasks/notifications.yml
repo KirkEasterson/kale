@@ -1,7 +1,7 @@
 ---
 - name: Install notification services from pacman
   become: true
-  pacman:
+  community.general.pacman:
     state: present
     name:
       - dunst
@@ -10,8 +10,8 @@
 
 - name: Install notification services from apt
   become: true
-  apt:
-    install_recommends: no
+  ansible.builtin.apt:
+    install_recommends: false
     name:
       - dunst
       - mako

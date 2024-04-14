@@ -1,7 +1,7 @@
 ---
 - name: Install xdg-user-dirs
   become: true
-  pacman:
+  community.general.pacman:
     state: present
     name:
       - "xdg-user-dirs"
@@ -9,23 +9,29 @@
 
 - name: Install xdg-user-dirs
   become: true
-  apt:
-    install_recommends: no
+  ansible.builtin.apt:
+    install_recommends: false
     name:
       - "xdg-user-dirs"
   when: ansible_facts['os_family'] == "Debian"
 
+  # TODO: figure out how to pass the env var, or if it is even necessary
 - name: Create xdg user directories
-  ansible.builtin.shell: "LC_ALL=C xdg-user-dirs-update --force"
+  ansible.builtin.command:
+    cmd: "xdg-user-dirs-update --force"
+  environment:
+    LC_ALL: C
   changed_when: false
   when: ansible_system == "Linux"
 
 - name: Create dev directory
-  file:
+  ansible.builtin.file:
     path: "{{ dev_path }}"
     state: directory
+    mode: "755"
 
 - name: Create screenshots directory
-  file:
+  ansible.builtin.file:
     path: "{{ screenshots_path }}"
     state: directory
+    mode: "755"

@@ -1,7 +1,7 @@
 ---
 - name: Install zsh from pacman
   become: true
-  pacman:
+  community.general.pacman:
     state: present
     name:
       - starship
@@ -10,8 +10,8 @@
 
 - name: Install zsh from apt
   become: true
-  apt:
-    install_recommends: no
+  ansible.builtin.apt:
+    install_recommends: false
     name:
       - starship
       - zsh
@@ -19,7 +19,7 @@
   when: ansible_facts['os_family'] == "Debian"
 
 - name: Install zsh from homebrew
-  homebrew:
+  community.general.homebrew:
     state: present
     name:
       - starship
@@ -30,20 +30,22 @@
   become: true
   ansible.builtin.user:
     name: "{{ ansible_user_id }}"
-    shell: /bin/zsh
+    shell: "/bin/zsh"
 
 - name: Create zsh cache
-  file:
-    state: directory
-    path: ~/.cache/zsh/
+  ansible.builtin.file:
+    state: "directory"
+    path: "~/.cache/zsh/"
+    mode: "755"
 
 - name: Check if zsh history exists
-  stat:
-    path: ~/.cache/zsh/history
+  ansible.builtin.stat:
+    path: "~/.cache/zsh/history"
   register: zsh_history_file
 
 - name: Create zsh history
-  file:
-    state: touch
-    path: ~/.cache/zsh/history
-  when: zsh_history_file.stat.exists == false
+  ansible.builtin.file:
+    state: "touch"
+    path: "~/.cache/zsh/history"
+    mode: "644"
+  when: not zsh_history_file.stat.exists

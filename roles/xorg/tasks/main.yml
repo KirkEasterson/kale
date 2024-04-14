@@ -1,7 +1,7 @@
 ---
 - name: Install xorg
   become: true
-  pacman:
+  community.general.pacman:
     state: present
     name:
       - "xf86-input-libinput"
@@ -15,8 +15,8 @@
 
 - name: Install xorg
   become: true
-  apt:
-    install_recommends: no
+  ansible.builtin.apt:
+    install_recommends: false
     name:
       - "xserver-xorg"
       - "xserver-xorg-video-intel"
@@ -25,29 +25,31 @@
   when: ansible_facts['os_family'] == "Debian"
 
 - name: Check if libinput conf exists
-  stat:
+  ansible.builtin.stat:
     path: "/etc/X11/xorg.conf.d/40-libinput.conf"
   register: libinput_conf
 
 - name: Update libinput conf
   become: true
-  copy:
-    src: "../files/40-libinput.conf"
+  ansible.builtin.copy:
+    src: "files/40-libinput.conf"
     dest: "/etc/X11/xorg.conf.d/40-libinput.conf"
-  when: libinput_conf.stat.exists == false or libinput_conf.stat.checksum != ansible_checksum
+    mode: "644"
+  when: not libinput_conf.stat.exists or libinput_conf.stat.checksum != ansible_checksum
   vars:
-    ansible_checksum: "{{ lookup('file', '../files/40-libinput.conf') | checksum }}"
+    ansible_checksum: "{{ lookup('file', 'files/40-libinput.conf') | checksum }}"
 
 - name: Check if synaptics conf exists
-  stat:
+  ansible.builtin.stat:
     path: "/etc/X11/xorg.conf.d/70-synaptics.conf"
   register: synaptics_conf
 
 - name: Update synaptics conf
   become: true
-  copy:
-    src: "../files/70-synaptics.conf"
+  ansible.builtin.copy:
+    src: "files/70-synaptics.conf"
     dest: "/etc/X11/xorg.conf.d/70-synaptics.conf"
-  when: synaptics_conf.stat.exists == false or synaptics_conf.stat.checksum != ansible_checksum
+    mode: "644"
+  when: not synaptics_conf.stat.exists or synaptics_conf.stat.checksum != ansible_checksum
   vars:
-    ansible_checksum: "{{ lookup('file', '../files/70-synaptics.conf') | checksum }}"
+    ansible_checksum: "{{ lookup('file', 'files/70-synaptics.conf') | checksum }}"

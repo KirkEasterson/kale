@@ -75,5 +75,5 @@
 
 # NOTE: always do this last
 - name: Restart Finder
-  command: killall Finder
+  ansible.builtin.command: killall Finder
   changed_when: false

@@ -1,7 +1,7 @@
 ---
 - name: Install brightnessctl
   become: true
-  pacman:
+  community.general.pacman:
     state: present
     name:
       - "brightnessctl"
@@ -10,23 +10,24 @@
 
 - name: Install brightnessctl
   become: true
-  apt:
-    install_recommends: no
+  ansible.builtin.apt:
+    install_recommends: false
     name:
       - "brightnessctl"
       # - "xorg-xbacklight"
   when: ansible_os_family == 'Debian'
 
 - name: Check if brightnessctl rules exists
-  stat:
+  ansible.builtin.stat:
     path: "/usr/lib/udev/rules.d/90-brightnessctl.rules"
   register: brightnessctl_conf
 
 - name: Copy brightnessctl udev rules
   become: true
-  copy:
-    src: "../files/90-brightnessctl.rules"
+  ansible.builtin.copy:
+    src: "files/90-brightnessctl.rules"
     dest: "/usr/lib/udev/rules.d/90-brightnessctl.rules"
-  when: brightnessctl_conf.stat.exists == false or brightnessctl_conf.stat.checksum != ansible_checksum
+    mode: "644"
+  when: not brightnessctl_conf.stat.exists or brightnessctl_conf.stat.checksum != ansible_checksum
   vars:
-    ansible_checksum: "{{ lookup('file', '../files/90-brightnessctl.rules') | checksum }}"
+    ansible_checksum: "{{ lookup('file', 'files/90-brightnessctl.rules') | checksum }}"

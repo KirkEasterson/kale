@@ -1,7 +1,7 @@
 ---
 - name: Install DAWs from pacman
   become: true
-  pacman:
+  community.general.pacman:
     state: present
     name:
       - "ardour"

@@ -1,6 +1,6 @@
 ---
 - name: Create ssh dir
-  file:
+  ansible.builtin.file:
     path: "{{ sshkey_dir }}"
     state: directory
     mode: "700"
@@ -13,14 +13,15 @@
     mode: "600"
   register: key_pair
 
-- name: Evaluating the authentication agent & adding the key
-  shell: |
+- name: Evaluating the authentication agent & adding the key # noqa: no-handler
+  ansible.builtin.shell: |
     eval "$(ssh-agent)"
     ssh-add {{ github_key_path }}
   when: key_pair.changed
+  changed_when: false
 
 # https://docs.github.com/en/rest/users/keys?apiVersion=2022-11-28#create-a-public-ssh-key-for-the-authenticated-user
-- name: Upload SSH key to GitHub
+- name: Upload SSH key to GitHub # noqa: no-handler
   ansible.builtin.uri:
     method: POST
     url: "https://api.github.com/user/keys"
@@ -34,3 +35,39 @@
       title: "{{ github_key_title }}"
       key: "{{ key_pair.public_key }}"
   when: key_pair.changed
+  changed_when: false
+
+- name: Install git from pacman
+  become: true
+  community.general.pacman:
+    state: present
+    name:
+      - "difftastic"
+      - "git"
+      - "git-delta"
+      - "github-cli"
+      - "lazygit"
+  when: ansible_facts['os_family'] == "Archlinux"
+
+- name: Install git from apt
+  become: true
+  ansible.builtin.apt:
+    install_recommends: false
+    name:
+      - "difftastic"
+      - "gh"
+      - "git"
+      - "git-delta"
+      # - "lazygit"
+  when: ansible_facts['os_family'] == "Debian"
+
+- name: Install git from homebrew
+  community.general.homebrew:
+    state: present
+    name:
+      - "difftastic"
+      - "gh"
+      - "git"
+      - "git-delta"
+      - "lazygit"
+  when: ansible_facts['os_family'] == "Darwin"

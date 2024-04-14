@@ -1,7 +1,7 @@
 ---
 - name: Install c/cpp tools from pacman
   become: true
-  pacman:
+  community.general.pacman:
     state: present
     name:
       - clang
@@ -14,8 +14,8 @@
 
 - name: Install c/cpp tools from apt
   become: true
-  apt:
-    install_recommends: no
+  ansible.builtin.apt:
+    install_recommends: false
     name:
       - clang
       - gcc
@@ -26,7 +26,7 @@
   when: ansible_facts['os_family'] == "Debian"
 
 - name: Install c/cpp tools from homebrew
-  homebrew:
+  community.general.homebrew:
     state: present
     name:
       # - clang
@@ -39,7 +39,7 @@
 
 - name: Install golang from pacman
   become: true
-  pacman:
+  community.general.pacman:
     state: present
     name:
       - go
@@ -57,14 +57,14 @@
 
 - name: Install golang from apt
   become: true
-  apt:
-    install_recommends: no
+  ansible.builtin.apt:
+    install_recommends: false
     name:
       - golang-go
   when: ansible_facts['os_family'] == "Debian"
 
 - name: Install golang from homebrew
-  homebrew:
+  community.general.homebrew:
     state: present
     name:
       - go
@@ -74,7 +74,7 @@
 
 - name: Install rust from pacman
   become: true
-  pacman:
+  community.general.pacman:
     state: present
     name:
       - rust
@@ -82,14 +82,14 @@
 
 - name: Install rust from apt
   become: true
-  apt:
-    install_recommends: no
+  ansible.builtin.apt:
+    install_recommends: false
     name:
       - rustc
   when: ansible_facts['os_family'] == "Debian"
 
 - name: Install rust from homebrew
-  homebrew:
+  community.general.homebrew:
     state: present
     name:
       - rust
@@ -97,7 +97,7 @@
 
 - name: Install dotnet from pacman
   become: true
-  pacman:
+  community.general.pacman:
     state: present
     name:
       - aspnet-runtime
@@ -110,14 +110,14 @@
 
 - name: Install dotnet from apt
   become: true
-  apt:
-    install_recommends: no
+  ansible.builtin.apt:
+    install_recommends: false
     name:
       - dotnet
   when: ansible_facts['os_family'] == "Debian"
 
 - name: Install dotnet from homebrew
-  homebrew:
+  community.general.homebrew:
     state: present
     name:
       - homebrew/cask/dotnet
@@ -126,7 +126,7 @@
 
 - name: Install python from pacman
   become: true
-  pacman:
+  community.general.pacman:
     state: present
     name:
       - pyright
@@ -136,8 +136,8 @@
 
 - name: Install python from apt
   become: true
-  apt:
-    install_recommends: no
+  ansible.builtin.apt:
+    install_recommends: false
     name:
       - black
       # - pyright
@@ -145,7 +145,7 @@
   when: ansible_facts['os_family'] == "Debian"
 
 - name: Install python from homebrew
-  homebrew:
+  community.general.homebrew:
     state: present
     name:
       - black
@@ -155,7 +155,7 @@
 
 - name: Install java/kotlin from pacman
   become: true
-  pacman:
+  community.general.pacman:
     state: present
     name:
       - jdk-openjdk
@@ -164,15 +164,15 @@
 
 - name: Install java/kotlin from apt
   become: true
-  apt:
-    install_recommends: no
+  ansible.builtin.apt:
+    install_recommends: false
     name:
       - kotlin
       - openjdk-17-jdk
   when: ansible_facts['os_family'] == "Debian"
 
 - name: Install java/kotlin from homebrew
-  homebrew:
+  community.general.homebrew:
     state: present
     name:
       - kotlin
@@ -181,7 +181,7 @@
 
 - name: Install zig from pacman
   become: true
-  pacman:
+  community.general.pacman:
     state: present
     name:
       - zig
@@ -189,14 +189,14 @@
 
 # - name: Install zig from apt
 #   become: true
-#   apt:
-#     install_recommends: no
+#   ansible.builtin.apt:
+#     install_recommends: false
 #     name:
 #       - zig
 #   when: ansible_facts['os_family'] == "Debian"
 
 - name: Install zig from homebrew
-  homebrew:
+  community.general.homebrew:
     state: present
     name:
       - zig
@@ -204,7 +204,7 @@
 
 - name: Install ocaml from pacman
   become: true
-  pacman:
+  community.general.pacman:
     state: present
     name:
       - ocaml
@@ -215,8 +215,8 @@
 
 - name: Install ocaml from apt
   become: true
-  apt:
-    install_recommends: no
+  ansible.builtin.apt:
+    install_recommends: false
     name:
       - ocaml
       - ocamlbuild
@@ -226,7 +226,7 @@
   when: ansible_facts['os_family'] == "Debian"
 
 - name: Install ocaml from homebrew
-  homebrew:
+  community.general.homebrew:
     state: present
     name:
       - dune
@@ -237,7 +237,7 @@
 
 - name: Install javascript/typescript from pacman
   become: true
-  pacman:
+  community.general.pacman:
     state: present
     name:
       - nodejs
@@ -246,15 +246,15 @@
 
 - name: Install javascript/typescript from apt
   become: true
-  apt:
-    install_recommends: no
+  ansible.builtin.apt:
+    install_recommends: false
     name:
       - node-typescript
       - nodejs
   when: ansible_facts['os_family'] == "Debian"
 
 - name: Install javascript/typescript from homebrew
-  homebrew:
+  community.general.homebrew:
     state: present
     name:
       - node
@@ -263,7 +263,7 @@
 
 - name: Install molecule from pacman
   become: true
-  pacman:
+  community.general.pacman:
     state: present
     name:
       - molecule
@@ -271,14 +271,14 @@
 
 - name: Install molecule from apt
   become: true
-  apt:
-    install_recommends: no
+  ansible.builtin.apt:
+    install_recommends: false
     name:
       - molecule
   when: ansible_facts['os_family'] == "Debian"
 
 - name: Install molecule from homebrew
-  homebrew:
+  community.general.homebrew:
     state: present
     name:
       - molecule

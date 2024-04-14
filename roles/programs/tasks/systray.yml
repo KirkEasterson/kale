@@ -1,7 +1,7 @@
 ---
 - name: Install systray tools from pacman
   become: true
-  pacman:
+  community.general.pacman:
     state: present
     name:
       - cbatticon
@@ -10,8 +10,8 @@
 
 - name: Install systray tools from apt
   become: true
-  apt:
-    install_recommends: no
+  ansible.builtin.apt:
+    install_recommends: false
     name:
       - cbatticon
       - volumeicon-alsa

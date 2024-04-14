@@ -1,7 +1,7 @@
 ---
 - name: Install lightdm
   become: true
-  pacman:
+  community.general.pacman:
     state: present
     name:
       - "light-locker"
@@ -11,8 +11,8 @@
 
 - name: Install lightdm
   become: true
-  apt:
-    install_recommends: no
+  ansible.builtin.apt:
+    install_recommends: false
     name:
       - "slick-greeter"
       - "lightdm-settings"
@@ -22,33 +22,35 @@
   when: ansible_os_family == 'Debian'
 
 - name: Check if lightdm.conf exists
-  stat:
+  ansible.builtin.stat:
     path: "/etc/lightdm/lightdm.conf"
   register: lightdm_conf
 
 - name: Update lightdm.conf
-  copy:
-    src: "../files/lightdm.conf"
+  ansible.builtin.copy:
+    src: "files/lightdm.conf"
     dest: "/etc/lightdm/lightdm.conf"
-  when: lightdm_conf.stat.exists == false or lightdm_conf.stat.checksum != ansible_checksum
+    mode: "644"
+  when: not lightdm_conf.stat.exists or lightdm_conf.stat.checksum != ansible_checksum
   vars:
-    ansible_checksum: "{{ lookup('file', '../files/lightdm.conf') | checksum }}"
+    ansible_checksum: "{{ lookup('file', 'files/lightdm.conf') | checksum }}"
 
 - name: Check if slick-greeter.conf exists
-  stat:
+  ansible.builtin.stat:
     path: "/etc/lightdm/slick-greeter.conf"
   register: slick_conf
 
 - name: Update slick-greeter.conf
-  copy:
-    src: "../files/slick-greeter.conf"
+  ansible.builtin.copy:
+    src: "files/slick-greeter.conf"
     dest: "/etc/lightdm/slick-greeter.conf"
-  when: slick_conf.stat.exists == false or slick_conf.stat.checksum != ansible_checksum
+    mode: "644"
+  when: not slick_conf.stat.exists or slick_conf.stat.checksum != ansible_checksum
   vars:
-    ansible_checksum: "{{ lookup('file', '../files/slick-greeter.conf') | checksum }}"
+    ansible_checksum: "{{ lookup('file', 'files/slick-greeter.conf') | checksum }}"
 
 - name: Enable lightdm service
   become: true
-  systemd:
+  ansible.builtin.systemd:
     name: lightdm
-    enabled: yes
+    enabled: true

@@ -12,5 +12,5 @@
 
 # NOTE: always do this last
 - name: Restart Safari
-  command: killall Safari
+  ansible.builtin.command: killall Safari
   changed_when: false

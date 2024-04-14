@@ -1,25 +1,26 @@
 ---
-- import_tasks:
+- name: Init
+  ansible.builtin.import_tasks:
     file: init.yml
 
 - name: Refresh package managers
-  import_tasks:
+  ansible.builtin.import_tasks:
     file: refresh.yml
 
 - name: Install AUR
-  import_tasks:
+  ansible.builtin.import_tasks:
     file: aur.yml
   when: ansible_facts['os_family'] == "Archlinux"
 
 - name: Install homebrew
-  import_tasks:
+  ansible.builtin.import_tasks:
     file: homebrew.yml
   when: ansible_facts['os_family'] == "Darwin"
 
 - name: Install pip
-  import_tasks:
+  ansible.builtin.import_tasks:
     file: pip.yml
 
 - name: Install npm
-  import_tasks:
+  ansible.builtin.import_tasks:
     file: npm.yml

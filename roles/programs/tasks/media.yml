@@ -1,7 +1,7 @@
 ---
 - name: Install pdf viewers from pacman
   become: true
-  pacman:
+  community.general.pacman:
     state: present
     name:
       - evince
@@ -12,8 +12,8 @@
 
 - name: Install pdf viewers from apt
   become: true
-  apt:
-    install_recommends: no
+  ansible.builtin.apt:
+    install_recommends: false
     name:
       - evince
       - pdfarranger
@@ -22,7 +22,7 @@
   when: ansible_facts['os_family'] == "Debian"
 
 - name: Install pdf viewers from homebrew
-  homebrew:
+  community.general.homebrew:
     state: present
     name:
       - evince
@@ -31,7 +31,7 @@
 
 - name: Install image viewers from pacman
   become: true
-  pacman:
+  community.general.pacman:
     state: present
     name:
       - nsxiv
@@ -40,15 +40,15 @@
 
 - name: Install image viewers from apt
   become: true
-  apt:
-    install_recommends: no
+  ansible.builtin.apt:
+    install_recommends: false
     name:
       - nsxiv
       - feh
   when: ansible_facts['os_family'] == "Debian"
 
   # - name: Install image viewers from homebrew
-  #   homebrew:
+  #   community.general.homebrew:
   #     state: present
   #     name:
   #       - nsxiv
@@ -57,7 +57,7 @@
 
 - name: Install video viewers from pacman
   become: true
-  pacman:
+  community.general.pacman:
     state: present
     name:
       - mpv
@@ -66,15 +66,15 @@
 
 - name: Install video viewers from apt
   become: true
-  apt:
-    install_recommends: no
+  ansible.builtin.apt:
+    install_recommends: false
     name:
       - mpv
       - vlc
   when: ansible_facts['os_family'] == "Debian"
 
 - name: Install video viewers from homebrew
-  homebrew:
+  community.general.homebrew:
     state: present
     name:
       - homebrew/cask/vlc
@@ -83,7 +83,7 @@
 
 - name: Install music players from pacman
   become: true
-  pacman:
+  community.general.pacman:
     state: present
     name:
       - rhythmbox
@@ -100,8 +100,8 @@
 
 - name: Install music players from apt
   become: true
-  apt:
-    install_recommends: no
+  ansible.builtin.apt:
+    install_recommends: false
     name:
       - rhythmbox
       # - spotify-adblock
@@ -109,7 +109,7 @@
 
 # # TODO: find music players for mac
 # - name: Install music players from homebrew
-#   homebrew:
+#   community.general.homebrew:
 #     state: present
 #     name:
 #       - rhythmbox

@@ -21,5 +21,5 @@
 
 # NOTE: always do this last
 - name: Restart SystemUIServer
-  command: killall SystemUIServer
+  ansible.builtin.command: killall SystemUIServer
   changed_when: false

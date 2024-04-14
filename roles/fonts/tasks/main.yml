@@ -3,13 +3,14 @@
 - name: Create fonts directory
   become: true
   become_user: "{{ remote_regular_user }}"
-  file:
+  ansible.builtin.file:
     path: $HOME/.local/share/fonts
     state: directory
+    mode: "755"
 
 - name: Install fonts on pacman
   become: true
-  pacman:
+  community.general.pacman:
     state: present
     name:
       - font-manager
@@ -26,8 +27,8 @@
 
 - name: Install fonts on apt
   become: true
-  apt:
-    install_recommends: no
+  ansible.builtin.apt:
+    install_recommends: false
     name:
       - fontconfig
       - font-manager
@@ -38,7 +39,7 @@
 
   # TODO: specify cask in module
 - name: Install fonts from homebrew
-  homebrew:
+  community.general.homebrew:
     state: present
     name:
       - homebrew/cask-fonts/font-hack-nerd-font

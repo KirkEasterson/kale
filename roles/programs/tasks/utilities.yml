@@ -11,14 +11,14 @@
 
 # - name: Install vpn from apt
 #   become: true
-#   apt:
-#     install_recommends: no
+#   ansible.builtin.apt:
+#     install_recommends: false
 #     name:
 #       - nordvpn
 #   when: ansible_facts['os_family'] == "Debian"
 
 - name: Install vpn from homebrew
-  homebrew:
+  community.general.homebrew:
     state: present
     name:
       - homebrew/cask/nordvpn
@@ -36,14 +36,14 @@
 
 # - name: Install password manager from apt
 #   become: true
-#   apt:
+#   ansible.builtin.apt:
 #     install_recommends: no
 #     name:
 #       - 1password
 #   when: ansible_facts['os_family'] == "Debian"
 
 - name: Install password manager from homebrew
-  homebrew:
+  community.general.homebrew:
     state: present
     name:
       - homebrew/cask/1password
@@ -52,7 +52,7 @@
 
 - name: Install multi-monitor tools from AUR
   become: true
-  pacman:
+  community.general.pacman:
     state: present
     name:
       - arandr
@@ -62,19 +62,10 @@
 
 - name: Install multi-monitor tools from apt
   become: true
-  apt:
-    install_recommends: no
+  ansible.builtin.apt:
+    install_recommends: false
     name:
       - arandr
       - autorandr
       - xrandr
   when: ansible_facts['os_family'] == "Debian"
-
-# - name: Install multi-monitor tools from homebrew
-#   homebrew:
-#     state: present
-#     name:
-#       - arandr
-#       - autorandr
-#       - xrandr
-#   when: ansible_facts['os_family'] == "Darwin"

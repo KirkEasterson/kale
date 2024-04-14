@@ -1,7 +1,7 @@
 ---
 - name: Install game clients from pacman
   become: true
-  pacman:
+  community.general.pacman:
     state: present
     name:
       - lutris
@@ -19,15 +19,15 @@
 
 - name: Install game clients from apt
   become: true
-  apt:
-    install_recommends: no
+  ansible.builtin.apt:
+    install_recommends: false
     name:
       - lutris
       - steam
   when: ansible_facts['os_family'] == "Debian"
 
 - name: Install game clients from homebrew
-  homebrew:
+  community.general.homebrew:
     state: present
     name:
       - homebrew/cask/minecraft

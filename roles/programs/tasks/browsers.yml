@@ -1,7 +1,7 @@
 ---
 - name: Install browsers from pacman
   become: true
-  pacman:
+  community.general.pacman:
     state: present
     name:
       - chromium
@@ -19,8 +19,8 @@
 
 - name: Install browsers
   become: true
-  apt:
-    install_recommends: no
+  ansible.builtin.apt:
+    install_recommends: false
     name:
       - chromium-browser
       - firefox
@@ -28,7 +28,7 @@
   when: ansible_facts['os_family'] == "Debian"
 
 - name: Install browsers
-  homebrew:
+  community.general.homebrew:
     state: present
     name:
       - chromium

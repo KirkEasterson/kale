@@ -1,7 +1,7 @@
 ---
 - name: Install lockers on pacman
   become: true
-  pacman:
+  community.general.pacman:
     state: present
     name:
       - "i3lock"
@@ -12,8 +12,8 @@
 
 - name: Install lockers on apt
   become: true
-  apt:
-    install_recommends: no
+  ansible.builtin.apt:
+    install_recommends: false
     name:
       - "i3lock"
       - "swaylock"

@@ -1,7 +1,7 @@
 ---
 - name: Install SDDM on pacman
   become: true
-  pacman:
+  community.general.pacman:
     state: present
     name:
       - "sddm"
@@ -10,8 +10,8 @@
 
 - name: Install SDDM on apt
   become: true
-  apt:
-    install_recommends: no
+  ansible.builtin.apt:
+    install_recommends: false
     name:
       - "sddm"
       - "sddm-kcm"
@@ -26,21 +26,22 @@
 #       - sddm-nordic-theme-git
 
 - name: Check if SDDM conf file exists
-  stat:
+  ansible.builtin.stat:
     path: "/etc/sddm.conf"
   register: sddm_conf
 
 - name: Copy SDDM conf file
   become: true
-  copy:
-    src: "../files/sddm.conf"
+  ansible.builtin.copy:
+    src: "files/sddm.conf"
     dest: "/etc/sddm.conf"
-  when: sddm_conf.stat.exists == false or sddm_conf.stat.checksum != ansible_checksum
+    mode: "644"
+  when: not sddm_conf.stat.exists or sddm_conf.stat.checksum != ansible_checksum
   vars:
-    ansible_checksum: "{{ lookup('file', '../files/sddm.conf') | checksum }}"
+    ansible_checksum: "{{ lookup('file', 'files/sddm.conf') | checksum }}"
 
 - name: Enable sddm service
   become: true
-  systemd:
+  ansible.builtin.systemd:
     name: sddm
-    enabled: yes
+    enabled: true

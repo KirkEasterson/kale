@@ -1,5 +1,8 @@
 ---
-- import_tasks:
+- name: SDDM
+  ansible.builtin.import_tasks:
     file: sddm.yml
-# - import_tasks:
+
+# - name: LightDM
+#   ansible.builtin.import_tasks:
 #     file: lightdm.yml

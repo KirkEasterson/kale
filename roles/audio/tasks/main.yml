@@ -1,7 +1,12 @@
 ---
-- import_tasks:
+- name: DAWs
+  ansible.builtin.import_tasks:
     file: daw.yml
-- import_tasks:
+
+- name: Misc
+  ansible.builtin.import_tasks:
     file: misc.yml
-- import_tasks:
+
+- name: Pipewire
+  ansible.builtin.import_tasks:
     file: pipewire.yml

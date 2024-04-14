@@ -1,10 +1,10 @@
 ---
 - name: Check if dotfiles exists
-  stat:
+  ansible.builtin.stat:
     path: "{{ dotfiles_path }}"
   register: dotfiles_dir
 
-- name: Clone dotfiles
+- name: Clone dotfiles # noqa: latest[git]
   ansible.builtin.git:
     repo: "git@github.com:KirkEasterson/.dotfiles.git"
     dest: "{{ dotfiles_path }}"
@@ -13,11 +13,12 @@
     track_submodules: true
     recursive: true
     depth: 1
-  when: dotfiles_dir.stat.exists == false
+  when: not dotfiles_dir.stat.exists
+  changed_when: false
 
 - name: Install stow from pacman
   become: true
-  pacman:
+  community.general.pacman:
     state: present
     name:
       - "stow"
@@ -25,20 +26,23 @@
 
 - name: Install stow from apt
   become: true
-  apt:
-    install_recommends: no
+  ansible.builtin.apt:
+    install_recommends: false
     name:
       - "stow"
   when: ansible_facts['os_family'] == "Debian"
 
 - name: Install stow from homebrew
-  homebrew:
+  community.general.homebrew:
     state: present
     name:
       - "stow"
   when: ansible_facts['os_family'] == "Darwin"
 
 - name: Install dotfiles
-  shell:
+  become: true
+  become_user: "{{ remote_regular_user }}"
+  ansible.builtin.command:
     cmd: "{{ dotfiles_path }}/install.sh"
-  when: dotfiles_dir.stat.exists == false
+  when: not dotfiles_dir.stat.exists
+  changed_when: false
