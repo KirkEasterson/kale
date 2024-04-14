@@ -153,7 +153,7 @@
   community.general.pacman:
     state: present
     name:
-      - "libreoffice"
+      - "libreoffice-fresh"
   when: ansible_facts['os_family'] == "Archlinux"
 
 - name: Install text editors from apt
