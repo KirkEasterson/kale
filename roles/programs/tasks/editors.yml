@@ -90,6 +90,7 @@
 
 - name: Install code editors from AUR
   become: true
+  become_user: "{{ remote_regular_user }}"
   kewlfft.aur.aur:
     state: present
     use: yay
