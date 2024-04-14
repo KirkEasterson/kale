@@ -82,8 +82,8 @@ The only advice I have now is to read the configs and figure it out yourself.
 - [ ] Add support for multiple linux distributions
   - [ ] Fedora
   - [ ] openSuse
-  - [ ] Debian
-- [ ] Add support for macos
+  - [x] Debian
+- [x] Add support for macos
 - [ ] Implement molecule for testing the bootstrap playbook
 - [ ] Add flags for enabling features (for personal and testing usages)
   - [ ] Upload keys to github
