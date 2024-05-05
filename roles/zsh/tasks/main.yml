@@ -1,30 +1,9 @@
 ---
-- name: Install zsh from pacman
-  become: true
-  community.general.pacman:
-    state: present
+- name: Install zsh
+  ansible.builtin.package:
     name:
       - starship
       - zsh
-  when: ansible_facts['os_family'] == "Archlinux"
-
-- name: Install zsh from apt
-  become: true
-  ansible.builtin.apt:
-    install_recommends: false
-    name:
-      - starship
-      - zsh
-      - zsh-common
-  when: ansible_facts['os_family'] == "Debian"
-
-- name: Install zsh from homebrew
-  community.general.homebrew:
-    state: present
-    name:
-      - starship
-      - zsh
-  when: ansible_facts['os_family'] == "Darwin"
 
 - name: Change default shell to Zsh
   become: true
@@ -38,14 +17,8 @@
     path: "~/.cache/zsh/"
     mode: "755"
 
-- name: Check if zsh history exists
-  ansible.builtin.stat:
-    path: "~/.cache/zsh/history"
-  register: zsh_history_file
-
 - name: Create zsh history
   ansible.builtin.file:
     state: "touch"
     path: "~/.cache/zsh/history"
     mode: "644"
-  when: not zsh_history_file.stat.exists
