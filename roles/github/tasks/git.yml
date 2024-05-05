@@ -1,14 +1,15 @@
 ---
 - name: Install git and git tools
   become: true
-  vars:
-    gh:
-      ArchLinux: github-cli
-      Debian: gh
-      Darwin: gh
   ansible.builtin.package:
     name:
       - "git"
       - "git-delta"
       - "difftastic"
       - "{{ gh[ansible_facts['os_family']] }}"
+  loop: "{{ lookup('dict', gh) }}"
+  vars:
+    gh:
+      ArchLinux: github-cli
+      Debian: gh
+      Darwin: gh
