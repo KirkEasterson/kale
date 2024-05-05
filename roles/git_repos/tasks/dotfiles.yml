@@ -18,28 +18,11 @@
   when: not dotfiles_dir.stat.exists
   changed_when: false
 
-- name: Install stow from pacman
+- name: Install stow
   become: true
-  community.general.pacman:
-    state: present
+  ansible.builtin.package:
     name:
       - "stow"
-  when: ansible_facts['os_family'] == "Archlinux"
-
-- name: Install stow from apt
-  become: true
-  ansible.builtin.apt:
-    install_recommends: false
-    name:
-      - "stow"
-  when: ansible_facts['os_family'] == "Debian"
-
-- name: Install stow from homebrew
-  community.general.homebrew:
-    state: present
-    name:
-      - "stow"
-  when: ansible_facts['os_family'] == "Darwin"
 
 - name: Install dotfiles
   become: true
