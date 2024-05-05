@@ -3,7 +3,7 @@
   become: true
   vars:
     pcmanfm:
-      Archlinux: "pcmanfm-gkt3"
+      Archlinux: "pcmanfm-gtk3"
       Debian: "pcmanfm"
   ansible.builtin.package:
     name:
