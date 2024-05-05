@@ -1,22 +1,12 @@
 ---
-- name: Install theme tools from pacman
+- name: Install theme tools
   become: true
-  community.general.pacman:
-    state: present
-    name:
-      - "lxappearance" # TODO: install gtk3
-      - "papirus-icon-theme"
-      - "picom"
-      - "pop-gtk-theme"
-  when: ansible_facts['os_family'] == "Archlinux"
-
-- name: Install theme tools from apt
-  become: true
-  ansible.builtin.apt:
-    state: present
+  vars:
+    theme:
+      Archlinux: "pop-gtk-theme"
+  ansible.builtin.package:
     name:
       - "lxappearance"
       - "papirus-icon-theme"
       - "picom"
-      - "pop-gtk-theme"
-  when: ansible_facts['os_family'] == "Debian"
+      - "{{ theme[ansible_facts['os_family']] }}"
