@@ -11,4 +11,4 @@
       - "git"
       - "git-delta"
       - "difftastic"
-      - "{{ gh.ansible_facts['os_family'] }}"
+      - "{{ gh[{{ansible_facts['os_family']}}] }}"
