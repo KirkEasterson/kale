@@ -1,22 +1,11 @@
 ---
-# TODO: see what more conf needs to be done for ubuntu
-- name: Remove conflicting program on pacman
+- name: Remove conflicting programs with pipewire
   become: true
-  community.general.pacman:
+  ansible.builtin.package:
     state: absent
     name:
       - pulseaudio
       - pipewire-media-session
-  when: ansible_facts['os_family'] == "Archlinux"
-
-- name: Remove conflicting program on apt
-  become: true
-  ansible.builtin.apt:
-    state: absent
-    name:
-      - pulseaudio
-      - pipewire-media-session
-  when: ansible_facts['os_family'] == "Debian"
 
 - name: Disable pulseaudio service
   become: true
@@ -36,37 +25,19 @@
     masked: true
   failed_when: false
 
-- name: Install pipewire on pacman
+- name: Install pipewire
   become: true
-  community.general.pacman:
-    state: present
+  ansible.builtin.package:
     name:
-      - helvum # GTK patch bay
-      - pipewire
-      - pipewire-audio
-      - pipewire-docs
-      - pipewire-pulse
-      - pipewire-x11-bell
-      # - qpwgraph # QT patch bay
-      - sof-firmware
-      - wireplumber
-  when: ansible_facts['os_family'] == "Archlinux"
-
-- name: Install pipewire on apt
-  become: true
-  ansible.builtin.apt:
-    install_recommends: false
-    name:
-      - helvum # GTK patch bay
-      - pipewire
-      - pipewire-audio
-      - pipewire-docs
-      - pipewire-pulse
-      - pipewire-x11-bell
-      # - qpwgraph # QT patch bay
-      - sof-firmware
-      - wireplumber
-  when: ansible_facts['os_family'] == "Debian"
+      - "helvum" # GTK patch bay
+      - "pipewire"
+      - "pipewire-audio"
+      - "pipewire-docs"
+      - "pipewire-pulse"
+      - "pipewire-x11-bell"
+      # - "qpwgraph" # QT patch bay
+      - "sof-firmware"
+      - "wireplumber"
 
 - name: Add current user to the audio group
   become: true
