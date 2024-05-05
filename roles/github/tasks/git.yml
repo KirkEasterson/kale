@@ -1,5 +1,4 @@
 ---
-
 - name: Install git and git tools
   become: true
   vars:
