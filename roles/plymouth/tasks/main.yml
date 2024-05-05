@@ -1,32 +1,9 @@
 ---
 - name: Install plymouth
   become: true
-  community.general.pacman:
-    state: present
+  ansible.builtin.package:
     name:
-      - plymouth
-  when: ansible_facts['os_family'] == "Archlinux"
-
-  # TODO: not use an AUR theme
-- name: Install plymouth theme from AUR
-  become: true
-  become_user: "{{ remote_regular_user }}"
-  kewlfft.aur.aur:
-    state: present
-    use: yay
-    name:
-      - sematrix-plymouth-theme
-  when: ansible_facts['os_family'] == "Archlinux"
-
-- name: Install plymouth
-  become: true
-  ansible.builtin.apt:
-    install_recommends: false
-    name:
-      - plymouth
-      - plymouth-themes
-      - plymouth-x11
-  when: ansible_facts['os_family'] == "Debian"
+      - "plymouth"
 
 - name: Check if plymouth conf exists
   ansible.builtin.stat:
