@@ -1,21 +1,9 @@
 ---
 - name: Install brightnessctl
   become: true
-  community.general.pacman:
-    state: present
+  ansible.builtin.package:
     name:
       - "brightnessctl"
-      # - "xorg-xbacklight"
-  when: ansible_distribution == 'ArchLinux'
-
-- name: Install brightnessctl
-  become: true
-  ansible.builtin.apt:
-    install_recommends: false
-    name:
-      - "brightnessctl"
-      # - "xorg-xbacklight"
-  when: ansible_os_family == 'Debian'
 
 - name: Check if brightnessctl rules exists
   ansible.builtin.stat:
