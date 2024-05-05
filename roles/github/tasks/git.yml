@@ -7,7 +7,7 @@
       - "git-delta"
       - "difftastic"
       - "{{ gh[ansible_facts['os_family']] }}"
-  loop: "{{ lookup('dict', gh) }}"
+  with_dict: "{{ gh }}"
   vars:
     gh:
       ArchLinux: github-cli
