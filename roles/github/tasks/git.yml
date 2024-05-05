@@ -6,7 +6,9 @@
       Debian: gh
       Darwin: gh
   ansible.builtin.debug:
-    msg: "{{ gh }}"
+    msg:
+      - "{{ gh }}"
+      - "{{ gh.keys() | list }}"
 
 - name: Install git and git tools
   become: true
@@ -15,7 +17,7 @@
       - "git"
       - "git-delta"
       - "difftastic"
-      - "{{ gh.msg[ansible_facts['os_family']] }}"
+      - "{{ gh['ansible_facts['os_family']'] }}"
   vars:
     gh:
       ArchLinux: github-cli
