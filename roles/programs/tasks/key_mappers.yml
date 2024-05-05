@@ -1,19 +1,15 @@
 ---
-- name: Install key mappers from pacman
+- name: Install key mappers
   become: true
-  community.general.pacman:
-    state: present
+  vars:
+    pcmanfm:
+      Archlinux: "sxhkd"
+      Debian: "x11-xserver-utils" # contains xmodmap
+  ansible.builtin.package:
     name:
-      - sxhkd
-  when: ansible_facts['os_family'] == "Archlinux"
-
-- name: Install key mappers from apt
-  become: true
-  ansible.builtin.apt:
-    install_recommends: false
-    name:
-      - x11-xserver-utils # contains xmodmap
-  when: ansible_facts['os_family'] == "Debian"
+      - "udiskie"
+      - "{{ pcmanfm[ansible_facts['os_family']] }}"
+  when: ansible_system == "Linux"
 
 - name: Install key mappers from homebrew
   community.general.homebrew:

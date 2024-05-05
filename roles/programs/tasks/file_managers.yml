@@ -1,27 +1,18 @@
 ---
-- name: Install file managers from pacman
+- name: Install file managers
   become: true
-  community.general.pacman:
-    state: present
+  vars:
+    pcmanfm:
+      Archlinux: "pcmanfm-gkt3"
+      Debian: "pcmanfm"
+  ansible.builtin.package:
     name:
-      - ranger
-      - pcmanfm-gtk3
-      - udiskie
-  when: ansible_facts['os_family'] == "Archlinux"
+      - "udiskie"
+      - "{{ pcmanfm[ansible_facts['os_family']] }}"
+  when: ansible_system == "Linux"
 
-- name: Install file managers from apt
+- name: Install ranger
   become: true
-  ansible.builtin.apt:
-    install_recommends: false
+  ansible.builtin.package:
     name:
-      - ranger
-      - pcmanfm
-      - udiskie
-  when: ansible_facts['os_family'] == "Debian"
-
-- name: Install file managers from homebrew
-  community.general.homebrew:
-    state: present
-    name:
-      - ranger
-  when: ansible_facts['os_family'] == "Darwin"
+      - "ranger"

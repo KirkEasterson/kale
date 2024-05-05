@@ -1,147 +1,40 @@
 ---
-- name: Install terminal emulators from pacman
+- name: Install terminal emulators
   become: true
-  community.general.pacman:
-    state: present
+  ansible.builtin.package:
     name:
-      - alacritty
-      - kitty
-      - wezterm
-      - xterm
-  when: ansible_facts['os_family'] == "Archlinux"
+      - "alacritty"
+      - "kitty"
+      - "wezterm"
+      - "xterm"
 
-- name: Install terminal emulators from apt
+#   # TODO: find a ppa for ubuntu
+- name: Install shell prompt
   become: true
-  ansible.builtin.apt:
-    install_recommends: false
+  ansible.builtin.package:
     name:
-      - alacritty
-      - kitty
-      - wezterm
-      - xterm
-  when: ansible_facts['os_family'] == "Debian"
+      - "starship" # not in apt
 
-- name: Install terminal emulators from homebrew
-  community.general.homebrew:
-    state: present
-    name:
-      - homebrew/cask/alacritty
-      - homebrew/cask/kitty
-      - homebrew/cask/wezterm
-  when: ansible_facts['os_family'] == "Darwin"
-
-- name: Install shell prompt from pacman
+- name: Install CLI tools
   become: true
-  community.general.pacman:
-    state: present
+  ansible.builtin.package:
     name:
-      - starship
-  when: ansible_facts['os_family'] == "Archlinux"
-
-#   # TODO: find a ppa
-# - name: Install shell prompt from apt
-#   become: true
-#   ansible.builtin.apt:
-#     install_recommends: false
-#     name:
-#       - starship
-#   when: ansible_facts['os_family'] == "Debian"
-
-- name: Install shell prompt from homebrew
-  community.general.homebrew:
-    state: present
-    name:
-      - starship
-  when: ansible_facts['os_family'] == "Darwin"
-
-- name: Install CLI tools from pacman
-  become: true
-  community.general.pacman:
-    state: present
-    name:
-      - asciiquarium
-      - bat
-      - btop
-      - cmatrix
-      - cowfortune
-      - cowsay
-      - curl
-      - direnv
-      - dust
-      - exa
-      - eza
-      - fd
-      - figlet
-      - fzf
-      - htop
-      - hyperfine
-      - man
-      - neofetch
-      - procs
-      - ripgrep
-      - sd
-      - tmux
-      - tmuxp
-      - zoxide
-  when: ansible_facts['os_family'] == "Archlinux"
-
-- name: Install CLI tools from apt
-  become: true
-  ansible.builtin.apt:
-    install_recommends: false
-    name:
-      - asciiquarium
-      - bat
-      - btop
-      - cmatrix
-      - cowfortune
-      - cowsay
-      - curl
-      - direnv
-      - dust
-      - exa
-      - eza
-      - fd
-      - figlet
-      - fzf
-      - htop
-      - hyperfine
-      - man
-      - neofetch
-      - procs
-      - ripgrep
-      - sd
-      - tmux
-      - tmuxp
-      - zoxide
-  when: ansible_facts['os_family'] == "Debian"
-
-- name: Install CLI tools from homebrew
-  community.general.homebrew:
-    state: present
-    name:
-      - asciiquarium
-      - bat
-      - btop
-      - cmatrix
-      # - cowfortune # N/A
-      # - cowsay # deprecated
-      - curl
-      - direnv
-      - dust
-      # - exa # deprecated
-      - eza
-      - fd
-      - figlet
-      - fzf
-      - htop
-      - hyperfine
-      # - man # N/A
-      - neofetch
-      - procs
-      - ripgrep
-      - sd
-      - tmux
-      - tmuxp
-      - zoxide
-  when: ansible_facts['os_family'] == "Darwin"
+      - "asciiquarium"
+      - "bat"
+      - "btop"
+      - "cmatrix"
+      - "curl"
+      - "direnv"
+      - "dust"
+      - "eza"
+      - "fd"
+      - "figlet"
+      - "fzf"
+      - "htop"
+      - "hyperfine"
+      - "neofetch"
+      - "procs"
+      - "ripgrep"
+      - "sd"
+      - "tmux"
+      - "tmuxp"

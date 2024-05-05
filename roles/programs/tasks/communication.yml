@@ -1,14 +1,22 @@
 ---
-- name: Install communication tools from pacman
+- name: Install communication tools
   become: true
-  community.general.pacman:
-    state: present
+  vars:
+    element:
+      Archlinux: "element-desktop"
+      Darwin: "element"
+    signal:
+      Archlinux: "signal-desktop"
+      Darwin: "signal"
+    telegram:
+      Archlinux: "telegram-desktop"
+      Darwin: "telegram"
+  ansible.builtin.package:
     name:
-      - discord
-      - element-desktop
-      - signal-desktop
-      - telegram-desktop
-  when: ansible_facts['os_family'] == "Archlinux"
+      - "discord"
+      - "{{ element[ansible_facts['os_family']] }}"
+      - "{{ signal[ansible_facts['os_family']] }}"
+      - "{{ telegram[ansible_facts['os_family']] }}"
 
 - name: Install communication tools from AUR
   become: true
@@ -20,49 +28,24 @@
       - slack-desktop
   when: ansible_facts['os_family'] == "Archlinux"
 
-- name: Install communication tools from apt
-  become: true
-  ansible.builtin.apt:
-    install_recommends: false
-    name:
-      # - discord
-      # - element-desktop
-      # - signal-desktop
-      # - slack-desktop
-      - telegram-desktop
-  when: ansible_facts['os_family'] == "Debain"
-
 - name: Install communication tools from homebrew
   community.general.homebrew:
     state: present
     name:
-      - homebrew/cask/discord
-      - homebrew/cask/element
-      - homebrew/cask/signal
       - homebrew/cask/slack
-      - homebrew/cask/telegram
   when: ansible_facts['os_family'] == "Darwin"
+
+- name: Install email clients
+  become: true
+  ansible.builtin.package:
+    name:
+      - "neomutt"
+      - "thunderbird"
 
 - name: Install email clients from pacman
   become: true
   community.general.pacman:
     state: present
     name:
-      - thunderbird
-      - systray-x-common
+      - "systray-x-common"
   when: ansible_facts['os_family'] == "Archlinux"
-
-- name: Install email clients from apt
-  become: true
-  ansible.builtin.apt:
-    install_recommends: false
-    name:
-      - thunderbird
-  when: ansible_facts['os_family'] == "Debian"
-
-- name: Install email clients from homebrew
-  community.general.homebrew:
-    state: present
-    name:
-      - homebrew/cask/thunderbird
-  when: ansible_facts['os_family'] == "Darwin"

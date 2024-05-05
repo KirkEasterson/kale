@@ -1,27 +1,14 @@
 ---
-- name: Install screenshot utilities from pacman
+- name: Install flameshot
   become: true
-  community.general.pacman:
-    state: present
+  ansible.builtin.package:
     name:
-      - flameshot
-      - grim
-      - slurp
-  when: ansible_facts['os_family'] == "Archlinux"
+      - "flameshot"
 
-- name: Install screenshot utilities from apt
+- name: Install screenshot tools
   become: true
-  ansible.builtin.apt:
-    install_recommends: false
+  ansible.builtin.package:
     name:
-      - flameshot
-      - grim
-      - slurp
-  when: ansible_facts['os_family'] == "Debian"
-
-- name: Install screenshot utilities from homebrew
-  community.general.homebrew:
-    state: present
-    name:
-      - homebrew/cask/flameshot
-  when: ansible_facts['os_family'] == "Darwin"
+      - "grim"
+      - "slurp"
+  when: ansible_system == "Linux"

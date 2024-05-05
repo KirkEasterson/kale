@@ -1,112 +1,48 @@
 ---
-- name: Install c/cpp tools from pacman
+- name: Install c/cpp
   become: true
-  community.general.pacman:
-    state: present
+  ansible.builtin.package:
     name:
-      - clang
-      - gcc
-      - gdb
-      - llvm
-      - make
-      - valgrind
-  when: ansible_facts['os_family'] == "Archlinux"
+      - "clang"
+      - "gcc"
+      - "gdb"
+      - "llvm"
+      - "make"
+      - "valgrind"
 
-- name: Install c/cpp tools from apt
+- name: Install golang
   become: true
-  ansible.builtin.apt:
-    install_recommends: false
+  vars:
+    golang:
+      Archlinux: "go"
+      Debian: "golang-go"
+      Darwin: "go"
+  ansible.builtin.package:
     name:
-      - clang
-      - gcc
-      - gdb
-      - llvm
-      - make
-      - valgrind
-  when: ansible_facts['os_family'] == "Debian"
+      - "{{ golang[ansible_facts['os_family']] }}"
 
-- name: Install c/cpp tools from homebrew
-  community.general.homebrew:
-    state: present
-    name:
-      # - clang
-      - gcc
-      - gdb
-      - llvm
-      - make
-      - valgrind
-  when: ansible_distribution == "MacOSX"
-
-- name: Install golang from pacman
+- name: Install rust
   become: true
-  community.general.pacman:
-    state: present
+  vars:
+    rust:
+      Archlinux: "rust"
+      Debian: "rustc"
+      Darwin: "rust"
+  ansible.builtin.package:
     name:
-      - go
-      - gofumpt
-  when: ansible_facts['os_family'] == "Archlinux"
-
-- name: Install golang tools from AUR
-  become: true
-  become_user: "{{ remote_regular_user }}"
-  kewlfft.aur.aur:
-    state: present
-    use: yay
-    name:
-      - golangci-lint-bin
-      - golines
-
-- name: Install golang from apt
-  become: true
-  ansible.builtin.apt:
-    install_recommends: false
-    name:
-      - golang-go
-  when: ansible_facts['os_family'] == "Debian"
-
-- name: Install golang from homebrew
-  community.general.homebrew:
-    state: present
-    name:
-      - go
-      - gofumpt
-      - golangci-lint
-  when: ansible_facts['os_family'] == "Darwin"
-
-- name: Install rust from pacman
-  become: true
-  community.general.pacman:
-    state: present
-    name:
-      - rust
-  when: ansible_facts['os_family'] == "Archlinux"
-
-- name: Install rust from apt
-  become: true
-  ansible.builtin.apt:
-    install_recommends: false
-    name:
-      - rustc
-  when: ansible_facts['os_family'] == "Debian"
-
-- name: Install rust from homebrew
-  community.general.homebrew:
-    state: present
-    name:
-      - rust
-  when: ansible_facts['os_family'] == "Darwin"
+      - "{{ rust[ansible_facts['os_family']] }}"
 
 - name: Install dotnet from pacman
   become: true
   community.general.pacman:
     state: present
     name:
-      - aspnet-runtime
-      - aspnet-targeting-pack
-      - dotnet-host
-      - dotnet-runtime
-      - dotnet-sdk
-      - dotnet-targeting-pack
+      - "aspnet-runtime"
+      - "aspnet-targeting-pack"
+      - "dotnet-host"
+      - "dotnet-runtime"
+      - "dotnet-sdk"
+      - "dotnet-targeting-pack"
   when: ansible_facts['os_family'] == "Archlinux"
 
 - name: Install dotnet from apt
@@ -114,173 +50,73 @@
   ansible.builtin.apt:
     install_recommends: false
     name:
-      - dotnet
+      - "aspnetcore-runtime-8.0"
+      - "dotnet-host-8.0"
+      - "dotnet-runtime-8.0"
+      - "dotnet-sdk-8.0"
+      - "dotnet-targeting-pack-8.0"
   when: ansible_facts['os_family'] == "Debian"
 
 - name: Install dotnet from homebrew
   community.general.homebrew:
     state: present
     name:
-      - homebrew/cask/dotnet
-      - homebrew/cask/dotnet-sdk
+      - "homebrew/cask/dotnet"
+      - "homebrew/cask/dotnet-sdk"
   when: ansible_facts['os_family'] == "Darwin"
 
-- name: Install python from pacman
+- name: Install python
   become: true
-  community.general.pacman:
-    state: present
+  ansible.builtin.package:
     name:
-      - pyright
-      - python
-      - python-black
-  when: ansible_facts['os_family'] == "Archlinux"
+      - "python3"
 
-- name: Install python from apt
+- name: Install java/kotlin
   become: true
-  ansible.builtin.apt:
-    install_recommends: false
+  vars:
+    openjdk:
+      Archlinux: "jdk-openjdk"
+      Debian: "openjdk-21-jdk"
+      Darwin: "openjdk"
+  ansible.builtin.package:
     name:
-      - black
-      # - pyright
-      - python3
-  when: ansible_facts['os_family'] == "Debian"
+      - "kotlin"
+      - "{{ openjdk[ansible_facts['os_family']] }}"
 
-- name: Install python from homebrew
-  community.general.homebrew:
-    state: present
-    name:
-      - black
-      - pyright
-      # - python3
-  when: ansible_facts['os_family'] == "Darwin"
-
-- name: Install java/kotlin from pacman
+- name: Install zig
   become: true
-  community.general.pacman:
-    state: present
+  ansible.builtin.package:
     name:
-      - jdk-openjdk
-      - kotlin
-  when: ansible_facts['os_family'] == "Archlinux"
+      - "zig"
 
-- name: Install java/kotlin from apt
+- name: Install ocaml
   become: true
-  ansible.builtin.apt:
-    install_recommends: false
+  vars:
+    dune:
+      Archlinux: "dune"
+      Debian: "ocaml-dune"
+      Darwin: "dune"
+  ansible.builtin.package:
     name:
-      - kotlin
-      - openjdk-17-jdk
-  when: ansible_facts['os_family'] == "Debian"
+      - "ocaml"
+      - "ocaml-build"
+      - "opam"
+      - "{{ dune[ansible_facts['os_family']] }}"
 
-- name: Install java/kotlin from homebrew
-  community.general.homebrew:
-    state: present
-    name:
-      - kotlin
-      - openjdk
-  when: ansible_facts['os_family'] == "Darwin"
-
-- name: Install zig from pacman
+- name: Install JS/TS/node
   become: true
-  community.general.pacman:
-    state: present
+  vars:
+    ts:
+      Archlinux: "typescript"
+      Debian: "node-typescript"
+      Darwin: "typescript"
+  ansible.builtin.package:
     name:
-      - zig
-  when: ansible_facts['os_family'] == "Archlinux"
+      - "nodejs"
+      - "{{ ts[ansible_facts['os_family']] }}"
 
-# - name: Install zig from apt
-#   become: true
-#   ansible.builtin.apt:
-#     install_recommends: false
-#     name:
-#       - zig
-#   when: ansible_facts['os_family'] == "Debian"
-
-- name: Install zig from homebrew
-  community.general.homebrew:
-    state: present
-    name:
-      - zig
-  when: ansible_facts['os_family'] == "Darwin"
-
-- name: Install ocaml from pacman
+- name: Install molecule
   become: true
-  community.general.pacman:
-    state: present
+  ansible.builtin.package:
     name:
-      - ocaml
-      - ocamlbuild
-      - opam
-      - dune
-  when: ansible_facts['os_family'] == "Archlinux"
-
-- name: Install ocaml from apt
-  become: true
-  ansible.builtin.apt:
-    install_recommends: false
-    name:
-      - ocaml
-      - ocamlbuild
-      - ocaml-core
-      - ocaml-dune
-      - opam
-  when: ansible_facts['os_family'] == "Debian"
-
-- name: Install ocaml from homebrew
-  community.general.homebrew:
-    state: present
-    name:
-      - dune
-      - ocaml
-      - ocamlbuild
-      - opam
-  when: ansible_facts['os_family'] == "Darwin"
-
-- name: Install javascript/typescript from pacman
-  become: true
-  community.general.pacman:
-    state: present
-    name:
-      - nodejs
-      - typescript
-  when: ansible_facts['os_family'] == "Archlinux"
-
-- name: Install javascript/typescript from apt
-  become: true
-  ansible.builtin.apt:
-    install_recommends: false
-    name:
-      - node-typescript
-      - nodejs
-  when: ansible_facts['os_family'] == "Debian"
-
-- name: Install javascript/typescript from homebrew
-  community.general.homebrew:
-    state: present
-    name:
-      - node
-      - typescript
-  when: ansible_facts['os_family'] == "Darwin"
-
-- name: Install molecule from pacman
-  become: true
-  community.general.pacman:
-    state: present
-    name:
-      - molecule
-  when: ansible_facts['os_family'] == "Archlinux"
-
-- name: Install molecule from apt
-  become: true
-  ansible.builtin.apt:
-    install_recommends: false
-    name:
-      - molecule
-  when: ansible_facts['os_family'] == "Debian"
-
-- name: Install molecule from homebrew
-  community.general.homebrew:
-    state: present
-    name:
-      - molecule
-  when: ansible_facts['os_family'] == "Darwin"
+      - "molecule"

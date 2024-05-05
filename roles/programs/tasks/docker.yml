@@ -1,42 +1,9 @@
 ---
-- name: Install docker from pacman
+- name: Install docker
   become: true
-  community.general.pacman:
-    state: present
+  ansible.builtin.package:
     name:
-      - docker
-      - docker-buildx
-      - docker-compose
-      - lazydocker
-  when: ansible_facts['os_family'] == "Archlinux"
-
-- name: Install docker tools from AUR
-  become: true
-  become_user: "{{ remote_regular_user }}"
-  kewlfft.aur.aur:
-    state: present
-    use: yay
-    name:
-      - lazydocker
-  when: ansible_facts['os_family'] == "Archlinux"
-
-- name: Install docker from apt
-  become: true
-  ansible.builtin.apt:
-    install_recommends: false
-    name:
-      - docker
-      - docker-buildx
-      - docker-compose
-      # - lazydocker
-  when: ansible_facts['os_family'] == "Debian"
-
-- name: Install docker from homebrew
-  community.general.homebrew:
-    state: present
-    name:
-      - docker
-      - docker-buildx
-      - docker-compose
-      - lazydocker
-  when: ansible_facts['os_family'] == "Darwin"
+      - "docker"
+      - "docker-buildx"
+      - "docker-compose"
+      # - "lazydocker" # only in AUR

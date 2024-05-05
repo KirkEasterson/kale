@@ -1,25 +1,13 @@
 ---
-- name: Install pdf viewers from pacman
+- name: Install pdf viewers
   become: true
-  community.general.pacman:
-    state: present
+  ansible.builtin.package:
     name:
-      - evince
-      - pdfarranger
-      - xournalpp
-      - zathura
-  when: ansible_facts['os_family'] == "Archlinux"
-
-- name: Install pdf viewers from apt
-  become: true
-  ansible.builtin.apt:
-    install_recommends: false
-    name:
-      - evince
-      - pdfarranger
-      - xournalpp
-      - zathura
-  when: ansible_facts['os_family'] == "Debian"
+      - "evince"
+      - "pdfarranger"
+      - "xournalpp"
+      - "zathura"
+  when: ansible_system == "Linux"
 
 - name: Install pdf viewers from homebrew
   community.general.homebrew:
@@ -29,89 +17,43 @@
       - homebrew/cask/xournal-plus-plus
   when: ansible_facts['os_family'] == "Darwin"
 
-- name: Install image viewers from pacman
+- name: Install image viewers
   become: true
-  community.general.pacman:
-    state: present
+  ansible.builtin.package:
     name:
-      - nsxiv
-      - feh
-  when: ansible_facts['os_family'] == "Archlinux"
+      - "nsxiv"
+      - "feh"
+  when: ansible_system == "Linux"
 
-- name: Install image viewers from apt
+- name: Install image viewers
   become: true
-  ansible.builtin.apt:
-    install_recommends: false
+  ansible.builtin.package:
     name:
-      - nsxiv
-      - feh
-  when: ansible_facts['os_family'] == "Debian"
+      - "mpv"
+      - "vlc"
 
-  # - name: Install image viewers from homebrew
-  #   community.general.homebrew:
-  #     state: present
-  #     name:
-  #       - nsxiv
-  #       - feh
-  #   when: ansible_facts['os_family'] == "Darwin"
-
-- name: Install video viewers from pacman
+# TODO: find music players for mac
+- name: Install music players
   become: true
-  community.general.pacman:
-    state: present
+  ansible.builtin.package:
     name:
-      - mpv
-      - vlc
-  when: ansible_facts['os_family'] == "Archlinux"
+      - "playerctl"
+      - "rhythmbox"
+  when: ansible_system == "Linux"
 
-- name: Install video viewers from apt
-  become: true
-  ansible.builtin.apt:
-    install_recommends: false
-    name:
-      - mpv
-      - vlc
-  when: ansible_facts['os_family'] == "Debian"
-
-- name: Install video viewers from homebrew
-  community.general.homebrew:
-    state: present
-    name:
-      - homebrew/cask/vlc
-      - mpv
-  when: ansible_facts['os_family'] == "Darwin"
-
-- name: Install music players from pacman
-  become: true
-  community.general.pacman:
-    state: present
-    name:
-      - rhythmbox
-  when: ansible_facts['os_family'] == "Archlinux"
-
-- name: Install music players from AUR
+- name: Install spotify from AUR
   become: true
   become_user: "{{ remote_regular_user }}"
   kewlfft.aur.aur:
     state: present
     use: yay
     name:
-      - spotify-adblock
+      - "spotify-adblock"
   when: ansible_facts['os_family'] == "Archlinux"
 
-- name: Install music players from apt
-  become: true
-  ansible.builtin.apt:
-    install_recommends: false
+- name: Install spotify from homebrew
+  community.general.homebrew:
+    state: present
     name:
-      - rhythmbox
-      # - spotify-adblock
-  when: ansible_facts['os_family'] == "Debian"
-
-# # TODO: find music players for mac
-# - name: Install music players from homebrew
-#   community.general.homebrew:
-#     state: present
-#     name:
-#       - rhythmbox
-#   when: ansible_facts['os_family'] == "Darwin"
+      - "spotify"
+  when: ansible_facts['os_family'] == "Darwin"

@@ -1,21 +1,20 @@
 ---
-- name: Install bluetooth from pacman
+- name: Install bluetooth tools
   become: true
-  community.general.pacman:
-    state: present
+  vars:
+    bluezutils:
+      Archlinux: "bluez-utils"
+      Debian: "bluez-tools"
+    hidapi:
+      Archlinux: "hidapi"
+      Debian: "libhidapi-libusb0"
+    sbc:
+      Archlinux: "sbc"
+      Debian: "libsbc1"
+  ansible.builtin.package:
     name:
-      - blueman
-      - bluez
-      - bluez-utils
-      - hidapi
-      - sbc
-  when: ansible_facts['os_family'] == "Archlinux"
-
-- name: Install bluetooth from apt
-  become: true
-  ansible.builtin.apt:
-    install_recommends: false
-    name:
-      - cbatticon
-      - volumeicon-alsa
-  when: ansible_facts['os_family'] == "Debian"
+      - "blueman"
+      - "bluez"
+      - "{{ bluezutils[ansible_facts['os_family']] }}"
+      - "{{ hidapi[ansible_facts['os_family']] }}"
+      - "{{ sbc[ansible_facts['os_family']] }}"

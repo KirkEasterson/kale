@@ -1,12 +1,11 @@
 ---
-- name: Install game clients from pacman
+- name: Install file managers
   become: true
-  community.general.pacman:
-    state: present
+  ansible.builtin.package:
     name:
-      - lutris
-      - steam
-  when: ansible_facts['os_family'] == "Archlinux"
+      - "lutris"
+      - "steam"
+  when: ansible_system == "Linux"
 
 - name: Install game clients from AUR
   become: true
@@ -19,19 +18,11 @@
       - minecraft-launcher
   when: ansible_facts['os_family'] == "Archlinux"
 
-- name: Install game clients from apt
-  become: true
-  ansible.builtin.apt:
-    install_recommends: false
-    name:
-      - lutris
-      - steam
-  when: ansible_facts['os_family'] == "Debian"
-
 - name: Install game clients from homebrew
   community.general.homebrew:
     state: present
     name:
-      - homebrew/cask/minecraft
-      - homebrew/cask/steam
+      - "homebrew/cask/atlauncher"
+      - "homebrew/cask/minecraft"
+      - "homebrew/cask/steam"
   when: ansible_facts['os_family'] == "Darwin"

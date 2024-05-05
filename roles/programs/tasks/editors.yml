@@ -1,175 +1,60 @@
 ---
-- name: Install image editors from pacman
+- name: Install image editors
   become: true
-  community.general.pacman:
-    state: present
+  ansible.builtin.package:
     name:
-      - gimp
-  when: ansible_facts['os_family'] == "Archlinux"
+      - "gimp"
 
-- name: Install image editors from apt
+- name: Install video editors
   become: true
-  ansible.builtin.apt:
-    install_recommends: false
+  ansible.builtin.package:
     name:
-      - gimp
-  when: ansible_facts['os_family'] == "Debian"
+      - "kdenlive"
 
-- name: Install image editors from homebrew
-  community.general.homebrew:
-    state: present
-    name:
-      - homebrew/cask/gimp
-  when: ansible_facts['os_family'] == "Darwin"
-
-- name: Install video editors from pacman
+- name: Install audio editors
   become: true
-  community.general.pacman:
-    state: present
+  ansible.builtin.package:
     name:
-      - kdenlive
-  when: ansible_facts['os_family'] == "Archlinux"
+      # - "ardour" # not on brew
+      - "audacity"
+      - "reaper"
 
-- name: Install video editors from apt
+# TODO:
+# - install vscodium repository
+#     https://code.visualstudio.com/docs/setup/linux#_debian-and-ubuntu-based-distributions
+# - install intellij repository
+#     https://www.linuxcapable.com/how-to-install-intellij-idea-on-ubuntu-linux/
+- name: Install code editors
   become: true
-  ansible.builtin.apt:
-    install_recommends: false
-    name:
-      - kdenlive
-  when: ansible_facts['os_family'] == "Debian"
-
-- name: Install video editors from homebrew
-  community.general.homebrew:
-    state: present
-    name:
-      - homebrew/cask/kdenlive
-  when: ansible_facts['os_family'] == "Darwin"
-
-- name: Install audio editors from pacman
-  become: true
-  community.general.pacman:
-    state: present
-    name:
-      - ardour
-      - audacity
-      - reaper
-  when: ansible_facts['os_family'] == "Archlinux"
-
-- name: Install audio editors from apt
-  become: true
-  ansible.builtin.apt:
-    install_recommends: false
-    name:
-      - ardour
-      # - audacity
-      # - reaper
-  when: ansible_facts['os_family'] == "Debian"
-
-- name: Install audio editors from homebrew
-  community.general.homebrew:
-    state: present
-    name:
-      # - homebrew/cask/ardour
-      - homebrew/cask/audacity
-      - homebrew/cask/reaper
-  when: ansible_facts['os_family'] == "Darwin"
-
-- name: Install code editors from pacman
-  become: true
-  community.general.pacman:
-    state: present
-    name:
-      - "code"
-      - "emacs"
-      - "helix"
-      - "neovide"
-      - "neovim"
-      - "python-pynvim"
-      - "vim"
-  when: ansible_facts['os_family'] == "Archlinux"
-
-- name: Install code editors from AUR
-  become: true
-  become_user: "{{ remote_regular_user }}"
-  kewlfft.aur.aur:
-    state: present
-    use: yay
-    name:
-      - "intellij-idea-community-edition"
-  when: ansible_facts['os_family'] == "Archlinux"
-
-- name: Install code editors from apt
-  become: true
-  ansible.builtin.apt:
-    install_recommends: false
-    name:
-      # - "code" # TODO: install PPA for this
-      - "emacs"
-      - "helix"
-      - "neovide"
-      - "neovim"
-      - "python3-neovim"
-      - "vim"
-  when: ansible_facts['os_family'] == "Debian"
-
-- name: Install code editors from homebrew
-  community.general.homebrew:
-    state: present
+  vars:
+    vscode:
+      Archlinux: "code"
+      Debian: "code"
+      Darwin: "visual-studio-code"
+    intellij:
+      Archlinux: "intellij-idea-community-edition"
+      Debian: "intellij-idea-community"
+      Darwin: "intellij"
+  ansible.builtin.package:
     name:
       - "emacs"
-      - "helix"
-      - "homebrew/cask/visual-studio-code"
-      - "neovide"
+      - "neovide" # not in apt
       - "neovim"
       - "vim"
-  when: ansible_facts['os_family'] == "Darwin"
+      - "{{ vscode[ansible_facts['os_family']] }}"
+      - "{{ intellij[ansible_facts['os_family']] }}"
 
-# # TODO: make this work on arch
-# - name: Install code editor tools from pip
-#   become: true
-#   become_user: "{{ remote_regular_user }}"
-#   ansible.builtin.pip:
-#     name:
-#       - "neovim"
-
-# # TODO: make this work on arch
-# - name: Install neovim package globally.
-#   become: true
-#   become_user: "{{ remote_regular_user }}"
-#   community.general.npm:
-#     name: "neovim"
-#     global: true
-
-# # TODO: make this work on arch
-# - name: Install neovim-client package globally.
-#   become: true
-#   become_user: "{{ remote_regular_user }}"
-#   community.general.npm:
-#     name: "neovim-client"
-#     global: true
-
-- name: Install text editors from pacman
+- name: Install text editors
   become: true
-  community.general.pacman:
-    state: present
-    name:
-      - "libreoffice-fresh"
-  when: ansible_facts['os_family'] == "Archlinux"
-
-- name: Install text editors from apt
-  become: true
-  ansible.builtin.apt:
-    install_recommends: false
+  ansible.builtin.package:
     name:
       - "libreoffice"
-  when: ansible_facts['os_family'] == "Debian"
 
-- name: Install text editors from homebrew
-  community.general.homebrew:
-    state: present
+- name: Install document build tools
+  become: true
+  ansible.builtin.package:
     name:
-      - "homebrew/cask/libreoffice"
-  when: ansible_facts['os_family'] == "Darwin"
+      - "pandoc"
 
 - name: Install document build tools from pacman
   become: true
@@ -210,27 +95,4 @@
     state: present
     name:
       - "texlive"
-  when: ansible_facts['os_family'] == "Darwin"
-
-- name: Install pandoc from pacman
-  become: true
-  community.general.pacman:
-    state: present
-    name:
-      - "pandoc"
-  when: ansible_facts['os_family'] == "Archlinux"
-
-- name: Install pandoc from apt
-  become: true
-  ansible.builtin.apt:
-    install_recommends: false
-    name:
-      - "pandoc"
-  when: ansible_facts['os_family'] == "Debian"
-
-- name: Install pandoc from homebrew
-  community.general.homebrew:
-    state: present
-    name:
-      - "pandoc"
   when: ansible_facts['os_family'] == "Darwin"

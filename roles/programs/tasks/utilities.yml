@@ -52,22 +52,13 @@
       - homebrew/cask/1password-cli
   when: ansible_facts['os_family'] == "Darwin"
 
-- name: Install multi-monitor tools from pacman
+- name: Install systray tools
   become: true
-  community.general.pacman:
-    state: present
+  vars:
+    volumeicon:
+      Archlinux: "volumeicon"
+      Debian: "volumeicon-alsa"
+  ansible.builtin.package:
     name:
-      - arandr
-      - autorandr
-      - xorg-xrandr
-  when: ansible_facts['os_family'] == "Archlinux"
-
-- name: Install multi-monitor tools from apt
-  become: true
-  ansible.builtin.apt:
-    install_recommends: false
-    name:
-      - arandr
-      - autorandr
-      - xrandr
-  when: ansible_facts['os_family'] == "Debian"
+      - "{{ volumeicon[ansible_facts['os_family']] }}"
+  when: ansible_system == "Linux"

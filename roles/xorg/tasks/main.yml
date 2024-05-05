@@ -11,14 +11,19 @@
     xinput:
       Archlinux: "xorg-xinput"
       Debian: "xinput"
+    xrandr:
+      Archlinux: "xorg-xrandr"
+      Debian: "xrandr"
   ansible.builtin.package:
     name:
       - "arandr"
+      - "autorandr"
       - "xf86-input-libinput"
       - "xf86-input-synaptics"
       - "{{ xorgserver[ansible_facts['os_family']] }}"
       - "{{ xinit[ansible_facts['os_family']] }}"
       - "{{ xinput[ansible_facts['os_family']] }}"
+      - "{{ xrandr[ansible_facts['os_family']] }}"
 
 - name: Check if libinput conf exists
   ansible.builtin.stat:

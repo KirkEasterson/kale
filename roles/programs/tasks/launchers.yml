@@ -1,27 +1,10 @@
 ---
-- name: Install launchers from pacman
+# TODO: find a better macos launcher
+- name: Install launchers
   become: true
-  community.general.pacman:
-    state: present
+  ansible.builtin.package:
     name:
-      - rofi
-      - wofi
-  when: ansible_facts['os_family'] == "Archlinux"
-
-- name: Install launchers from apt
-  become: true
-  ansible.builtin.apt:
-    install_recommends: false
-    name:
-      - rofi
-      - wofi
-  when: ansible_facts['os_family'] == "Debian"
-
-# # TODO: find a better macos launcher
-# - name: Install launchers from homebrew
-#   community.general.homebrew:
-#     state: present
-#     name:
-#       - rofi
-#       - wofi
-#   when: ansible_facts['os_family'] == "Darwin"
+      - "fuzzel"
+      - "rofi"
+      - "wofi"
+  when: ansible_system == "Linux"

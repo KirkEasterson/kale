@@ -1,18 +1,11 @@
 ---
-- name: Install systray tools from pacman
+- name: Install systray tools
   become: true
-  community.general.pacman:
-    state: present
+  vars:
+    volumeicon:
+      Archlinux: "volumeicon"
+      Debian: "volumeicon-alsa"
+  ansible.builtin.package:
     name:
-      - cbatticon
-      - volumeicon
-  when: ansible_facts['os_family'] == "Archlinux"
-
-- name: Install systray tools from apt
-  become: true
-  ansible.builtin.apt:
-    install_recommends: false
-    name:
-      - cbatticon
-      - volumeicon-alsa
-  when: ansible_facts['os_family'] == "Debian"
+      - "{{ volumeicon[ansible_facts['os_family']] }}"
+  when: ansible_system == "Linux"

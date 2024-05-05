@@ -1,38 +1,12 @@
 ---
-- name: Install browsers from pacman
-  become: true
-  community.general.pacman:
-    state: present
-    name:
-      - chromium
-      - firefox
-  when: ansible_facts['os_family'] == "Archlinux"
-
-- name: Install browsers from AUR
-  become: true
-  become_user: "{{ remote_regular_user }}"
-  kewlfft.aur.aur:
-    state: present
-    use: yay
-    name:
-      - google-chrome
-  when: ansible_facts['os_family'] == "Archlinux"
-
 - name: Install browsers
   become: true
-  ansible.builtin.apt:
-    install_recommends: false
+  vars:
+    chromium:
+      Archlinux: "chromium"
+      Debian: "chromium-browser"
+      Darwin: "chromium"
+  ansible.builtin.package:
     name:
-      - chromium-browser
-      - firefox
-      # - google-chrome
-  when: ansible_facts['os_family'] == "Debian"
-
-- name: Install browsers
-  community.general.homebrew:
-    state: present
-    name:
-      - chromium
-      - firefox
-      - google-chrome
-  when: ansible_facts['os_family'] == "Darwin"
+      - "firefox"
+      - "{{ chromium[ansible_facts['os_family']] }}"

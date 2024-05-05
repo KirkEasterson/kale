@@ -1,18 +1,8 @@
 ---
-- name: Install notification services from pacman
+- name: Install notification srvices
   become: true
-  community.general.pacman:
-    state: present
+  ansible.builtin.package:
     name:
-      - dunst
-      - mako
-  when: ansible_facts['os_family'] == "Archlinux"
-
-- name: Install notification services from apt
-  become: true
-  ansible.builtin.apt:
-    install_recommends: false
-    name:
-      - dunst
-      - mako
-  when: ansible_facts['os_family'] == "Debian"
+      - "dunst"
+      - "mako"
+  when: ansible_system == "Linux"

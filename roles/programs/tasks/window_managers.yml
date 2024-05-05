@@ -1,13 +1,12 @@
 ---
-- name: Install awesomewm from pacman
+- name: Install awesome
   become: true
-  community.general.pacman:
-    state: present
+  ansible.builtin.package:
     name:
-      - awesome
-      - luarocks
-      - sound-theme-freedesktop
-  when: ansible_facts['os_family'] == "Archlinux"
+      - "awesome"
+      - "luarocks"
+      - "sound-theme-freedesktop"
+  when: ansible_system == "Linux"
 
 - name: Install awesomewm tools from AUR
   become: true
@@ -16,7 +15,7 @@
     state: present
     use: yay
     name:
-      - awesome-freedesktop-git
+      - "awesome-freedesktop-git"
   when: ansible_facts['os_family'] == "Archlinux"
 
 - name: Install awesomewm from apt
@@ -24,24 +23,21 @@
   ansible.builtin.apt:
     install_recommends: false
     name:
-      - awesome
-      - luarocks
-      - sound-theme-freedesktop
+      - "awesome-extra"
   when: ansible_facts['os_family'] == "Debian"
 
-- name: Install sway from pacman
+- name: Install sway
   become: true
-  community.general.pacman:
-    state: present
+  ansible.builtin.package:
     name:
-      - sway
-      - swaybg
-      - swayidle
-      - swaylock
-      - waybar
-      - wf-recorder
-      - xdg-desktop-portal-wlr
-  when: ansible_facts['os_family'] == "Archlinux"
+      - "sway"
+      - "swaybg"
+      - "swayidle"
+      - "swaylock"
+      - "waybar"
+      - "wf-recorder"
+      - "xdg-desktop-portal-wlr"
+  when: ansible_system == "Linux"
 
 - name: Install sway tools from AUR
   become: true
@@ -52,19 +48,6 @@
     name:
       - nwg-displays
   when: ansible_facts['os_family'] == "Archlinux"
-
-- name: Install sway from apt
-  become: true
-  ansible.builtin.apt:
-    install_recommends: false
-    name:
-      - sway
-      - swaybg
-      - swayidle
-      - swaylock
-      - waybar
-      - wf-recorder
-  when: ansible_facts['os_family'] == "Debian"
 
 - name: Install yabai from homebrew
   community.general.homebrew:
