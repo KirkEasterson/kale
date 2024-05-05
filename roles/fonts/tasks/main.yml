@@ -8,36 +8,23 @@
     state: directory
     mode: "755"
 
-- name: Install fonts on pacman
+- name: Install font config tools
   become: true
-  community.general.pacman:
-    state: present
+  vars:
+    jetbrainsmono:
+      Archlinux: "ttf-jetbrains-mono-nerd"
+      Debian: "fonts-jetbrains-mono"
+    ubuntu:
+      Archlinux: "ttf-ubuntu-font-family"
+      Debian: "fonts-ubuntu"
+  ansible.builtin.package:
     name:
-      - font-manager
-      - fontconfig
-      - noto-fonts
-      - noto-fonts-cjk
-      - noto-fonts-emoji
-      - noto-fonts-extra
-      - ttf-hack-nerd
-      - ttf-jetbrains-mono-nerd
-      - ttf-ubuntu-mono-nerd
-      - ttf-ubuntu-nerd
-  when: ansible_facts['os_family'] == "Archlinux"
+      - "font-manager"
+      - "fontconfig"
+      - "{{ jetbrainsmono[ansible_facts['os_family']] }}"
+      - "{{ ubuntu[ansible_facts['os_family']] }}"
+  when: ansible_system == "Linux"
 
-- name: Install fonts on apt
-  become: true
-  ansible.builtin.apt:
-    install_recommends: false
-    name:
-      - fontconfig
-      - font-manager
-      - fonts-hack-otf
-      - fonts-jetbrains-mono
-      - fonts-ubuntu
-  when: ansible_facts['os_family'] == "Debian"
-
-  # TODO: specify cask in module
 - name: Install fonts from homebrew
   community.general.homebrew:
     state: present
@@ -46,4 +33,4 @@
       - homebrew/cask-fonts/font-jetbrains-mono-nerd-font
       - homebrew/cask-fonts/font-ubuntu-mono-nerd-font
       - homebrew/cask-fonts/font-ubuntu-nerd-font
-  when: ansible_facts['os_family'] == "Darwin"
+  when: ansible_distribution == "MacOSX"
