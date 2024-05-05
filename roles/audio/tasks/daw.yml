@@ -5,11 +5,3 @@
     name:
       - "ardour"
       - "guitarix"
-
-- name: Install DAWs from pacman
-  become: true
-  community.general.pacman:
-    state: present
-    name:
-      - "gxplugins.lv2"
-      - "reaper"
