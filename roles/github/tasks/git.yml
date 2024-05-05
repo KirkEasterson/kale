@@ -1,4 +1,14 @@
 ---
+- name: debug
+  vars:
+    gh:
+      ArchLinux: github-cli
+      Debian: gh
+      Darwin: gh
+  ansible.builtin.debug:
+    msg: "{{ gh[ '' ~ ansible_facts['os_family'] ] }}"
+
+
 - name: Install git and git tools
   become: true
   vars:
@@ -11,4 +21,4 @@
       - "git"
       - "git-delta"
       - "difftastic"
-      - "{{ gh[{{ansible_facts['os_family']}}] }}"
+      - "{{ gh[ '' ~ ansible_facts['os_family'] ] }}"
