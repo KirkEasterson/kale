@@ -99,7 +99,7 @@
   ansible.builtin.package:
     name:
       - "ocaml"
-      - "ocaml-build"
+      - "ocamlbuild"
       - "opam"
       - "{{ dune[ansible_facts['os_family']] }}"
 
