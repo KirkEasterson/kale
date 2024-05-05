@@ -1,19 +1,10 @@
 ---
 - name: Install xdg-user-dirs
   become: true
-  community.general.pacman:
-    state: present
+  ansible.builtin.package:
     name:
       - "xdg-user-dirs"
-  when: ansible_facts['os_family'] == "Archlinux"
-
-- name: Install xdg-user-dirs
-  become: true
-  ansible.builtin.apt:
-    install_recommends: false
-    name:
-      - "xdg-user-dirs"
-  when: ansible_facts['os_family'] == "Debian"
+  when: ansible_system == "Linux"
 
   # TODO: figure out how to pass the env var, or if it is even necessary
 - name: Create xdg user directories
