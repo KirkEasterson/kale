@@ -1,5 +1,6 @@
 ---
 - name: Install openssh
+  become: true
   ansible.builtin.package:
     name:
       - "openssh"

@@ -1,5 +1,6 @@
 ---
 - name: Install git and git tools
+  become: true
   vars:
     gh:
       ArchLinux: github-cli
