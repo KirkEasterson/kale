@@ -1,26 +1,15 @@
 ---
-- name: gh debug
-  vars:
-    gh:
-      ArchLinux: github-cli
-      Debian: gh
-      Darwin: gh
-  ansible.builtin.debug:
-    msg:
-      - "{{ gh }}"
-      - "{{ gh.keys() | list }}"
-      - "{{ ansible_facts['os_family'] }}"
 
 - name: Install git and git tools
   become: true
+  vars:
+    gh:
+      Archlinux: github-cli
+      Debian: gh
+      Darwin: gh
   ansible.builtin.package:
     name:
       - "git"
       - "git-delta"
       - "difftastic"
       - "{{ gh[ansible_facts['os_family']] }}"
-  vars:
-    gh:
-      ArchLinux: github-cli
-      Debian: gh
-      Darwin: gh
