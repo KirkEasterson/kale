@@ -44,4 +44,3 @@
       key: "{{ key_pair.public_key }}"
   when: key_pair.changed
   changed_when: false
-
