@@ -1,4 +1,13 @@
 ---
+- name: T01 - List bands
+  vars:
+    gh:
+      ArchLinux: github-cli
+      Debian: gh
+      Darwin: gh
+  ansible.builtin.debug:
+    msg: "{{ gh }}"
+
 - name: Install git and git tools
   become: true
   ansible.builtin.package:
@@ -7,7 +16,6 @@
       - "git-delta"
       - "difftastic"
       - "{{ gh[ansible_facts['os_family']] }}"
-  with_dict: "{{ gh }}"
   vars:
     gh:
       ArchLinux: github-cli
