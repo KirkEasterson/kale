@@ -1,29 +1,14 @@
 ---
-- name: Install SDDM on pacman
+- name: Install SDDM
   become: true
-  community.general.pacman:
-    state: present
+  vars:
+    theme:
+      Archlinux: "sddm-kcm"
+      Debian: "kde-config-sddm"
+  ansible.builtin.package:
     name:
       - "sddm"
-      - "sddm-kcm"
-  when: ansible_facts['os_family'] == "Archlinux"
-
-- name: Install SDDM on apt
-  become: true
-  ansible.builtin.apt:
-    install_recommends: false
-    name:
-      - "sddm"
-      - "sddm-kcm"
-  when: ansible_facts['os_family'] == "Debian"
-
-# - name: Install SDDM nordic theme
-#   become: yes
-#   kewlfft.aur.aur:
-#     state: present
-#     use: yay
-#     name:
-#       - sddm-nordic-theme-git
+      - "{{ theme[ansible_facts['os_family']] }}"
 
 - name: Check if SDDM conf file exists
   ansible.builtin.stat:
