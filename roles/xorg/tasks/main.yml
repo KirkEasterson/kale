@@ -1,28 +1,24 @@
 ---
 - name: Install xorg
   become: true
-  community.general.pacman:
-    state: present
+  vars:
+    xorgserver:
+      Archlinux: "xorg-server"
+      Debian: "xserver-xorg"
+    xinit:
+      Archlinux: "xorg-xinit"
+      Debian: "xinit"
+    xinput:
+      Archlinux: "xorg-xinput"
+      Debian: "xinput"
+  ansible.builtin.package:
     name:
+      - "arandr"
       - "xf86-input-libinput"
       - "xf86-input-synaptics"
-      - "xf86-video-intel"
-      - "xorg-server"
-      - "xorg-xinit"
-      - "xorg-xinput"
-      - "xorg-xrandr"
-  when: ansible_facts['os_family'] == "Archlinux"
-
-- name: Install xorg
-  become: true
-  ansible.builtin.apt:
-    install_recommends: false
-    name:
-      - "xserver-xorg"
-      - "xserver-xorg-video-intel"
-      - "xf86-input-libinput"
-      - "xf86-input-synaptics"
-  when: ansible_facts['os_family'] == "Debian"
+      - "{{ xorgserver[ansible_facts['os_family']] }}"
+      - "{{ xinit[ansible_facts['os_family']] }}"
+      - "{{ xinput[ansible_facts['os_family']] }}"
 
 - name: Check if libinput conf exists
   ansible.builtin.stat:
