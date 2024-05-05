@@ -1,0 +1,46 @@
+---
+- name: Install openssh
+  ansible.builtin.package:
+    name:
+      - "openssh"
+
+- name: Create ssh dir
+  ansible.builtin.file:
+    path: "{{ sshkey_dir }}"
+    state: directory
+    mode: "700"
+
+- name: Generate key pair
+  community.crypto.openssh_keypair:
+    path: "{{ github_key_path }}"
+    passphrase: ""
+    type: "ed25519"
+    mode: "600"
+  register: key_pair
+
+- name: Evaluating the authentication agent & adding the key # noqa: no-handler
+  become: true
+  become_user: "{{ remote_regular_user }}"
+  ansible.builtin.shell: |
+    eval "$(ssh-agent)"
+    ssh-add {{ github_key_path }}
+  when: key_pair.changed
+  changed_when: false
+
+# https://docs.github.com/en/rest/users/keys?apiVersion=2022-11-28#create-a-public-ssh-key-for-the-authenticated-user
+- name: Upload SSH key to GitHub # noqa: no-handler
+  ansible.builtin.uri:
+    method: POST
+    url: "https://api.github.com/user/keys"
+    status_code: 201
+    headers:
+      Accept: "application/vnd.github+json"
+      Authorization: "Bearer {{ github_access_token }}"
+      X-GitHub-Api-Version: "2022-11-28"
+    body_format: "json"
+    body:
+      title: "{{ github_key_title }}"
+      key: "{{ key_pair.public_key }}"
+  when: key_pair.changed
+  changed_when: false
+

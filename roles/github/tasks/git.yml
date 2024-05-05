@@ -1,0 +1,48 @@
+---
+- name: Install git and git tools
+  vars:
+    gh:
+      ArchLinux: github-cli
+      Debian: gh
+      Darwin: gh
+  ansible.builtin.package:
+    name:
+      - "git"
+      - "git-delta"
+      - "difftastic"
+      - "{{ gh[ansible_facts['os_family']] }}"
+
+- name: Install git from pacman
+  become: true
+  community.general.pacman:
+    state: present
+    name:
+      - "difftastic"
+      - "git"
+      - "git-delta"
+      - "github-cli"
+      - "lazygit"
+  when: ansible_facts['os_family'] == "Archlinux"
+
+- name: Install git from apt
+  become: true
+  ansible.builtin.apt:
+    install_recommends: false
+    name:
+      - "difftastic"
+      - "gh"
+      - "git"
+      - "git-delta"
+      # - "lazygit"
+  when: ansible_facts['os_family'] == "Debian"
+
+- name: Install git from homebrew
+  community.general.homebrew:
+    state: present
+    name:
+      - "difftastic"
+      - "gh"
+      - "git"
+      - "git-delta"
+      - "lazygit"
+  when: ansible_facts['os_family'] == "Darwin"
