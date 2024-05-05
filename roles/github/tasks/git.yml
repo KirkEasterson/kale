@@ -6,7 +6,7 @@
       Debian: gh
       Darwin: gh
   ansible.builtin.debug:
-    msg: "{{ gh[ '' ~ ansible_facts['os_family'] ] }}"
+    msg: "{{ gh[ansible_facts['os_family']] }}"
 
 
 - name: Install git and git tools
