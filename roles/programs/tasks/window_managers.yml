@@ -39,15 +39,16 @@
       - "xdg-desktop-portal-wlr"
   when: ansible_system == "Linux"
 
-- name: Install sway tools from AUR
-  become: true
-  become_user: "{{ remote_regular_user }}"
-  kewlfft.aur.aur:
-    state: present
-    use: yay
-    name:
-      - nwg-displays
-  when: ansible_facts['os_family'] == "Archlinux"
+# # there was a problem here
+# - name: Install sway tools from AUR
+#   become: true
+#   become_user: "{{ remote_regular_user }}"
+#   kewlfft.aur.aur:
+#     state: present
+#     use: yay
+#     name:
+#       - nwg-displays
+#   when: ansible_facts['os_family'] == "Archlinux"
 
 - name: Install yabai from homebrew
   community.general.homebrew:
