@@ -13,6 +13,7 @@
   environment:
     LC_ALL: C
   changed_when: false
+  failed_when: false # TODO: not this
   when: ansible_system == "Linux"
 
 - name: Create dev directory
