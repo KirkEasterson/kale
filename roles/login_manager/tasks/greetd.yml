@@ -19,7 +19,7 @@
     mode: "644"
   when: not greetd_conf.stat.exists or greetd_conf.stat.checksum != ansible_checksum
   vars:
-    ansible_checksum: "{{ lookup('file', 'files/config.toml"
+    ansible_checksum: "{{ lookup('file', 'files/config.toml') | checksum }}"
 
 - name: Enable greetd service
   become: true
