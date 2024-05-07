@@ -1,0 +1,28 @@
+---
+- name: Install greetd
+  become: true
+  ansible.builtin.package:
+    name:
+      - "greetd"
+      - "greetd-tuigreet"
+
+- name: Check if greetd conf file exists
+  ansible.builtin.stat:
+    path: "/etc/greetd/config.toml"
+  register: greetd_conf
+
+- name: Copy greetd conf file
+  become: true
+  ansible.builtin.copy:
+    src: "files/config.toml"
+    dest: "/etc/greetd/config.toml"
+    mode: "644"
+  when: not greetd_conf.stat.exists or greetd_conf.stat.checksum != ansible_checksum
+  vars:
+    ansible_checksum: "{{ lookup('file', 'files/config.toml"
+
+- name: Enable greetd service
+  become: true
+  ansible.builtin.systemd:
+    name: greetd
+    enabled: true
