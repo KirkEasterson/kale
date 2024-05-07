@@ -36,7 +36,11 @@
       - "swaylock"
       - "waybar"
       - "wf-recorder"
+      - "xdg-desktop-portal-gnome"
+      - "xdg-desktop-portal-gtk"
+      - "xdg-desktop-portal-kde"
       - "xdg-desktop-portal-wlr"
+      - "xdg-desktop-portal-xapp"
   when: ansible_system == "Linux"
 
 # # there was a problem here
