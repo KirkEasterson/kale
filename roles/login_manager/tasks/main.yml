@@ -1,5 +1,5 @@
 ---
-- name: greetd
+- name: Greetd
   ansible.builtin.import_tasks:
     file: greetd.yml
 
