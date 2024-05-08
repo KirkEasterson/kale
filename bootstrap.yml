@@ -62,7 +62,12 @@
         name: mac_default
       when: ansible_distribution == "MacOSX"
 
-    - name: Netowkring
+    - name: Power profiles
+      ansible.builtin.import_role:
+        name: power
+      when: ansible_system == "Linux"
+
+    - name: Networking
       ansible.builtin.import_role:
         name: networking
       when: ansible_system == "Linux"
