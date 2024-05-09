@@ -1,0 +1,14 @@
+---
+- name: "Install various intel drivers"
+  become: true
+  ansible.builtin.package:
+    name:
+      - "bolt"
+      - "intel-gpu-tools"
+      - "intel-media-driver"
+      - "lib32-vulkan-intel"
+      - "libva-intel-driver"
+      - "libva-utils"
+      - "nvtop"
+      - "upower"
+      - "vulkan-intel"

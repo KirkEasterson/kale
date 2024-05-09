@@ -62,6 +62,11 @@
         name: "mac_default"
       when: "ansible_distribution == 'MacOSX'"
 
+    - name: "Intel drivers"
+      ansible.builtin.import_role:
+        name: "intel"
+      when: "ansible_system == 'Linux'"
+
     - name: "Power profiles"
       ansible.builtin.import_role:
         name: "power"
