@@ -34,6 +34,7 @@
       - "fzf"
       - "htop"
       - "hyperfine"
+      - "less"
       - "neofetch"
       - "procs"
       - "ripgrep"
