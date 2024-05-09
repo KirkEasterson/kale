@@ -18,3 +18,9 @@
       - "{{ bluezutils[ansible_facts['os_family']] }}"
       - "{{ hidapi[ansible_facts['os_family']] }}"
       - "{{ sbc[ansible_facts['os_family']] }}"
+
+- name: "Enable bluetooth"
+  become: true
+  ansible.builtin.systemd:
+    name: "bluetooth"
+    enabled: true
