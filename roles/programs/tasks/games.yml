@@ -1,5 +1,5 @@
 ---
-- name: "Install file managers"
+- name: "Install game clients from pacman"
   become: true
   ansible.builtin.package:
     name:
