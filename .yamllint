@@ -1,14 +1,13 @@
 ---
 rules:
-  key-ordering: disable
+  key-ordering: "disable"
   trailing-spaces: {}
   empty-lines:
     max: 1
   quoted-strings:
-    quote-type: double
+    quote-type: "double"
     required: true
     allow-quoted-quotes: false
-    check-keys: false
   indentation:
     spaces: 2
   line-length:
