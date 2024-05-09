@@ -5,7 +5,7 @@
     path: "/etc/default/grub"
     regexp: "^GRUB_TIMEOUT="
     line: "GRUB_TIMEOUT=0"
-  register: "timeout"
+  register: "grub_timeout"
 
 - name: "Check if 'quiet' is configured in the boot command"
   become: true
@@ -52,7 +52,7 @@
   become_user: "root"
   ansible.builtin.command:
     cmd: "grub-mkconfig -o /boot/grub/grub.cfg"
-  when: "timeout.changed or not quiet_param or not splash_param"
+  when: "grub_timeout.changed or not quiet_param or not splash_param"
   changed_when: false
 # # TODO: figure out the arch equivalent for this
 # - name: Update initramfs
