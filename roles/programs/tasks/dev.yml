@@ -25,7 +25,7 @@
   become: true
   vars:
     rust:
-      Archlinux: "rust"
+      Archlinux: "rustup"
       Debian: "rustc"
       Darwin: "rust"
   ansible.builtin.package:
