@@ -12,6 +12,8 @@
       Darwin: "qemu"
   ansible.builtin.package:
     name:
+      - "qemu-audio-dbus"
+      - "qemu-ui-dbus"
       - "virt-manager"
       - "{{ libvirt[ansible_facts['os_family']] }}"
       - "{{ qemu[ansible_facts['os_family']] }}"
