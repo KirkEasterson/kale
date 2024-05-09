@@ -21,6 +21,7 @@
     name:
       - "asciiquarium"
       - "bat"
+      - "bc" # needed for some scripts
       - "btop"
       - "catimg"
       - "cmatrix"
