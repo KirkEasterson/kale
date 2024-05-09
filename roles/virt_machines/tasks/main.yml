@@ -1,0 +1,23 @@
+---
+- name: Install virtual machine tools
+  become: true
+  vars:
+    libvirt:
+      Archlinux: "libvirt"
+      Debian: "libvirt0"
+      Darwin: "libvirt"
+    qemu:
+      Archlinux: "qemu-base"
+      Debian: "qemu" # this is wrong
+      Darwin: "qemu"
+  ansible.builtin.package:
+    name:
+      - "virt-manager"
+      - "{{ libvirt[ansible_facts['os_family']] }}"
+      - "{{ qemu[ansible_facts['os_family']] }}"
+
+- name: Enable libvirtd
+  become: true
+  ansible.builtin.systemd:
+    name: "libvirtd"
+    enabled: true

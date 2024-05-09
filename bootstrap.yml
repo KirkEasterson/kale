@@ -117,6 +117,10 @@
         name: themes
       when: ansible_system == "Linux"
 
+    - name: Virtual machines
+      ansible.builtin.import_role:
+        name: virt_machines
+
     - name: Login managers
       ansible.builtin.import_role:
         name: login_manager
