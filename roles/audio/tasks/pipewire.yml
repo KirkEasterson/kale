@@ -30,6 +30,7 @@
   ansible.builtin.package:
     name:
       - "helvum" # GTK patch bay
+      - "pavucontrol"
       - "pipewire"
       - "pipewire-audio"
       - "pipewire-docs"
