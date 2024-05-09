@@ -27,6 +27,26 @@
     line: '\1 quiet\"' # yamllint disable-line rule:quoted-strings
   when: "not quiet_param.found"
 
+- name: "Check if 'pstate' is configured in the boot command"
+  become: true
+  ansible.builtin.lineinfile:
+    backup: true
+    path: "/etc/default/grub"
+    regexp: '^GRUB_CMDLINE_LINUX=".*intel_pstate=disable' # yamllint disable-line rule:quoted-strings
+    state: "absent"
+  check_mode: true
+  register: "pstate_param"
+  changed_when: false
+
+- name: "Insert 'pstate' if missing"
+  become: true
+  ansible.builtin.lineinfile:
+    backrefs: true
+    path: "/etc/default/grub"
+    regexp: '^(GRUB_CMDLINE_LINUX=".*)"$' # yamllint disable-line rule:quoted-strings
+    line: '\1 intel_pstate=disable\"' # yamllint disable-line rule:quoted-strings
+  when: "not pstate_param.found"
+
 - name: "Check if 'splash' is configured in the boot command"
   become: true
   ansible.builtin.lineinfile:
