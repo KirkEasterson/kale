@@ -4,8 +4,8 @@
   ansible.builtin.package:
     state: absent
     name:
-      - pulseaudio
-      - pipewire-media-session
+      - "pulseaudio"
+      - "pipewire-media-session"
 
 - name: Disable pulseaudio service
   become: true
@@ -43,14 +43,14 @@
   become: true
   ansible.builtin.user:
     name: "{{ remote_regular_user }}"
-    groups: audio
+    groups: "audio"
     append: true
 
 - name: Add current user to the video group
   become: true
   ansible.builtin.user:
     name: "{{ remote_regular_user }}"
-    groups: video
+    groups: "video"
     append: true
 
 - name: Enable pipewire service
