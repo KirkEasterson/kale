@@ -1,0 +1,28 @@
+---
+- name: "Install tlp"
+  become: true
+  ansible.builtin.package:
+    name:
+      - "tlp"
+
+- name: "Check if TLP conf file exists"
+  ansible.builtin.stat:
+    path: "/etc/default/tlp"
+  register: "tlp_conf"
+
+- name: "Copy TLP conf file"
+  become: true
+  ansible.builtin.copy:
+    src: "files/tlp"
+    dest: "/etc/default/tlp"
+    mode: "644"
+  when: "not tlp_conf.stat.exists or tlp_conf.stat.checksum != ansible_checksum"
+  vars:
+    ansible_checksum: "{{ lookup('file', 'files/tlp') | checksum }}"
+
+- name: "Enable tlp service"
+  become: true
+  ansible.builtin.systemd:
+    name: "tlp"
+    state: "started"
+    enabled: true

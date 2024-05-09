@@ -1,12 +1,8 @@
 ---
-- name: "Install power-profiles-daemon"
-  become: true
-  ansible.builtin.package:
-    name:
-      - "power-profiles-daemon"
+- name: "Power-profiles-daemon"
+  ansible.builtin.import_tasks:
+    file: "power-profiles-daemon.yml"
 
-- name: "Enable power-profiles-daemon service"
-  become: true
-  ansible.builtin.systemd:
-    name: "power-profiles-daemon"
-    enabled: true
+- name: "TLP"
+  ansible.builtin.import_tasks:
+    file: "tlp.yml"
