@@ -26,3 +26,7 @@
     name: "tlp"
     state: "started"
     enabled: true
+
+- name: "Start TLP"
+  become: true
+  ansible.builtin.command: "tlp start"
