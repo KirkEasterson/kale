@@ -7,9 +7,10 @@
   register: "brew_exists"
 
 - name: "Install homebrew"
-  ansible.builtin.command:
-    cmd: "NONINTERACTIVE=1 /bin/bash -c
-      '$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)'"
+  ansible.builtin.shell: "/bin/bash -c
+    '$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)'"
+  environment:
+    NONINTERACTIVE: "1"
   when: "brew_exists.rc != 0"
   changed_when: false
 
