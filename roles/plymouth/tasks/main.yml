@@ -1,22 +1,22 @@
 ---
-- name: Install plymouth
+- name: "Install plymouth"
   become: true
   ansible.builtin.package:
     name:
       - "plymouth"
 
-- name: Check if plymouth conf exists
+- name: "Check if plymouth conf exists"
   ansible.builtin.stat:
     path: "/etc/plymouth/plymouthd.conf"
-  register: plymouth_conf
+  register: "plymouth_conf"
 
-- name: Update plymouth conf
+- name: "Update plymouth conf"
   become: true
   ansible.builtin.copy:
     src: "files/plymouthd.conf"
     dest: "/etc/plymouth/plymouthd.conf"
     mode: "644"
-  when: not plymouth_conf.stat.exists or plymouth_conf.stat.checksum != ansible_checksum
+  when: "not plymouth_conf.stat.exists or plymouth_conf.stat.checksum != ansible_checksum"
   vars:
     ansible_checksum: "{{ lookup('file', 'files/plymouthd.conf') | checksum }}"
 

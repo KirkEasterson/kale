@@ -1,5 +1,5 @@
 ---
-- name: Install terminal emulators
+- name: "Install terminal emulators"
   become: true
   ansible.builtin.package:
     name:
@@ -9,13 +9,13 @@
       - "xterm"
 
 #   # TODO: find a ppa for ubuntu
-- name: Install shell prompt
+- name: "Install shell prompt"
   become: true
   ansible.builtin.package:
     name:
       - "starship" # not in apt
 
-- name: Install CLI tools
+- name: "Install CLI tools"
   become: true
   ansible.builtin.package:
     name:

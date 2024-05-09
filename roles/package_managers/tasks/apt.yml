@@ -1,27 +1,27 @@
 ---
-- name: Install neovim stable ppa
+- name: "Install neovim stable ppa"
   become: true
   ansible.builtin.apt_repository:
-    repo: 'ppa:neovim-ppa/stable'
-  when: ansible_facts['os_family'] == "Debian"
+    repo: "ppa:neovim-ppa/stable"
+  when: "ansible_facts['os_family'] == 'Debian'"
 
-- name: Install mozilla PPA
+- name: "Install mozilla PPA"
   become: true
   ansible.builtin.apt_repository:
-    repo: 'ppa:mozillateam/ppa'
-  when: ansible_facts['os_family'] == "Debian"
+    repo: "ppa:mozillateam/ppa"
+  when: "ansible_facts['os_family'] == 'Debian'"
 
-- name: Update apt repositories
+- name: "Update apt repositories"
   become: true
   ansible.builtin.apt:
     update_cache: true
   changed_when: false
-  when: ansible_facts['os_family'] == "Debian"
+  when: "ansible_facts['os_family'] == 'Debian'"
 
-- name: Install nala from apt
+- name: "Install nala from apt"
   become: true
   ansible.builtin.apt:
     install_recommends: false
     name:
-      - nala
-  when: ansible_facts['os_family'] == "Debian"
+      - "nala"
+  when: "ansible_facts['os_family'] == 'Debian'"

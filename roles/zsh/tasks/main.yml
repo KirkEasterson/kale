@@ -1,31 +1,31 @@
 ---
-- name: Install zsh
+- name: "Install zsh"
   become: true
   ansible.builtin.package:
     name:
-      - starship
-      - zsh
+      - "starship"
+      - "zsh"
 
-- name: Change default shell to Zsh
+- name: "Change default shell to Zsh"
   become: true
   ansible.builtin.user:
     name: "{{ ansible_user_id }}"
     shell: "/bin/zsh"
 
-- name: Create zsh cache
+- name: "Create zsh cache"
   ansible.builtin.file:
     state: "directory"
     path: "~/.cache/zsh/"
     mode: "755"
 
-- name: Check if zsh history exists
+- name: "Check if zsh history exists"
   ansible.builtin.stat:
     path: "~/.cache/zsh/history"
-  register: zsh_history_file
+  register: "zsh_history_file"
 
-- name: Create zsh history
+- name: "Create zsh history"
   ansible.builtin.file:
     state: "touch"
     path: "~/.cache/zsh/history"
     mode: "644"
-  when: not zsh_history_file.stat.exists
+  when: "not zsh_history_file.stat.exists"

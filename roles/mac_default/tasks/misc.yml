@@ -2,45 +2,45 @@
 # https://macos-defaults.com/misc/
 
 # defaults write com.apple.Music "userWantsPlaybackNotifications" -bool "false"
-- name: Disable music song notifications
+- name: "Disable music song notifications"
   community.general.osx_defaults:
-    domain: com.apple.Music
-    key: userWantsPlaybackNotifications
-    type: bool
+    domain: "com.apple.Music"
+    key: "userWantsPlaybackNotifications"
+    type: "bool"
     value: false
-    state: present
+    state: "present"
 
 # defaults write com.apple.LaunchServices "LSQuarantine" -bool "false"
-- name: Disable application quarantine message
+- name: "Disable application quarantine message"
   community.general.osx_defaults:
-    domain: com.apple.LaunchServices
-    key: LSQuarantine
-    type: bool
+    domain: "com.apple.LaunchServices"
+    key: "LSQuarantine"
+    type: "bool"
     value: false
-    state: present
+    state: "present"
 
 # defaults write NSGlobalDomain "ApplePressAndHoldEnabled" -bool "false"
-- name: Disable press-and-hold
+- name: "Disable press-and-hold"
   community.general.osx_defaults:
-    domain: NSGlobalDomain
-    key: ApplePressAndHoldEnabled
-    type: bool
+    domain: "NSGlobalDomain"
+    key: "ApplePressAndHoldEnabled"
+    type: "bool"
     value: false
-    state: present
+    state: "present"
 
 # defaults write NSGlobalDomain com.apple.keyboard.fnState -bool true
-- name: Enable function keys as intended
+- name: "Enable function keys as intended"
   community.general.osx_defaults:
-    domain: NSGlobalDomain
-    key: com.apple.keyboard.fnState
-    type: bool
+    domain: "NSGlobalDomain"
+    key: "com.apple.keyboard.fnState"
+    type: "bool"
     value: true
-    state: present
+    state: "present"
 
 # defaults write -g NSRequiresAquaSystemAppearance -bool true
-- name: Enable dark mode
+- name: "Enable dark mode"
   community.general.osx_defaults:
-    key: NSRequiresAquaSystemAppearance
-    type: bool
+    key: "NSRequiresAquaSystemAppearance"
+    type: "bool"
     value: true
-    state: present
+    state: "present"

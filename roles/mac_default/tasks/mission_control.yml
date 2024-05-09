@@ -2,29 +2,29 @@
 # https://macos-defaults.com/mission-control/
 
 # defaults write com.apple.dock "mru-spaces" -bool "false"
-- name: Disable re-arranging workspaces by most recent use
+- name: "Disable re-arranging workspaces by most recent use"
   community.general.osx_defaults:
-    domain: com.apple.dock
-    key: mru-spaces
-    type: bool
+    domain: "com.apple.dock"
+    key: "mru-spaces"
+    type: "bool"
     value: false
-    state: present
+    state: "present"
 
 # defaults write com.apple.spaces "spans-displays" -bool "true"
-- name: Enable separate spaces for displays
+- name: "Enable separate spaces for displays"
   community.general.osx_defaults:
-    domain: com.apple.spaces
-    key: spans-displays
-    type: bool
+    domain: "com.apple.spaces"
+    key: "spans-displays"
+    type: "bool"
     value: true
-    state: present
+    state: "present"
 
 # NOTE: always do this last
-- name: Restart SystemUIServer
-  ansible.builtin.command: killall SystemUIServer
+- name: "Restart SystemUIServer"
+  ansible.builtin.command: "killall SystemUIServer"
   changed_when: false
 
 # NOTE: always do this last
-- name: Restart Dock
-  ansible.builtin.command: killall Dock
+- name: "Restart Dock"
+  ansible.builtin.command: "killall Dock"
   changed_when: false

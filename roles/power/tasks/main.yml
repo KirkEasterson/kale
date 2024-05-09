@@ -1,11 +1,11 @@
 ---
-- name: Install power-profiles-daemon
+- name: "Install power-profiles-daemon"
   become: true
   ansible.builtin.package:
     name:
       - "power-profiles-daemon"
 
-- name: Enable power-profiles-daemon service
+- name: "Enable power-profiles-daemon service"
   become: true
   ansible.builtin.systemd:
     name: "power-profiles-daemon"

@@ -2,78 +2,78 @@
 # https://macos-defaults.com/finder/
 
 # defaults write NSGlobalDomain "AppleShowAllExtensions" -bool "true"
-- name: Show file extensions
+- name: "Show file extensions"
   community.general.osx_defaults:
-    domain: NSGlobalDomain
-    key: AppleShowAllExtensions
-    type: bool
+    domain: "NSGlobalDomain"
+    key: "AppleShowAllExtensions"
+    type: "bool"
     value: true
-    state: present
+    state: "present"
 
 # defaults write com.apple.finder "ShowPathbar" -bool "true"
-- name: Show path bar
+- name: "Show path bar"
   community.general.osx_defaults:
-    domain: com.apple.finder
-    key: ShowPathbar
-    type: bool
+    domain: "com.apple.finder"
+    key: "ShowPathbar"
+    type: "bool"
     value: true
-    state: present
+    state: "present"
 
 # defaults write com.apple.finder "FXPreferredViewStyle" -string "clmv"
-- name: Set column view
+- name: "Set column view"
   community.general.osx_defaults:
-    domain: com.apple.finder
-    key: FXPreferredViewStyle
-    type: string
-    value: clmv
-    state: present
+    domain: "com.apple.finder"
+    key: "FXPreferredViewStyle"
+    type: "string"
+    value: "clmv"
+    state: "present"
 
 # defaults write com.apple.finder "_FXSortFoldersFirst" -bool "true"
-- name: Keep folders on top
+- name: "Keep folders on top"
   community.general.osx_defaults:
-    domain: com.apple.finder
-    key: _FXSortFoldersFirst
-    type: bool
+    domain: "com.apple.finder"
+    key: "_FXSortFoldersFirst"
+    type: "bool"
     value: true
-    state: present
+    state: "present"
 
 # defaults write com.apple.finder "FXEnableExtensionChangeWarning" -bool "false"
-- name: Disable file extension change warning
+- name: "Disable file extension change warning"
   community.general.osx_defaults:
-    domain: com.apple.finder
-    key: FXEnableExtensionChangeWarning
-    type: bool
+    domain: "com.apple.finder"
+    key: "FXEnableExtensionChangeWarning"
+    type: "bool"
     value: false
-    state: present
+    state: "present"
 
 # defaults write NSGlobalDomain "NSDocumentSaveNewDocumentsToCloud" -bool "false"
-- name: Save to disk (instead of icloud)
+- name: "Save to disk (instead of icloud)"
   community.general.osx_defaults:
-    domain: NSGlobalDomain
-    key: NSDocumentSaveNewDocumentsToCloud
-    type: bool
+    domain: "NSGlobalDomain"
+    key: "NSDocumentSaveNewDocumentsToCloud"
+    type: "bool"
     value: false
-    state: present
+    state: "present"
 
 # defaults write NSGlobalDomain "NSToolbarTitleViewRolloverDelay" -float "0"
-- name: Disable toolbar title delay
+- name: "Disable toolbar title delay"
   community.general.osx_defaults:
-    domain: NSGlobalDomain
-    key: NSToolbarTitleViewRolloverDelay
-    type: float
+    domain: "NSGlobalDomain"
+    key: "NSToolbarTitleViewRolloverDelay"
+    type: "float"
     value: 0
-    state: present
+    state: "present"
 
 # defaults write NSGlobalDomain "NSTableViewDefaultSizeMode" -int "1"
-- name: Set sidebar icon size
+- name: "Set sidebar icon size"
   community.general.osx_defaults:
-    domain: NSGlobalDomain
-    key: NSTableViewDefaultSizeMode
-    type: int
+    domain: "NSGlobalDomain"
+    key: "NSTableViewDefaultSizeMode"
+    type: "int"
     value: 1
-    state: present
+    state: "present"
 
 # NOTE: always do this last
-- name: Restart Finder
-  ansible.builtin.command: killall Finder
+- name: "Restart Finder"
+  ansible.builtin.command: "killall Finder"
   changed_when: false

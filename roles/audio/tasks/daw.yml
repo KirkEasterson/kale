@@ -1,5 +1,5 @@
 ---
-- name: Install DAWs
+- name: "Install DAWs"
   become: true
   ansible.builtin.package:
     name:

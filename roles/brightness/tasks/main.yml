@@ -1,21 +1,22 @@
 ---
-- name: Install brightnessctl
+- name: "Install brightnessctl"
   become: true
   ansible.builtin.package:
     name:
       - "brightnessctl"
 
-- name: Check if brightnessctl rules exists
+- name: "Check if brightnessctl rules exists"
   ansible.builtin.stat:
     path: "/usr/lib/udev/rules.d/90-brightnessctl.rules"
-  register: brightnessctl_conf
+  register: "brightnessctl_conf"
 
-- name: Copy brightnessctl udev rules
+- name: "Copy brightnessctl udev rules"
   become: true
   ansible.builtin.copy:
     src: "files/90-brightnessctl.rules"
     dest: "/usr/lib/udev/rules.d/90-brightnessctl.rules"
     mode: "644"
-  when: not brightnessctl_conf.stat.exists or brightnessctl_conf.stat.checksum != ansible_checksum
+  when: "not brightnessctl_conf.stat.exists or
+    brightnessctl_conf.stat.checksum != ansible_checksum"
   vars:
     ansible_checksum: "{{ lookup('file', 'files/90-brightnessctl.rules') | checksum }}"

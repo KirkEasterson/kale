@@ -1,15 +1,15 @@
 ---
-- name: Check if logind.conf exists
+- name: "Check if logind.conf exists"
   ansible.builtin.stat:
     path: "/etc/systemd/logind.conf"
-  register: logind_conf
+  register: "logind_conf"
 
-- name: Update logind.conf
+- name: "Update logind.conf"
   become: true
   ansible.builtin.copy:
     src: "files/logind.conf"
     dest: "/etc/systemd/logind.conf"
     mode: "644"
-  when: not logind_conf.stat.exists or logind_conf.stat.checksum != ansible_checksum
+  when: "not logind_conf.stat.exists or logind_conf.stat.checksum != ansible_checksum"
   vars:
     ansible_checksum: "{{ lookup('file', 'files/logind.conf') | checksum }}"

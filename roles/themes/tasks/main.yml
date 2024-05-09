@@ -1,5 +1,5 @@
 ---
-- name: Install theme tools
+- name: "Install theme tools"
   become: true
   vars:
     theme:

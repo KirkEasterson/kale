@@ -1,14 +1,14 @@
 ---
 # TODO: get comic code somehow
-- name: Create fonts directory
+- name: "Create fonts directory"
   become: true
   become_user: "{{ remote_regular_user }}"
   ansible.builtin.file:
-    path: $HOME/.local/share/fonts
-    state: directory
+    path: "$HOME/.local/share/fonts"
+    state: "directory"
     mode: "755"
 
-- name: Install font config tools
+- name: "Install font config tools"
   become: true
   vars:
     emoji:
@@ -27,14 +27,14 @@
       - "{{ emoji[ansible_facts['os_family']] }}"
       - "{{ jetbrainsmono[ansible_facts['os_family']] }}"
       - "{{ ubuntu[ansible_facts['os_family']] }}"
-  when: ansible_system == "Linux"
+  when: "ansible_system == 'Linux'"
 
-- name: Install fonts from homebrew
+- name: "Install fonts from homebrew"
   community.general.homebrew:
-    state: present
+    state: "present"
     name:
-      - homebrew/cask-fonts/font-hack-nerd-font
-      - homebrew/cask-fonts/font-jetbrains-mono-nerd-font
-      - homebrew/cask-fonts/font-ubuntu-mono-nerd-font
-      - homebrew/cask-fonts/font-ubuntu-nerd-font
-  when: ansible_distribution == "MacOSX"
+      - "homebrew/cask-fonts/font-hack-nerd-font"
+      - "homebrew/cask-fonts/font-jetbrains-mono-nerd-font"
+      - "homebrew/cask-fonts/font-ubuntu-mono-nerd-font"
+      - "homebrew/cask-fonts/font-ubuntu-nerd-font"
+  when: "ansible_distribution == 'MacOSX'"

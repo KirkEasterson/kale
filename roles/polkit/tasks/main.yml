@@ -1,5 +1,5 @@
 ---
-- name: Install polkit
+- name: "Install polkit"
   become: true
   ansible.builtin.package:
     name:

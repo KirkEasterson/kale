@@ -1,5 +1,5 @@
 ---
-- name: Install key mappers
+- name: "Install key mappers"
   become: true
   vars:
     pcmanfm:
@@ -9,17 +9,17 @@
     name:
       - "udiskie"
       - "{{ pcmanfm[ansible_facts['os_family']] }}"
-  when: ansible_system == "Linux"
+  when: "ansible_system == 'Linux'"
 
-- name: Install key mappers from homebrew
+- name: "Install key mappers from homebrew"
   community.general.homebrew:
-    state: present
+    state: "present"
     name:
-      - koekeishiya/formulae/skhd
-  when: ansible_facts['os_family'] == "Darwin"
+      - "koekeishiya/formulae/skhd"
+  when: "ansible_facts['os_family'] == 'Darwin'"
 
-- name: Start skhd service
+- name: "Start skhd service"
   ansible.builtin.command:
     cmd: "skhd --start-service"
   changed_when: false
-  when: ansible_facts['os_family'] == "Darwin"
+  when: "ansible_facts['os_family'] == 'Darwin'"

@@ -1,58 +1,58 @@
 ---
-- name: Install vpn from AUR
+- name: "Install vpn from AUR"
   become: true
   become_user: "{{ remote_regular_user }}"
   kewlfft.aur.aur:
-    state: present
-    use: yay
+    state: "present"
+    use: "yay"
     name:
-      - nordvpn-bin
-      - nordtray-bin
-  when: ansible_facts['os_family'] == "Archlinux"
+      - "nordvpn-bin"
+      - "nordtray-bin"
+  when: "ansible_facts['os_family'] == 'Archlinux'"
 
-# - name: Install vpn from apt
+# - name: "Install vpn from apt"
 #   become: true
 #   ansible.builtin.apt:
 #     install_recommends: false
 #     name:
-#       - nordvpn
-#   when: ansible_facts['os_family'] == "Debian"
+#       - "nordvpn"
+#   when: "ansible_facts['os_family'] == 'Debian'"
 
-- name: Install vpn from homebrew
+- name: "Install vpn from homebrew"
   community.general.homebrew:
-    state: present
+    state: "present"
     name:
-      - homebrew/cask/nordvpn
-  when: ansible_facts['os_family'] == "Darwin"
+      - "homebrew/cask/nordvpn"
+  when: "ansible_facts['os_family'] == 'Darwin'"
 
-- name: Install password manager from AUR
+- name: "Install password manager from AUR"
   become: true
   become_user: "{{ remote_regular_user }}"
   kewlfft.aur.aur:
-    state: present
-    use: yay
+    state: "present"
+    use: "yay"
     name:
-      - 1password
-      - 1password-cli
-  when: ansible_facts['os_family'] == "Archlinux"
+      - "1password"
+      - "1password-cli"
+  when: "ansible_facts['os_family'] == 'Archlinux'"
 
-# - name: Install password manager from apt
+# - name: "Install password manager from apt"
 #   become: true
 #   ansible.builtin.apt:
-#     install_recommends: no
+#     install_recommends: false
 #     name:
-#       - 1password
-#   when: ansible_facts['os_family'] == "Debian"
+#       - "1password"
+#   when: "ansible_facts['os_family'] == 'Debian'"
 
-- name: Install password manager from homebrew
+- name: "Install password manager from homebrew"
   community.general.homebrew:
-    state: present
+    state: "present"
     name:
-      - homebrew/cask/1password
-      - homebrew/cask/1password-cli
-  when: ansible_facts['os_family'] == "Darwin"
+      - "homebrew/cask/1password"
+      - "homebrew/cask/1password-cli"
+  when: "ansible_facts['os_family'] == 'Darwin'"
 
-- name: Install systray tools
+- name: "Install systray tools"
   become: true
   vars:
     volumeicon:
@@ -61,4 +61,4 @@
   ansible.builtin.package:
     name:
       - "{{ volumeicon[ansible_facts['os_family']] }}"
-  when: ansible_system == "Linux"
+  when: "ansible_system == 'Linux'"

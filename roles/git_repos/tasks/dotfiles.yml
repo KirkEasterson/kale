@@ -1,10 +1,10 @@
 ---
-- name: Check if dotfiles exists
+- name: "Check if dotfiles exists"
   ansible.builtin.stat:
     path: "{{ dotfiles_path }}"
-  register: dotfiles_dir
+  register: "dotfiles_dir"
 
-- name: Clone dotfiles # noqa: latest[git]
+- name: "Clone dotfiles" # noqa: latest[git]
   become: true
   become_user: "{{ remote_regular_user }}"
   ansible.builtin.git:
@@ -15,19 +15,19 @@
     track_submodules: true
     recursive: true
     depth: 1
-  when: not dotfiles_dir.stat.exists
+  when: "not dotfiles_dir.stat.exists"
   changed_when: false
 
-- name: Install stow
+- name: "Install stow"
   become: true
   ansible.builtin.package:
     name:
       - "stow"
 
-- name: Install dotfiles
+- name: "Install dotfiles"
   become: true
   become_user: "{{ remote_regular_user }}"
   ansible.builtin.command:
     cmd: "{{ dotfiles_path }}/install.sh"
-  when: not dotfiles_dir.stat.exists
+  when: "not dotfiles_dir.stat.exists"
   changed_when: false

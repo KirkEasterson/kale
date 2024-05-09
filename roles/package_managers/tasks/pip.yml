@@ -1,25 +1,25 @@
 ---
-- name: Install pip from pacman
+- name: "Install pip from pacman"
   become: true
   community.general.pacman:
-    state: present
+    state: "present"
     name:
       - "python"
       - "python-pip"
-  when: ansible_facts['os_family'] == "Archlinux"
+  when: "ansible_facts['os_family'] == 'Archlinux'"
 
-- name: Install pip from apt
+- name: "Install pip from apt"
   become: true
   ansible.builtin.apt:
     install_recommends: false
     name:
       - "python3" # this might be just `python`
       - "python3-pip"
-  when: ansible_facts['os_family'] == "Debian"
+  when: "ansible_facts['os_family'] == 'Debian'"
 
-- name: Install pip from homebrew
+- name: "Install pip from homebrew"
   community.general.homebrew:
-    state: present
+    state: "present"
     name:
       - "python"
-  when: ansible_facts['os_family'] == "Darwin"
+  when: "ansible_facts['os_family'] == 'Darwin'"

@@ -1,8 +1,8 @@
 ---
-- name: Install notification srvices
+- name: "Install notification srvices"
   become: true
   ansible.builtin.package:
     name:
       - "dunst"
       - "mako"
-  when: ansible_system == "Linux"
+  when: "ansible_system == 'Linux'"

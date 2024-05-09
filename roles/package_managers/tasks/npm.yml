@@ -1,25 +1,25 @@
 ---
-- name: Install npm from pacman
+- name: "Install npm from pacman"
   become: true
   community.general.pacman:
-    state: present
+    state: "present"
     name:
       - "npm"
       - "nodejs"
-  when: ansible_facts['os_family'] == "Archlinux"
+  when: "ansible_facts['os_family'] == 'Archlinux'"
 
-- name: Install npm from apt
+- name: "Install npm from apt"
   become: true
   ansible.builtin.apt:
     install_recommends: false
     name:
       - "npm"
       - "nodejs"
-  when: ansible_facts['os_family'] == "Debian"
+  when: "ansible_facts['os_family'] == 'Debian'"
 
-- name: Install pip from homebrew
+- name: "Install pip from homebrew"
   community.general.homebrew:
-    state: present
+    state: "present"
     name:
       - "node" # this contains npm and nodejs
-  when: ansible_facts['os_family'] == "Darwin"
+  when: "ansible_facts['os_family'] == 'Darwin'"

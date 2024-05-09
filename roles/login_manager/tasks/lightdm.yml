@@ -1,15 +1,15 @@
 ---
-- name: Install lightdm
+- name: "Install lightdm"
   become: true
   community.general.pacman:
-    state: present
+    state: "present"
     name:
       - "light-locker"
       - "lightdm-gtk-greeter-settings"
       - "lightdm-slick-greeter"
-  when: ansible_distribution == 'ArchLinux'
+  when: "ansible_distribution == 'ArchLinux'"
 
-- name: Install lightdm
+- name: "Install lightdm"
   become: true
   ansible.builtin.apt:
     install_recommends: false
@@ -19,38 +19,38 @@
       - "light-locker"
       - "light-locker-settings"
       - "xserver-xephyr" # TODO: what is this?
-  when: ansible_os_family == 'Debian'
+  when: "ansible_os_family == 'Debian'"
 
-- name: Check if lightdm.conf exists
+- name: "Check if lightdm.conf exists"
   ansible.builtin.stat:
     path: "/etc/lightdm/lightdm.conf"
-  register: lightdm_conf
+  register: "lightdm_conf"
 
-- name: Update lightdm.conf
+- name: "Update lightdm.conf"
   ansible.builtin.copy:
     src: "files/lightdm.conf"
     dest: "/etc/lightdm/lightdm.conf"
     mode: "644"
-  when: not lightdm_conf.stat.exists or lightdm_conf.stat.checksum != ansible_checksum
+  when: "not lightdm_conf.stat.exists or lightdm_conf.stat.checksum != ansible_checksum"
   vars:
     ansible_checksum: "{{ lookup('file', 'files/lightdm.conf') | checksum }}"
 
-- name: Check if slick-greeter.conf exists
+- name: "Check if slick-greeter.conf exists"
   ansible.builtin.stat:
     path: "/etc/lightdm/slick-greeter.conf"
-  register: slick_conf
+  register: "slick_conf"
 
-- name: Update slick-greeter.conf
+- name: "Update slick-greeter.conf"
   ansible.builtin.copy:
     src: "files/slick-greeter.conf"
     dest: "/etc/lightdm/slick-greeter.conf"
     mode: "644"
-  when: not slick_conf.stat.exists or slick_conf.stat.checksum != ansible_checksum
+  when: "not slick_conf.stat.exists or slick_conf.stat.checksum != ansible_checksum"
   vars:
     ansible_checksum: "{{ lookup('file', 'files/slick-greeter.conf') | checksum }}"
 
-- name: Enable lightdm service
+- name: "Enable lightdm service"
   become: true
   ansible.builtin.systemd:
-    name: lightdm
+    name: "lightdm"
     enabled: true

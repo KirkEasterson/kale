@@ -1,8 +1,8 @@
 ---
-- name: SSH keys
+- name: "SSH keys"
   ansible.builtin.import_tasks:
-    file: key.yml
+    file: "key.yml"
 
-- name: Git
+- name: "Git"
   ansible.builtin.import_tasks:
-    file: git.yml
+    file: "git.yml"

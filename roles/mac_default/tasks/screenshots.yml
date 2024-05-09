@@ -2,51 +2,51 @@
 # https://macos-defaults.com/screenshots/
 
 # defaults write com.apple.screencapture "disable-shadow" -bool "true"
-- name: Disable shadow
+- name: "Disable shadow"
   community.general.osx_defaults:
-    domain: com.apple.screencapture
-    key: disable-shadow
-    type: bool
+    domain: "com.apple.screencapture"
+    key: "disable-shadow"
+    type: "bool"
     value: true
-    state: present
+    state: "present"
 
 # defaults write com.apple.screencapture "include-date" -bool "true"
-- name: Include date in filename
+- name: "Include date in filename"
   community.general.osx_defaults:
-    domain: com.apple.screencapture
-    key: include-date
-    type: bool
+    domain: "com.apple.screencapture"
+    key: "include-date"
+    type: "bool"
     value: true
-    state: present
+    state: "present"
 
 # defaults write com.apple.screencapture "location" -string "~/Pictures/screenshots/"
-- name: Change screenshot save location
+- name: "Change screenshot save location"
   community.general.osx_defaults:
-    domain: com.apple.screencapture
-    key: location
-    type: string
+    domain: "com.apple.screencapture"
+    key: "location"
+    type: "string"
     value: "{{ screenshots_path }}"
-    state: present
+    state: "present"
 
 # defaults write com.apple.screencapture "show-thumbnail" -bool "false"
-- name: Disable screenshot thumbnail
+- name: "Disable screenshot thumbnail"
   community.general.osx_defaults:
-    domain: com.apple.screencapture
-    key: show-thumbnail
-    type: bool
+    domain: "com.apple.screencapture"
+    key: "show-thumbnail"
+    type: "bool"
     value: false
-    state: present
+    state: "present"
 
 # defaults write com.apple.screencapture "type" -string "png"
-- name: Set screenshot filetype to png
+- name: "Set screenshot filetype to png"
   community.general.osx_defaults:
-    domain: com.apple.screencapture
-    key: type
-    type: string
-    value: png
-    state: present
+    domain: "com.apple.screencapture"
+    key: "type"
+    type: "string"
+    value: "png"
+    state: "present"
 
 # NOTE: always do this last
-- name: Restart system UI
-  ansible.builtin.command: killall SystemUIServer
+- name: "Restart system UI"
+  ansible.builtin.command: "killall SystemUIServer"
   changed_when: false

@@ -1,52 +1,51 @@
 ---
-- name: Check if 'quiet' is configured in the boot command
+- name: "Check if 'quiet' is configured in the boot command"
   become: true
   ansible.builtin.lineinfile:
     backup: true
-    path: /etc/default/grub
-    regexp: '^GRUB_CMDLINE_LINUX=".*quiet'
-    state: absent
+    path: "/etc/default/grub"
+    regexp: '^GRUB_CMDLINE_LINUX=".*quiet' # yamllint disable-line rule:quoted-strings
+    state: "absent"
   check_mode: true
-  register: quiet_param
+  register: "quiet_param"
   changed_when: false
 
-- name: Insert 'quiet' if missing
+- name: "Insert 'quiet' if missing"
   become: true
   ansible.builtin.lineinfile:
     backrefs: true
-    path: /etc/default/grub
-    regexp: '^(GRUB_CMDLINE_LINUX=".*)"$'
-    line: '\1 quiet"'
-  when: not quiet_param.found
+    path: "/etc/default/grub"
+    regexp: '^(GRUB_CMDLINE_LINUX=".*)"$' # yamllint disable-line rule:quoted-strings
+    line: '\1 quiet\"' # yamllint disable-line rule:quoted-strings
+  when: "not quiet_param.found"
 
-- name: Check if 'splash' is configured in the boot command
+- name: "Check if 'splash' is configured in the boot command"
   become: true
   ansible.builtin.lineinfile:
     backup: true
-    path: /etc/default/grub
-    regexp: '^GRUB_CMDLINE_LINUX=".*splash'
-    state: absent
+    path: "/etc/default/grub"
+    regexp: '^GRUB_CMDLINE_LINUX=".*splash' # yamllint disable-line rule:quoted-strings
+    state: "absent"
   check_mode: true
-  register: splash_param
+  register: "splash_param"
   changed_when: false
 
-- name: Insert 'splash' if missing
+- name: "Insert 'splash' if missing"
   become: true
   ansible.builtin.lineinfile:
     backrefs: true
-    path: /etc/default/grub
-    regexp: "^(GRUB_CMDLINE_LINUX=\".*)\"$"
-    line: '\1 splash"'
-  when: not splash_param.found
+    path: "/etc/default/grub"
+    regexp: '^(GRUB_CMDLINE_LINUX=".*)"$' # yamllint disable-line rule:quoted-strings
+    line: '\1 splash"' # yamllint disable-line rule:quoted-strings
+  when: "not splash_param.found"
 
-- name: Update grub
+- name: "Update grub"
   become: true
-  become_user: root
+  become_user: "root"
   ansible.builtin.command:
-    cmd: grub-mkconfig -o /boot/grub/grub.cfg
-  when: not quiet_param or not splash_param
+    cmd: "grub-mkconfig -o /boot/grub/grub.cfg"
+  when: "not quiet_param or not splash_param"
   changed_when: false
-
 # # TODO: figure out the arch equivalent for this
 # - name: Update initramfs
 #   become: true

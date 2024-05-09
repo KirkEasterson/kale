@@ -1,5 +1,5 @@
 ---
-- name: Install pdf viewers
+- name: "Install pdf viewers"
   become: true
   ansible.builtin.package:
     name:
@@ -7,25 +7,25 @@
       - "pdfarranger"
       - "xournalpp"
       - "zathura"
-  when: ansible_system == "Linux"
+  when: "ansible_system == 'Linux'"
 
-- name: Install pdf viewers from homebrew
+- name: "Install pdf viewers from homebrew"
   community.general.homebrew:
-    state: present
+    state: "present"
     name:
-      - evince
-      - homebrew/cask/xournal-plus-plus
-  when: ansible_facts['os_family'] == "Darwin"
+      - "evince"
+      - "homebrew/cask/xournal-plus-plus"
+  when: "ansible_facts['os_family'] == 'Darwin'"
 
-- name: Install image viewers
+- name: "Install image viewers"
   become: true
   ansible.builtin.package:
     name:
       - "nsxiv"
       - "feh"
-  when: ansible_system == "Linux"
+  when: "ansible_system == 'Linux'"
 
-- name: Install image viewers
+- name: "Install image viewers"
   become: true
   ansible.builtin.package:
     name:
@@ -33,27 +33,27 @@
       - "vlc"
 
 # TODO: find music players for mac
-- name: Install music players
+- name: "Install music players"
   become: true
   ansible.builtin.package:
     name:
       - "playerctl"
       - "rhythmbox"
-  when: ansible_system == "Linux"
+  when: "ansible_system == 'Linux'"
 
-- name: Install spotify from AUR
+- name: "Install spotify from AUR"
   become: true
   become_user: "{{ remote_regular_user }}"
   kewlfft.aur.aur:
-    state: present
-    use: yay
+    state: "present"
+    use: "yay"
     name:
       - "spotify-adblock"
-  when: ansible_facts['os_family'] == "Archlinux"
+  when: "ansible_facts['os_family'] == 'Archlinux'"
 
-- name: Install spotify from homebrew
+- name: "Install spotify from homebrew"
   community.general.homebrew:
-    state: present
+    state: "present"
     name:
       - "spotify"
-  when: ansible_facts['os_family'] == "Darwin"
+  when: "ansible_facts['os_family'] == 'Darwin'"

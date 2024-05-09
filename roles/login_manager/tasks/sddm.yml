@@ -1,5 +1,5 @@
 ---
-- name: Install SDDM
+- name: "Install SDDM"
   become: true
   vars:
     theme:
@@ -10,23 +10,23 @@
       - "sddm"
       - "{{ theme[ansible_facts['os_family']] }}"
 
-- name: Check if SDDM conf file exists
+- name: "Check if SDDM conf file exists"
   ansible.builtin.stat:
     path: "/etc/sddm.conf"
-  register: sddm_conf
+  register: "sddm_conf"
 
-- name: Copy SDDM conf file
+- name: "Copy SDDM conf file"
   become: true
   ansible.builtin.copy:
     src: "files/sddm.conf"
     dest: "/etc/sddm.conf"
     mode: "644"
-  when: not sddm_conf.stat.exists or sddm_conf.stat.checksum != ansible_checksum
+  when: "not sddm_conf.stat.exists or sddm_conf.stat.checksum != ansible_checksum"
   vars:
     ansible_checksum: "{{ lookup('file', 'files/sddm.conf') | checksum }}"
 
-- name: Enable sddm service
+- name: "Enable sddm service"
   become: true
   ansible.builtin.systemd:
-    name: sddm
+    name: "sddm"
     enabled: true

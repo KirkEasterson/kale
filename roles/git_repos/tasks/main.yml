@@ -1,9 +1,9 @@
 ---
-- name: Dotfiles
+- name: "Dotfiles"
   ansible.builtin.import_tasks:
-    file: dotfiles.yml
+    file: "dotfiles.yml"
 
 # TODO: move these to dotfiles
-- name: Scripts
+- name: "Scripts"
   ansible.builtin.import_tasks:
-    file: scripts.yml
+    file: "scripts.yml"

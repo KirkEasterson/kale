@@ -1,7 +1,7 @@
 ---
-- name: Greetd
+- name: "Greetd"
   ansible.builtin.import_tasks:
-    file: greetd.yml
+    file: "greetd.yml"
 
 # - name: SDDM
 #   ansible.builtin.import_tasks:

@@ -1,5 +1,5 @@
 ---
-- name: Install misc audio tools
+- name: "Install misc audio tools"
   become: true
   ansible.builtin.package:
     name:

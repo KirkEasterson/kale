@@ -1,32 +1,32 @@
 ---
-- name: Install awesome
+- name: "Install awesome"
   become: true
   ansible.builtin.package:
     name:
       - "awesome"
       - "luarocks"
       - "sound-theme-freedesktop"
-  when: ansible_system == "Linux"
+  when: "ansible_system == 'Linux'"
 
-- name: Install awesomewm tools from AUR
+- name: "Install awesomewm tools from AUR"
   become: true
   become_user: "{{ remote_regular_user }}"
   kewlfft.aur.aur:
-    state: present
-    use: yay
+    state: "present"
+    use: "yay"
     name:
       - "awesome-freedesktop-git"
-  when: ansible_facts['os_family'] == "Archlinux"
+  when: "ansible_facts['os_family'] == 'Archlinux'"
 
-- name: Install awesomewm from apt
+- name: "Install awesomewm from apt"
   become: true
   ansible.builtin.apt:
     install_recommends: false
     name:
       - "awesome-extra"
-  when: ansible_facts['os_family'] == "Debian"
+  when: "ansible_facts['os_family'] == 'Debian'"
 
-- name: Install sway
+- name: "Install sway"
   become: true
   ansible.builtin.package:
     name:
@@ -41,7 +41,7 @@
       - "xdg-desktop-portal-kde"
       - "xdg-desktop-portal-wlr"
       - "xdg-desktop-portal-xapp"
-  when: ansible_system == "Linux"
+  when: "ansible_system == 'Linux'"
 
 # # there was a problem here
 # - name: Install sway tools from AUR
@@ -54,15 +54,15 @@
 #       - nwg-displays
 #   when: ansible_facts['os_family'] == "Archlinux"
 
-- name: Install yabai from homebrew
+- name: "Install yabai from homebrew"
   community.general.homebrew:
-    state: present
+    state: "present"
     name:
-      - koekeishiya/formulae/yabai
-  when: ansible_facts['os_family'] == "Darwin"
+      - "koekeishiya/formulae/yabai"
+  when: "ansible_facts['os_family'] == 'Darwin'"
 
-- name: Start yabai service
+- name: "Start yabai service"
   ansible.builtin.command:
     cmd: "yabai --start-service"
   changed_when: false
-  when: ansible_facts['os_family'] == "Darwin"
+  when: "ansible_facts['os_family'] == 'Darwin'"

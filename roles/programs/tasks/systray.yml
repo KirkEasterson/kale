@@ -1,5 +1,5 @@
 ---
-- name: Install systray tools
+- name: "Install systray tools"
   become: true
   vars:
     volumeicon:
@@ -8,4 +8,4 @@
   ansible.builtin.package:
     name:
       - "{{ volumeicon[ansible_facts['os_family']] }}"
-  when: ansible_system == "Linux"
+  when: "ansible_system == 'Linux'"

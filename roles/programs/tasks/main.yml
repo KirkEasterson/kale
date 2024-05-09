@@ -1,65 +1,65 @@
 ---
 # TODO: brightnessctl, volume key stuff, etc
-- name: Bluetooth
+- name: "Bluetooth"
   ansible.builtin.import_tasks:
-    file: bluetooth.yml
+    file: "bluetooth.yml"
 
-- name: Browsers
+- name: "Browsers"
   ansible.builtin.import_tasks:
-    file: browsers.yml
+    file: "browsers.yml"
 
-- name: Communication
+- name: "Communication"
   ansible.builtin.import_tasks:
-    file: communication.yml
+    file: "communication.yml"
 
-- name: Dev
+- name: "Dev"
   ansible.builtin.import_tasks:
-    file: dev.yml
+    file: "dev.yml"
 
-- name: Editors
+- name: "Editors"
   ansible.builtin.import_tasks:
-    file: editors.yml
+    file: "editors.yml"
 
-- name: File managers
+- name: "File managers"
   ansible.builtin.import_tasks:
-    file: file_managers.yml
+    file: "file_managers.yml"
 
-- name: Games
+- name: "Games"
   ansible.builtin.import_tasks:
-    file: games.yml
+    file: "games.yml"
 
-- name: Key mappers
+- name: "Key mappers"
   ansible.builtin.import_tasks:
-    file: key_mappers.yml
+    file: "key_mappers.yml"
 
-- name: Launchers
+- name: "Launchers"
   ansible.builtin.import_tasks:
-    file: launchers.yml
+    file: "launchers.yml"
 
-- name: Media
+- name: "Media"
   ansible.builtin.import_tasks:
-    file: media.yml
+    file: "media.yml"
 
-- name: Notifications
+- name: "Notifications"
   ansible.builtin.import_tasks:
-    file: notifications.yml
+    file: "notifications.yml"
 
-- name: Screenshots
+- name: "Screenshots"
   ansible.builtin.import_tasks:
-    file: screenshot.yml
+    file: "screenshot.yml"
 
-- name: Systray
+- name: "Systray"
   ansible.builtin.import_tasks:
-    file: systray.yml
+    file: "systray.yml"
 
-- name: Terminal
+- name: "Terminal"
   ansible.builtin.import_tasks:
-    file: terminal.yml
+    file: "terminal.yml"
 
-- name: Utilities
+- name: "Utilities"
   ansible.builtin.import_tasks:
-    file: utilities.yml
+    file: "utilities.yml"
 
-- name: Window managers
+- name: "Window managers"
   ansible.builtin.import_tasks:
-    file: window_managers.yml
+    file: "window_managers.yml"

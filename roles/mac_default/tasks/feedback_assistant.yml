@@ -2,10 +2,10 @@
 # https://macos-defaults.com/feedback-assistant/
 
 # defaults write com.apple.appleseed.FeedbackAssistant "Autogather" -bool "false"
-- name: Don't autogather large files for feedback reports
+- name: "Don't autogather large files for feedback reports"
   community.general.osx_defaults:
-    domain: com.apple.appleseed.FeedbackAssistant
-    key: Autogather
-    type: bool
+    domain: "com.apple.appleseed.FeedbackAssistant"
+    key: "Autogather"
+    type: "bool"
     value: false
-    state: present
+    state: "present"

@@ -2,10 +2,10 @@
 # https://macos-defaults.com/trackpad/
 
 # defaults write com.apple.AppleMultitouchTrackpad "Dragging" -bool "true"
-- name: Enable draggign without drag lock
+- name: "Enable draggign without drag lock"
   community.general.osx_defaults:
-    domain: com.apple.AppleMultitouchTrackpad
-    key: Dragging
-    type: bool
+    domain: "com.apple.AppleMultitouchTrackpad"
+    key: "Dragging"
+    type: "bool"
     value: true
-    state: present
+    state: "present"

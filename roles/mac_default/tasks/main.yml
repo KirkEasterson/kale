@@ -1,40 +1,40 @@
 ---
-- name: Desktop
+- name: "Desktop"
   ansible.builtin.import_tasks:
-    file: desktop.yml
+    file: "desktop.yml"
 
-- name: Dock
+- name: "Dock"
   ansible.builtin.import_tasks:
-    file: dock.yml
+    file: "dock.yml"
 
-- name: Feedback assisstant
+- name: "Feedback assisstant"
   ansible.builtin.import_tasks:
-    file: feedback_assistant.yml
+    file: "feedback_assistant.yml"
 
-- name: Finder
+- name: "Finder"
   ansible.builtin.import_tasks:
-    file: finder.yml
+    file: "finder.yml"
 
-- name: Menu bar
+- name: "Menu bar"
   ansible.builtin.import_tasks:
-    file: menu_bar.yml
+    file: "menu_bar.yml"
 
-- name: Misc
+- name: "Misc"
   ansible.builtin.import_tasks:
-    file: misc.yml
+    file: "misc.yml"
 
-- name: Mission control
+- name: "Mission control"
   ansible.builtin.import_tasks:
-    file: mission_control.yml
+    file: "mission_control.yml"
 
-- name: Safari
+- name: "Safari"
   ansible.builtin.import_tasks:
-    file: safari.yml
+    file: "safari.yml"
 
-- name: Screenshots
+- name: "Screenshots"
   ansible.builtin.import_tasks:
-    file: screenshots.yml
+    file: "screenshots.yml"
 
-- name: Trackpad
+- name: "Trackpad"
   ansible.builtin.import_tasks:
-    file: trackpad.yml
+    file: "trackpad.yml"

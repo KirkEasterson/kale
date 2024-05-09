@@ -1,35 +1,35 @@
 ---
-- name: Install openssh
+- name: "Install openssh"
   become: true
   ansible.builtin.package:
     name:
       - "keychain"
       - "openssh"
 
-- name: Create ssh dir
+- name: "Create ssh dir"
   ansible.builtin.file:
     path: "{{ sshkey_dir }}"
-    state: directory
+    state: "directory"
     mode: "700"
 
-- name: Generate key pair
+- name: "Generate key pair"
   community.crypto.openssh_keypair:
     path: "{{ github_key_path }}"
     passphrase: ""
     type: "ed25519"
     mode: "600"
-  register: key_pair
+  register: "key_pair"
 
-- name: Evaluating the authentication agent & adding the key # noqa: no-handler
+- name: "Evaluating the authentication agent & adding the key" # noqa: no-handler
   become: true
   become_user: "{{ remote_regular_user }}"
   ansible.builtin.shell: |
     eval "$(ssh-agent)"
     ssh-add {{ github_key_path }}
-  when: key_pair.changed
+  when: "key_pair.changed"
   changed_when: false
 
-- name: Authorize key with GitHub
+- name: "Authorize key with GitHub"
   community.general.github_key:
     name: "{{ github_key_title }}"
     token: "{{ github_access_token }}"

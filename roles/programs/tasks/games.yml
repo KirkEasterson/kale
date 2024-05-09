@@ -1,28 +1,28 @@
 ---
-- name: Install file managers
+- name: "Install file managers"
   become: true
   ansible.builtin.package:
     name:
       - "lutris"
       - "steam"
-  when: ansible_system == "Linux"
+  when: "ansible_system == 'Linux'"
 
-- name: Install game clients from AUR
+- name: "Install game clients from AUR"
   become: true
   become_user: "{{ remote_regular_user }}"
   kewlfft.aur.aur:
-    state: present
-    use: yay
+    state: "present"
+    use: "yay"
     name:
-      - atlauncher-bin
-      - minecraft-launcher
-  when: ansible_facts['os_family'] == "Archlinux"
+      - "atlauncher-bin"
+      - "minecraft-launcher"
+  when: "ansible_facts['os_family'] == 'Archlinux'"
 
-- name: Install game clients from homebrew
+- name: "Install game clients from homebrew"
   community.general.homebrew:
-    state: present
+    state: "present"
     name:
       - "homebrew/cask/atlauncher"
       - "homebrew/cask/minecraft"
       - "homebrew/cask/steam"
-  when: ansible_facts['os_family'] == "Darwin"
+  when: "ansible_facts['os_family'] == 'Darwin'"

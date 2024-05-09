@@ -1,14 +1,14 @@
 ---
-- name: Install flameshot
+- name: "Install flameshot"
   become: true
   ansible.builtin.package:
     name:
       - "flameshot"
 
-- name: Install screenshot tools
+- name: "Install screenshot tools"
   become: true
   ansible.builtin.package:
     name:
       - "grim"
       - "slurp"
-  when: ansible_system == "Linux"
+  when: "ansible_system == 'Linux'"

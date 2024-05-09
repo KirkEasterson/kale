@@ -1,5 +1,5 @@
 ---
-- name: Install communication tools
+- name: "Install communication tools"
   become: true
   vars:
     element:
@@ -18,34 +18,34 @@
       - "{{ signal[ansible_facts['os_family']] }}"
       - "{{ telegram[ansible_facts['os_family']] }}"
 
-- name: Install communication tools from AUR
+- name: "Install communication tools from AUR"
   become: true
   become_user: "{{ remote_regular_user }}"
   kewlfft.aur.aur:
-    state: present
-    use: yay
+    state: "present"
+    use: "yay"
     name:
-      - slack-desktop
-  when: ansible_facts['os_family'] == "Archlinux"
+      - "slack-desktop"
+  when: "ansible_facts['os_family'] == 'Archlinux'"
 
-- name: Install communication tools from homebrew
+- name: "Install communication tools from homebrew"
   community.general.homebrew:
-    state: present
+    state: "present"
     name:
-      - homebrew/cask/slack
-  when: ansible_facts['os_family'] == "Darwin"
+      - "homebrew/cask/slack"
+  when: "ansible_facts['os_family'] == 'Darwin'"
 
-- name: Install email clients
+- name: "Install email clients"
   become: true
   ansible.builtin.package:
     name:
       - "neomutt"
       - "thunderbird"
 
-- name: Install email clients from pacman
+- name: "Install email clients from pacman"
   become: true
   community.general.pacman:
-    state: present
+    state: "present"
     name:
       - "systray-x-common"
-  when: ansible_facts['os_family'] == "Archlinux"
+  when: "ansible_facts['os_family'] == 'Archlinux'"

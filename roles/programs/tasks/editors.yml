@@ -1,17 +1,17 @@
 ---
-- name: Install image editors
+- name: "Install image editors"
   become: true
   ansible.builtin.package:
     name:
       - "gimp"
 
-- name: Install video editors
+- name: "Install video editors"
   become: true
   ansible.builtin.package:
     name:
       - "kdenlive"
 
-- name: Install audio editors
+- name: "Install audio editors"
   become: true
   ansible.builtin.package:
     name:
@@ -24,7 +24,7 @@
 #     https://code.visualstudio.com/docs/setup/linux#_debian-and-ubuntu-based-distributions
 # - install intellij repository
 #     https://www.linuxcapable.com/how-to-install-intellij-idea-on-ubuntu-linux/
-- name: Install code editors
+- name: "Install code editors"
   become: true
   vars:
     vscode:
@@ -44,22 +44,22 @@
       - "{{ vscode[ansible_facts['os_family']] }}"
       - "{{ intellij[ansible_facts['os_family']] }}"
 
-- name: Install text editors
+- name: "Install text editors"
   become: true
   ansible.builtin.package:
     name:
       - "libreoffice"
 
-- name: Install document build tools
+- name: "Install document build tools"
   become: true
   ansible.builtin.package:
     name:
       - "pandoc"
 
-- name: Install document build tools from pacman
+- name: "Install document build tools from pacman"
   become: true
   community.general.pacman:
-    state: present
+    state: "present"
     name:
       - "biber"
       - "texlive-latex"
@@ -68,9 +68,9 @@
       - "texlive-luatex"
       - "texlive-mathscience"
       - "texlive-music"
-  when: ansible_facts['os_family'] == "Archlinux"
+  when: "ansible_facts['os_family'] == 'Archlinux'"
 
-- name: Install document build tools from apt
+- name: "Install document build tools from apt"
   become: true
   ansible.builtin.apt:
     install_recommends: false
@@ -88,11 +88,11 @@
       - "texlive-luatex"
       - "texlive-music"
       - "texlive-science"
-  when: ansible_facts['os_family'] == "Debian"
+  when: "ansible_facts['os_family'] == 'Debian'"
 
-- name: Install document build tools from homebrew
+- name: "Install document build tools from homebrew"
   community.general.homebrew:
-    state: present
+    state: "present"
     name:
       - "texlive"
-  when: ansible_facts['os_family'] == "Darwin"
+  when: "ansible_facts['os_family'] == 'Darwin'"

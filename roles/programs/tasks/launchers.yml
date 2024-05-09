@@ -1,10 +1,10 @@
 ---
 # TODO: find a better macos launcher
-- name: Install launchers
+- name: "Install launchers"
   become: true
   ansible.builtin.package:
     name:
       - "fuzzel"
       - "rofi"
       - "wofi"
-  when: ansible_system == "Linux"
+  when: "ansible_system == 'Linux'"

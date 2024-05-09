@@ -1,11 +1,11 @@
 ---
-- name: Install git and git tools
+- name: "Install git and git tools"
   become: true
   vars:
     gh:
-      Archlinux: github-cli
-      Debian: gh
-      Darwin: gh
+      Archlinux: "github-cli"
+      Debian: "gh"
+      Darwin: "gh"
   ansible.builtin.package:
     name:
       - "git"

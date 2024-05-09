@@ -1,5 +1,5 @@
 ---
-- name: Install bluetooth tools
+- name: "Install bluetooth tools"
   become: true
   vars:
     bluezutils:

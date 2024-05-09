@@ -1,55 +1,55 @@
 ---
-- name: Remove lxd snap
+- name: "Remove lxd snap"
   community.general.snap:
-    state: absent
-    name: lxd
+    state: "absent"
+    name: "lxd"
 
-- name: Remove core20 snap
+- name: "Remove core20 snap"
   community.general.snap:
-    state: absent
-    name: core20
+    state: "absent"
+    name: "core20"
 
-- name: Remove snapd snap
+- name: "Remove snapd snap"
   community.general.snap:
-    state: absent
-    name: snapd
+    state: "absent"
+    name: "snapd"
 
-- name: Disable snapd service
+- name: "Disable snapd service"
   ansible.builtin.systemd:
     enabled: false
-    state: stopped
-    name: snapd.service
+    state: "stopped"
+    name: "snapd.service"
 
-- name: Disable snapd socket
+- name: "Disable snapd socket"
   ansible.builtin.systemd:
     enabled: false
-    state: stopped
-    name: snapd.socket
+    state: "stopped"
+    name: "snapd.socket"
 
-- name: Disable snapd seeded service
+- name: "Disable snapd seeded service"
   ansible.builtin.systemd:
     enabled: false
-    state: stopped
-    name: snapd.seeded.service
+    state: "stopped"
+    name: "snapd.seeded.service"
 
-- name: Remove snapd cache
+- name: "Remove snapd cache"
   become: true
   ansible.builtin.file:
-    state: absent
-    path: /var/cache/snapd
+    state: "absent"
+    path: "/var/cache/snapd"
 
-- name: Purge snapd
+- name: "Purge snapd"
   become: true
   ansible.builtin.apt:
     purge: true
-    name: snapd
+    name: "snapd"
 
-- name: Remove snap directory
+- name: "Remove snap directory"
   become: true
-  ansible.builtin.shell: rm -rf /home/*/snap
+  ansible.builtin.shell: "rm -rf /home/*/snap"
   changed_when: false
 
-- name: Ensure snaps won't be installed
+- name: "Ensure snaps won't be installed"
   become: true
   ansible.builtin.blockinfile:
     create: true
@@ -64,7 +64,7 @@
       Pin: release a=*
       Pin-Priority: -10
 
-- name: Use firefox deb instead of snap
+- name: "Use firefox deb instead of snap"
   become: true
   ansible.builtin.blockinfile:
     create: true

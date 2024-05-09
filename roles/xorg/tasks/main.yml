@@ -1,5 +1,5 @@
 ---
-- name: Install xorg
+- name: "Install xorg"
   become: true
   vars:
     xorgserver:
@@ -29,32 +29,32 @@
       - "{{ xrandr[ansible_facts['os_family']] }}"
       - "{{ xwayland[ansible_facts['os_family']] }}"
 
-- name: Check if libinput conf exists
+- name: "Check if libinput conf exists"
   ansible.builtin.stat:
     path: "/etc/X11/xorg.conf.d/40-libinput.conf"
-  register: libinput_conf
+  register: "libinput_conf"
 
-- name: Update libinput conf
+- name: "Update libinput conf"
   become: true
   ansible.builtin.copy:
     src: "files/40-libinput.conf"
     dest: "/etc/X11/xorg.conf.d/40-libinput.conf"
     mode: "644"
-  when: not libinput_conf.stat.exists or libinput_conf.stat.checksum != ansible_checksum
+  when: "not libinput_conf.stat.exists or libinput_conf.stat.checksum != ansible_checksum"
   vars:
     ansible_checksum: "{{ lookup('file', 'files/40-libinput.conf') | checksum }}"
 
-- name: Check if synaptics conf exists
+- name: "Check if synaptics conf exists"
   ansible.builtin.stat:
     path: "/etc/X11/xorg.conf.d/70-synaptics.conf"
-  register: synaptics_conf
+  register: "synaptics_conf"
 
-- name: Update synaptics conf
+- name: "Update synaptics conf"
   become: true
   ansible.builtin.copy:
     src: "files/70-synaptics.conf"
     dest: "/etc/X11/xorg.conf.d/70-synaptics.conf"
     mode: "644"
-  when: not synaptics_conf.stat.exists or synaptics_conf.stat.checksum != ansible_checksum
+  when: "not synaptics_conf.stat.exists or synaptics_conf.stat.checksum != ansible_checksum"
   vars:
     ansible_checksum: "{{ lookup('file', 'files/70-synaptics.conf') | checksum }}"

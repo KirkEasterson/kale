@@ -1,5 +1,5 @@
 ---
-- name: Install docker
+- name: "Install docker"
   become: true
   ansible.builtin.package:
     name:

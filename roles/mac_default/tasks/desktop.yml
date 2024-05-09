@@ -2,33 +2,33 @@
 # https://macos-defaults.com/desktop/
 
 # defaults write com.apple.finder "CreateDesktop" -bool "false"
-- name: Disable desktop icons
+- name: "Disable desktop icons"
   community.general.osx_defaults:
-    domain: com.apple.finder
-    key: CreateDesktop
-    type: bool
+    domain: "com.apple.finder"
+    key: "CreateDesktop"
+    type: "bool"
     value: false
-    state: present
+    state: "present"
 
 # defaults write com.apple.finder "ShowExternalHardDrivesOnDesktop" -bool "false"
-- name: Disable external disk icons
+- name: "Disable external disk icons"
   community.general.osx_defaults:
-    domain: com.apple.finder
-    key: ShowExternalHardDrivesOnDesktop
-    type: bool
+    domain: "com.apple.finder"
+    key: "ShowExternalHardDrivesOnDesktop"
+    type: "bool"
     value: false
-    state: present
+    state: "present"
 
 # defaults write com.apple.finder "ShowRemovableMediaOnDesktop" -bool "false"
-- name: Disable removable media icons
+- name: "Disable removable media icons"
   community.general.osx_defaults:
-    domain: com.apple.finder
-    key: ShowRemovableMediaOnDesktop
-    type: bool
+    domain: "com.apple.finder"
+    key: "ShowRemovableMediaOnDesktop"
+    type: "bool"
     value: false
-    state: present
+    state: "present"
 
 # NOTE: always do this last
-- name: Restart Finder
-  ansible.builtin.command: killall Finder
+- name: "Restart Finder"
+  ansible.builtin.command: "killall Finder"
   changed_when: false

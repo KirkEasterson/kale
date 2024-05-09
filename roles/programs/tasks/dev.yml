@@ -1,5 +1,5 @@
 ---
-- name: Install c/cpp
+- name: "Install c/cpp"
   become: true
   ansible.builtin.package:
     name:
@@ -10,7 +10,7 @@
       - "make"
       - "valgrind"
 
-- name: Install golang
+- name: "Install golang"
   become: true
   vars:
     golang:
@@ -21,7 +21,7 @@
     name:
       - "{{ golang[ansible_facts['os_family']] }}"
 
-- name: Install rust
+- name: "Install rust"
   become: true
   vars:
     rust:
@@ -32,10 +32,10 @@
     name:
       - "{{ rust[ansible_facts['os_family']] }}"
 
-- name: Install dotnet from pacman
+- name: "Install dotnet from pacman"
   become: true
   community.general.pacman:
-    state: present
+    state: "present"
     name:
       - "aspnet-runtime"
       - "aspnet-targeting-pack"
@@ -43,9 +43,9 @@
       - "dotnet-runtime"
       - "dotnet-sdk"
       - "dotnet-targeting-pack"
-  when: ansible_facts['os_family'] == "Archlinux"
+  when: "ansible_facts['os_family'] == 'Archlinux'"
 
-- name: Install dotnet from apt
+- name: "Install dotnet from apt"
   become: true
   ansible.builtin.apt:
     install_recommends: false
@@ -55,23 +55,23 @@
       - "dotnet-runtime-8.0"
       - "dotnet-sdk-8.0"
       - "dotnet-targeting-pack-8.0"
-  when: ansible_facts['os_family'] == "Debian"
+  when: "ansible_facts['os_family'] == 'Debian'"
 
-- name: Install dotnet from homebrew
+- name: "Install dotnet from homebrew"
   community.general.homebrew:
-    state: present
+    state: "present"
     name:
       - "homebrew/cask/dotnet"
       - "homebrew/cask/dotnet-sdk"
-  when: ansible_facts['os_family'] == "Darwin"
+  when: "ansible_facts['os_family'] == 'Darwin'"
 
-- name: Install python
+- name: "Install python"
   become: true
   ansible.builtin.package:
     name:
       - "python3"
 
-- name: Install java/kotlin
+- name: "Install java/kotlin"
   become: true
   vars:
     openjdk:
@@ -83,13 +83,13 @@
       - "kotlin"
       - "{{ openjdk[ansible_facts['os_family']] }}"
 
-- name: Install zig
+- name: "Install zig"
   become: true
   ansible.builtin.package:
     name:
       - "zig"
 
-- name: Install ocaml
+- name: "Install ocaml"
   become: true
   vars:
     dune:
@@ -103,7 +103,7 @@
       - "opam"
       - "{{ dune[ansible_facts['os_family']] }}"
 
-- name: Install JS/TS/node
+- name: "Install JS/TS/node"
   become: true
   vars:
     ts:
@@ -115,7 +115,7 @@
       - "nodejs"
       - "{{ ts[ansible_facts['os_family']] }}"
 
-- name: Install molecule
+- name: "Install molecule"
   become: true
   ansible.builtin.package:
     name:

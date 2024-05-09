@@ -1,5 +1,5 @@
 ---
-- name: Install virtual machine tools
+- name: "Install virtual machine tools"
   become: true
   vars:
     libvirt:
@@ -16,7 +16,7 @@
       - "{{ libvirt[ansible_facts['os_family']] }}"
       - "{{ qemu[ansible_facts['os_family']] }}"
 
-- name: Enable libvirtd
+- name: "Enable libvirtd"
   become: true
   ansible.builtin.systemd:
     name: "libvirtd"

@@ -1,5 +1,5 @@
 ---
-- name: Install file managers
+- name: "Install file managers"
   become: true
   vars:
     pcmanfm:
@@ -9,9 +9,9 @@
     name:
       - "udiskie"
       - "{{ pcmanfm[ansible_facts['os_family']] }}"
-  when: ansible_system == "Linux"
+  when: "ansible_system == 'Linux'"
 
-- name: Install ranger
+- name: "Install ranger"
   become: true
   ansible.builtin.package:
     name:
