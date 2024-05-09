@@ -18,7 +18,7 @@
       - "awesome-freedesktop-git"
   when: "ansible_facts['os_family'] == 'Archlinux'"
 
-- name: "Install awesomewm from apt"
+- name: "Install awesomewm tools from apt"
   become: true
   ansible.builtin.apt:
     install_recommends: false
