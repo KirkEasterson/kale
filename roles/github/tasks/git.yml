@@ -1,4 +1,5 @@
 ---
+# TODO: log into github cli with token
 - name: "Install git and git tools"
   become: true
   vars:
