@@ -14,12 +14,35 @@
 - name: "Copy greetd conf file"
   become: true
   ansible.builtin.copy:
-    src: "files/config.toml"
+    src: "files/greetd/config.toml"
     dest: "/etc/greetd/config.toml"
     mode: "644"
   when: "not greetd_conf.stat.exists or greetd_conf.stat.checksum != ansible_checksum"
   vars:
-    ansible_checksum: "{{ lookup('file', 'files/config.toml') | checksum }}"
+    ansible_checksum: "{{ lookup('file', 'files/greetd/config.toml') | checksum }}"
+
+- name: "Create greetd environments dir"
+  become: true
+  ansible.builtin.file:
+    path: "/etc/greetd/environments"
+    state: "directory"
+    mode: "644"
+
+- name: "Check if sway session exists"
+  become: true
+  ansible.builtin.stat:
+    path: "/etc/greetd/environments/sway"
+  register: "greetd_conf"
+
+- name: "Copy greetd conf file"
+  become: true
+  ansible.builtin.copy:
+    src: "files/greetd/sway"
+    dest: "/etc/greetd/environments/sway"
+    mode: "644"
+  when: "not greetd_conf.stat.exists or greetd_conf.stat.checksum != ansible_checksum"
+  vars:
+    ansible_checksum: "{{ lookup('file', 'files/greetd/sway') | checksum }}"
 
 # - name: "Enable greetd service"
 #   become: true
