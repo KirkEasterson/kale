@@ -30,3 +30,4 @@
 - name: "Start TLP"
   become: true
   ansible.builtin.command: "tlp start"
+  changed_when: false
