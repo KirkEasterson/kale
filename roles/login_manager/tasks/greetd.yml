@@ -21,8 +21,8 @@
   vars:
     ansible_checksum: "{{ lookup('file', 'files/config.toml') | checksum }}"
 
-- name: "Enable greetd service"
-  become: true
-  ansible.builtin.systemd:
-    name: "greetd"
-    enabled: true
+# - name: "Enable greetd service"
+#   become: true
+#   ansible.builtin.systemd:
+#     name: "greetd"
+#     enabled: true

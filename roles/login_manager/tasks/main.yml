@@ -3,9 +3,9 @@
   ansible.builtin.import_tasks:
     file: "greetd.yml"
 
-# - name: SDDM
-#   ansible.builtin.import_tasks:
-#     file: sddm.yml
+- name: "SDDM"
+  ansible.builtin.import_tasks:
+    file: "sddm.yml"
 
 # - name: LightDM
 #   ansible.builtin.import_tasks:
