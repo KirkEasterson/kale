@@ -1,13 +1,4 @@
 ---
-# TODO: get comic code somehow
-- name: "Create fonts directory"
-  become: true
-  become_user: "{{ remote_regular_user }}"
-  ansible.builtin.file:
-    path: "$HOME/.local/share/fonts"
-    state: "directory"
-    mode: "755"
-
 - name: "Install font config tools"
   become: true
   vars:
@@ -38,3 +29,16 @@
       - "homebrew/cask-fonts/font-ubuntu-mono-nerd-font"
       - "homebrew/cask-fonts/font-ubuntu-nerd-font"
   when: "ansible_distribution == 'MacOSX'"
+
+- name: "Create fonts directory"
+  become: true
+  become_user: "{{ remote_regular_user }}"
+  ansible.builtin.file:
+    path: "$HOME/.local/share/fonts"
+    state: "directory"
+    mode: "755"
+
+- name: "Copy comic-code"
+  ansible.builtin.unarchive:
+    src: "files/comic-code.tar.gz"
+    dest: "~/.local/share/fonts/"
