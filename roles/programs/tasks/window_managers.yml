@@ -30,6 +30,7 @@
   become: true
   ansible.builtin.package:
     name:
+      - "kanshi"
       - "sway"
       - "swaybg"
       - "swayidle"
