@@ -15,8 +15,8 @@
     groups: "docker"
     append: true
 
-- name: "Enable sddm service"
+- name: "Enable docker service"
   become: true
   ansible.builtin.systemd:
-    name: "sddm"
+    name: "docker"
     enabled: true
