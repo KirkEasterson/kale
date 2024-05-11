@@ -7,3 +7,16 @@
       - "docker-buildx"
       - "docker-compose"
       # - "lazydocker" # only in AUR
+
+- name: "Add current user to the docker group"
+  become: true
+  ansible.builtin.user:
+    name: "{{ remote_regular_user }}"
+    groups: "docker"
+    append: true
+
+- name: "Enable sddm service"
+  become: true
+  ansible.builtin.systemd:
+    name: "sddm"
+    enabled: true
