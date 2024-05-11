@@ -19,10 +19,10 @@ github_key_title: "{{ ansible_hostname }}-{{ ansible_user_id }}"
 github_key_passphrase: "{{ vault_github_key_passphrase }}"
 
 # various expected directories
-dotfiles_path: "~/.dotfiles"
-globalconfigs_path: "~/.global_configs"
-scripts_path: "~/scripts"
 dev_path: "~/dev"
+dotfiles_path: "~/.dotfiles"
+website_path: "{{ dev_path }}/kirkeasterson.github.io"
+scripts_path: "~/scripts"
 screenshots_path: "~/Pictures/screenshots"
 
 # TODO: get rid of this, and use token instead

@@ -3,6 +3,10 @@
   ansible.builtin.import_tasks:
     file: "dotfiles.yml"
 
+- name: "Website"
+  ansible.builtin.import_tasks:
+    file: "website.yml"
+
 # TODO: move these to dotfiles
 - name: "Scripts"
   ansible.builtin.import_tasks:
