@@ -16,6 +16,10 @@
   ansible.builtin.import_tasks:
     file: "dev.yml"
 
+- name: "Docker"
+  ansible.builtin.import_tasks:
+    file: "docker.yml"
+
 - name: "Editors"
   ansible.builtin.import_tasks:
     file: "editors.yml"
@@ -43,6 +47,10 @@
 - name: "Notifications"
   ansible.builtin.import_tasks:
     file: "notifications.yml"
+
+- name: "LLMs"
+  ansible.builtin.import_tasks:
+    file: "llm.yml"
 
 - name: "Screenshots"
   ansible.builtin.import_tasks:
