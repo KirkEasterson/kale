@@ -40,6 +40,10 @@
   ansible.builtin.import_tasks:
     file: "launchers.yml"
 
+- name: "LLMs"
+  ansible.builtin.import_tasks:
+    file: "llm.yml"
+
 - name: "Media"
   ansible.builtin.import_tasks:
     file: "media.yml"
@@ -47,10 +51,6 @@
 - name: "Notifications"
   ansible.builtin.import_tasks:
     file: "notifications.yml"
-
-- name: "LLMs"
-  ansible.builtin.import_tasks:
-    file: "llm.yml"
 
 - name: "Screenshots"
   ansible.builtin.import_tasks:
