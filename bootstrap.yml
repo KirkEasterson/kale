@@ -4,6 +4,9 @@
   hosts: "localhost"
 
   tasks:
+    - name: "Timeshift"
+      ansible.builtin.import_role:
+        name: "timeshift"
 
     # - ensure package managers and tools are installed
     # - update package mangers

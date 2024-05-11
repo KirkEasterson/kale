@@ -1,0 +1,6 @@
+---
+- name: "Install timeshift"
+  become: true
+  ansible.builtin.package:
+    name:
+      - "timeshift"
