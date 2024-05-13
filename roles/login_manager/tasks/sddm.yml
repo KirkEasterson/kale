@@ -5,11 +5,16 @@
     theme:
       Archlinux: "sddm-kcm"
       Debian: "kde-config-sddm"
+      Suse: "sddm-kcm6"
+    theme2:
+      Archlinux: "plasma-workspace"
+      Debian: "plasma-workspace"
+      Suse: "sddm-qt6-branding-upstream"
   ansible.builtin.package:
     name:
-      - "plasma-workspace"
       - "sddm"
       - "{{ theme[ansible_facts['os_family']] }}"
+      - "{{ theme2[ansible_facts['os_family']] }}"
 
 - name: "Check if SDDM conf file exists"
   ansible.builtin.stat:
