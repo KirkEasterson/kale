@@ -3,13 +3,13 @@
   become: true
   vars:
     theme:
-      Archlinux: "sddm-kcm"
+      Archlinux: "sddm_kcm"
       Debian: "kde-config-sddm"
       Suse: "kcm-sddm"
     theme2:
       Archlinux: "plasma-workspace"
       Debian: "plasma-workspace"
-      Suse: "sddm-qt6-branding-upstream"
+      Suse: "sddm-branding-openSUSE"
   ansible.builtin.package:
     name:
       - "sddm"
