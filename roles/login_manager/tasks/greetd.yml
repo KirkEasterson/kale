@@ -1,10 +1,15 @@
 ---
 - name: "Install greetd"
   become: true
+  vars:
+    tuigreet:
+      Archlinux: "greetd-tuigreet"
+      Debian: "greetd-tuigreet"
+      Suse: "tuigreet"
   ansible.builtin.package:
     name:
       - "greetd"
-      - "greetd-tuigreet"
+      - "{{ tuigreet[ansible_facts['os_family']] }}"
 
 - name: "Check if greetd conf file exists"
   ansible.builtin.stat:
