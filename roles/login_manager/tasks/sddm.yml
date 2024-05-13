@@ -3,6 +3,10 @@
   become: true
   vars:
     theme:
+      Archlinux: "sddm-kcm"
+      Debian: "kde-config-sddm"
+      Suse: "kcm-sddm"
+    theme2:
       Archlinux: "plasma-workspace"
       Debian: "plasma-workspace"
       Suse: "sddm-qt6-branding-upstream"
@@ -10,6 +14,7 @@
     name:
       - "sddm"
       - "{{ theme[ansible_facts['os_family']] }}"
+      - "{{ theme2[ansible_facts['os_family']] }}"
 
 - name: "Check if SDDM conf file exists"
   ansible.builtin.stat:
