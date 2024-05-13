@@ -6,8 +6,8 @@
       Archlinux: "pop-gtk-theme"
   ansible.builtin.package:
     name:
-      - "capitaine-cursors"
       - "lxappearance"
       - "papirus-icon-theme"
       - "picom"
+      - "xcursor-themes"
       - "{{ theme[ansible_facts['os_family']] }}"
