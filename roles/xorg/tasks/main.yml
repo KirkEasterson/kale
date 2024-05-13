@@ -1,5 +1,6 @@
 ---
 - name: "Add autorandr repository"
+  become: true
   community.general.zypper_repository:
     repo: "https://download.opensuse.org/repositories/home:phillipberndt/openSUSE_Tumbleweed/home:phillipberndt.repo"
     state: present
