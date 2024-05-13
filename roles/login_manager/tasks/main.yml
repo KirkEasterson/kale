@@ -7,6 +7,6 @@
   ansible.builtin.import_tasks:
     file: "sddm.yml"
 
-- name: LightDM
+- name: "LightDM"
   ansible.builtin.import_tasks:
-    file: lightdm.yml
+    file: "lightdm.yml"
