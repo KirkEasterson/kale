@@ -1,4 +1,11 @@
 ---
+- name: "Add autorandr repository"
+  community.general.zypper_repository:
+    repo: "https://download.opensuse.org/repositories/home:phillipberndt/openSUSE_Tumbleweed/home:phillipberndt.repo"
+    state: present
+    runrefresh: true
+  when: "ansible_facts['os_family'] == 'Suse'"
+
 - name: "Install xorg"
   become: true
   vars:
