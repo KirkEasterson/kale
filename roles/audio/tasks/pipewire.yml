@@ -29,14 +29,14 @@
   become: true
   vars:
     audio:
-      Archlinux: "pipwire-audio"
+      Archlinux: "pipewire-audio"
       Suse: "wireplumber-audio"
     docs:
-      Archlinux: "pipwire-docs"
-      Suse: "pipwire-doc"
+      Archlinux: "pipewire-docs"
+      Suse: "pipewire-doc"
     pulse:
-      Archlinux: "pipwire-pulse"
-      Suse: "pipwire-pulseaudio"
+      Archlinux: "pipewire-pulse"
+      Suse: "pipewire-pulseaudio"
   ansible.builtin.package:
     name:
       - "helvum" # GTK patch bay
