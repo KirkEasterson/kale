@@ -14,7 +14,7 @@
 
 - name: "Install network-manager on zypper"
   become: true
-  community.general.pacman:
+  community.general.zypper:
     state: "present"
     name:
       - "NetworkManager"
