@@ -131,7 +131,7 @@
 
     - name: "LLMs"
       ansible.builtin.import_role:
-        file: "llm"
+        name: "llm"
 
     - name: "Login managers"
       ansible.builtin.import_role:
