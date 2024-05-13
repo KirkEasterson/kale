@@ -1,13 +1,10 @@
 ---
 - name: "Install theme tools"
   become: true
-  vars:
-    theme:
-      Archlinux: "pop-gtk-theme"
   ansible.builtin.package:
     name:
       - "lxappearance"
       - "papirus-icon-theme"
       - "picom"
       - "xcursor-themes"
-      - "{{ theme[ansible_facts['os_family']] }}"
+      - "materia-gtk-theme"
