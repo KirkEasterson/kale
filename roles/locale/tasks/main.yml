@@ -3,14 +3,10 @@
   become: true
   community.general.zypper:
     name:
-      - "ghc-data-default-instances-old-locale"
-      - "ghc-old-locale"
-      - "ghc-setlocale"
-      - "ghc-time-locale-compat"
-      - "perl-DateTime-Locale"
-      - "perl-Encode-Locale"
-      - "perl-Locale-Codes"
-      - "perl-Locale-Maketext-Gettext"
+      - "glibc-locale"
+      - "glibc-locale-base"
+      - "glibc-locale-base-lib32"
+      - "glibc-lang"
   when: "ansible_facts['os_family'] == 'Suse'"
 
 # Taken from https://serverfault.com/questions/959026/how-do-i-generate-and-set-the-locale-using-ansible#answer-981742
