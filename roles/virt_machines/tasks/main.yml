@@ -5,6 +5,7 @@
     libvirt:
       Archlinux: "libvirt"
       Debian: "libvirt0"
+      Suse: "libvirt"
       Darwin: "libvirt"
     qemu:
       Archlinux: "qemu-base"
