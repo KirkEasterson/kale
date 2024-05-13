@@ -5,18 +5,23 @@
     xorgserver:
       Archlinux: "xorg-server"
       Debian: "xserver-xorg"
+      Suse: "xorg-x11-server"
     xinit:
       Archlinux: "xorg-xinit"
       Debian: "xinit"
+      Suse: "xinit"
     xinput:
       Archlinux: "xorg-xinput"
       Debian: "xinput"
+      Suse: "xinput"
     xrandr:
       Archlinux: "xorg-xrandr"
       Debian: "xrandr"
+      Suse: "xrandr"
     xwayland:
       Archlinux: "xorg-xwayland"
       Debian: "xwayland"
+      Suse: "xwayland"
   ansible.builtin.package:
     name:
       - "arandr"
