@@ -129,6 +129,10 @@
       ansible.builtin.import_role:
         name: "virt_machines"
 
+    - name: "LLMs"
+      ansible.builtin.import_role:
+        file: "llm"
+
     - name: "Login managers"
       ansible.builtin.import_role:
         name: "login_manager"
