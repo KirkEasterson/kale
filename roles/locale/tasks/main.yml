@@ -13,7 +13,6 @@
       - "perl-Locale-Maketext-Gettext"
   when: "ansible_facts['os_family'] == 'Suse'"
 
-
 # Taken from https://serverfault.com/questions/959026/how-do-i-generate-and-set-the-locale-using-ansible#answer-981742
 - name: "Ensure localisation files for locale are available"
   become: true
