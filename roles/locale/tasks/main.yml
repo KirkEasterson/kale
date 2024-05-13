@@ -5,7 +5,7 @@
     name:
       - "glibc-locale"
       - "glibc-locale-base"
-      - "glibc-locale-base-lib32"
+      - "glibc-locale-base-32bit"
       - "glibc-lang"
   when: "ansible_facts['os_family'] == 'Suse'"
 
