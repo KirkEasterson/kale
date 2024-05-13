@@ -1,14 +1,24 @@
 ---
 - name: "Install various intel drivers"
   become: true
+  vars:
+    libva:
+      Archlinux: "libva"
+      Suse: "libva2"
+    vulkan:
+      Archlinux: "vulkan-intel"
+      Suse: "libvulkan1"
+    vulkan32:
+      Archlinux: "lib32-vulkan-intel"
+      Suse: "libvulkan1-32bit"
   ansible.builtin.package:
     name:
       - "bolt"
       - "intel-gpu-tools"
       - "intel-media-driver"
-      - "lib32-vulkan-intel"
-      - "libva-intel-driver"
       - "libva-utils"
       - "nvtop"
       - "upower"
-      - "vulkan-intel"
+      - "{{ vulkan[ansible_facts['os_family']] }}"
+      - "{{ libva[ansible_facts['os_family']] }}"
+      - "{{ vulkan32[ansible_facts['os_family']] }}"

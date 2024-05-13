@@ -6,6 +6,7 @@
     gh:
       Archlinux: "github-cli"
       Debian: "gh"
+      Suse: "gh"
       Darwin: "gh"
   ansible.builtin.package:
     name:

@@ -12,6 +12,17 @@
       - "usb_modeswitch"
   when: "ansible_facts['os_family'] == 'Archlinux'"
 
+- name: "Install network-manager on zypper"
+  become: true
+  community.general.pacman:
+    state: "present"
+    name:
+      - "NetworkManager"
+      - "NetworkManager-applet"
+      - "ModemManager"
+      - "usb_modeswitch"
+  when: "ansible_facts['os_family'] == 'Suse'"
+
 - name: "Install network-manager on apt"
   become: true
   ansible.builtin.apt:

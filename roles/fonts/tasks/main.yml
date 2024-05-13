@@ -5,12 +5,15 @@
     emoji:
       Archlinux: "noto-fonts-emoji"
       Debian: "fonts-noto-color-emoji"
+      Suse: "emojione-color-font"
     jetbrainsmono:
       Archlinux: "ttf-jetbrains-mono-nerd"
       Debian: "fonts-jetbrains-mono"
+      Suse: "jetbrains-mono-fonts"
     ubuntu:
       Archlinux: "ttf-ubuntu-font-family"
       Debian: "fonts-ubuntu"
+      Suse: "ubuntu-fonts"
   ansible.builtin.package:
     name:
       - "font-manager"
