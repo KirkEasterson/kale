@@ -3,9 +3,9 @@
   become: true
   vars:
     theme:
-      Archlinux: "sddm_kcm"
+      Archlinux: "sddm-kcm"
       Debian: "kde-config-sddm"
-      Suse: "kcm-sddm"
+      Suse: "kcm_sddm"
     theme2:
       Archlinux: "plasma-workspace"
       Debian: "plasma-workspace"
