@@ -36,6 +36,7 @@
   ansible.builtin.systemd:
     name: "systemd-networkd"
     enabled: false
+  when: "ansible_distribution == 'Ubuntu'"
 
 - name: "Enable network-manager service"
   become: true
