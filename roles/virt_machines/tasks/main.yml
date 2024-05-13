@@ -10,6 +10,7 @@
     qemu:
       Archlinux: "qemu-base"
       Debian: "qemu" # this is wrong
+      Suse: "qemu"
       Darwin: "qemu"
   ansible.builtin.package:
     name:
