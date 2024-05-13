@@ -79,7 +79,7 @@
   become: true
   become_user: "root"
   ansible.builtin.command:
-    cmd: "grub-mkconfig -o /boot/grub/grub.cfg"
+    cmd: "grub2-mkconfig -o /boot/grub/grub.cfg"
   when: "ansible_facts['os_family'] == 'Suse' and grub_timeout.changed or not quiet_param or not splash_param"
   changed_when: false
 
