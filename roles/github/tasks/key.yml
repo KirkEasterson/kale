@@ -15,10 +15,19 @@
 - name: "Generate key pair"
   community.crypto.openssh_keypair:
     path: "{{ github_key_path }}"
-    passphrase: "{{ github_key_passphrase }}"
+    passphrase: ""
     type: "ed25519"
     mode: "600"
   register: "key_pair"
+
+# - name: "Evaluating the authentication agent & adding the key" # noqa: no-handler
+#   become: true
+#   become_user: "{{ remote_regular_user }}"
+#   ansible.builtin.shell: |
+#     eval "$(ssh-agent)"
+#     ssh-add {{ github_key_path }}
+#   when: "key_pair.changed"
+#   changed_when: false
 
 - name: "Authorize key with GitHub"
   community.general.github_key:
