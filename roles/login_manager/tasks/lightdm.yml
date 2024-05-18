@@ -1,25 +1,43 @@
 ---
 - name: "Install lightdm"
   become: true
+  vars:
+    slickgreeter:
+      Archlinux: "lightdm-slick-greeter"
+      Debian: "slick-greeter"
+    xephyr: # TODO: is this necessary?
+      Archlinux: "xorg-server-xephyr"
+      Debian: "xserver-xephyr"
+  ansible.builtin.package:
+    name:
+      - "light-locker"
+      - "lightdm"
+      - "{{ slickgreeter[ansible_facts['os_family']] }}"
+      - "{{ xephyr[ansible_facts['os_family']] }}"
+
+- name: "Install lightdm stuff on pacman"
+  become: true
   community.general.pacman:
     state: "present"
     name:
-      - "light-locker"
       - "lightdm-gtk-greeter-settings"
-      - "lightdm-slick-greeter"
   when: "ansible_distribution == 'ArchLinux'"
 
-- name: "Install lightdm"
+- name: "Install lightdm stuff on apt"
   become: true
   ansible.builtin.apt:
     install_recommends: false
     name:
-      - "slick-greeter"
       - "lightdm-settings"
-      - "light-locker"
       - "light-locker-settings"
-      - "xserver-xephyr" # TODO: what is this?
   when: "ansible_os_family == 'Debian'"
+
+- name: "Create greetd environments dir"
+  become: true
+  ansible.builtin.file:
+    path: "/etc/lightdm"
+    state: "directory"
+    mode: "644"
 
 - name: "Check if lightdm.conf exists"
   ansible.builtin.stat:
