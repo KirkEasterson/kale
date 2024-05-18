@@ -32,7 +32,7 @@
       - "light-locker-settings"
   when: "ansible_os_family == 'Debian'"
 
-- name: "Create greetd environments dir"
+- name: "Create lightdm conf directory"
   become: true
   ansible.builtin.file:
     path: "/etc/lightdm"
@@ -40,11 +40,13 @@
     mode: "644"
 
 - name: "Check if lightdm.conf exists"
+  become: true
   ansible.builtin.stat:
     path: "/etc/lightdm/lightdm.conf"
   register: "lightdm_conf"
 
 - name: "Update lightdm.conf"
+  become: true
   ansible.builtin.copy:
     src: "files/lightdm.conf"
     dest: "/etc/lightdm/lightdm.conf"
@@ -54,11 +56,13 @@
     ansible_checksum: "{{ lookup('file', 'files/lightdm.conf') | checksum }}"
 
 - name: "Check if slick-greeter.conf exists"
+  become: true
   ansible.builtin.stat:
     path: "/etc/lightdm/slick-greeter.conf"
   register: "slick_conf"
 
 - name: "Update slick-greeter.conf"
+  become: true
   ansible.builtin.copy:
     src: "files/slick-greeter.conf"
     dest: "/etc/lightdm/slick-greeter.conf"
