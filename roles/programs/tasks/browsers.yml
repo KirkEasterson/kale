@@ -6,7 +6,13 @@
       Archlinux: "chromium"
       Debian: "chromium-browser"
       Darwin: "chromium"
+      Suse: "chromium"
+    firefox:
+      Archlinux: "firefox"
+      Debian: "firefox"
+      Darwin: "firefox"
+      Suse: "MozillaFirefox-branding-upstream"
   ansible.builtin.package:
     name:
-      - "firefox"
       - "{{ chromium[ansible_facts['os_family']] }}"
+      - "{{ firefox[ansible_facts['os_family']] }}"

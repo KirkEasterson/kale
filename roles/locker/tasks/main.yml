@@ -1,5 +1,13 @@
 ---
-- name: "Install lockers on pacman"
+- name: "Add xss-lock repository"
+  become: true
+  community.general.zypper_repository:
+    repo: "https://download.opensuse.org/repositories/X11:Utilities/openSUSE_Tumbleweed/X11:Utilities.repo"
+    state: "present"
+    runrefresh: true
+  when: "ansible_facts['os_family'] == 'Suse'"
+
+- name: "Install lockers"
   become: true
   ansible.builtin.package:
     state: "present"
@@ -8,4 +16,4 @@
       - "swaylock"
       - "xautolock"
       - "xss-lock"
-  when: "ansible_facts['os_family'] == 'Archlinux'"
+  when: "ansible_system == 'Linux'"

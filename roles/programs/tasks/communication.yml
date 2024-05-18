@@ -5,17 +5,20 @@
     element:
       Archlinux: "element-desktop"
       Darwin: "element"
-    signal:
-      Archlinux: "signal-desktop"
-      Darwin: "signal"
+      Suse: "element-desktop"
+    # signal:
+    #   Archlinux: "signal-desktop"
+    #   Darwin: "signal"
+    #   Suse: "signal-desktop"
     telegram:
       Archlinux: "telegram-desktop"
       Darwin: "telegram"
+      Suse: "telegram-desktop"
   ansible.builtin.package:
     name:
       - "discord"
       - "{{ element[ansible_facts['os_family']] }}"
-      - "{{ signal[ansible_facts['os_family']] }}"
+      # - "{{ signal[ansible_facts['os_family']] }}"
       - "{{ telegram[ansible_facts['os_family']] }}"
 
 - name: "Install communication tools from AUR"
@@ -37,10 +40,15 @@
 
 - name: "Install email clients"
   become: true
+  vars:
+    thunderbird:
+      Archlinux: "thunderbird"
+      Darwin: "thunderbird"
+      Suse: "MozillaThunderbird"
   ansible.builtin.package:
     name:
       - "neomutt"
-      - "thunderbird"
+      - "{{ thunderbird[ansible_facts['os_family']] }}"
 
 - name: "Install email clients from pacman"
   become: true

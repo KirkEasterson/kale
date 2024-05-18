@@ -17,7 +17,15 @@
     name:
       # - "ardour" # not on brew
       - "audacity"
-      - "reaper"
+      # - "reaper" # not on zypper
+
+- name: "Add vscode repository for suse"
+  become: true
+  community.general.zypper_repository:
+    repo: "obs://devel:tools:ide:vscode devel_tools_ide_vscode"
+    state: "present"
+    runrefresh: true
+  when: "ansible_facts['os_family'] == 'Suse'"
 
 # TODO:
 # - install vscodium repository
@@ -31,6 +39,7 @@
       Archlinux: "code"
       Debian: "code"
       Darwin: "visual-studio-code"
+      Suse: "code"
     intellij:
       Archlinux: "intellij-idea-community-edition"
       Debian: "intellij-idea-community"

@@ -5,12 +5,15 @@
     bluezutils:
       Archlinux: "bluez-utils"
       Debian: "bluez-tools"
+      Suse: "bluez-firmware"
     hidapi:
       Archlinux: "hidapi"
       Debian: "libhidapi-libusb0"
+      Suse: "libhidapi-libusb0"
     sbc:
       Archlinux: "sbc"
       Debian: "libsbc1"
+      Suse: "sbc"
   ansible.builtin.package:
     name:
       - "blueman"

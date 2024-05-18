@@ -28,10 +28,15 @@
 
 - name: "Install sway"
   become: true
+  vars:
+    sway:
+      Archlinux: "sway"
+      Debian: "sway"
+      Darwin: "sway"
+      Suse: "sway-branding-upstream"
   ansible.builtin.package:
     name:
       - "kanshi"
-      - "sway"
       - "swaybg"
       - "swayidle"
       - "swaylock"
@@ -42,6 +47,7 @@
       - "xdg-desktop-portal-kde"
       - "xdg-desktop-portal-wlr"
       - "xdg-desktop-portal-xapp"
+      - "{{ sway[ansible_facts['os_family']] }}"
   when: "ansible_system == 'Linux'"
 
 - name: "Install sway tools from AUR"
