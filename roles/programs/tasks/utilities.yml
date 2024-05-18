@@ -25,6 +25,7 @@
       - "homebrew/cask/nordvpn"
   when: "ansible_facts['os_family'] == 'Darwin'"
 
+  # TODO: login in with key from vault
 - name: "Install password manager from AUR"
   become: true
   become_user: "{{ remote_regular_user }}"
