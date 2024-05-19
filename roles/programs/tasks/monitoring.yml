@@ -1,0 +1,7 @@
+# TODO: find the package
+# ---
+# - name: Install disk usage analyzer
+#   become: true
+#   ansible.builtin.package:
+#     name:
+#       - "disk-usage-analyzer"
