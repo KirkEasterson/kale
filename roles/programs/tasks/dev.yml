@@ -32,6 +32,11 @@
     name:
       - "{{ rust[ansible_facts['os_family']] }}"
 
+- name: "Set default for rustup"
+  ansible.builtin.command:
+    cmd: "rustup default stable"
+  changed_when: false
+
 - name: "Install dotnet from pacman"
   become: true
   community.general.pacman:
