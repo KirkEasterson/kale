@@ -15,7 +15,7 @@
   ansible.builtin.lineinfile:
     path: "/etc/default/grub"
     regexp: "GRUB_THEME="
-    line: "GRUB_THEME=\"/boot/grub/themes/minegrub/theme.txt\""
+    line: 'GRUB_THEME="/boot/grub/themes/minegrub/theme.txt"'
   register: "grub_theme"
 
 - name: "Set GRUB timeout to 5"
@@ -31,7 +31,7 @@
   ansible.builtin.lineinfile:
     backup: true
     path: "/etc/default/grub"
-    regexp: '^GRUB_CMDLINE_LINUX=".*quiet' # yamllint disable-line rule:quoted-strings
+    regexp: '^GRUB_CMDLINE_LINUX=".*quiet'
     state: "absent"
   check_mode: true
   register: "quiet_param"
@@ -42,8 +42,8 @@
   ansible.builtin.lineinfile:
     backrefs: true
     path: "/etc/default/grub"
-    regexp: '^(GRUB_CMDLINE_LINUX=".*)"$' # yamllint disable-line rule:quoted-strings
-    line: '\1 quiet"' # yamllint disable-line rule:quoted-strings
+    regexp: '^(GRUB_CMDLINE_LINUX=".*)"$'
+    line: '\1 quiet"'
   when: "not quiet_param.found"
 
 - name: "Check if 'pstate' is configured in the boot command"
@@ -51,7 +51,7 @@
   ansible.builtin.lineinfile:
     backup: true
     path: "/etc/default/grub"
-    regexp: '^GRUB_CMDLINE_LINUX=".*intel_pstate=disable' # yamllint disable-line rule:quoted-strings
+    regexp: '^GRUB_CMDLINE_LINUX=".*intel_pstate=disable'
     state: "absent"
   check_mode: true
   register: "pstate_param"
@@ -62,8 +62,8 @@
   ansible.builtin.lineinfile:
     backrefs: true
     path: "/etc/default/grub"
-    regexp: '^(GRUB_CMDLINE_LINUX=".*)"$' # yamllint disable-line rule:quoted-strings
-    line: '\1 intel_pstate=disable"' # yamllint disable-line rule:quoted-strings
+    regexp: '^(GRUB_CMDLINE_LINUX=".*)"$'
+    line: '\1 intel_pstate=disable"'
   when: "not pstate_param.found"
 
 - name: "Check if 'splash' is configured in the boot command"
@@ -71,7 +71,7 @@
   ansible.builtin.lineinfile:
     backup: true
     path: "/etc/default/grub"
-    regexp: '^GRUB_CMDLINE_LINUX=".*splash' # yamllint disable-line rule:quoted-strings
+    regexp: '^GRUB_CMDLINE_LINUX=".*splash'
     state: "absent"
   check_mode: true
   register: "splash_param"
@@ -82,8 +82,8 @@
   ansible.builtin.lineinfile:
     backrefs: true
     path: "/etc/default/grub"
-    regexp: '^(GRUB_CMDLINE_LINUX=".*)"$' # yamllint disable-line rule:quoted-strings
-    line: '\1 splash"' # yamllint disable-line rule:quoted-strings
+    regexp: '^(GRUB_CMDLINE_LINUX=".*)"$'
+    line: '\1 splash"'
   when: "not splash_param.found"
 
 - name: "Update grub"

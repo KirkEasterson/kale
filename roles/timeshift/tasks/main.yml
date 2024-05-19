@@ -41,8 +41,8 @@
   become: true
   ansible.builtin.replace:
     path: "/etc/systemd/system/grub-btrfsd.service"
-    regexp: "^(ExecStart=.*) /.snapshots$" # yamllint disable-line rule:quoted-strings
-    replace: '\1 --timeshift-auto' # yamllint disable-line rule:quoted-strings
+    regexp: "^(ExecStart=.*) /.snapshots$"
+    replace: "\\1 --timeshift-auto"
   register: "timeshift_param"
 
 - name: "Restart grub-btrfsd service"
