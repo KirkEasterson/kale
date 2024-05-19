@@ -23,6 +23,20 @@
     ansible_checksum: "{{ lookup('file', 'files/grub-btrfs/config') | checksum }}"
   register: "conf_updated"
 
+- name: "Enable cronie service"
+  become: true
+  ansible.builtin.systemd:
+    name: "cronie"
+    enabled: true
+    state: "started"
+
+- name: "Enable grub-btrfsd service"
+  become: true
+  ansible.builtin.systemd:
+    name: "grub-btrfsd"
+    enabled: true
+    state: "started"
+
 - name: "Insert 'timeshift-auto' if missing"
   become: true
   ansible.builtin.replace:
@@ -30,6 +44,14 @@
     regexp: "^(ExecStart=.*) /.snapshots$" # yamllint disable-line rule:quoted-strings
     replace: '\1 --timeshift-auto' # yamllint disable-line rule:quoted-strings
   register: "timeshift_param"
+
+- name: "Restart grub-btrfsd service"
+  become: true
+  ansible.builtin.systemd:
+    name: "grub-btrfsd"
+    enabled: true
+    state: "restarted"
+  when: "timeshift_param.changed"
 
 - name: "Update grub"
   become: true
@@ -46,17 +68,3 @@
     cmd: "grub2-mkconfig -o /boot/grub/grub.cfg"
   when: "ansible_facts['os_family'] == 'Suse' and (timeshift_param.changed or conf_updated.changed)"
   changed_when: false
-
-- name: "Enable cronie service"
-  become: true
-  ansible.builtin.systemd:
-    name: "cronie"
-    enabled: true
-    state: "started"
-
-- name: "Enable grub-btrfsd service"
-  become: true
-  ansible.builtin.systemd:
-    name: "grub-btrfsd"
-    enabled: true
-    state: "started"
