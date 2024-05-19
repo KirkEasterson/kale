@@ -4,3 +4,10 @@
   ansible.builtin.package:
     name:
       - "timeshift"
+
+- name: "Enable cronie service"
+  become: true
+  ansible.builtin.systemd:
+    name: "cronie"
+    enabled: true
+    state: "started"
