@@ -9,7 +9,7 @@ GRUB_BTRFS_VERSION=4.13-yabsnap_info_support-2024-03-06T13:43:57+00:00
 
 # Name appearing in the Grub menu.
 # Default: "Use distribution information from /etc/os-release."
-GRUB_BTRFS_SUBMENUNAME="snapshots"
+GRUB_BTRFS_SUBMENUNAME="Snapshots"
 
 # Custom title.
 # Shows/Hides "date" "snapshot" "type" "description" in the Grub menu, custom order available.
