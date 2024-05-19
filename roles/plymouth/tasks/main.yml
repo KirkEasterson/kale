@@ -4,6 +4,7 @@
   ansible.builtin.package:
     name:
       - "plymouth"
+      - "plymouth-kcm"
 
 - name: "Check if plymouth conf exists"
   ansible.builtin.stat:
