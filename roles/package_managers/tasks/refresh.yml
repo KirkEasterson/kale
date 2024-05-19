@@ -6,16 +6,17 @@
   when: "ansible_facts['os_family'] == 'Archlinux'"
   changed_when: false
 
-- name: "Update AUR cache"
-  become: true
-  become_user: "{{ remote_regular_user }}"
-  kewlfft.aur.aur:
-    use: "yay"
-    update_cache: true
-    upgrade: true
-    aur_only: true
-  when: "ansible_facts['os_family'] == 'Archlinux'"
-  changed_when: false
+# TODO: only when yay is installed
+# - name: "Update AUR cache"
+#   become: true
+#   become_user: "{{ remote_regular_user }}"
+#   kewlfft.aur.aur:
+#     use: "yay"
+#     update_cache: true
+#     upgrade: true
+#     aur_only: true
+#   when: "ansible_facts['os_family'] == 'Archlinux'"
+#   changed_when: false
 
 - name: "Update zypper cache"
   become: true
