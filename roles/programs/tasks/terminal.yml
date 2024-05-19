@@ -36,6 +36,7 @@
       - "hyperfine"
       - "less"
       - "lshw"
+      - "man"
       - "neofetch"
       - "procs"
       - "ripgrep"
