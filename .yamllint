@@ -7,7 +7,7 @@ rules:
   quoted-strings:
     quote-type: "double"
     required: true
-    allow-quoted-quotes: false
+    allow-quoted-quotes: true
   indentation:
     spaces: 2
   line-length:
