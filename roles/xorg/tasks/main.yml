@@ -42,6 +42,7 @@
       - "xf86-input-synaptics"
       - "{{ xorgserver[ansible_facts['os_family']] }}"
       - "{{ xinit[ansible_facts['os_family']] }}"
+      - "{{ xhost[ansible_facts['os_family']] }}"
       - "{{ xinput[ansible_facts['os_family']] }}"
       - "{{ xrandr[ansible_facts['os_family']] }}"
       - "{{ xwayland[ansible_facts['os_family']] }}"
