@@ -4,10 +4,6 @@
   hosts: "localhost"
 
   tasks:
-    - name: "Sudo"
-      ansible.builtin.import_role:
-        name: "sudo"
-
     # - ensure package managers and tools are installed
     # - update package mangers
     #   - AUR (if arch)
