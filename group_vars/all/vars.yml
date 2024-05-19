@@ -19,6 +19,7 @@ github_key_title: "{{ ansible_hostname }}-{{ ansible_user_id }}"
 github_key_passphrase: "{{ vault_github_key_passphrase }}"
 
 # various expected directories
+kale_path: "~/kale"
 dev_path: "~/dev"
 dotfiles_path: "~/.dotfiles"
 website_path: "{{ dev_path }}/kirkeasterson.github.io"

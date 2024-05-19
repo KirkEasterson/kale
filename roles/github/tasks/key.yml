@@ -25,3 +25,11 @@
     name: "{{ github_key_title }}"
     token: "{{ github_access_token }}"
     pubkey: "{{ key_pair.public_key }}"
+
+# TODO: change this repo to SSH
+- name: "Set kale to SSH"
+  community.general.git_config:
+    repo: "{{ kale_path }}"
+    scope: "local"
+    name: "remote.origin.url"
+    value: "git@github.com:KirkEasterson/kale.git"
