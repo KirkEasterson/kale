@@ -4,6 +4,7 @@
   community.general.pacman:
     update_cache: true
   when: "ansible_facts['os_family'] == 'Archlinux'"
+  changed_when: false
 
 - name: "Update AUR cache"
   become: true
@@ -14,12 +15,14 @@
     upgrade: true
     aur_only: true
   when: "ansible_facts['os_family'] == 'Archlinux'"
+  changed_when: false
 
 - name: "Update zypper cache"
   become: true
   community.general.zypper:
     update_cache: true
   when: "ansible_facts['os_family'] == 'Suse'"
+  changed_when: false
 
 - name: "Update apt packages"
   become: true
@@ -31,6 +34,7 @@
     update_cache: true
     upgrade: true
   when: "ansible_facts['os_family'] == 'Debian'"
+  changed_when: false
 
 - name: "Update brew packages"
   become: true
@@ -38,3 +42,4 @@
     update_homebrew: true
     upgrade_all: true
   when: "ansible_facts['os_family'] == 'Darwin'"
+  changed_when: false
