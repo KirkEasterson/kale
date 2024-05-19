@@ -38,6 +38,6 @@
   kewlfft.aur.aur:
     use: "yay"
     update_cache: true
-    upgrade: false
+    upgrade: true
     aur_only: true
   when: "yay_exists.rc != 0"
