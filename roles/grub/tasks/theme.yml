@@ -1,0 +1,14 @@
+---
+- name: "Checkout GRUB theme repo"
+  become: true
+  ansible.builtin.git:
+    repo: "https://github.com/Lxtharia/minegrub-theme.git"
+    dest: "/tmp/minegrub-theme"
+  changed_when: false
+
+- name: "Copy GRUB theme"
+  become: true
+  ansible.builtin.copy:
+    src: "/tmp/minegrub-theme/minegrub"
+    dest: "/boot/grub/themes"
+    mode: "644"
