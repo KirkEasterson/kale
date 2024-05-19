@@ -1,24 +1,22 @@
 ---
-- name: "Update pacman packages"
+- name: "Update pacman cache"
   become: true
   community.general.pacman:
     update_cache: true
   when: "ansible_facts['os_family'] == 'Archlinux'"
 
-#   # TODO: this only when yay is installed
-# - name: "Update AUR packages"
-#   become: true
-#   kewlfft.aur.aur:
-#     use: "yay"
-#     update_cache: true
-#     aur_only: true
-#   when: "ansible_facts['os_family'] == 'Archlinux'"
+- name: "Update AUR cache"
+  become: true
+  become_user: "{{ remote_regular_user }}"
+  kewlfft.aur.aur:
+    use: "yay"
+    update_cache: true
+    aur_only: true
+  when: "ansible_facts['os_family'] == 'Archlinux'"
 
-- name: "Update zypper packages"
+- name: "Update zypper cache"
   become: true
   community.general.zypper:
-    name: "*"
-    state: "latest"
     update_cache: true
   when: "ansible_facts['os_family'] == 'Suse'"
 

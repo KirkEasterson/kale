@@ -37,6 +37,6 @@
   become_user: "{{ remote_regular_user }}"
   kewlfft.aur.aur:
     use: "yay"
-    upgrade: true
     update_cache: true
     aur_only: true
+  when: "yay_exists.rc != 0"
