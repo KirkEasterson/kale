@@ -55,7 +55,7 @@
     replace: "\\1 --timeshift-auto"
   register: "timeshift_param"
 
-- name: "Restart grub-btrfsd service"
+- name: "Restart grub-btrfsd service" # noqa: no-handler
   become: true
   ansible.builtin.systemd:
     name: "grub-btrfsd"
