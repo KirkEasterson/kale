@@ -21,4 +21,28 @@
   vars:
     ansible_checksum: "{{ lookup('file', 'files/plymouthd.conf') | checksum }}"
 
-# TODO: enable a service maybe?
+- name: "Check if plymouth hook exists"
+  become: true
+  ansible.builtin.lineinfile:
+    backup: true
+    path: "/etc/mkinitcpio.conf"
+    regexp: '^HOOKS=\(.*plymouth'
+    state: "absent"
+  check_mode: true
+  register: "plymouth_hook"
+  changed_when: false
+
+- name: "Set plymouth hook if missing"
+  become: true
+  ansible.builtin.lineinfile:
+    backrefs: true
+    path: "/etc/mkinitcpio.conf"
+    regexp: '^(HOOKS=\(.*) ([a-z]*crypt[a-z]*.*\))$'
+    line: '\1 plymouth \2'
+  when: "not plymouth_hook.found"
+
+- name: "Rebuild init"
+  become: true
+  ansible.builtin.command: "mkinitcpio -p linux-lts"
+  changed_when: false
+  when: "not plymouth_hook.found"
