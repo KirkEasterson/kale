@@ -7,6 +7,16 @@
       - "inotify-tools"
       - "timeshift"
 
+- name: "Install timeshift-autosnap from AUR"
+  become: true
+  become_user: "{{ remote_regular_user }}"
+  kewlfft.aur.aur:
+    state: "present"
+    use: "yay"
+    name:
+      - "timeshift-autosnap"
+  when: "ansible_facts['os_family'] == 'Archlinux'"
+
 - name: "Check if grub-btrfs conf file exists"
   ansible.builtin.stat:
     path: "/etc/default/grub-btrfs/config"
