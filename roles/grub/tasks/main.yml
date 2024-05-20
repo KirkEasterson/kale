@@ -1,7 +1,7 @@
 ---
 - name: "Check if GRUB theme exists"
   become: true
-  stat:
+  ansible.builtin.stat:
     path: "/boot/grub/themes/minegrub/"
   register: "minegrub"
 
