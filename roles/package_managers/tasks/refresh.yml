@@ -21,6 +21,7 @@
 - name: "Update zypper cache"
   become: true
   community.general.zypper:
+    name: "*"
     update_cache: true
   when: "ansible_facts['os_family'] == 'Suse'"
   changed_when: false
