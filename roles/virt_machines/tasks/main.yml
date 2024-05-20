@@ -20,6 +20,13 @@
       - "{{ libvirt[ansible_facts['os_family']] }}"
       - "{{ qemu[ansible_facts['os_family']] }}"
 
+- name: "Add current user to the libvirt group"
+  become: true
+  ansible.builtin.user:
+    name: "{{ remote_regular_user }}"
+    groups: "libvirt"
+    append: true
+
 - name: "Enable libvirtd"
   become: true
   ansible.builtin.systemd:
