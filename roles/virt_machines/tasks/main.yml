@@ -14,6 +14,7 @@
       Darwin: "qemu"
   ansible.builtin.package:
     name:
+      - "dnsmasq" # needed for starting default network
       - "qemu-audio-dbus"
       - "qemu-ui-dbus"
       - "virt-manager"
@@ -32,3 +33,9 @@
   ansible.builtin.systemd:
     name: "libvirtd"
     enabled: true
+
+- name: "Autostart default virsh network"
+  become: true
+  ansible.builtin.command:
+    cmd: "virsh net-autostart --network default"
+  changed_when: false
