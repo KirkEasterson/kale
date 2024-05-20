@@ -1,5 +1,5 @@
 ---
-- name: "Checkout GRUB theme repo"
+- name: "Checkout GRUB theme repo" # noqa: latest[git]
   become: true
   ansible.builtin.git:
     repo: "https://github.com/Lxtharia/minegrub-theme.git"
