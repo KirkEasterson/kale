@@ -10,6 +10,9 @@
   ansible.builtin.package:
     name:
       - "kdenlive"
+      - "obs-studio"
+      - "v4l2loopback-dkms"
+      - "v4l2loopback-utils"
 
 - name: "Install audio editors"
   become: true
