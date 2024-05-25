@@ -16,5 +16,3 @@
     name:
       - "{{ chromium[ansible_facts['os_family']] }}"
       - "{{ firefox[ansible_facts['os_family']] }}"
-
-# TODO: setup firefox
