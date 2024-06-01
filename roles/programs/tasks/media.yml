@@ -7,6 +7,7 @@
       - "pdfarranger"
       - "xournalpp"
       - "zathura"
+      - "zathura-pdf-mupdf"
   when: "ansible_system == 'Linux'"
 
 - name: "Install pdf viewers from homebrew"
