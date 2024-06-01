@@ -42,6 +42,7 @@
       - "procs"
       - "ripgrep"
       - "sd"
+      - "smartmontools"
       - "tmux"
       - "tmuxp"
       - "tree"
