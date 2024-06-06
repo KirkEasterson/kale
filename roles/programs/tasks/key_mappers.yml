@@ -8,6 +8,8 @@
   ansible.builtin.package:
     name:
       - "udiskie"
+      - "wtype"
+      - "xdotool"
       - "{{ pcmanfm[ansible_facts['os_family']] }}"
   when: "ansible_system == 'Linux'"
 
