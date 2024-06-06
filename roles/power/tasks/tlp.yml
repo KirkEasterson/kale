@@ -3,6 +3,7 @@
   become: true
   ansible.builtin.package:
     name:
+      - "throttled"
       - "tlp"
 
 - name: "Check if TLP conf file exists"
