@@ -6,5 +6,6 @@
     name:
       - "fuzzel"
       - "rofi"
+      - "rofimoji"
       - "wofi"
   when: "ansible_system == 'Linux'"
