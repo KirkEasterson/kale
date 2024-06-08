@@ -1,4 +1,5 @@
 ---
+# TODO: enable `media.hardwaremediakeys.enabled` for firefox in `about:config`
 - name: "Install browsers"
   become: true
   vars:
