@@ -14,7 +14,7 @@
 - name: "Copy TLP conf file"
   become: true
   ansible.builtin.copy:
-    src: "files/tlp"
+    src: "files/tlp.conf"
     dest: "/etc/tlp.conf"
     mode: "644"
   when: "not tlp_conf.stat.exists or tlp_conf.stat.checksum != ansible_checksum"
