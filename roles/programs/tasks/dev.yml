@@ -107,6 +107,15 @@
       - "ocamlbuild"
       - "opam"
       - "{{ dune[ansible_facts['os_family']] }}"
+  register: "install_ocaml"
+
+- name: "Initialize opam"
+  become: true
+  become_user: "{{ remote_regular_user }}"
+  ansible.builtin.command:
+    cmd: "opam init -y"
+  when: "install_ocaml.changed"
+  changed_when: false
 
 - name: "Install JS/TS/node"
   become: true
