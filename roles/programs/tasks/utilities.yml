@@ -25,6 +25,21 @@
       - "homebrew/cask/nordvpn"
   when: "ansible_facts['os_family'] == 'Darwin'"
 
+- name: "Add current user to the nordvpn group"
+  become: true
+  ansible.builtin.user:
+    name: "{{ remote_regular_user }}"
+    groups: "nordvpn"
+    append: true
+
+- name: "Enable nordvpnd service"
+  become: true
+  become_user: "{{ remote_regular_user }}"
+  ansible.builtin.systemd_service:
+    state: "started"
+    name: "nordvpnd"
+    enabled: true
+
   # TODO: login in with key from vault
 - name: "Install password manager from AUR"
   become: true
