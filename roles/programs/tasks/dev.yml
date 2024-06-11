@@ -132,3 +132,10 @@
   ansible.builtin.package:
     name:
       - "molecule"
+
+# TODO: install opentofu too
+- name: "Install terraform"
+  become: true
+  ansible.builtin.package:
+    name:
+      - "terraform"
