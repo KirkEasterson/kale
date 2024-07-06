@@ -52,6 +52,7 @@
       - "emacs"
       - "neovide" # not in apt
       - "neovim"
+      - "qtcreator"
       - "vim"
       - "{{ vscode[ansible_facts['os_family']] }}"
       - "{{ intellij[ansible_facts['os_family']] }}"
