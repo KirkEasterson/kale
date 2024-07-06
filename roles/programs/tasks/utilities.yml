@@ -78,3 +78,11 @@
     name:
       - "{{ volumeicon[ansible_facts['os_family']] }}"
   when: "ansible_system == 'Linux'"
+
+- name: "Clipboard mangers"
+  become: true
+  ansible.builtin.package:
+    name:
+      - "wl-clipboard"
+      - "xcopy"
+  when: "ansible_system == 'Linux'"
