@@ -33,9 +33,17 @@
   ansible.builtin.systemd:
     name: "libvirtd"
     enabled: true
+    state: "started"
 
-# - name: "Autostart default virsh network"
-#   become: true
-#   ansible.builtin.command:
-#     cmd: "virsh net-autostart --network default"
-#   changed_when: false
+- name: "Enable virtlogd socket"
+  become: true
+  ansible.builtin.systemd:
+    name: "virtlogd.socket"
+    enabled: true
+    state: "started"
+
+- name: "Autostart default virsh network"
+  become: true
+  ansible.builtin.command:
+    cmd: "virsh net-autostart --network default"
+  changed_when: false
