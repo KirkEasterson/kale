@@ -47,21 +47,21 @@
     enabled: true
     state: "started"
 
-- name: "Insert 'timeshift-auto' if missing"
-  become: true
-  ansible.builtin.replace:
-    path: "/etc/systemd/system/grub-btrfsd.service"
-    regexp: "^(ExecStart=.*) /.snapshots$"
-    replace: "\\1 --timeshift-auto"
-  register: "timeshift_param"
+# - name: "Insert 'timeshift-auto' if missing"
+#   become: true
+#   ansible.builtin.replace:
+#     path: "/etc/systemd/system/grub-btrfsd.service"
+#     regexp: "^(ExecStart=.*) /.snapshots$"
+#     replace: "\\1 --timeshift-auto"
+#   register: "timeshift_param"
 
-- name: "Restart grub-btrfsd service" # noqa: no-handler
-  become: true
-  ansible.builtin.systemd:
-    name: "grub-btrfsd"
-    enabled: true
-    state: "restarted"
-  when: "timeshift_param.changed"
+# - name: "Restart grub-btrfsd service" # noqa: no-handler
+#   become: true
+#   ansible.builtin.systemd:
+#     name: "grub-btrfsd"
+#     enabled: true
+#     state: "restarted"
+#   when: "timeshift_param.changed"
 
 - name: "Update grub"
   become: true
