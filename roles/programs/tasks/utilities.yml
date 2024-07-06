@@ -32,13 +32,13 @@
     groups: "nordvpn"
     append: true
 
-- name: "Enable nordvpnd service"
-  become: true
-  become_user: "{{ remote_regular_user }}"
-  ansible.builtin.systemd_service:
-    state: "started"
-    name: "nordvpnd"
-    enabled: true
+# - name: "Enable nordvpnd service"
+#   become: true
+#   become_user: "{{ remote_regular_user }}"
+#   ansible.builtin.systemd_service:
+#     state: "started"
+#     name: "nordvpnd"
+#     enabled: true
 
   # TODO: login in with key from vault
 - name: "Install password manager from AUR"
