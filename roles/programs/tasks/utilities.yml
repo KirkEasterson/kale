@@ -84,7 +84,7 @@
   ansible.builtin.package:
     name:
       - "wl-clipboard"
-      - "xcopy"
+      - "xsel"
   when: "ansible_system == 'Linux'"
 
 - name: "Download managers"
