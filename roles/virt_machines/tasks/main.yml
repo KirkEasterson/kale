@@ -34,8 +34,8 @@
     name: "libvirtd"
     enabled: true
 
-- name: "Autostart default virsh network"
-  become: true
-  ansible.builtin.command:
-    cmd: "virsh net-autostart --network default"
-  changed_when: false
+# - name: "Autostart default virsh network"
+#   become: true
+#   ansible.builtin.command:
+#     cmd: "virsh net-autostart --network default"
+#   changed_when: false
