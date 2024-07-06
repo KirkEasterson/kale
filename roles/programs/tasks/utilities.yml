@@ -86,3 +86,10 @@
       - "wl-clipboard"
       - "xcopy"
   when: "ansible_system == 'Linux'"
+
+- name: "Download managers"
+  become: true
+  ansible.builtin.package:
+    name:
+      - "transmission-gtk"
+      - "transmission-cli"
