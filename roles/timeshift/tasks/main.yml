@@ -63,18 +63,18 @@
 #     state: "restarted"
 #   when: "timeshift_param.changed"
 
-- name: "Update grub"
-  become: true
-  become_user: "root"
-  ansible.builtin.command:
-    cmd: "grub-mkconfig -o /boot/grub/grub.cfg"
-  when: "ansible_facts['os_family'] != 'Suse' and (timeshift_param.changed or conf_updated.changed)"
-  changed_when: false
+# - name: "Update grub"
+#   become: true
+#   become_user: "root"
+#   ansible.builtin.command:
+#     cmd: "grub-mkconfig -o /boot/grub/grub.cfg"
+#   when: "ansible_facts['os_family'] != 'Suse' and (timeshift_param.changed or conf_updated.changed)"
+#   changed_when: false
 
-- name: "Update grub2"
-  become: true
-  become_user: "root"
-  ansible.builtin.command:
-    cmd: "grub2-mkconfig -o /boot/grub/grub.cfg"
-  when: "ansible_facts['os_family'] == 'Suse' and (timeshift_param.changed or conf_updated.changed)"
-  changed_when: false
+# - name: "Update grub2"
+#   become: true
+#   become_user: "root"
+#   ansible.builtin.command:
+#     cmd: "grub2-mkconfig -o /boot/grub/grub.cfg"
+#   when: "ansible_facts['os_family'] == 'Suse' and (timeshift_param.changed or conf_updated.changed)"
+#   changed_when: false
