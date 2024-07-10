@@ -4,6 +4,7 @@
   ansible.builtin.package:
     name:
       - "keychain"
+      - "ksshaskpass"
       - "openssh"
 
 - name: "Create ssh dir"
