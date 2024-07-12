@@ -99,3 +99,8 @@
   ansible.builtin.package:
     name:
       - "android-file-transfer"
+      - "android-tools"
+      - "android-udev"
+      - "gvfs"
+      - "gvfs-mtp"
+      - "libmtp"

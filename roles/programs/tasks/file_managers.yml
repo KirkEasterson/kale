@@ -7,9 +7,8 @@
       Debian: "pcmanfm"
   ansible.builtin.package:
     name:
-      - "udiskie"
       - "gvfs"
-      - "gvfs-mtp"
+      - "udiskie"
       - "{{ pcmanfm[ansible_facts['os_family']] }}"
   when: "ansible_system == 'Linux'"
 
