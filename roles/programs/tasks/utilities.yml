@@ -93,3 +93,9 @@
     name:
       - "transmission-gtk"
       - "transmission-cli"
+
+- name: "Android tools"
+  become: true
+  ansible.builtin.package:
+    name:
+      - "android-file-transfer"
