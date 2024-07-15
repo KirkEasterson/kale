@@ -85,6 +85,7 @@
     name:
       - "wl-clipboard"
       - "xsel"
+      - "xclip"
   when: "ansible_system == 'Linux'"
 
 - name: "Download managers"
