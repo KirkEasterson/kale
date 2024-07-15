@@ -151,3 +151,14 @@
   ansible.builtin.package:
     name:
       - "terraform"
+
+- name: "Install misc things"
+  become: true
+  ansible.builtin.package:
+    name:
+      - "composer"
+      - "julia"
+      - "php"
+      - "ruby"
+      - "tree-sitter"
+      - "tree-sitter-cli"
