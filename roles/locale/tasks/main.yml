@@ -45,3 +45,7 @@
   become: true
   ansible.builtin.command: "localectl set-locale LANG={{ config_system_locale }} LANGUAGE={{ config_system_language }}"
   changed_when: "locale_lang != config_system_locale or locale_language != config_system_language"
+
+- name: "Set timezone"
+  community.general.timezone:
+    name: "Europe/Oslo"
