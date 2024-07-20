@@ -3,6 +3,7 @@
   become: true
   ansible.builtin.package:
     name:
+      - "acpid"
       - "throttled"
       - "tlp"
 
@@ -25,6 +26,13 @@
   become: true
   ansible.builtin.systemd:
     name: "tlp"
+    state: "started"
+    enabled: true
+
+- name: "Enable acpid service"
+  become: true
+  ansible.builtin.systemd:
+    name: "acpid"
     state: "started"
     enabled: true
 
