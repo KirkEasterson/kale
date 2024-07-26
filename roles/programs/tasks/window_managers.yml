@@ -42,6 +42,7 @@
       - "swaylock"
       - "waybar"
       - "wf-recorder"
+      - "wlr-randr"
       - "xdg-desktop-portal-gnome"
       - "xdg-desktop-portal-gtk"
       - "xdg-desktop-portal-kde"
