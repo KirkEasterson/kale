@@ -22,8 +22,9 @@
   become: true
   ansible.builtin.package:
     name:
-      - "nsxiv"
       - "feh"
+      - "nsxiv"
+      - "ueberzug"
   when: "ansible_system == 'Linux'"
 
 - name: "Install video players"
