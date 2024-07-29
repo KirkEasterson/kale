@@ -39,6 +39,7 @@
   become: true
   ansible.builtin.package:
     name:
+      - "elisa"
       - "playerctl"
       - "rhythmbox"
   when: "ansible_system == 'Linux'"
