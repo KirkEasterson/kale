@@ -18,4 +18,14 @@ jobs:
     runs-on: "ubuntu-latest"
     steps:
       - uses: "actions/checkout@v4"
+
+      - name: "Install Ansible"
+        run: "sudo apt-get install -y ansible"
+
+      - name: "Install Ansible-Galaxy Requirements"
+        run: "ansible-galaxy install -r requirements.yaml"
+
+      - name: "List Installed Ansible-Galaxy Requirements"
+        run: "ansible-galaxy collection list"
+
       - uses: "ansible/ansible-lint@v24"
