@@ -112,7 +112,7 @@
       - "{{ dune[ansible_facts['os_family']] }}"
   register: "install_ocaml"
 
-- name: "Initialize opam"
+- name: "Initialize opam" # noqa: no-handler
   become: true
   become_user: "{{ remote_regular_user }}"
   ansible.builtin.command:
