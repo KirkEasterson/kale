@@ -144,6 +144,10 @@
         name: "locker"
       when: "ansible_system == 'Linux'"
 
+    - name: "QMK"
+      ansible.builtin.import_role:
+        name: "qmk"
+
     - name: "Programs"
       ansible.builtin.import_role:
         name: "programs"

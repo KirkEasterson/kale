@@ -1,0 +1,46 @@
+---
+- name: "Install qmk"
+  become: true
+  ansible.builtin.package:
+    name:
+      - "qmk"
+
+- name: "Install vial from AUR"
+  become: true
+  become_user: "{{ remote_regular_user }}"
+  kewlfft.aur.aur:
+    state: "present"
+    use: "yay"
+    name:
+      - "vial-appimage"
+  when: "ansible_facts['os_family'] == 'Archlinux'"
+
+- name: "Check if viia rules exists"
+  ansible.builtin.stat:
+    path: "/usr/lib/udev/rules.d/92-viia.rules"
+  register: "viia_conf"
+
+- name: "Copy viia udev rules"
+  become: true
+  ansible.builtin.copy:
+    src: "files/92-viia.rules"
+    dest: "/usr/lib/udev/rules.d/92-viia.rules"
+    mode: "644"
+  when: "not viia_conf.stat.exists or viia_conf.stat.checksum != ansible_checksum"
+  vars:
+    ansible_checksum: "{{ lookup('file', 'files/92-viia.rules') | checksum }}"
+
+- name: "Check if vial rules exists"
+  ansible.builtin.stat:
+    path: "/usr/lib/udev/rules.d/99-vial.rules"
+  register: "vial_conf"
+
+- name: "Copy vial udev rules"
+  become: true
+  ansible.builtin.copy:
+    src: "files/99-vial.rules"
+    dest: "/usr/lib/udev/rules.d/99-vial.rules"
+    mode: "644"
+  when: "not vial_conf.stat.exists or vial_conf.stat.checksum != ansible_checksum"
+  vars:
+    ansible_checksum: "{{ lookup('file', 'files/99-vial.rules') | checksum }}"
