@@ -3,6 +3,7 @@
   become: true
   ansible.builtin.package:
     name:
+      - "eog"
       - "evince"
       - "pdfarranger"
       - "xournalpp"
