@@ -61,6 +61,13 @@
       - "nwg-displays"
   when: "ansible_facts['os_family'] == 'Archlinux'"
 
+- name: "Install river"
+  become: true
+  ansible.builtin.package:
+    name:
+      - "river"
+  when: "ansible_system == 'Linux'"
+
 - name: "Install yabai from homebrew"
   community.general.homebrew:
     state: "present"
