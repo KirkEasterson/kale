@@ -40,6 +40,7 @@
       - "autorandr"
       - "xf86-input-libinput"
       - "xf86-input-synaptics"
+      - "xorg-xkbutils"
       - "{{ xorgserver[ansible_facts['os_family']] }}"
       - "{{ xinit[ansible_facts['os_family']] }}"
       - "{{ xhost[ansible_facts['os_family']] }}"
