@@ -46,26 +46,6 @@
     line: '\1 quiet"'
   when: "not quiet_param.found"
 
-- name: "Check if 'pstate' is configured in the boot command"
-  become: true
-  ansible.builtin.lineinfile:
-    backup: true
-    path: "/etc/default/grub"
-    regexp: '^GRUB_CMDLINE_LINUX=".*intel_pstate=disable'
-    state: "absent"
-  check_mode: true
-  register: "pstate_param"
-  changed_when: false
-
-- name: "Insert 'pstate' if missing"
-  become: true
-  ansible.builtin.lineinfile:
-    backrefs: true
-    path: "/etc/default/grub"
-    regexp: '^(GRUB_CMDLINE_LINUX=".*)"$'
-    line: '\1 intel_pstate=disable"'
-  when: "not pstate_param.found"
-
 - name: "Check if 'splash' is configured in the boot command"
   become: true
   ansible.builtin.lineinfile:
