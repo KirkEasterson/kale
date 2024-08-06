@@ -17,3 +17,10 @@
       - "xautolock"
       - "xss-lock"
   when: "ansible_system == 'Linux'"
+
+- name: "Add current user to the users group"
+  become: true
+  ansible.builtin.user:
+    name: "{{ remote_regular_user }}"
+    groups: "users"
+    append: true
