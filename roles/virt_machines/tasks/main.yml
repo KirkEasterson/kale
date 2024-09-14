@@ -38,6 +38,7 @@
     name: "libvirtd"
     enabled: true
     state: "started"
+  changed_when: false
 
 - name: "Enable virtlogd socket"
   become: true
