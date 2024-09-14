@@ -4,8 +4,10 @@
   ansible.builtin.package:
     name:
       - "acpid"
+      - "ethtool"
       - "throttled"
       - "tlp"
+      - "tlp-rdw"
 
 - name: "Check if TLP conf file exists"
   ansible.builtin.stat:
