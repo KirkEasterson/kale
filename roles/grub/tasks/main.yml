@@ -66,16 +66,32 @@
     line: '\1 splash"'
   when: "not splash_param.found"
 
+- name: "Check if 'intel pstate' is configured in the boot command"
+  become: true
+  ansible.builtin.lineinfile:
+    backup: true
+    path: "/etc/default/grub"
+    regexp: '^GRUB_CMDLINE_LINUX=".*intel_pstate=enable'
+    state: "absent"
+  check_mode: true
+  register: "intel_pstate_param"
+  changed_when: false
+
+- name: "Insert 'intel pstate' if missing"
+  become: true
+  ansible.builtin.lineinfile:
+    backrefs: true
+    path: "/etc/default/grub"
+    regexp: '^(GRUB_CMDLINE_LINUX=".*)"$'
+    line: '\1 intel_pstate=enable"'
+  when: "not intel_pstate_param.found"
+
 - name: "Update grub"
   become: true
   become_user: "root"
   ansible.builtin.command:
     cmd: "grub-mkconfig -o /boot/grub/grub.cfg"
-  when: "ansible_facts['os_family'] != 'Suse' and
-    (not grub_theme.changed or
-    grub_timeout.changed or
-    not quiet_param or
-    not splash_param)"
+  when: "ansible_facts['os_family'] != 'Suse' and (grub_theme.changed or grub_timeout.changed or not quiet_param.found or not splash_param.found or not intel_pstate_param.found)"
   changed_when: false
 
 - name: "Update grub2"
@@ -83,11 +99,7 @@
   become_user: "root"
   ansible.builtin.command:
     cmd: "grub2-mkconfig -o /boot/grub/grub.cfg"
-  when: "ansible_facts['os_family'] == 'Suse' and
-    (not grub_theme.changed or
-    grub_timeout.changed or
-    not quiet_param or
-    not splash_param)"
+  when: "ansible_facts['os_family'] == 'Suse' and (grub_theme.changed or grub_timeout.changed or not quiet_param.found or not splash_param.found or not intel_pstate_param.found)"
   changed_when: false
 # # TODO: figure out the arch equivalent for this
 # - name: Update initramfs
