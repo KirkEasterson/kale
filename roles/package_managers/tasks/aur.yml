@@ -9,8 +9,8 @@
 - name: "Clone yay repo" # noqa: latest[git]
   become: true
   ansible.builtin.git:
-    repo: "https://aur.archlinux.org/yay-git.git"
-    dest: "/opt/yay-git"
+    repo: "https://aur.archlinux.org/yay.git"
+    dest: "/opt/yay"
     depth: 1
   when: "yay_exists.rc != 0"
   changed_when: false
@@ -18,7 +18,7 @@
 - name: "Change permission on yay repo"
   become: true
   ansible.builtin.file:
-    path: "/opt/yay-git"
+    path: "/opt/yay"
     owner: "{{ ansible_user_id }}"
     group: "{{ ansible_user_id }}"
     recurse: true
@@ -28,7 +28,7 @@
   ansible.builtin.command:
     cmd: "makepkg -si --noconfirm"
   args:
-    chdir: "/opt/yay-git/"
+    chdir: "/opt/yay/"
   when: "yay_exists.rc != 0"
   changed_when: false
 
