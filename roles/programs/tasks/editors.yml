@@ -76,6 +76,7 @@
     state: "present"
     name:
       - "biber"
+      - "rubber"
       - "texlive-latex"
       - "texlive-latexextra"
       - "texlive-latexrecommended"
@@ -89,6 +90,7 @@
   ansible.builtin.apt:
     install_recommends: false
     name:
+      - "rubber"
       - "texlive-base"
       - "texlive-bibtex-extra"
       - "texlive-extra-utils"
@@ -108,5 +110,6 @@
   community.general.homebrew:
     state: "present"
     name:
+      - "rubber"
       - "texlive"
   when: "ansible_facts['os_family'] == 'Darwin'"
