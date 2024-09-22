@@ -25,7 +25,8 @@
     name:
       - "feh"
       - "nsxiv"
-      - "ueberzug"
+      - "openslide"
+      - "ueberzugpp"
   when: "ansible_system == 'Linux'"
 
 - name: "Install video players"
