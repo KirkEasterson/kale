@@ -12,8 +12,19 @@
       - "{{ pcmanfm[ansible_facts['os_family']] }}"
   when: "ansible_system == 'Linux'"
 
-- name: "Install ranger"
+- name: "Install TUI file managers"
   become: true
   ansible.builtin.package:
     name:
       - "ranger"
+      - "yazi"
+
+- name: "Install TUI file manager tools"
+  become: true
+  become_user: "{{ remote_regular_user }}"
+  kewlfft.aur.aur:
+    state: "present"
+    use: "yay"
+    name:
+      - "dragon-drop"
+  when: "ansible_facts['os_family'] == 'Archlinux'"
