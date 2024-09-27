@@ -49,7 +49,23 @@ if [[ "$yn" == "y" ]]; then
 	esac
 fi
 
-KALE_DIR=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" &>/dev/null && pwd)
+DEFAULT_KALE_DIR="${HOME}/kale"
+SCRIPT_DIR=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" &>/dev/null && pwd)
+
+if [ -d "${SCRIPT_DIR}/.git" ]; then
+	# assume that it is kale
+	KALE_DIR="$SCRIPT_DIR"
+else
+	if [ ! -d "$DEFAULT_KALE_DIR" ]; then
+		git clone --depth 1 https://github.com/KirkEasterson/kale.git "$DEFAULT_KALE_DIR"
+	elif [ ! -d "${DEFAULT_KALE_DIR}/.git" ]; then
+		echo "Default KALE directory already exists, and it isn't a git repo"
+		exit 1
+	fi
+
+	KALE_DIR="$DEFAULT_KALE_DIR"
+fi
+
 cd "$KALE_DIR"
 
 if [[ -f "$KALE_DIR/requirements.yml" ]]; then
