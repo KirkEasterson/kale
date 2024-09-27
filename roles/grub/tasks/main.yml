@@ -91,7 +91,9 @@
   become_user: "root"
   ansible.builtin.command:
     cmd: "grub-mkconfig -o /boot/grub/grub.cfg"
-  when: "ansible_facts['os_family'] != 'Suse' and (grub_theme.changed or grub_timeout.changed or not quiet_param.found or not splash_param.found or not intel_pstate_param.found)"
+  when:
+    "ansible_facts['os_family'] != 'Suse' and (grub_theme.changed or grub_timeout.changed or not quiet_param.found or
+    not splash_param.found or not intel_pstate_param.found)"
   changed_when: false
 
 - name: "Update grub2"
@@ -99,8 +101,11 @@
   become_user: "root"
   ansible.builtin.command:
     cmd: "grub2-mkconfig -o /boot/grub/grub.cfg"
-  when: "ansible_facts['os_family'] == 'Suse' and (grub_theme.changed or grub_timeout.changed or not quiet_param.found or not splash_param.found or not intel_pstate_param.found)"
+  when:
+    "ansible_facts['os_family'] == 'Suse' and (grub_theme.changed or grub_timeout.changed or not quiet_param.found or
+    not splash_param.found or not intel_pstate_param.found)"
   changed_when: false
+
 # # TODO: figure out the arch equivalent for this
 # - name: Update initramfs
 #   become: true

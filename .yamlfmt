@@ -4,3 +4,4 @@ formatter:
   type: basic
   retain_line_breaks: true
   include_document_start: true
+  max_line_length: 120
