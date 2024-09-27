@@ -48,7 +48,7 @@
   register: "gh_cli"
 
 - name: "Login to GH cli"
-  ansible.builtin.shell:
+  ansible.builtin.command:
     cmd: "gh auth login --with-token"
     stdin: "{{ github_access_token }}"
   when: "gh_cli.changed"
