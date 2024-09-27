@@ -1,16 +1,9 @@
 ---
-# TODO: log into github cli with token
 - name: "Install git and git tools"
   become: true
-  vars:
-    gh:
-      Archlinux: "github-cli"
-      Debian: "gh"
-      Suse: "gh"
-      Darwin: "gh"
   ansible.builtin.package:
     name:
+      - "difftastic"
       - "git"
       - "git-delta"
-      - "difftastic"
-      - "{{ gh[ansible_facts['os_family']] }}"
+      - "lazygit"
