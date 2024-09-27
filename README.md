@@ -31,10 +31,14 @@ The only prerequisite is Ansible.
 ```sh
 # debian
 sudo apt install ansible
+```
 
+```sh
 # arch
 sudo pacman -Sy ansible
+```
 
+```sh
 # macos
 brew install ansible
 ```
