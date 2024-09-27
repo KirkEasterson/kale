@@ -26,8 +26,17 @@
       - "feh"
       - "nsxiv"
       - "openslide"
-      - "ueberzugpp"
   when: "ansible_system == 'Linux'"
+
+- name: "Install image viewers from AUR"
+  become: true
+  become_user: "{{ remote_regular_user }}"
+  kewlfft.aur.aur:
+    state: "present"
+    use: "yay"
+    name:
+      - "ueberzugpp"
+  when: "ansible_facts['os_family'] == 'Archlinux'"
 
 - name: "Install video players"
   become: true
