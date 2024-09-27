@@ -3,10 +3,6 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <a href="https://github.com/kirkeasterson/kale">
-    <img src="img/screenshot.png" alt="Logo">
-  </a>
-
 <h3 align="center">Kirk's Automated Linux Environment (KALE)</h3>
 
   <p align="center">
