@@ -72,7 +72,7 @@ The only advice I have now is to read the configs and figure it out yourself.
 
 ## Roadmap
 
-- [ ] Bootstrap necessary installions in `install.sh`
+- [ ] Bootstrap necessary installations in `install.sh`
   - [ ] brew (if on mac)
   - [ ] ansible (package manager independent)
 - [ ] Add support for multiple linux distributions
@@ -82,4 +82,3 @@ The only advice I have now is to read the configs and figure it out yourself.
 - [x] Add support for macos
 - [ ] Implement molecule for testing the bootstrap playbook
 - [ ] Add flags for enabling features (for personal and testing usages)
-  - [ ] Upload keys to github
