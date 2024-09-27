@@ -51,5 +51,5 @@
   ansible.builtin.command:
     cmd: "gh auth login --with-token"
     stdin: "{{ github_access_token }}"
-  when: "gh_cli.changed"
+  when: "gh_cli.changed" # noqa: no-handler
   changed_when: false
