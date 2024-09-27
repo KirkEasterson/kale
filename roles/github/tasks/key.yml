@@ -52,3 +52,4 @@
     cmd: "gh auth login --with-token"
     stdin: "{{ github_access_token }}"
   when: "gh_cli.changed"
+  changed_when: false
