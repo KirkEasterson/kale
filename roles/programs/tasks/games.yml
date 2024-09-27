@@ -1,5 +1,5 @@
 ---
-- name: "Install game clients from pacman"
+- name: "Install game clients"
   become: true
   ansible.builtin.package:
     name:
@@ -29,3 +29,12 @@
       - "homebrew/cask/steam"
       - "minetest"
   when: "ansible_facts['os_family'] == 'Darwin'"
+
+- name: "Install video drivers"
+  become: true
+  ansible.builtin.package:
+    name:
+      - "lib32-vulkan-nouveau"
+      - "vulkan-nouveau"
+      - "xf86-video-nouveau"
+  when: "ansible_system == 'Linux'"
