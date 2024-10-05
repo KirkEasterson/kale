@@ -78,6 +78,7 @@
   ansible.builtin.package:
     name:
       - "python3"
+      - "python-virtualenv"
 
 - name: "Install java/kotlin"
   become: true
