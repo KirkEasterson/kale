@@ -8,6 +8,9 @@
       - "minetest-common"
       - "minetest-server"
       - "steam"
+      - "wine"
+      - "wine-mono"
+      - "winetricks"
   when: "ansible_system == 'Linux'"
 
 - name: "Install game clients from AUR"
