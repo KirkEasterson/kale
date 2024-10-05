@@ -8,6 +8,10 @@
   ansible.builtin.package:
     name:
       - "gvfs"
+      - "gvfs-google"
+      - "gvfs-mtp"
+      - "gvfs-smb"
+      - "gvfs-wsdd"
       - "udiskie"
       - "{{ pcmanfm[ansible_facts['os_family']] }}"
   when: "ansible_system == 'Linux'"
