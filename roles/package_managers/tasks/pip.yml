@@ -6,6 +6,7 @@
     name:
       - "python"
       - "python-pip"
+      - "python-pipx"
   when: "ansible_facts['os_family'] == 'Archlinux'"
 
 - name: "Install pip from apt"
