@@ -57,6 +57,7 @@
     cmd: "gh auth login --with-token"
     stdin: "{{ github_access_token }}"
   when: "gh_status.rc != 0"
+  changed_when: false
 
 - name: "Check gh extensions"
   ansible.builtin.command: "gh extension list"
@@ -68,3 +69,4 @@
   ansible.builtin.command:
     cmd: "gh extension install dlvhdr/gh-dash"
   when: "'gh-dash' not in gh_extensions.stdout"
+  changed_when: false
