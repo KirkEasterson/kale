@@ -45,11 +45,26 @@
   ansible.builtin.package:
     name:
       - "{{ gh[ansible_facts['os_family']] }}"
-  register: "gh_cli"
+
+- name: "Check if logged into gh cli"
+  ansible.builtin.command: "gh auth status"
+  register: "gh_status"
+  changed_when: false
+  failed_when: false
 
 - name: "Login to GH cli"
   ansible.builtin.command:
     cmd: "gh auth login --with-token"
     stdin: "{{ github_access_token }}"
-  when: "gh_cli.changed" # noqa: no-handler
+  when: "gh_status.rc != 0"
+
+- name: "Check gh extensions"
+  ansible.builtin.command: "gh extension list"
+  register: "gh_extensions"
   changed_when: false
+  ignore_errors: true
+
+- name: "Install gh-dash"
+  ansible.builtin.command:
+    cmd: "gh extension install dlvhdr/gh-dash"
+  when: "'gh-dash' not in gh_extensions.stdout"
