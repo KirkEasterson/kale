@@ -1,79 +1,40 @@
 ---
 # https://macos-defaults.com/dock/
 
-# defaults write com.apple.dock "autohide" -bool "true"
-- name: "Set dock to autohide"
+- name: "Set desktop settings"
   community.general.osx_defaults:
     domain: "com.apple.dock"
-    key: "autohide"
-    type: "bool"
-    value: true
+    key: "{{ item.key }}"
+    type: "{{ item.type }}"
+    value: "{{ item.value }}"
     state: "present"
+  loop:
+    # set dock to autohide
+    - { key: "autohide", type: "bool", value: true }
 
-# defaults write com.apple.dock "autohide-time-modifier" -float "0"
-- name: "Set dock animation time to 0"
-  community.general.osx_defaults:
-    domain: "com.apple.dock"
-    key: "autohide-time-modifier"
-    type: "float"
-    value: 0
-    state: "present"
+    # set dock animation time to 0
+    - { key: "autohide-time-modifier", type: "float", value: 0 }
 
-# defaults write com.apple.dock "autohide-delay" -float "0"
-- name: "Set dock autohide delay to 0"
-  community.general.osx_defaults:
-    domain: "com.apple.dock"
-    key: "autohide-delay"
-    type: "float"
-    value: 0
-    state: "present"
+    # set dock autohide delay to 0
+    - { key: "autohide-delay", type: "float", value: 0 }
 
-# defaults write com.apple.dock "orientation" -string "left"
-- name: "Set dock to left side"
-  community.general.osx_defaults:
-    domain: "com.apple.dock"
-    key: "orientation"
-    type: "string"
-    value: "left"
-    state: "present"
+    # set dock to left side
+    - { key: "orientation", type: "string", value: "left" }
 
-# defaults write com.apple.dock "show-recents" -bool "false"
-- name: "Remove recents from dock"
-  community.general.osx_defaults:
-    domain: "com.apple.dock"
-    key: "show-recents"
-    type: "bool"
-    value: false
-    state: "present"
+    # remove recents from dock
+    - { key: "show-recents", type: "bool", value: false }
 
-# defaults write com.apple.dock "mineffect" -string "suck"
-- name: "Set dock animation to suck"
-  community.general.osx_defaults:
-    domain: "com.apple.dock"
-    key: "mineffect"
-    type: "string"
-    value: "suck"
-    state: "present"
+    # set dock animation to suck
+    - { key: "mineffect", type: "string", value: "suck" }
 
-# defaults write com.apple.dock "static-only" -bool "false"
-- name: "Don't show only active applications"
-  community.general.osx_defaults:
-    domain: "com.apple.dock"
-    key: "static-only"
-    type: "bool"
-    value: false
-    state: "present"
+    # don't show only active applications
+    - { key: "static-only", type: "bool", value: false }
 
-# defaults write com.apple.dock "scroll-to-open" -bool "false"
-- name: "Disable scroll to expose app"
-  community.general.osx_defaults:
-    domain: "com.apple.dock"
-    key: "scroll-to-open"
-    type: "bool"
-    value: false
-    state: "present"
+    # disable scroll to expose app
+    - { key: "scroll-to-open", type: "bool", value: false }
+  register: "dock_settings"
 
-# NOTE: always do this last
 - name: "Restart dock"
   ansible.builtin.command: "killall Dock"
   changed_when: false
+  when: "dock_settings.changed"
