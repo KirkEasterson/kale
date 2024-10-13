@@ -17,10 +17,15 @@
 
 - name: "Install CLI tools"
   become: true
+  vars:
+    bat:
+      Archlinux: "bat"
+      Debian: "batcat"
+      Suse: "bat"
+      Darwin: "bat"
   ansible.builtin.package:
     name:
       - "asciiquarium"
-      - "bat"
       - "bc" # needed for some scripts
       - "btop"
       - "catimg"
@@ -47,3 +52,12 @@
       - "tmuxp"
       - "tree"
       - "wget"
+      - "{{ bat[ansible_facts['os_family']] }}"
+
+- name: "Create symlink for bat"
+  ansible.builtin.file:
+    src: "/usr/bin/batcat"
+    dest: "/usr/bin/bat"
+    state: "link"
+    force: false
+  when: "ansible_facts['os_family'] == 'Debian'"
