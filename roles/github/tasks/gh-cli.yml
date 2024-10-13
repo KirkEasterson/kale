@@ -1,0 +1,37 @@
+---
+- name: "Install gh cli"
+  become: true
+  vars:
+    gh:
+      Archlinux: "github-cli"
+      Debian: "gh"
+      Suse: "gh"
+      Darwin: "gh"
+  ansible.builtin.package:
+    name:
+      - "{{ gh[ansible_facts['os_family']] }}"
+
+- name: "Check if logged into gh cli"
+  ansible.builtin.command: "gh auth status"
+  register: "gh_status"
+  changed_when: false
+  failed_when: false
+
+- name: "Login to GH cli"
+  ansible.builtin.command:
+    cmd: "gh auth login --with-token"
+    stdin: "{{ github_access_token }}"
+  when: "gh_status.rc != 0"
+  changed_when: false
+
+- name: "Check gh extensions"
+  ansible.builtin.command: "gh extension list"
+  register: "gh_extensions"
+  changed_when: false
+  ignore_errors: true
+
+- name: "Install gh-dash"
+  ansible.builtin.command:
+    cmd: "gh extension install dlvhdr/gh-dash"
+  when: "'gh-dash' not in gh_extensions.stdout"
+  changed_when: false

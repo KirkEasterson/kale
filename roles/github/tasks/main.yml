@@ -6,3 +6,7 @@
 - name: "Git"
   ansible.builtin.import_tasks:
     file: "git.yml"
+
+- name: "GH CLI"
+  ansible.builtin.import_tasks:
+    file: "gh-cli.yml"
