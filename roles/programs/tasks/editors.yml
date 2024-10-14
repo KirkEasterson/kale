@@ -50,7 +50,7 @@
       Darwin: "intellij"
   ansible.builtin.package:
     name:
-      - "emacs"
+      - "emacs-nativecomp"
       - "neovide" # not in apt
       - "neovim"
       - "qtcreator"
