@@ -10,28 +10,44 @@
     state: "present"
   loop:
     # set dock to autohide
-    - { key: "autohide", type: "bool", value: true }
+    - key: "autohide"
+      type: "bool"
+      value: true
 
     # set dock animation time to 0
-    - { key: "autohide-time-modifier", type: "float", value: 0 }
+    - key: "autohide-time-modifier"
+      type: "float"
+      value: 0
 
     # set dock autohide delay to 0
-    - { key: "autohide-delay", type: "float", value: 0 }
+    - key: "autohide-delay"
+      type: "float"
+      value: 0
 
     # set dock to left side
-    - { key: "orientation", type: "string", value: "left" }
+    - key: "orientation"
+      type: "string"
+      value: "left"
 
     # remove recents from dock
-    - { key: "show-recents", type: "bool", value: false }
+    - key: "show-recents"
+      type: "bool"
+      value: false
 
     # set dock animation to suck
-    - { key: "mineffect", type: "string", value: "suck" }
+    - key: "mineffect"
+      type: "string"
+      value: "suck"
 
     # don't show only active applications
-    - { key: "static-only", type: "bool", value: false }
+    - key: "static-only"
+      type: "bool"
+      value: false
 
     # disable scroll to expose app
-    - { key: "scroll-to-open", type: "bool", value: false }
+    - key: "scroll-to-open"
+      type: "bool"
+      value: false
   register: "dock_settings"
 
 - name: "Restart dock"

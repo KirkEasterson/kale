@@ -10,10 +10,14 @@
     state: "present"
   loop:
     # - enable flash date separators
-    - { key: "FlashDateSeparators", type: "bool", value: true }
+    - key: "FlashDateSeparators"
+      type: "bool"
+      value: true
 
     # change date format
-    - { key: "DateFormat", type: "string", value: "\"EEE MMM d HH:mm:ss\"" }
+    - key: "DateFormat"
+      type: "string"
+      value: "\"EEE MMM d HH:mm:ss\""
   register: "menubar_settings"
 
 - name: "Restart SystemUIServer"

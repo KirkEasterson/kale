@@ -9,18 +9,32 @@
     value: "{{ item.value }}"
     state: "present"
   loop:
-
     # disable music song notifications
-    - { domain: "com.apple.Music", key: "userWantsPlaybackNotifications", type: "bool", value: false }
+    - domain: "com.apple.Music"
+      key: "userWantsPlaybackNotifications"
+      type: "bool"
+      value: false
 
     # disable application quarantine message
-    - { domain: "com.apple.LaunchServices", key: "LSQuarantine", type: "bool", value: false }
+    - domain: "com.apple.LaunchServices"
+      key: "LSQuarantine"
+      type: "bool"
+      value: false
 
     # disable press-and-hold
-    - { domain: "NSGlobalDomain", key: "ApplePressAndHoldEnabled", type: "bool", value: false }
+    - domain: "NSGlobalDomain"
+      key: "ApplePressAndHoldEnabled"
+      type: "bool"
+      value: false
 
     # enable function keys as intended
-    - { domain: "NSGlobalDomain", key: "com.apple.keyboard.fnState", type: "bool", value: true }
+    - domain: "NSGlobalDomain"
+      key: "com.apple.keyboard.fnState"
+      type: "bool"
+      value: true
 
     # enable dark mode
-    - { domain: "NSGlobalDomain", key: "NSRequiresAquaSystemAppearance", type: "bool", value: true }
+    - domain: "NSGlobalDomain"
+      key: "NSRequiresAquaSystemAppearance"
+      type: "bool"
+      value: true

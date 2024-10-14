@@ -9,13 +9,19 @@
     state: "present"
   loop:
     # disable desktop icons
-    - { key: "CreateDesktop", type: "bool", value: false }
+    - key: "CreateDesktop"
+      type: "bool"
+      value: false
 
     # disable external disk icons
-    - { key: "ShowExternalHardDrivesOnDesktop", type: "bool", value: false }
+    - key: "ShowExternalHardDrivesOnDesktop"
+      type: "bool"
+      value: false
 
     # disable removable media icons
-    - { key: "ShowRemovableMediaOnDesktop", type: "bool", value: false }
+    - key: "ShowRemovableMediaOnDesktop"
+      type: "bool"
+      value: false
   register: "desktop_settings"
 
 - name: "Restart Finder"

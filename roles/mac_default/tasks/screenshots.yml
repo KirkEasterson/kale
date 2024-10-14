@@ -10,19 +10,29 @@
     state: "present"
   loop:
     # disable shadow
-    - { key: "disable-shadow", type: "bool", value: true }
+    - key: "disable-shadow"
+      type: "bool"
+      value: true
 
     # include date in filename
-    - { key: "include-date", type: "bool", value: true }
+    - key: "include-date"
+      type: "bool"
+      value: true
 
     # change screenshot save location
-    - { key: "location", type: "string", value: "{{ screenshots_path }}" }
+    - key: "location"
+      type: "string"
+      value: "{{ screenshots_path }}"
 
     # disable screenshot thumbnail
-    - { key: "show-thumbnail", type: "bool", value: "false" }
+    - key: "show-thumbnail"
+      type: "bool"
+      value: "false"
 
     # set screenshot file type to png
-    - { key: "type", type: "string", value: "png" }
+    - key: "type"
+      type: "string"
+      value: "png"
   register: "screenshot_settings"
 
 - name: "Restart system UI"

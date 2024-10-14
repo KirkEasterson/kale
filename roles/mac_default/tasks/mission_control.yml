@@ -10,7 +10,9 @@
     state: "present"
   loop:
     # disable re-arranging workspaces by most recent use
-    - { key: "mru-spaces", type: "bool", value: false }
+    - key: "mru-spaces"
+      type: "bool"
+      value: false
   register: "mc_dock_settings"
 
 - name: "Restart Finder"
@@ -27,7 +29,9 @@
     state: "present"
   loop:
     # enable separate spaces for displays
-    - { key: "spans-displays", type: "bool", value: true }
+    - key: "spans-displays"
+      type: "bool"
+      value: true
   register: "mc_space_settings"
 
 - name: "Restart SystemUIServer"
