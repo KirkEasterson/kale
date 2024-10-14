@@ -8,7 +8,7 @@
     value: "{{ item.value }}"
     state: "present"
   loop:
-    # - disable desktop icons
+    # disable desktop icons
     - { key: "CreateDesktop", type: "bool", value: false }
 
     # disable external disk icons

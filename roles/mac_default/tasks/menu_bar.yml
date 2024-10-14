@@ -1,25 +1,22 @@
 ---
 # https://macos-defaults.com/menubar/
 
-# defaults write com.apple.menuextra.clock "FlashDateSeparators" -bool "true"
-- name: "Enable flash date separators"
+- name: "Set menu-bar settings"
   community.general.osx_defaults:
     domain: "com.apple.menuextra.clock"
-    key: "FlashDateSeparators"
-    type: "bool"
-    value: true
+    key: "{{ item.key }}"
+    type: "{{ item.type }}"
+    value: "{{ item.value }}"
     state: "present"
+  loop:
+    # - enable flash date separators
+    - { key: "FlashDateSeparators", type: "bool", value: true }
 
-# defaults write com.apple.menuextra.clock "DateFormat" -string "\"EEE d MMM HH:mm:ss\""
-- name: "Change date format"
-  community.general.osx_defaults:
-    domain: "com.apple.menuextra.clock"
-    key: "DateFormat"
-    type: "string"
-    value: "\"EEE MMM d HH:mm:ss\""
-    state: "present"
+    # change date format
+    - { key: "DateFormat", type: "string", value: "\"EEE MMM d HH:mm:ss\"" }
+  register: "menubar_settings"
 
-# NOTE: always do this last
 - name: "Restart SystemUIServer"
   ansible.builtin.command: "killall SystemUIServer"
   changed_when: false
+  when: "menubar_settings.changed"

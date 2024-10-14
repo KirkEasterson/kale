@@ -1,7 +1,6 @@
 ---
 # https://macos-defaults.com/safari/
 
-# defaults write com.apple.Safari "ShowFullURLInSmartSearchField" -bool "true" && killall Safari
 - name: "Show full url"
   community.general.osx_defaults:
     domain: "com.apple.Safari"
@@ -9,8 +8,9 @@
     type: "bool"
     value: true
     state: "present"
+  register: "safari"
 
-# NOTE: always do this last
 - name: "Restart Safari"
   ansible.builtin.command: "killall Safari"
   changed_when: false
+  when: "safari.changed"

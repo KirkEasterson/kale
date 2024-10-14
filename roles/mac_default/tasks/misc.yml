@@ -1,46 +1,26 @@
 ---
 # https://macos-defaults.com/misc/
 
-# defaults write com.apple.Music "userWantsPlaybackNotifications" -bool "false"
-- name: "Disable music song notifications"
+- name: "Set misc settings"
   community.general.osx_defaults:
-    domain: "com.apple.Music"
-    key: "userWantsPlaybackNotifications"
-    type: "bool"
-    value: false
+    domain: "{{ item.domain }}"
+    key: "{{ item.key }}"
+    type: "{{ item.type }}"
+    value: "{{ item.value }}"
     state: "present"
+  loop:
 
-# defaults write com.apple.LaunchServices "LSQuarantine" -bool "false"
-- name: "Disable application quarantine message"
-  community.general.osx_defaults:
-    domain: "com.apple.LaunchServices"
-    key: "LSQuarantine"
-    type: "bool"
-    value: false
-    state: "present"
+    # disable music song notifications
+    - { domain: "com.apple.Music", key: "userWantsPlaybackNotifications", type: "bool", value: false }
 
-# defaults write NSGlobalDomain "ApplePressAndHoldEnabled" -bool "false"
-- name: "Disable press-and-hold"
-  community.general.osx_defaults:
-    domain: "NSGlobalDomain"
-    key: "ApplePressAndHoldEnabled"
-    type: "bool"
-    value: false
-    state: "present"
+    # disable application quarantine message
+    - { domain: "com.apple.LaunchServices", key: "LSQuarantine", type: "bool", value: false }
 
-# defaults write NSGlobalDomain com.apple.keyboard.fnState -bool true
-- name: "Enable function keys as intended"
-  community.general.osx_defaults:
-    domain: "NSGlobalDomain"
-    key: "com.apple.keyboard.fnState"
-    type: "bool"
-    value: true
-    state: "present"
+    # disable press-and-hold
+    - { domain: "NSGlobalDomain", key: "ApplePressAndHoldEnabled", type: "bool", value: false }
 
-# defaults write -g NSRequiresAquaSystemAppearance -bool true
-- name: "Enable dark mode"
-  community.general.osx_defaults:
-    key: "NSRequiresAquaSystemAppearance"
-    type: "bool"
-    value: true
-    state: "present"
+    # enable function keys as intended
+    - { domain: "NSGlobalDomain", key: "com.apple.keyboard.fnState", type: "bool", value: true }
+
+    # enable dark mode
+    - { domain: "NSGlobalDomain", key: "NSRequiresAquaSystemAppearance", type: "bool", value: true }
