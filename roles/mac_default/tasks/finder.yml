@@ -10,68 +10,52 @@
     state: "present"
   loop:
     # show file extensions
-    - {
-        domain: "com.apple.finder",
-        key: "ShowPathBar",
-        type: "bool",
-        value: true,
-      }
+    - domain: "com.apple.finder"
+      key: "ShowPathBar"
+      type: "bool"
+      value: true
 
     # show path bar
-    - {
-        domain: "NSGlobalDomain",
-        key: "AppleShowAllExtensions",
-        type: "bool",
-        value: true,
-      }
+    - domain: "NSGlobalDomain"
+      key: "AppleShowAllExtensions"
+      type: "bool"
+      value: true
 
     # set column view
-    - {
-        domain: "com.apple.finder",
-        key: "FXPreferredViewStyle",
-        type: "string",
-        value: "clmv",
-      }
+    - domain: "com.apple.finder"
+      key: "FXPreferredViewStyle"
+      type: "string"
+      value: "clmv"
 
     # keep folders on top
-    - {
-        domain: "com.apple.finder",
-        key: "FXSortFoldersFirst",
-        type: "bool",
-        value: true,
-      }
+    - domain: "com.apple.finder"
+      key: "FXSortFoldersFirst"
+      type: "bool"
+      value: true
 
     # disable file extension change warning
-    - {
-        domain: "com.apple.finder",
-        key: "FXEnableExtensionChangeWarning",
-        type: "bool",
-        value: false,
-      }
+    - domain: "com.apple.finder"
+      key: "FXEnableExtensionChangeWarning"
+      type: "bool"
+      value: false
 
     # save to disk instead of icloud
-    - {
-        domain: "NSGlobalDomain",
-        key: "NSDocumentSaveNewDocumentsToCloud",
-        type: "bool",
-        value: false,
-      }
+    - domain: "NSGlobalDomain"
+      key: "NSDocumentSaveNewDocumentsToCloud"
+      type: "bool"
+      value: false
 
     # disable toolbar title delay
-    - {
-        domain: "NSGlobalDomain",
-        key: "NSToolbarTitleViewRolloverDelay",
-        type: "float",
-        value: 0,
-      }
+    - domain: "NSGlobalDomain"
+      key: "NSToolbarTitleViewRolloverDelay"
+      type: "float"
+      value: 0
 
     # set sidebar icon size
-    - {
-        domain: "NSGlobalDomain",
-        key: "NSTableViewDefaultSizeMode",
-        type: "int",
-        value: 1,
-      }
+    - domain: "NSGlobalDomain"
+      key: "NSTableViewDefaultSizeMode"
+      type: "int"
+      value: 1
   register: "finder_settings"
 
 - name: "Restart Finder"

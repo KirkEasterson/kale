@@ -17,3 +17,8 @@ rules:
   truthy:
     allowed-values: ["true", "false"]
     check-keys: true
+  braces:
+	min-spaces: 2
+	max-spaces: 2
+	min-spaces-inside-empty: 0
+	max-spaces-inside-empty: 1
