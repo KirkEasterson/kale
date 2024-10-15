@@ -22,9 +22,4 @@
     - key: "ShowRemovableMediaOnDesktop"
       type: "bool"
       value: false
-  register: "desktop_settings"
-
-- name: "Restart Finder"
-  ansible.builtin.command: "killall Finder"
-  changed_when: false
-  when: "desktop_settings.changed"
+  notify: "Restart Finder"

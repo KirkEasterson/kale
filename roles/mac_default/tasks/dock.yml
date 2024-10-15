@@ -48,9 +48,4 @@
     - key: "scroll-to-open"
       type: "bool"
       value: false
-  register: "dock_settings"
-
-- name: "Restart dock"
-  ansible.builtin.command: "killall Dock"
-  changed_when: false
-  when: "dock_settings.changed"
+  notify: "Restart dock"

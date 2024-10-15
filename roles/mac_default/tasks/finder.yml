@@ -56,9 +56,4 @@
       key: "NSTableViewDefaultSizeMode"
       type: "int"
       value: 1
-  register: "finder_settings"
-
-- name: "Restart Finder"
-  ansible.builtin.command: "killall Finder"
-  changed_when: false
-  when: "finder_settings.changed"
+  notify: "Restart Finder"

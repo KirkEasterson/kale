@@ -33,9 +33,4 @@
     - key: "type"
       type: "string"
       value: "png"
-  register: "screenshot_settings"
-
-- name: "Restart system UI"
-  ansible.builtin.command: "killall SystemUIServer"
-  changed_when: false
-  when: "screenshot_settings.changed"
+  notify: "Restart SystemUIServer"

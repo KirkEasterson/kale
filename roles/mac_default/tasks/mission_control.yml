@@ -32,9 +32,4 @@
     - key: "spans-displays"
       type: "bool"
       value: true
-  register: "mc_space_settings"
-
-- name: "Restart SystemUIServer"
-  ansible.builtin.command: "killall SystemUIServer"
-  changed_when: false
-  when: "mc_space_settings.changed"
+  notify: "Restart SystemUIServer"

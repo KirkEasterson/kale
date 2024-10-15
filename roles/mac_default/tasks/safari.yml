@@ -8,9 +8,4 @@
     type: "bool"
     value: true
     state: "present"
-  register: "safari"
-
-- name: "Restart Safari"
-  ansible.builtin.command: "killall Safari"
-  changed_when: false
-  when: "safari.changed"
+  notify: "Restart Safari"

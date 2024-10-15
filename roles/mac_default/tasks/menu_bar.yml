@@ -18,9 +18,4 @@
     - key: "DateFormat"
       type: "string"
       value: "\"EEE MMM d HH:mm:ss\""
-  register: "menubar_settings"
-
-- name: "Restart SystemUIServer"
-  ansible.builtin.command: "killall SystemUIServer"
-  changed_when: false
-  when: "menubar_settings.changed"
+  notify: "Restart SystemUIServer"
