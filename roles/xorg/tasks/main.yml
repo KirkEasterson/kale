@@ -77,3 +77,18 @@
   when: "not synaptics_conf.stat.exists or synaptics_conf.stat.checksum != ansible_checksum"
   vars:
     ansible_checksum: "{{ lookup('file', 'files/70-synaptics.conf') | checksum }}"
+
+- name: "Check if uinput rules exists"
+  ansible.builtin.stat:
+    path: "/usr/lib/udev/rules.d/93-uinput.rules"
+  register: "uinput_conf"
+
+- name: "Copy uinput udev rules"
+  become: true
+  ansible.builtin.copy:
+    src: "files/93-uinput.rules"
+    dest: "/usr/lib/udev/rules.d/93-uinput.rules"
+    mode: "644"
+  when: "not uinput_conf.stat.exists or uinput_conf.stat.checksum != ansible_checksum"
+  vars:
+    ansible_checksum: "{{ lookup('file', 'files/93-uinput.rules') | checksum }}"
