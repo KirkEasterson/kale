@@ -78,6 +78,20 @@
   vars:
     ansible_checksum: "{{ lookup('file', 'files/70-synaptics.conf') | checksum }}"
 
+- name: "Add current user to the input group"
+  become: true
+  ansible.builtin.user:
+    name: "{{ remote_regular_user }}"
+    groups: "input"
+    append: true
+
+- name: "Add current user to the uinput group"
+  become: true
+  ansible.builtin.user:
+    name: "{{ remote_regular_user }}"
+    groups: "uinput"
+    append: true
+
 - name: "Check if uinput rules exists"
   ansible.builtin.stat:
     path: "/usr/lib/udev/rules.d/93-uinput.rules"
@@ -92,3 +106,10 @@
   when: "not uinput_conf.stat.exists or uinput_conf.stat.checksum != ansible_checksum"
   vars:
     ansible_checksum: "{{ lookup('file', 'files/93-uinput.rules') | checksum }}"
+
+- name: "Ensure uinput drivers are loaded"
+  become: true
+  ansible.builtin.command:
+    cmd: "modprobe uinput"
+  when: "not uinput_conf.stat.exists"
+  changed_when: false
