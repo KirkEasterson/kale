@@ -42,6 +42,9 @@
       - "helvum" # GTK patch bay
       - "pavucontrol"
       - "pipewire"
+      - "pipewire-alsa"
+      - "pipewire-jack"
+      - "pipewire-pulse"
       # - "qpwgraph" # QT patch bay
       - "sof-firmware"
       - "wireplumber"
