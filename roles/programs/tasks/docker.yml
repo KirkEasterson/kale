@@ -3,9 +3,12 @@
   become: true
   ansible.builtin.package:
     name:
+      - "colima"
       - "docker"
       - "docker-buildx"
       - "docker-compose"
+      - "kubectl"
+      - "kustomize"
       # - "lazydocker" # only in AUR
 
 - name: "Add current user to the docker group"
