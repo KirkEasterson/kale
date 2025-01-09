@@ -2,14 +2,14 @@
 - name: "Install key mappers"
   become: true
   vars:
-    pcmanfm:
+    xmodmap:
       Archlinux: "sxhkd"
       Debian: "x11-xserver-utils" # contains xmodmap
   ansible.builtin.package:
     name:
       - "wtype"
       - "xdotool"
-      - "{{ pcmanfm[ansible_facts['os_family']] }}"
+      - "{{ xmodmap[ansible_facts['os_family']] }}"
   when: "ansible_system == 'Linux'"
 
 - name: "Install key mappers from homebrew"
