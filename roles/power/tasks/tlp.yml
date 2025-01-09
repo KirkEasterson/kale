@@ -31,6 +31,13 @@
     state: "started"
     enabled: true
 
+- name: "Enable throttled service"
+  become: true
+  ansible.builtin.systemd:
+    name: "throttled"
+    state: "started"
+    enabled: true
+
 - name: "Enable acpid service"
   become: true
   ansible.builtin.systemd:
