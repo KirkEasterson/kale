@@ -12,6 +12,7 @@
     name:
       - "kdenlive"
       - "obs-studio"
+      - "obs-cli-bin"
       - "v4l2loopback-dkms"
       - "v4l2loopback-utils"
 
