@@ -1,29 +1,10 @@
 ---
-- name: "Check if GRUB theme exists"
-  become: true
-  ansible.builtin.stat:
-    path: "/boot/grub/themes/minegrub/"
-  register: "minegrub"
-
-- name: "Install GRUB theme"
-  ansible.builtin.import_tasks:
-    file: "theme.yml"
-  when: "not minegrub.stat.exists"
-
-- name: "Set GRUB theme"
-  become: true
-  ansible.builtin.lineinfile:
-    path: "/etc/default/grub"
-    regexp: "GRUB_THEME="
-    line: 'GRUB_THEME="/boot/grub/themes/minegrub/theme.txt"'
-  register: "grub_theme"
-
-- name: "Set GRUB timeout to 5"
+- name: "Set GRUB timeout to 0"
   become: true
   ansible.builtin.lineinfile:
     path: "/etc/default/grub"
     regexp: "^GRUB_TIMEOUT="
-    line: "GRUB_TIMEOUT=5"
+    line: "GRUB_TIMEOUT=0"
   register: "grub_timeout"
 
 - name: "Check if 'quiet' is configured in the boot command"
@@ -105,7 +86,6 @@
     "ansible_facts['os_family'] == 'Suse' and (grub_theme.changed or grub_timeout.changed or not quiet_param.found or
     not splash_param.found or not intel_pstate_param.found)"
   changed_when: false
-
 # # TODO: figure out the arch equivalent for this
 # - name: Update initramfs
 #   become: true
