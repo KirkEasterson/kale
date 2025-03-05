@@ -8,3 +8,4 @@
       - "git"
       - "git-delta"
       - "lazygit"
+      - "mermaid-cli"
