@@ -7,6 +7,14 @@
     line: "GRUB_TIMEOUT=0"
   register: "grub_timeout"
 
+- name: "Set GRUB default to 0"
+  become: true
+  ansible.builtin.lineinfile:
+    path: "/etc/default/grub"
+    regexp: "^GRUB_DEFAULT="
+    line: "GRUB_DEFAULT=0"
+  register: "grub_default"
+
 - name: "Check if 'quiet' is configured in the boot command"
   become: true
   ansible.builtin.lineinfile:
@@ -73,8 +81,8 @@
   ansible.builtin.command:
     cmd: "grub-mkconfig -o /boot/grub/grub.cfg"
   when:
-    "ansible_facts['os_family'] != 'Suse' and (grub_theme.changed or grub_timeout.changed or not quiet_param.found or
-    not splash_param.found or not intel_pstate_param.found)"
+    "ansible_facts['os_family'] != 'Suse' and (grub_theme.changed or grub_timeout.changed or grub_default.changed or not
+    quiet_param.found or not splash_param.found or not intel_pstate_param.found)"
   changed_when: false
 
 - name: "Update grub2"
@@ -83,8 +91,8 @@
   ansible.builtin.command:
     cmd: "grub2-mkconfig -o /boot/grub/grub.cfg"
   when:
-    "ansible_facts['os_family'] == 'Suse' and (grub_theme.changed or grub_timeout.changed or not quiet_param.found or
-    not splash_param.found or not intel_pstate_param.found)"
+    "ansible_facts['os_family'] == 'Suse' and (grub_theme.changed or grub_timeout.changed or grub_default.changed or not
+    quiet_param.found or not splash_param.found or not intel_pstate_param.found)"
   changed_when: false
 # # TODO: figure out the arch equivalent for this
 # - name: Update initramfs
