@@ -38,16 +38,3 @@
 - name: "Trackpad"
   ansible.builtin.import_tasks:
     file: "trackpad.yml"
-
-  handlers:
-    - name: "Restart Finder"
-      ansible.builtin.command: "killall Finder"
-
-    - name: "Restart dock"
-      ansible.builtin.command: "killall Dock"
-
-    - name: "Restart SystemUIServer"
-      ansible.builtin.command: "killall SystemUIServer"
-
-    - name: "Restart Safari"
-      ansible.builtin.command: "killall Safari"

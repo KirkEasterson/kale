@@ -13,12 +13,7 @@
     - key: "mru-spaces"
       type: "bool"
       value: false
-  register: "mc_dock_settings"
-
-- name: "Restart Finder"
-  ansible.builtin.command: "killall Finder"
-  changed_when: false
-  when: "mc_dock_settings.changed"
+  notify: "Restart Finder"
 
 - name: "Set mission-control space settings"
   community.general.osx_defaults:

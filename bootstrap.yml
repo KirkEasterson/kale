@@ -61,10 +61,10 @@
     #   - xorg (linux)
     #   - lightdm (linux)
 
-    # - name: "Mac setup"
-    #   ansible.builtin.import_role:
-    #     name: "mac_default"
-    #   when: "ansible_distribution == 'MacOSX'"
+    - name: "Mac setup"
+      ansible.builtin.import_role:
+        name: "mac_default"
+      when: "ansible_distribution == 'MacOSX'"
 
     - name: "Intel drivers"
       ansible.builtin.import_role:
@@ -152,3 +152,13 @@
     - name: "Programs"
       ansible.builtin.import_role:
         name: "programs"
+
+  handlers:
+    - name: "Restart Finder"
+      ansible.builtin.command: "killall Finder"
+    - name: "Restart dock"
+      ansible.builtin.command: "killall Dock"
+    - name: "Restart SystemUIServer"
+      ansible.builtin.command: "killall SystemUIServer"
+    - name: "Restart Safari"
+      ansible.builtin.command: "killall Safari"
