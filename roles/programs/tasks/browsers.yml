@@ -15,14 +15,6 @@
       Suse: "MozillaFirefox-branding-upstream"
   ansible.builtin.package:
     name:
-      - "profile-sync-daemon"
       - "{{ chromium[ansible_facts['os_family']] }}"
       - "{{ firefox[ansible_facts['os_family']] }}"
-
-- name: "Enable profile-sync-daemon service"
-  become_user: "{{ remote_regular_user }}"
-  become: true
-  ansible.builtin.systemd:
-    name: "psd"
-    state: "started"
-    enabled: true
+      - "qutebrowser"
