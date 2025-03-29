@@ -66,8 +66,11 @@ else
 	KALE_DIR="$DEFAULT_KALE_DIR"
 fi
 
-cd "$KALE_DIR"
+if command -v timeshift >/dev/null 2>&1; then
+	sudo timeshift --create --comments "before KALE run"
+fi
 
+cd "$KALE_DIR"
 if [[ -f "$KALE_DIR/requirements.yml" ]]; then
 	ansible-galaxy install -r requirements.yml
 fi
