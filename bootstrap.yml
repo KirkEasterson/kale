@@ -60,10 +60,11 @@
     #   - systemd (linux)
     #   - xorg (linux)
     #   - lightdm (linux)
-    - name: "Mac setup"
-      ansible.builtin.import_role:
-        name: "mac_default"
-      when: "ansible_distribution == 'MacOSX'"
+
+    # - name: "Mac setup"
+    #   ansible.builtin.import_role:
+    #     name: "mac_default"
+    #   when: "ansible_distribution == 'MacOSX'"
 
     - name: "Intel drivers"
       ansible.builtin.import_role:
