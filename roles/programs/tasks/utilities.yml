@@ -8,6 +8,7 @@
     name:
       - "nordvpn-bin"
       - "nordtray-bin"
+      - "proton-vpn-gtk-app"
   when: "ansible_facts['os_family'] == 'Archlinux'"
 
 # - name: "Install vpn from apt"
@@ -50,6 +51,7 @@
     name:
       - "1password"
       - "1password-cli"
+      - "proton-pass-bin"
   when: "ansible_facts['os_family'] == 'Archlinux'"
 
 # - name: "Install password manager from apt"
