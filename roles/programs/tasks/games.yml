@@ -4,9 +4,9 @@
   ansible.builtin.package:
     name:
       - "lutris"
-      - "minetest"
-      - "minetest-common"
-      - "minetest-server"
+      - "luanti"
+      - "luanti-common"
+      - "luanti-server"
       - "steam"
       - "wine"
       - "wine-mono"
@@ -30,7 +30,7 @@
       - "homebrew/cask/atlauncher"
       - "homebrew/cask/minecraft"
       - "homebrew/cask/steam"
-      - "minetest"
+      - "luanti"
   when: "ansible_facts['os_family'] == 'Darwin'"
 
 - name: "Install video drivers"
