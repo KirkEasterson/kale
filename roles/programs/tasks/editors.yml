@@ -46,12 +46,12 @@
       Darwin: "visual-studio-code"
       Suse: "code"
     intellij:
-      Archlinux: "intellij-idea-community-edition"
-      Debian: "intellij-idea-community"
+      Archlinux: "intellij-idea-ultimate-edition"
+      Debian: "intellij-idea-ultimate"
       Darwin: "intellij"
   ansible.builtin.package:
     name:
-      - "emacs-nativecomp"
+      - "emacs"
       - "neovide" # not in apt
       - "neovim"
       - "qtcreator"
