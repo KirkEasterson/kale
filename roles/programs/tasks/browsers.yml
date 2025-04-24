@@ -17,4 +17,5 @@
     name:
       - "{{ chromium[ansible_facts['os_family']] }}"
       - "{{ firefox[ansible_facts['os_family']] }}"
+      - "python-adblock" # on only arch
       - "qutebrowser"
