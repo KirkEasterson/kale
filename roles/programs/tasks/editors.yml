@@ -3,6 +3,7 @@
   become: true
   ansible.builtin.package:
     name:
+      - "blender"
       - "imagemagick"
       - "gimp"
 
@@ -10,19 +11,12 @@
   become: true
   ansible.builtin.package:
     name:
+      - "ffmpeg"
       - "kdenlive"
       - "obs-studio"
       - "obs-cli-bin"
       - "v4l2loopback-dkms"
       - "v4l2loopback-utils"
-
-- name: "Install audio editors"
-  become: true
-  ansible.builtin.package:
-    name:
-      # - "ardour" # not on brew
-      - "audacity"
-      # - "reaper" # not on zypper
 
 - name: "Add vscode repository for suse"
   become: true
@@ -58,6 +52,14 @@
       - "vim"
       - "{{ vscode[ansible_facts['os_family']] }}"
       - "{{ intellij[ansible_facts['os_family']] }}"
+
+- name: "Enable emacs daemon on startup"
+  become: true
+  become_user: "{{ remote_regular_user }}"
+  ansible.builtin.systemd_service:
+    scope: "user"
+    name: "emacs"
+    enabled: true
 
 - name: "Install text editors"
   become: true
