@@ -78,12 +78,24 @@
   vars:
     ansible_checksum: "{{ lookup('file', 'files/70-synaptics.conf') | checksum }}"
 
+- name: "Create input group"
+  become: true
+  ansible.builtin.group:
+    name: "input"
+    state: "present"
+
 - name: "Add current user to the input group"
   become: true
   ansible.builtin.user:
     name: "{{ remote_regular_user }}"
     groups: "input"
     append: true
+
+- name: "Create uinput group"
+  become: true
+  ansible.builtin.group:
+    name: "uinput"
+    state: "present"
 
 - name: "Add current user to the uinput group"
   become: true
