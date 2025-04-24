@@ -76,6 +76,24 @@
       - "river"
   when: "ansible_system == 'Linux'"
 
+- name: "Install hyprland"
+  become: true
+  ansible.builtin.package:
+    name:
+      - "hyprcursor"
+      - "hyprgraphics"
+      - "hypridle"
+      - "hyprland"
+      - "hyprland-protocols"
+      - "hyprland-qt-support"
+      - "hyprland-qtutils"
+      - "hyprlock"
+      - "hyprpaper"
+      - "hyprpolkitagent"
+      - "hyprutils"
+      - "xdg-desktop-portal-hyprland"
+  when: "ansible_system == 'Linux'"
+
 - name: "Install yabai from homebrew"
   community.general.homebrew:
     state: "present"
