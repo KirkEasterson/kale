@@ -107,3 +107,10 @@
       - "gvfs"
       - "gvfs-mtp"
       - "libmtp"
+
+- name: "Disk tools"
+  become: true
+  ansible.builtin.package:
+    name:
+      - "dosfstools" # for creating fat32 partitions
+      - "gparted"
