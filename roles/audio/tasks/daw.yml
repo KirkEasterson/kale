@@ -4,5 +4,7 @@
   ansible.builtin.package:
     name:
       - "ardour"
+      - "audacity"
       - "guitarix"
-      - "tuxguitar"
+      - "realtime-privileges" # increased memory for ardour
+      - "reaper" # not on zypper
