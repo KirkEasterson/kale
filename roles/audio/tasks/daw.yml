@@ -8,4 +8,4 @@
       - "guitarix"
       - "realtime-privileges" # increased memory for ardour
       - "reaper" # not on zypper
-      - "tuxguitar"
+      # - "tuxguitar"
