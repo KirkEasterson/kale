@@ -68,9 +68,10 @@ The only advice I have now is to read the configs and figure it out yourself.
   - [ ] brew (if on mac)
   - [ ] ansible (package manager independent)
 - [ ] Add support for multiple linux distributions
+  - [ ] Arch linux
+  - [x] Debian
   - [ ] Fedora
   - [ ] openSuse
-  - [x] Debian
 - [x] Add support for macos
 - [ ] Implement molecule for testing the bootstrap playbook
 - [ ] Add flags for enabling features (for personal and testing usages)
