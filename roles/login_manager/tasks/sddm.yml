@@ -1,20 +1,9 @@
 ---
 - name: "Install SDDM"
   become: true
-  vars:
-    theme:
-      Archlinux: "sddm-kcm"
-      Debian: "kde-config-sddm"
-      Suse: "kcm_sddm"
-    theme2:
-      Archlinux: "plasma"
-      Debian: "plasma"
-      Suse: "sddm-branding-openSUSE"
   ansible.builtin.package:
     name:
       - "sddm"
-      - "{{ theme[ansible_facts['os_family']] }}"
-      - "{{ theme2[ansible_facts['os_family']] }}"
 
 - name: "Check if SDDM conf file exists"
   ansible.builtin.stat:
