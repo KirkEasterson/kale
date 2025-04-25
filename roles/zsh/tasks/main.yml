@@ -4,6 +4,9 @@
   ansible.builtin.package:
     name:
       - "starship"
+      - "wl-clipboard"
+      - "xclip"
+      - "xsel"
       - "zsh"
 
 - name: "Change default shell to Zsh"
