@@ -7,7 +7,6 @@
   ansible.builtin.import_tasks:
     file: "website.yml"
 
-# TODO: move these to dotfiles
-- name: "Scripts"
+- name: "Firefox"
   ansible.builtin.import_tasks:
-    file: "scripts.yml"
+    file: "firefox.yml"
