@@ -23,6 +23,7 @@ kale_path: "~/kale"
 dev_path: "~/dev"
 dotfiles_path: "~/.dotfiles"
 website_path: "{{ dev_path }}/kirkeasterson.github.io"
+firefox_path: "{{ dev_path }}/firefox-profile"
 scripts_path: "~/scripts"
 screenshots_path: "~/Pictures/screenshots"
 
