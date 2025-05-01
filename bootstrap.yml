@@ -156,9 +156,13 @@
   handlers:
     - name: "Restart Finder"
       ansible.builtin.command: "killall Finder"
+      changed_when: false
     - name: "Restart dock"
       ansible.builtin.command: "killall Dock"
+      changed_when: false
     - name: "Restart SystemUIServer"
       ansible.builtin.command: "killall SystemUIServer"
+      changed_when: false
     - name: "Restart Safari"
       ansible.builtin.command: "killall Safari"
+      changed_when: false
