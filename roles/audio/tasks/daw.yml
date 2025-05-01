@@ -9,3 +9,16 @@
       - "realtime-privileges" # increased memory for ardour
       - "reaper" # not on zypper
       # - "tuxguitar"
+
+- name: "Install plugins"
+  become: true
+  ansible.builtin.package:
+    name:
+      - "lv2-plugins"
+
+- name: "Install MIDI packs"
+  become: true
+  ansible.builtin.package:
+    name:
+      - "freepats-general-midi"
+      - "drumstick"
