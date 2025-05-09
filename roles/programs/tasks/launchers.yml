@@ -4,8 +4,6 @@
   become: true
   ansible.builtin.package:
     name:
-      - "fuzzel"
-      - "rofi"
+      - "rofi-wayland"
       - "rofimoji"
-      - "wofi"
   when: "ansible_system == 'Linux'"
