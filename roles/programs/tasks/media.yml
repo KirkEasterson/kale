@@ -3,10 +3,6 @@
   become: true
   ansible.builtin.package:
     name:
-      - "eog"
-      - "evince"
-      - "pdfarranger"
-      - "xournalpp"
       - "zathura"
       - "zathura-pdf-mupdf"
   when: "ansible_system == 'Linux'"
@@ -50,9 +46,7 @@
   become: true
   ansible.builtin.package:
     name:
-      - "elisa"
       - "playerctl"
-      - "rhythmbox"
   when: "ansible_system == 'Linux'"
 
 - name: "Install spotify from AUR"
