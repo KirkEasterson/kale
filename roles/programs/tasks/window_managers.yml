@@ -91,6 +91,7 @@
       - "hyprpaper"
       - "hyprpolkitagent"
       - "hyprutils"
+      - "hyprwayland-scanner"
       - "xdg-desktop-portal-hyprland"
   when: "ansible_system == 'Linux'"
 
