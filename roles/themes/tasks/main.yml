@@ -3,9 +3,10 @@
   become: true
   ansible.builtin.package:
     name:
+      - "capitaine-cursors"
       - "lxappearance"
+      - "materia-gtk-theme"
       - "papirus-icon-theme"
       - "picom"
+      - "python-pywal16"
       - "xcursor-themes"
-      - "capitaine-cursors"
-      - "materia-gtk-theme"
