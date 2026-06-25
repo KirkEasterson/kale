@@ -17,19 +17,23 @@ if [[ "$yn" == "y" ]]; then
 		case $ID in
 
 		debian | ubuntu | mint)
-			sudo apt update
+			sudo apt -y update
 			;;
 
 		fedora | rhel | centos)
-			sudo yum update
+			sudo dnf -y update
 			;;
 
 		arch | manjaro | void)
 			if [ -x "$(command -v yay)" ]; then
-				yay -Syyu
+				yay --noconfirm -Syyu
 			else
-				sudo pacman -Syyu
+				sudo pacman --noconfirm -Syyu
 			fi
+			;;
+
+		opensuse*)
+			sudo zypper --non-interactive dup
 			;;
 
 		*)

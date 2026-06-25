@@ -1,0 +1,25 @@
+---
+- name: "Install git"
+  become: true
+  ansible.builtin.package:
+    name:
+      - "bzip2"
+      - "cronie"
+      - "git"
+      - "make"
+      - "procps"
+
+- name: "Clone grub-btrfs"
+  ansible.builtin.git:
+    repo: "https://github.com/Antynea/grub-btrfs.git"
+    dest: "{{ dev_path }}/grub-btrfs"
+    depth: 1
+    version: "4.13"
+  register: "clone_grub_btrfs"
+
+- name: "Install grub-btrfs"
+  become: true
+  ansible.builtin.command: "make install"
+  args:
+    chdir: "{{ dev_path }}/grub-btrfs"
+  when: "clone_grub_btrfs.changed"

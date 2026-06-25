@@ -56,10 +56,39 @@ Clone the repo, check out the `main` branch, and run the install script.
 There are future plans to add a detailed guide on how to use the environment post-installation.
 The only advice I have now is to read the configs and figure it out yourself.
 
+## Testing
+
+[vagrant](https://github.com/hashicorp/vagrant) is used for local testing. This directory is synced with the `/home/vagrant/kale/` directory in the VM.
+
+_NOTE:_ Currently only archlinux VMs are supported
+
+- creating the VM
+
+```
+vagrant up
+```
+
+- turning off the VM
+
+```
+vagrant halt
+```
+
+- destroying the VM
+
+```
+vagrant destroy
+```
+
+- SSH into the VM
+
+```
+vagrant ssh
+```
+
 ## Troubleshooting
 
 - Cannot authorize key with github
-
   - The github access token likely expired. Generate a new one with 'read and write' permissions for SSH keys _and_ GPG keys. This playbook doesn't add GPG keys, but the permission is necessary to interact with the `https://api.github.com/user/keys` endpoint
 
 ## Roadmap

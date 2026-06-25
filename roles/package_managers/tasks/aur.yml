@@ -1,4 +1,15 @@
 ---
+- name: "Install AUR dependencies"
+  become: true
+  ansible.builtin.package:
+    name:
+      - "debugedit"
+      - "fakeroot"
+      - "gcc"
+      - "git"
+      - "make"
+      - "pacman-contrib"
+
 - name: "Check if yay is installed"
   ansible.builtin.command: "/bin/bash -c 'command -v yay'"
   changed_when: false
@@ -41,3 +52,5 @@
     upgrade: true
     aur_only: true
   when: "yay_exists.rc != 0"
+  retries: 3
+  delay: 5

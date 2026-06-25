@@ -1,6 +1,0 @@
----
-- name: "Install ollama"
-  become: true
-  ansible.builtin.package:
-    name:
-      - "ollama-cuda"

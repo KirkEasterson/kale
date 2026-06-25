@@ -22,6 +22,7 @@
   become: true
   community.general.zypper:
     name: "*"
+    state: "latest"
     update_cache: true
   when: "ansible_facts['os_family'] == 'Suse'"
   changed_when: false

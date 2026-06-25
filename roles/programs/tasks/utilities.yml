@@ -113,4 +113,5 @@
   ansible.builtin.package:
     name:
       - "dosfstools" # for creating fat32 partitions
+      - "exfat-utils"
       - "gparted"

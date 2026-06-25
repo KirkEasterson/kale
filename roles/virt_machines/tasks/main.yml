@@ -12,18 +12,33 @@
       Debian: "qemu" # this is wrong
       Suse: "qemu"
       Darwin: "qemu"
+    vagrant:
+      Archlinux: "" # needs to be installed with AUR
+      Debian: "vagrant"
+      Suse: "vagrant"
+      Darwin: "vagrant"
   ansible.builtin.package:
     name:
       - "dnsmasq" # needed for starting default network in QEMU
       - "qemu-audio-dbus"
       - "qemu-ui-dbus"
-      - "vagrant"
       - "virt-manager"
       - "virtualbox" # needed for vagrant
       - "virtualbox-host-dkms" # needed for vagrant
       - "dkms" # needed for vagrant
       - "{{ libvirt[ansible_facts['os_family']] }}"
       - "{{ qemu[ansible_facts['os_family']] }}"
+      - "{{ vagrant[ansible_facts['os_family']] }}"
+
+- name: "Install vagrant from AUR"
+  become: true
+  become_user: "{{ remote_regular_user }}"
+  kewlfft.aur.aur:
+    state: "present"
+    use: "yay"
+    name:
+      - "vagrant"
+  when: "ansible_facts['os_family'] == 'Archlinux'"
 
 - name: "Add current user to the libvirt group"
   become: true

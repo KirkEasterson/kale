@@ -27,6 +27,7 @@
     - name: "Github"
       ansible.builtin.import_role:
         name: "github"
+      when: "vagrant not in ansible_hostname"
 
     # - ensure directory layout
     - name: "Directories"
@@ -129,10 +130,6 @@
     - name: "Virtual machines"
       ansible.builtin.import_role:
         name: "virt_machines"
-
-    - name: "LLMs"
-      ansible.builtin.import_role:
-        name: "llm"
 
     - name: "Login managers"
       ansible.builtin.import_role:

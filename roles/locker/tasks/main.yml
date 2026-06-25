@@ -14,7 +14,7 @@
     name:
       - "i3lock"
       - "swaylock"
-      - "xautolock"
+      # - "xautolock"
       - "xss-lock"
   when: "ansible_system == 'Linux'"
 

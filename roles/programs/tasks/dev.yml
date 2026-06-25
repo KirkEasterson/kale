@@ -124,13 +124,17 @@
 - name: "Install JS/TS/node"
   become: true
   vars:
+    node:
+      Archlinux: "nodejs-lts-iron"
+      Debian: "nodejs"
+      Darwin: "nodejs"
     ts:
       Archlinux: "typescript"
       Debian: "node-typescript"
       Darwin: "typescript"
   ansible.builtin.package:
     name:
-      - "nodejs"
+      - "{{ node[ansible_facts['os_family']] }}"
       - "{{ ts[ansible_facts['os_family']] }}"
 
 - name: "Install linters"

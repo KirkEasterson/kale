@@ -30,3 +30,4 @@
     cmd: "{{ firefox_path }}/install.sh"
   when: "not firefox_dir.stat.exists"
   changed_when: false
+  ignore_errors: true # happens when ff profile doesn't exist
