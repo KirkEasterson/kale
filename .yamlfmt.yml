@@ -1,0 +1,9 @@
+---
+exclude:
+  - "group_vars/all/vault.yml"
+gitignore_excludes: true
+formatter:
+  type: "basic"
+  retain_line_breaks: true
+  include_document_start: true
+  max_line_length: 115

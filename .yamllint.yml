@@ -1,4 +1,8 @@
 ---
+extends: "default"
+ignore:
+  - "group_vars/all/vault.yml"
+  - "config/*"
 rules:
   key-ordering: "disable"
   trailing-spaces: false
@@ -19,3 +23,10 @@ rules:
     check-keys: true
   braces:
     forbid: true
+    max-spaces-inside: 1
+  comments-indentation: false
+  comments:
+    min-spaces-from-content: 1
+  octal-values:
+    forbid-implicit-octal: true
+    forbid-explicit-octal: true

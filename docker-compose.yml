@@ -1,0 +1,17 @@
+---
+services:
+  ansible-lint:
+    container_name: "ansible-lint"
+    image: "registry.gitlab.com/pipeline-components/ansible-lint:latest"
+    volumes:
+      - "./:/code"
+  yamllint:
+    container_name: "yamllint"
+    image: "registry.gitlab.com/pipeline-components/yamllint:latest"
+    volumes:
+      - "./:/code"
+  yamlfmt:
+    container_name: "yamlfmt"
+    image: "ghcr.io/google/yamlfmt:latest"
+    volumes:
+      - "./:/project"
